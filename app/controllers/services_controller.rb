@@ -4,12 +4,13 @@ class ServicesController < AdminController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @services = Service.where(:parent_id => nil  )
   end
 
   # GET /services/1
   # GET /services/1.json
   def show
+    
   end
 
   # GET /services/new
@@ -60,6 +61,10 @@ class ServicesController < AdminController
     end
   end
 
+  def sub_services
+    @sub_service = Service.new
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
@@ -68,6 +73,6 @@ class ServicesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :city_ids=> [])
+      params.require(:service).permit(:name,:parent_id, :city_ids=> [])
     end
 end

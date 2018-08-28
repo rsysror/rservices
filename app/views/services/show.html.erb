@@ -7,8 +7,14 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @service.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:city_id) %>:</strong></dt>
+  <dt><strong>Sub Services:</strong></dt>
   <dd><%= @service.cities.collect(&:name) %></dd>
+  <% @service.sub_services.each do |sub_service| %>
+    <dd><%= sub_service.name %></dd>
+  <% end %>
 </dl>
+
+<%= link_to "create_sub_services",sub_services_service_path(@service), :class => 'btn btn-default'  %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               services_path, :class => 'btn btn-default'  %>

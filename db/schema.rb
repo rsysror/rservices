@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_08_28_094653) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
+    t.integer "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,13 +56,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_094653) do
   create_table "states", force: :cascade do |t|
     t.string "name"
     t.integer "country_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sub_services", force: :cascade do |t|
-    t.string "name"
-    t.integer "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

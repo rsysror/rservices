@@ -3,6 +3,6 @@ class Service < ApplicationRecord
 
   has_many :sub_services, class_name: "Service", foreign_key: "parent_id", dependent: :destroy
  
-  belongs_to :service, class_name: "Service", foreign_key: "parent_id"
+  belongs_to :service, class_name: "Service", optional: true
 
 end

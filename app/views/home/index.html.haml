@@ -1,0 +1,851 @@
+!!!
+/
+  author: W3layouts
+  author URL: http://w3layouts.com
+  License: Creative Commons Attribution 3.0 Unported
+  License URL: http://creativecommons.org/licenses/by/3.0/
+%html
+  %head
+    %title Catchy Carz a classified ads Category Flat Bootstrap Responsive Website Template | Home :: w3layouts
+    / for-mobile-apps
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "Catchy Carz Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, \nSmartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design", :name => "keywords"}/
+  %body
+    / /banner-section
+    = render :partial => 'common/header'
+    #myModal1.modal.ab.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.about{:role => "document"}
+        .modal-content.about
+          .modal-header
+            %button.close.ab{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            .discount
+              %h3 Get Offers &amp; Discount of
+              %p Catchy Carz Brand VL in New York
+              %form{:action => "#", :method => "post"}
+                %select#country5.frm-field.required{:onchange => "change_country(this.value)"}
+                  %option{:selected => "selected", :value => "-1"} -Buying Time Period-
+                  %option{:value => "0"} Just Researching
+                  %option{:value => "7"} 1 Week
+                  %option{:value => "14"} 2 Weeks
+                  %option{:value => "30"} 1 Month
+                  %option{:value => "60"} 2 Months
+                %input.Pin.code{:name => "pin code", :placeholder => "Pin code", :required => "", :type => "text"}/
+          .modal-body.about
+            .dis-contact
+              %h4 Contact Information
+              %form{:action => "#", :method => "post"}
+                %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                %input.phone{:name => "phone", :placeholder => "Phone", :required => "", :type => "text"}/
+                .d-c
+                  %span.checkbox1
+                    %label.checkbox
+                      %input{:checked => "checked", :name => "", :type => "checkbox"}/
+                      = succeed "I" do
+                        %i
+                %input{:type => "submit", :value => "Find Offers"}/
+    / //discounts
+    / //sign-up
+    #myModal2.modal.ab.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.sign{:role => "document"}
+        .modal-content.about
+          .modal-header.one
+            %button.close.sg{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            .discount.one
+              %h3 Sign Up
+          .modal-body.about
+            .login-top.sign-top.one
+              %form{:action => "#", :method => "post"}
+                %input.name.active{:name => "name", :placeholder => "Your Name", :required => "", :type => "text"}/
+                %input.email{:name => "email ", :placeholder => "Email", :required => "", :type => "text"}/
+                %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                %input#brand1{:type => "checkbox", :value => ""}/
+                %label{:for => "brand1"}
+                  %span
+                  Remember me?
+                .login-bottom.one
+                  %ul
+                    %li
+                      %a{:href => "#"} Forgot password?
+                    %li
+                      %input{:type => "submit", :value => "SIGN UP"}/
+                    .clearfix
+          .social-icons
+            %ul
+              %li
+                %a{:href => "#"}
+                  %span.icons
+                  %span.text Facebook
+              %li.twt
+                %a{:href => "#"}
+                  %span.icons
+                  %span.text Twitter
+              %li.ggp
+                %a{:href => "#"}
+                  %span.icons
+                  %span.text Google+
+    / //sign-up
+    / /location
+    #myModal4.modal.ab.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog.sign{:role => "document"}
+        .modal-content.about
+          .modal-header.one
+            %button.close.sg{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+            .discount.one
+              %h3 Please Tell Us Your City
+          .modal-body.about
+            .login-top.sign-top.location
+              %form{:action => "#", :method => "post"}
+                %select#country12.frm-field.required{:onchange => "change_country(this.value)"}
+                  %option{:value => "null"} Select City
+                  %option{:value => "city"} Amsterdam
+                  %option{:value => "city"} Bahrain
+                  %option{:value => "city"} Cannes
+                  %option{:value => "city"} Dublin
+                  %option{:value => "city"} Edinburgh
+                  %option{:value => "city"} Florence
+                  %option{:value => "city"} Georgia
+                  %option{:value => "city"} Hungary
+                  %option{:value => "city"} Hong Kong
+                  %option{:value => "city"} Johannesburg
+                  %option{:value => "city"} Kiev
+                  %option{:value => "city"} London
+                  %option{:value => "city"} Others...
+    / //location
+    / //banner-section
+    / /featured_section
+    .featured_section_w3l
+      .container
+        %h3.tittle FEATURED CARS
+        .inner_tabs
+          .bs-example.bs-example-tabs{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+            %ul#myTab.nav.nav-tabs{:role => "tablist"}
+              %li.active{:role => "presentation"}
+                %a#expeditions-tab{"aria-controls" => "expeditions", "aria-expanded" => "true", "data-toggle" => "tab", :href => "#expeditions", :role => "tab"} UpComing cars
+              %li{:role => "presentation"}
+                %a#tours-tab{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"} Popular
+              %li{:role => "presentation"}
+                %a#tree-tab{"aria-controls" => "tree", "data-toggle" => "tab", :href => "#tree", :role => "tab"} Just Launched
+            #myTabContent.tab-content
+              #expeditions.tab-pane.fade.in.active{"aria-labelledby" => "expeditions-tab", :role => "tabpanel"}
+                .section__content.clearfix
+                  / /card1
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f1.jpg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} Mercedes-Benz C250 CDI
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 8000 - $ 12000
+                            %p Estimated Price
+                            .date Mar 2017
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4 Be the first to know
+                          .login-top.sign-top
+                            %form
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              %input.phone{:name => "phone", :placeholder => "Phone", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input{:type => "submit", :value => "Done"}/
+                  / //card1
+                  / /card2
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f2.jpg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} Audi A4 2.0 TDI
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 6000 - $ 10000
+                            %p Estimated Price
+                            .date Mar 2017
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4 Be the first to know
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              %input.phone{:name => "phone", :placeholder => "Phone", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input{:type => "submit", :value => "Done"}/
+                  / //card2
+                  / /card3
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f3.jpg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} Foed Mustang GT 500
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 9000 - $ 12000
+                            %p Estimated Price
+                            .date Mar 2017
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4 Be the first to know
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              %input.phone{:name => "phone", :placeholder => "Phone", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input{:type => "submit", :value => "Done"}/
+                  / //card3
+              #tours.tab-pane.fade{"aria-labelledby" => "tours-tab", :role => "tabpanel"}
+                .section__content.clearfix
+                  / /card1
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f4.jpg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} Ford Mustang GT 350
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 8000 - $ 11000
+                            %p Estimated Price
+                            .date June 2016
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4
+                            %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                            Check On-Road Price
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                              %input{:type => "submit", :value => "Check Now"}/
+                  / //card1
+                  / /card2
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f5.jpeg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "#"} Ferrari F430
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 7000 - $ 13000
+                            %p Estimated Price
+                            .date July 2016
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4
+                            %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                            Check On-Road Price
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                              %input{:type => "submit", :value => "Check Now"}/
+                  / //card2
+                  / /card3
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f6.jpeg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} Mercedes-Benz C250 CDI
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 5000 - $ 10000
+                            %p Estimated Price
+                            .date Aug 2016
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4
+                            %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                            Check On-Road Price
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                              %input{:type => "submit", :value => "Check Now"}/
+                  / //card3
+              #tree.tab-pane.fade{"aria-labelledby" => "tree-tab", :role => "tabpanel"}
+                .section__content.clearfix
+                  / /card1
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f7.jpg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} BMW M4
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 6000 - $ 11000
+                            %p Estimated Price
+                            .date Mar 2017
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4
+                            %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                            Check On-Road Price
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                              %input{:type => "submit", :value => "Check Now"}/
+                  / //card1
+                  / /card2
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f8.jpg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} BMW X4 M Sport
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25 $ 7000 - $ 12000
+                            %p Estimated Price
+                            .date Mar 2017
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4
+                            %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                            Check On-Road Price
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                              %input{:type => "submit", :value => "Check Now"}/
+                  / //card2
+                  / /card3
+                  .card.effect__hover
+                    .card__front
+                      %span.card__text
+                        .img-grid
+                          %img{:alt => "Catchy Carz", :src => "assets/f9.jpg"}/
+                          .car_description
+                            %h4
+                              %a{:href => "single.html"} BMW M3
+                            .price
+                              %span.fa.fa-rupee
+                              %span.font25  $ 5000 - $ 10000
+                            %p Estimated Price
+                            .date Mar 2017
+                            %p Expected Launch
+                    .card__back
+                      %span.card__text
+                        .login-inner2
+                          %h4
+                            %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                            Check On-Road Price
+                          .login-top.sign-top
+                            %form{:action => "#", :method => "post"}
+                              %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                              %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                              .section_drop
+                                %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                                  %option{:value => "null"} Select City
+                                  %option{:value => "city"} Amsterdam
+                                  %option{:value => "city"} Bahrain
+                                  %option{:value => "city"} Cannes
+                                  %option{:value => "city"} Dublin
+                                  %option{:value => "city"} Edinburgh
+                                  %option{:value => "city"} Florence
+                                  %option{:value => "city"} Georgia
+                                  %option{:value => "city"} Hungary
+                                  %option{:value => "city"} Hong Kong
+                                  %option{:value => "city"} Johannesburg
+                                  %option{:value => "city"} Kiev
+                                  %option{:value => "city"} London
+                                  %option{:value => "city"} Others...
+                              %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                              %input{:type => "submit", :value => "Check Now"}/
+                  / //card3
+    / //featured_section
+    / /select-cars-agile
+    .select-cars-agile
+      .container
+        .grid.cars-main
+          .col-md-7.slide-show-w3l
+            / //screen-gallery
+            %h3.tittle.top NEW CARS
+            %h6.sub Great Prices. Great Vehicles. Great Service.
+            .car-view-slider
+              %ul#flexiselDemo
+                %li
+                  %a{:href => "upcoming.html"}
+                    %img{:alt => "", :src => "assets/n2.jpg"}/
+                    .caption
+                      %h3
+                        %a{:href => "upcoming.html"} Ford Mustang GT 500
+                      %span Catchy Carz
+                %li
+                  %a{:href => "upcoming.html"}
+                    %img{:alt => "", :src => "assets/n1.jpeg"}/
+                    .caption
+                      %h3
+                        %a{:href => "upcoming.html"} Acura TLX
+                      %span Catchy Carz
+                %li
+                  %a{:href => "upcoming.html"}
+                    %img{:alt => "", :src => "assets/n3.jpg"}/
+                    .caption
+                      %h3
+                        %a{:href => "upcoming.html"} McLaren MP4-12c
+                      %span Catchy Carz
+                %li
+                  %a{:href => "upcoming.html"}
+                    %img{:alt => "", :src => "assets/n4.jpg"}/
+                    .caption
+                      %h3
+                        %a{:href => "upcoming.html"} BMW Z4
+                      %span Catchy Carz
+            / //screen-gallery
+          .col-md-5.new-car-used
+            %h3.tittle.top USED CARS
+            %h6.sub Used Cars at Shocking Prices.
+            .used-one
+              %figure.effect-zoe
+                %a{:href => "used.html"}
+                  %img{:alt => "Used Car", :src => "assets/used_car.jpg"}/
+                %figcaption
+                  %h4
+                    CATCHY
+                    %span CARZ
+                  %p.icon-links
+                    %a{:href => "#"}
+                      %i.glyphicon.glyphicon-heart-empty
+                    %a{:href => "#"}
+                      %i.glyphicon.glyphicon-eye-open
+                    %a{:href => "#"}
+                      %i.glyphicon.glyphicon-paperclip
+                  %p.description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            .clearfix
+            .used-one.second
+              %figure.effect-zoe
+                %a{:href => "used.html"}
+                  %img{:alt => "Used Car", :src => "assets/used_car1.jpg"}/
+                %figcaption
+                  %h4
+                    CATCHY
+                    %span CARZ
+                  %p.icon-links
+                    %a{:href => "#"}
+                      %i.glyphicon.glyphicon-heart-empty
+                    %a{:href => "#"}
+                      %i.glyphicon.glyphicon-eye-open
+                    %a{:href => "#"}
+                      %i.glyphicon.glyphicon-paperclip
+                  %p.description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          .clearfix
+    / /bottom-banner
+    .banner-bottom
+      .container
+        .bottom-form
+          .inner-text
+            %form{:action => "#", :method => "post"}
+              %h3 Choose Your Best Car
+              .best-hot
+                %h5 Name
+                %input.name.active{:placeholder => "Name", :required => "", :type => "text"}/
+              .best-hot
+                %h5 Email
+                %input.email{:placeholder => "Email", :required => "", :type => "text"}/
+              .section_drop2
+                %h5 City
+                %select#country6.frm-field.required{:onchange => "change_country(this.value)"}
+                  %option{:value => "null"} Select City
+                  %option{:value => "city"} Amsterdam
+                  %option{:value => "city"} Bahrain
+                  %option{:value => "city"} Cannes
+                  %option{:value => "city"} Dublin
+                  %option{:value => "city"} Edinburgh
+                  %option{:value => "city"} Florence
+                  %option{:value => "city"} Georgia
+                  %option{:value => "city"} Hungary
+                  %option{:value => "city"} Hong Kong
+                  %option{:value => "city"} Johannesburg
+                  %option{:value => "city"} Kiev
+                  %option{:value => "city"} London
+                  %option{:value => "city"} Others...
+              %input{:type => "submit", :value => "Book Now"}/
+    / //bottom-banner
+    / /slider1
+    .slider1
+      .arrival-grids
+        %ul#flexiselDemo1
+          %li
+            %a{:href => "single.html"}
+              %img{:alt => "", :src => "assets/f1.jpg"}/
+              .caption
+                %h3
+                  %a{:href => "single.html"} Mercedes-Benz C250 CDI
+                %span Catchy Carz
+          %li
+            %a{:href => "single.html"}
+              %img{:alt => "", :src => "assets/f2.jpg"}/
+              .caption
+                %h3
+                  %a{:href => "single.html"} Audi A4 2.0 TDI
+                %span Catchy Carz
+          %li
+            %a{:href => "single.html"}
+              %img{:alt => "", :src => "assets/f3.jpg"}/
+              .caption
+                %h3
+                  %a{:href => "single.html"} Ford Mustang GT 500
+                %span Catchy Carz
+          %li
+            %a{:href => "single.html"}
+              %img{:alt => "", :src => "assets/f4.jpg"}/
+              .caption
+                %h3
+                  %a{:href => "single.html"} Ford Mustang GT 350
+                %span Catchy Carz
+          %li
+            %a{:href => "single.html"}
+              %img{:alt => "", :src => "assets/f7.jpg"}/
+              .caption
+                %h3
+                  %a{:href => "single.html"} BMW M4
+                %span Catchy Carz
+          %li
+            %a{:href => "single.html"}
+              %img{:alt => "", :src => "assets/f5.jpeg"}/
+              .caption
+                %h3
+                  %a{:href => "single.html"} Ferrari F430
+                %span Catchy Carz
+          %li
+            %a{:href => "single.html"}
+              %img{:alt => "", :src => "assets/f8.jpg"}/
+              .caption
+                %h3
+                  %a{:href => "single.html"} BMW X4 M Sport
+                %span Catchy Carz
+    / //slider
+    / Services
+    .updates-agile
+      .container
+        %h3.tittle LATEST CAR UPDATES
+        .inner_tabs
+          .bs-example.bs-example-tabs{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+            %ul#myTab.nav.nav-tabs{:role => "tablist"}
+              %li{:role => "presentation"}
+                %a#updates-tab{"aria-controls" => "updates", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#updates", :role => "tab"} Car News
+              %li{:role => "presentation"}
+                %a#expert-tab{"aria-controls" => "expert", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#expert", :role => "tab"} Expert Reviews
+              %li.active{:role => "presentation"}
+                %a#video-text-tab{"aria-controls" => "video-text", "aria-expanded" => "true", "data-toggle" => "tab", :href => "#video-text", :role => "tab"} Videos
+            #myTabContent.tab-content
+              #updates.tab-pane.fade{"aria-labelledby" => "updates-tab", :role => "tabpanel"}
+                .news-updates
+                  .update-info-w3l
+                    .col-md-5.tab-image
+                      .view.second-effect
+                        %a{:href => "single.html", :title => "Catchy Carz"}
+                          %img.img-responsive{:alt => "", :src => "assets/u1.jpeg"}/
+                          .mask
+                            %p
+                              Catchy
+                              %span Carz
+                    .col-md-7.tab-info.one
+                      %h4
+                        %a{:href => "single.html"} Lorem Ipsum is simply dummy text of the printing
+                      %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                      %a.read.hvr-shutter-in-horizontal{:href => "single.html"} Read More
+                    .clearfix
+                  .update-info-w3l.two
+                    .col-md-7.tab-info.two
+                      %h4
+                        %a{:href => "single.html"} Lorem Ipsum is simply dummy text of the printing
+                      %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                      %a.read.hvr-shutter-in-horizontal{:href => "single.html"} Read More
+                    .col-md-5.tab-image
+                      .view.second-effect
+                        %a{:href => "single.html", :title => "Catchy Carz"}
+                          %img.img-responsive{:alt => "", :src => "assets/u2.jpg"}/
+                          .mask
+                            %p
+                              Catchy
+                              %span Carz
+                    .clearfix
+              #expert.tab-pane.fade{"aria-labelledby" => "expert-tab", :role => "tabpanel"}
+                .news-updates
+                  .update-info-w3l
+                    .col-md-5.tab-image
+                      .view.second-effect
+                        %a{:href => "single.html", :title => "Catchy Carz"}
+                          %img.img-responsive{:alt => "", :src => "assets/u3.jpg"}/
+                          .mask
+                            %p
+                              Catchy
+                              %span Carz
+                    .col-md-7.tab-info
+                      %h4
+                        %a{:href => "single.html"} Lorem Ipsum is simply dummy text of the printing
+                      %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                      %a.read.hvr-shutter-in-horizontal{:href => "single.html"} Read More
+                    .clearfix
+                  .update-info-w3l.two
+                    .col-md-7.tab-info.one
+                      %h4
+                        %a{:href => "single.html"} Lorem Ipsum is simply dummy text of the printing
+                      %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries
+                      %a.read.hvr-shutter-in-horizontal{:href => "single.html"} Read More
+                    .col-md-5.tab-image
+                      .view.second-effect
+                        %a{:href => "single.html", :title => "Catchy Carz"}
+                          %img.img-responsive{:alt => "", :src => "assets/u4.jpeg"}/
+                          .mask
+                            %p
+                              Catchy
+                              %span Carz
+                    .clearfix
+              #video-text.tab-pane.fade.active.in{"aria-labelledby" => "video-text-tab", :role => "tabpanel"}
+                .news-updates
+                  .update-info-w3l
+                    .col-md-5.tab-image
+                      %iframe{:allowfullscreen => "", :frameborder => "0", :src => "https://www.youtube.com/embed/XoXHwhADS4k"}
+                    .col-md-7.tab-info
+                      %h4
+                        %a{:href => "single.html"} Audi A4 2016 review - Car Keys
+                      %p Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                      %a.read.hvr-shutter-in-horizontal{:href => "single.html"} Read More
+                    .clearfix
+                  .update-info-w3l.two
+                    .col-md-7.tab-info.two
+                      %h4
+                        %a{:href => "single.html"} Volvo V90 review: is Volvo's new estate car
+                      %p Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                      %a.read.hvr-shutter-in-horizontal{:href => "single.html"} Read More
+                    .col-md-5.tab-image
+                      %iframe{:allowfullscreen => "", :frameborder => "0", :src => "https://www.youtube.com/embed/NcoCLc0MNdA"}
+                    .clearfix
+    .clearfix
+    / //Services
+    / footer
+    
+    = render :partial => 'common/footer'
+    
+    :javascript
+      $(window).load(function() {     
+                $("#flexiselDemo").flexisel({
+                visibleItems:1,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed:1000,       
+                pauseOnHover:true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: { 
+                  portrait: { 
+                    changePoint:480,
+                    visibleItems: 1
+                  }, 
+                  landscape: { 
+                    changePoint:640,
+                    visibleItems: 1
+                  },
+                  tablet: { 
+                    changePoint:768,
+                    visibleItems: 1
+                  }
+                }
+              });
+              });
+    :javascript
+      $(window).load(function() {     
+                $("#flexiselDemo1").flexisel({
+                visibleItems: 4,
+                animationSpeed: 1000,
+                autoPlay: true,
+                autoPlaySpeed: 3000,        
+                pauseOnHover:true,
+                enableResponsiveBreakpoints: true,
+                responsiveBreakpoints: { 
+                  portrait: { 
+                    changePoint:480,
+                    visibleItems: 1
+                  }, 
+                  landscape: { 
+                    changePoint:640,
+                    visibleItems: 2
+                  },
+                  tablet: { 
+                    changePoint:768,
+                    visibleItems: 3
+                  }
+                }
+              });
+              });
+    / <script type="text/javascript" src="js/jquery.flexisel.js"></script>
+    / <script src="js/bootstrap.js"></script>

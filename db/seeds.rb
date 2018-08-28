@@ -4070,3 +4070,7 @@ State.create(:id=>3804, :name=>"Mashonaland Central",:country_id=>249)
 State.create(:id=>3805, :name=>"Manicaland",:country_id=>249)
 State.create(:id=>3806, :name=>"Bulawayo",:country_id=>249)
 State.create(:id=>3807, :name=>"Harare Province",:country_id=>249)
+
+#Admin user create 
+user = User.create(:email => "admin@example.com", :password => "password", :first_name => "admin")
+user.add_role :admin

@@ -1,3 +1,5 @@
 class Service < ApplicationRecord
-	belongs_to :city
+  has_and_belongs_to_many :cities
+  has_many :sub_services
+
 end

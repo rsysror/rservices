@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_072704) do
+ActiveRecord::Schema.define(version: 2018_08_28_094653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 2018_08_28_072704) do
     t.integer "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cities_services", id: false, force: :cascade do |t|
+    t.bigint "city_id"
+    t.bigint "service_id"
+    t.index ["city_id"], name: "index_cities_services_on_city_id"
+    t.index ["service_id"], name: "index_cities_services_on_service_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -41,7 +48,6 @@ ActiveRecord::Schema.define(version: 2018_08_28_072704) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
-    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +55,13 @@ ActiveRecord::Schema.define(version: 2018_08_28_072704) do
   create_table "states", force: :cascade do |t|
     t.string "name"
     t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

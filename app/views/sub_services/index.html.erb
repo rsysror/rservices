@@ -1,4 +1,4 @@
-<%- model_class = Service -%>
+<%- model_class = SubService -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
@@ -7,25 +7,25 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:service_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
-    <% @services.each do |service| %>
+    <% @sub_services.each do |sub_service| %>
       <tr>
-        <td><%= link_to service.id, service_path(service) %></td>
-        <td><%= service.name %></td>
-        <td><%= service.city[0].name %></td>
-        <td><%=l service.created_at %></td>
+        <td><%= link_to sub_service.id, sub_service_path(sub_service) %></td>
+        <td><%= sub_service.name %></td>
+        <td><%= sub_service.service_id %></td>
+        <td><%=l sub_service.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      service_path(service), :class => 'btn btn-default btn-xs' %>
+                      sub_service_path(sub_service), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_service_path(service), :class => 'btn btn-default btn-xs' %>
+                      edit_sub_service_path(sub_service), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      service_path(service),
+                      sub_service_path(sub_service),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -36,5 +36,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_service_path,
+            new_sub_service_path,
             :class => 'btn btn-primary' %>

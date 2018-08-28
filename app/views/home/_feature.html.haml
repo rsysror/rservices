@@ -1,0 +1,409 @@
+.inner_tabs
+  .bs-example.bs-example-tabs{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+    %ul#myTab.nav.nav-tabs{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a#expeditions-tab{"aria-controls" => "expeditions", "aria-expanded" => "true", "data-toggle" => "tab", :href => "#expeditions", :role => "tab"} UpComing cars
+      %li{:role => "presentation"}
+        %a#tours-tab{"aria-controls" => "tours", "data-toggle" => "tab", :href => "#tours", :role => "tab"} Popular
+      %li{:role => "presentation"}
+        %a#tree-tab{"aria-controls" => "tree", "data-toggle" => "tab", :href => "#tree", :role => "tab"} Just Launched
+    #myTabContent.tab-content
+      #expeditions.tab-pane.fade.in.active{"aria-labelledby" => "expeditions-tab", :role => "tabpanel"}
+        .section__content.clearfix
+          / /card1
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f1.jpg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} Mercedes-Benz C250 CDI
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 8000 - $ 12000
+                    %p Estimated Price
+                    .date Mar 2017
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4 Be the first to know
+                  .login-top.sign-top
+                    %form
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      %input.phone{:name => "phone", :placeholder => "Phone", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input{:type => "submit", :value => "Done"}/
+          / //card1
+          / /card2
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f2.jpg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} Audi A4 2.0 TDI
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 6000 - $ 10000
+                    %p Estimated Price
+                    .date Mar 2017
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4 Be the first to know
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      %input.phone{:name => "phone", :placeholder => "Phone", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input{:type => "submit", :value => "Done"}/
+          / //card2
+          / /card3
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f3.jpg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} Foed Mustang GT 500
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 9000 - $ 12000
+                    %p Estimated Price
+                    .date Mar 2017
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4 Be the first to know
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      %input.phone{:name => "phone", :placeholder => "Phone", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input{:type => "submit", :value => "Done"}/
+          / //card3
+      #tours.tab-pane.fade{"aria-labelledby" => "tours-tab", :role => "tabpanel"}
+        .section__content.clearfix
+          / /card1
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f4.jpg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} Ford Mustang GT 350
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 8000 - $ 11000
+                    %p Estimated Price
+                    .date June 2016
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4
+                    %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                    Check On-Road Price
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                      %input{:type => "submit", :value => "Check Now"}/
+          / //card1
+          / /card2
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f5.jpeg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "#"} Ferrari F430
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 7000 - $ 13000
+                    %p Estimated Price
+                    .date July 2016
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4
+                    %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                    Check On-Road Price
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                      %input{:type => "submit", :value => "Check Now"}/
+          / //card2
+          / /card3
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f6.jpeg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} Mercedes-Benz C250 CDI
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 5000 - $ 10000
+                    %p Estimated Price
+                    .date Aug 2016
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4
+                    %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                    Check On-Road Price
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                      %input{:type => "submit", :value => "Check Now"}/
+          / //card3
+      #tree.tab-pane.fade{"aria-labelledby" => "tree-tab", :role => "tabpanel"}
+        .section__content.clearfix
+          / /card1
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f7.jpg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} BMW M4
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 6000 - $ 11000
+                    %p Estimated Price
+                    .date Mar 2017
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4
+                    %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                    Check On-Road Price
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                      %input{:type => "submit", :value => "Check Now"}/
+          / //card1
+          / /card2
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f8.jpg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} BMW X4 M Sport
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25 $ 7000 - $ 12000
+                    %p Estimated Price
+                    .date Mar 2017
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4
+                    %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                    Check On-Road Price
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                      %input{:type => "submit", :value => "Check Now"}/
+          / //card2
+          / /card3
+          .card.effect__hover
+            .card__front
+              %span.card__text
+                .img-grid
+                  %img{:alt => "Catchy Carz", :src => "assets/f9.jpg"}/
+                  .car_description
+                    %h4
+                      %a{:href => "single.html"} BMW M3
+                    .price
+                      %span.fa.fa-rupee
+                      %span.font25  $ 5000 - $ 10000
+                    %p Estimated Price
+                    .date Mar 2017
+                    %p Expected Launch
+            .card__back
+              %span.card__text
+                .login-inner2
+                  %h4
+                    %img{:alt => "Catchy Carz", :src => "assets/rupee.png"}/
+                    Check On-Road Price
+                  .login-top.sign-top
+                    %form{:action => "#", :method => "post"}
+                      %input.name.active{:name => "name", :placeholder => "Name", :required => "", :type => "text"}/
+                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+                      .section_drop
+                        %select#country1.frm-field.required{:onchange => "change_country(this.value)"}
+                          %option{:value => "null"} Select City
+                          %option{:value => "city"} Amsterdam
+                          %option{:value => "city"} Bahrain
+                          %option{:value => "city"} Cannes
+                          %option{:value => "city"} Dublin
+                          %option{:value => "city"} Edinburgh
+                          %option{:value => "city"} Florence
+                          %option{:value => "city"} Georgia
+                          %option{:value => "city"} Hungary
+                          %option{:value => "city"} Hong Kong
+                          %option{:value => "city"} Johannesburg
+                          %option{:value => "city"} Kiev
+                          %option{:value => "city"} London
+                          %option{:value => "city"} Others...
+                      %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+                      %input{:type => "submit", :value => "Check Now"}/
+          / //card3

@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     root to: "home#index"
 
+
     #custom routes for user login and logout
     devise_scope :user do
     	post 'login', to: 'users/sessions#create'
     	delete 'logout', to: 'users/sessions#destroy'
 		end
+		get 'dashboard', to: 'home#dashboard'
 end

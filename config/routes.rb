@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     devise_scope :user do
     	post 'login', to: 'users/sessions#create'
     	delete 'logout', to: 'users/sessions#destroy'
+      get  'sign_up',  to: 'users/registrations#new'
+      post  'create_user',  to: 'users/registrations#create'
 		end
+
+
 		get 'dashboard', to: 'home#dashboard'
 end

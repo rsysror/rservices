@@ -3809,3 +3809,9 @@ State.create(:id=>3805, :name=>"Manicaland",:country_id=>249)
 State.create(:id=>3806, :name=>"Bulawayo",:country_id=>249)
 State.create(:id=>3807, :name=>"Harare Province",:country_id=>249)
 
+# Admin user create
+City.create(:name => "Haldi", :state_id=>1);
+City.create(:name=> "kolkata", :state_id => 1)
+
+user = User.create(:first_name => "admin", :email => "admin@example.com", :password=> "password")
+user.add_role :admin

@@ -1,6 +1,7 @@
-class ServicesController < AdminController
+class Admin::ServicesController < AdminController
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
+  layout 'admin'
   # GET /services
   # GET /services.json
   def index

@@ -1,6 +1,7 @@
 class AdminController < ActionController::Base
-	before_action :authorized?
+  before_action :authorized?, except: :index
  
+  layout "admin"
   private
   def authorized?
     unless current_user && current_user.admin?

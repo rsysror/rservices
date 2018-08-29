@@ -21,11 +21,11 @@
         <td><%=l service.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      service_path(service), :class => 'btn btn-default btn-xs' %>
+                      admin_service_path(service), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_service_path(service), :class => 'btn btn-default btn-xs' %>
+                      edit_admin_service_path(service), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      service_path(service),
+                      admin_service_path(service),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-xs btn-danger' %>
@@ -36,5 +36,5 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_service_path,
+            new_admin_service_path,
             :class => 'btn btn-primary' %>

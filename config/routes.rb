@@ -14,5 +14,5 @@ Rails.application.routes.draw do
 		end
 
 
-		get 'dashboard', to: 'home#dashboard'
+		get 'admin/dashboard', to: 'admin#dashboard'
 end

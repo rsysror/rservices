@@ -1,0 +1,82 @@
+%head
+  %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"}
+  / <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+%body
+  #wrapper
+    / Navigation
+    = render :partial => '/common/admin/header'
+    / /.navbar-top-links
+    .navbar-default.sidebar{:role => "navigation"}
+      = render :partial => '/common/admin/left'
+    #page-wrapper
+      .row
+        .col-lg-12
+          %h1.page-header Dashboard
+        / /.col-lg-12
+      / /.row
+      .row
+        .col-lg-3.col-md-6
+          .panel.panel-primary
+            .panel-heading
+              .row
+                .col-xs-3
+                  %i.fa.fa-comments.fa-5x
+                .col-xs-9.text-right
+                  .huge 26
+                  %div New Comments!
+            %a{:href => "#"}
+              .panel-footer
+                %span.pull-left View Details
+                %span.pull-right
+                  %i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-3.col-md-6
+          .panel.panel-green
+            .panel-heading
+              .row
+                .col-xs-3
+                  %i.fa.fa-tasks.fa-5x
+                .col-xs-9.text-right
+                  .huge 12
+                  %div New Tasks!
+            %a{:href => "#"}
+              .panel-footer
+                %span.pull-left View Details
+                %span.pull-right
+                  %i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-3.col-md-6
+          .panel.panel-yellow
+            .panel-heading
+              .row
+                .col-xs-3
+                  %i.fa.fa-shopping-cart.fa-5x
+                .col-xs-9.text-right
+                  .huge 124
+                  %div New Orders!
+            %a{:href => "#"}
+              .panel-footer
+                %span.pull-left View Details
+                %span.pull-right
+                  %i.fa.fa-arrow-circle-right
+                .clearfix
+        .col-lg-3.col-md-6
+          .panel.panel-red
+            .panel-heading
+              .row
+                .col-xs-3
+                  %i.fa.fa-support.fa-5x
+                .col-xs-9.text-right
+                  .huge 13
+                  %div Support Tickets!
+            %a{:href => "#"}
+              .panel-footer
+                %span.pull-left View Details
+                %span.pull-right
+                  %i.fa.fa-arrow-circle-right
+                .clearfix
+      / /.row
+    / /.row
+  / /#page-wrapper
+  / /#wrapper
+  / jQuery

@@ -1,4 +1,4 @@
-#demo-1{"data-zs-overlay" => "dots", "data-zs-src" => "[\"assets/2.jpg\", \"assets/1.jpg\", \"assets/3.jpg\"]"}
+#demo-1{"data-zs-overlay" => "dots", "data-zs-src" => "['assets/2.jpg', 'assets/1.jpg', 'assets/3.jp']"}
   .demo-inner-content
     .header-top
       / /header-left
@@ -109,8 +109,8 @@
     .banner-info
       %h1
         %a{:href => "index.html"}
-          Catchy
-          %span.logo-sub Carz
+          R
+          %span.logo-sub Services
       %h2
         %span COME LOOK
         %span AT THE SELECTION!
@@ -120,7 +120,7 @@
           %select#country.frm-field.required{:onchange => "change_country(this.value)"}
             %option{:value => "null"}
               %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}>/
-              Brands
+              Services
             %option{:value => "abt"} ABT
             %option{:value => "ac"} AC
             %option{:value => "amc"} AMC
@@ -268,7 +268,7 @@
           %select#country.frm-field.required{:onchange => "change_country(this.value)"}
             %option{:value => "null"}
               %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}/
-              Budget
+              Sub Services
             %option{:value => "null"} 0
             %option{:value => "AX"} 10,000
             %option{:value => "AX"} 12,000
@@ -287,7 +287,7 @@
             %option{:value => "AX"} 44,000
             %option{:value => "AX"} 36,000
             %option{:value => "AX"} 50,000
-        %input{:type => "submit", :value => "Find Car"}/
+        %input{:type => "submit", :value => "Search "}/
         .clearfix
     / //banner-info
 / discounts

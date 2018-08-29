@@ -16,9 +16,11 @@ Rails.application.routes.draw do
     get  'sign_up',  to: 'users/registrations#new'
     post  'create_user',  to: 'users/registrations#create'
 	end
+  namespace :admin do
+  root to: "dashboard#index"
+end
 
-
-	get 'dashboard', to: 'home#dashboard'
+	# get 'admin/dashboard', to: 'home#dashboard'
 
 
 end

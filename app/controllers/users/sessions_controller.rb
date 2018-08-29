@@ -14,7 +14,7 @@ class Users::SessionsController < Devise::SessionsController
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?
-    redirect_to dashboard_path
+    redirect_to after_login_path resource
   end
 
   # DELETE /resource/sign_out
@@ -23,6 +23,14 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   protected
+
+  def after_login_path resource
+    if (resource.has_role? :user)
+      dashboard_path
+    else 
+      admin_root_path
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params

@@ -7324,4 +7324,8 @@ p.free {
 		z-index: 99999;
 	}
 }
+.sidebar-color > li a {
+    color: #337ab7;
+    text-decoration: none;
+}
 /*-- //responsive --*/

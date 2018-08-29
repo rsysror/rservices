@@ -1,0 +1,6 @@
+= label_tag :city, "Please Select City to avail services"
+.col-xs-9
+  .col-xs-3= select_city @cities
+  #load_services.col-xs-3
+  #load_sub_services.col-xs-3
+  =link_to "Add Address", new_addresses_path  

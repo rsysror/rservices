@@ -1,0 +1,15 @@
+.col-xs-12
+  - addresses.each do |address|
+    .col-xs-3
+      = radio_button_tag 'service_request[address_id]', address.id
+      %label Flat Number:
+      = address.flat_number
+      %label Street Name:
+      = address.street_name
+      %label Pin Code:
+      = address.pin_code
+      %label City:
+      = address.city.name
+  - if addresses.blank?
+    .alert.alert-warning
+      No Address added for selected city Please add Address details to avail the services

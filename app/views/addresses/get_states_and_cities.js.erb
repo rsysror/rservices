@@ -1,0 +1,14 @@
+<% if @states.present? %>
+	$('#city_selection').html('');
+  $('#state_selection').html("<%= escape_javascript render(:partial => 'state_city_values', :locals => { :states => @states }) %>");
+<% else %>
+	$('#city_selection').html("<%= escape_javascript render(:partial => 'state_city_values', :locals => { :cities => @cities }) %>");
+<% end %>
+$('select').change(function () {
+    var op = $(this).val();
+    if (op != '') {
+        $('#sub_service_create').prop('disabled', false);
+    } else {
+        $('#sub_service_create').prop('disabled', true);
+    }
+});

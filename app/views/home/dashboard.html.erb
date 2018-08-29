@@ -1,3 +1,13 @@
 Welcome <%= current_user.email%></br>
 
-You are logged In as <%=current_user_role(current_user)%>
+You are logged In as <%=current_user_role(current_user)%></br></br></br>
+
+<% if current_user.has_role? :user %>
+	<%= form_tag('/service_requests') do %>
+		<%= render :partial => 'end_user_section' %></br>
+		<div id="load_addresses"></div>
+		<%=submit_tag "Create Service Request", disabled: true, id: "sub_service_create" %>
+	<% end %>	
+
+	<%=link_to "My Service Requests", service_requests_path %>
+<% end %>

@@ -8,7 +8,15 @@ Rails.application.routes.draw do
       get 'sub_services' 
     end
   end
-  # resources :sub_services
+
+  resource :addresses do
+    member do
+      get 'get_states_and_cities'
+    end
+  end
+
+  resources :service_requests
+  
     #custom routes for user login and logout
   devise_scope :user do
   	post 'login', to: 'users/sessions#create'
@@ -17,7 +25,8 @@ Rails.application.routes.draw do
     post  'create_user',  to: 'users/registrations#create'
 	end
 
-
+  #Singular routes for few methods
 	get 'dashboard', to: 'home#dashboard'
+  get 'get_services', to: 'service_requests#get_services'
 
 end

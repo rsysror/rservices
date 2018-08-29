@@ -1,0 +1,5 @@
+<%	if @states.present? %>
+	<%=select_tag :state_selection, options_from_collection_for_select(states, :id, :name), :prompt => "--- Select State---", data: {remote: true,url: get_states_and_cities_addresses_path,method: 'get'} %>
+<% elsif @cities.present? %>
+	<%=select_tag :city_id, options_from_collection_for_select(cities, :id, :name), :prompt => "--- Select City---" %>
+<% end %>

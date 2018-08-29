@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_094653) do
+ActiveRecord::Schema.define(version: 2018_08_29_104714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "flat_number"
+    t.string "street_name"
+    t.string "landmark"
+    t.string "type"
+    t.string "pin_code"
+    t.integer "city_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -46,6 +58,15 @@ ActiveRecord::Schema.define(version: 2018_08_28_094653) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "service_requests", force: :cascade do |t|
+    t.integer "status_id"
+    t.integer "user_id"
+    t.integer "address_id"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "services", force: :cascade do |t|
     t.string "name"
     t.integer "parent_id"
@@ -56,6 +77,19 @@ ActiveRecord::Schema.define(version: 2018_08_28_094653) do
   create_table "states", force: :cascade do |t|
     t.string "name"
     t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

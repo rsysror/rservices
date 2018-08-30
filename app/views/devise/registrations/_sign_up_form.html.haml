@@ -1,0 +1,57 @@
+#myModal2.modal.ab.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+  .modal-dialog.sign{:role => "document"}
+    .modal-content.about
+      .modal-header.one
+        %button.close.sg{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        .discount.one
+          %h3 Sign Up
+      .modal-body.about
+        .login-top.sign-top.one
+          = form_for(resource, as: resource_name, url: create_user_path) do |f|
+            / = devise_error_messages!
+            .div#display_errors{:style => "display:none;color:red;margin-bottom:15px;"}
+            .div
+              = f.label :role, "Sign Up As"
+              / = f.select :role, ['user', 'service_provider']
+              = f.radio_button :role, 'user', :checked => true
+              User
+              = f.radio_button :role, 'service_provider'
+              Partner
+            %br
+            = f.text_field :first_name, :placeholder => "First Name", :required => true, :class => "name active"
+            = f.text_field :last_name, :placeholder => "Last Name", :required => true, :class => "name active"
+            = f.text_field :email, :placeholder => "Email", :required => true, :class => "email"
+            = f.password_field :password, :placeholder => "Password", :required => true, :class => "password"
+            = f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true, :class => "password"
+            = f.text_field :phone, :placeholder => "Phone", :required => true, :class => "phone"
+            .actions
+              = f.submit "Sign up"
+
+:javascript
+  $(document).ready(function() { 
+    console.log("In Ajax");
+    $("form#new_user").submit(function(e) {
+      e.preventDefault(); 
+      var form = $(this);
+      var url = form.attr('action');
+
+      $.ajax({
+        type: "POST",
+        url: url,
+        dataType: "json",
+        data: form.serialize(), // serializes the form's elements.
+        success: function(data)
+        { 
+          alert("success");
+          window.location.href = "/";
+        },
+        error: function(err)
+        { 
+          $('#display_errors').css('display','block');
+          $("#display_errors").html(err.responseText)
+        }
+      });
+    });
+  });
+

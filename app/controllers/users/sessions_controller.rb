@@ -9,11 +9,21 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
+  # def create
+  #   self.resource = warden.authenticate!(auth_options)
+  #   set_flash_message!(:notice, :signed_in)
+  #   sign_in(resource_name, resource)
+  #   yield resource if block_given?
+  #   redirect_to after_login_path resource
+  # end
+
   def create
+    byebug
     self.resource = warden.authenticate!(auth_options)
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?
+    byebug
     redirect_to after_login_path resource
   end
 

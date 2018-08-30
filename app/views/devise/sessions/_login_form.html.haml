@@ -5,10 +5,10 @@
         %button.close.sg#close_button{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} ×
         .discount.one
-          %h3 Sign Up
+          %h3 Log In
       .modal-body.about
         .login-top.sign-top.one
-          = form_for(resource, as: resource_name, url: login_path, id: 'login_form') do |f|
+          = form_for(resource, as: resource_name, url: login_path, :html => {:id => "login_form"}) do |f|
             .div#display_errors{:style => "display:none;color:red;margin-bottom:15px;"}
             = f.text_field :email, :placeholder => "Email", :required => true, :class => "email"
             = f.password_field :password, :placeholder => "Password", :required => true, :class => "password"

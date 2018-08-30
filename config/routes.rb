@@ -3,8 +3,22 @@ Rails.application.routes.draw do
   # get 'home/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
+
+  resources :services do
+    member do
+      get 'sub_services' 
+    end
+  end
+
+  resource :addresses do
+    member do
+      get 'get_states_and_cities'
+    end
+  end
+
+  resources :service_requests
   
-  # resources :sub_services
+
     #custom routes for user login and logout
   devise_scope :user do
   	post 'login', to: 'users/sessions#create'
@@ -31,7 +45,9 @@ Rails.application.routes.draw do
   end
 
 
-	get '/dashboard', to: 'home#dashboard'
 
+  #Singular routes for few methods
+	get 'dashboard', to: 'home#dashboard'
+  get 'get_services', to: 'service_requests#get_services'
 
 end

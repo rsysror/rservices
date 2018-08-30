@@ -7,6 +7,9 @@ class User < ApplicationRecord
   attr_accessor :role
 
   has_one :portfolio
+  has_many :service_requests
+  has_many :addresses
+
          
   def admin?
   	has_role? :admin

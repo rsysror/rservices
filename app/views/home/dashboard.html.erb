@@ -1,0 +1,17 @@
+<div class="container" id="page-wrapper">
+	<hr>
+	<% if current_user.has_role? :user %>	
+   	<div class="panel panel-primary">
+      <div class="panel-heading"><h3>Select Your City to Proceed</h3> </div>
+      <div class="panel-body">
+      	<%= form_tag('/service_requests') do %>
+					<%= render :partial => 'end_user_section' %></br>
+					<div class="row" id="load_addresses"></div>
+					<%=submit_tag "Create Service Request", disabled: true, id: "sub_service_create", class: "btn btn-primary navbar-text" %>
+				<% end %>	
+      	<%=link_to "Add Address", new_addresses_path %>
+				<%=link_to "My Service Requests(#{user_request_count(current_user)})", service_requests_path,class: "pull-right" %>
+				
+			</div>
+	<% end %>
+</div>

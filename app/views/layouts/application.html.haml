@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %div#generic_modal_area
     #user_nav
       - if user_signed_in?
         Signed in as #{current_user.email}. Not you?
@@ -16,6 +17,9 @@
         %a{"data-target" => "#myModal2", "data-toggle" => "modal", :href => "#"}
           %span.glyphicon.glyphicon-log-in
           Sign Up | 
+
+        / = link_to "Log", new_user_session_path, :"data-remote" => "true",:'data-disable-with' => "Loading..."
+        |
         %a{"data-target" => "#login", "data-toggle" => "modal", :href => "#"}
           %span.glyphicon.glyphicon-log-in
           Sign In

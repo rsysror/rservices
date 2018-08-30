@@ -16,8 +16,8 @@ $(document).ready(function() {
       },
       error: function(err)
       { 
-        $('#display_errors').css('display','block');
-        $("#display_errors").html(err.responseText);
+        $('.display_errors').css('display','block');
+        $(".display_errors").html(err.responseText);
       }
     });
   });
@@ -34,12 +34,14 @@ $(document).ready(function() {
       data: form.serialize(), // serializes the form's elements.
       success: function(data)
       { 
-        window.location.href = "/";
+        alert('success');
+        debugger
+        window.location.href = data.url;
       },
       error: function(err)
       { 
-        $('#display_errors').css('display','block');
-        $("#display_errors").html(err.responseText);
+        $('.display_errors').css('display','block');
+        $(".display_errors").html(err.responseText);
       }
     });
   });

@@ -6,7 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attr_accessor :role
          
-   def admin?
-   	has_role? :admin
-   end
+  def admin?
+    has_role? :admin
+  end
+
 end

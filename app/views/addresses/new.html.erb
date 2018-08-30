@@ -1,38 +1,60 @@
-<%= form_for @address do |f| %>
- <div class="form-group">
-    <%= f.label :flat_number, "Flat Number/H.No." %>
-    <%= f.text_field :flat_number %>
+<hr>
+<hr>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading"><h3>Fill Your Address Details</h3> </div>
+      <div class="panel-body">
+        <%= form_for @address do |f| %>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Flat Number/H.No.</label>
+              <%= f.text_field :flat_number, class:"form-control"  %>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Street Name</label>
+              <%= f.text_field :street_name, class:"form-control"  %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Pin Code</label>
+              <%= f.text_field :pin_code, class:"form-control"  %>
+            </div>  
+            <div class="form-group col-md-6">
+              <label>Landmark</label>
+              <%= f.text_field :landmark, class:"form-control"  %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label>Country</label>
+              <%= select_tag :country_selection, options_from_collection_for_select(Country.all, :id, :name), :prompt => "--- Select Services---" ,class: "form-control", data: {remote: true,url: get_states_and_cities_addresses_path,method: 'get'} %>
+            </div>
+      
+          <div class="form-group col-md-4">
+            <div  id="state_selection">
+              <!-- Loding state dropdown through ajax call -->
+            </div>
+          </div>
+      
+          <div class="form-group col-md-4">
+            <div  id="city_selection">
+              <!-- Loding City dropdown through ajax call -->
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%=f.submit  class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
+</div>    
 
-  <div class="form-group">
-    <%= f.label :street_name %>
-    <%= f.text_field :street_name %>
-  </div>
 
-   <div class="form-group">
-    <%= f.label :pin_code %>
-    <%= f.text_field :pin_code %>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :landmark %>
-    <%= f.text_field :landmark %>
-  </div>
-
-	<div class="form-group">
-  	<div class="col-xs-12">
-  		<div class ="col-xs-3">
-    		<%= f.label :country %>
-    		<%= select_tag :country_selection, options_from_collection_for_select(Country.all, :id, :name), :prompt => "--- Select Services---" , data: {remote: true,url: get_states_and_cities_addresses_path,method: 'get'} %>
-  		</div>
-  		<div class ="col-xs-3" id="state_selection"></div>
-  		<div class ="col-xs-3" id="city_selection"></div>
-  	</div>
-	</div>  
-	
-
-<div class="form-group">
-	<%=f.submit %>
-</div>
-
-<% end %>

@@ -14,12 +14,12 @@
   <% end %>
 </dl>
 
-<%= link_to "create_sub_services",sub_services_service_path(@service), :class => 'btn btn-default'  %>
+<%= link_to "create_sub_services", sub_services_admin_service_path(@service), :class => 'btn btn-default'  %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              services_path, :class => 'btn btn-default'  %>
+              admin_services_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_service_path(@service), :class => 'btn btn-default' %>
+              edit_admin_service_path(@service), :class => 'btn btn-default' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               service_path(@service),
               :method => 'delete',

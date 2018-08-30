@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Rservices
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    #user_nav
+      - if user_signed_in?
+        Signed in as #{current_user.email}. Not you?
+        \#{link_to "Sign out", destroy_user_session_path, :method => :delete}
+      - else
+        %a{"data-target" => "#myModal2", "data-toggle" => "modal", :href => "#"}
+          %span.glyphicon.glyphicon-log-in
+          Sign Up | 
+        %a{"data-target" => "#login", "data-toggle" => "modal", :href => "#"}
+          %span.glyphicon.glyphicon-log-in
+          Sign In
+        / = link_to "Sign up", sign_up_path
+        / or #{link_to "sign in", new_user_session_path}
+    = yield

@@ -22,13 +22,8 @@ $(document).ready(function() {
     });
   });
 
-  $("#close_button").click( function()
-    {
-      console.log("****************")
-      $(this).find('form')[0].reset();
-      
-      
-    }
-  );
+
+
+  
 
 });

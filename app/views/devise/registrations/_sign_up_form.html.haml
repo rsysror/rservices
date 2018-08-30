@@ -9,21 +9,19 @@
       .modal-body.about
         .login-top.sign-top.one
           = form_for(resource, as: resource_name, url: create_user_path) do |f|
-            / = devise_error_messages!
             .div#display_errors{:style => "display:none;color:red;margin-bottom:15px;"}
             .div
               = f.label :role, "Sign Up As"
-              / = f.select :role, ['user', 'service_provider']
               = f.radio_button :role, 'user', :checked => true
               User
               = f.radio_button :role, 'service_provider'
               Partner
             %br
-            / = f.text_field :first_name, :placeholder => "First Name", :required => true, :class => "name active"
-            / = f.text_field :last_name, :placeholder => "Last Name", :required => true, :class => "name active"
+            = f.text_field :first_name, :placeholder => "First Name", :required => true, :class => "name active"
+            = f.text_field :last_name, :placeholder => "Last Name", :class => "name active"
             = f.text_field :email, :placeholder => "Email", :required => true, :class => "email"
             = f.password_field :password, :placeholder => "Password", :required => true, :class => "password"
-            / = f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true, :class => "password"
-            / = f.text_field :phone, :placeholder => "Phone", :required => true, :class => "phone"
+            = f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true, :class => "password"
+            = f.text_field :phone, :placeholder => "Phone", :class => "phone"
             .actions
               = f.submit "Sign up"

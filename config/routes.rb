@@ -13,13 +13,23 @@ Rails.application.routes.draw do
     post  'create_user',  to: 'users/registrations#create'
 	end
   namespace :admin do
-  root to: "dashboard#index"
-  resources :services do
-    member do
-      get 'sub_services' 
+    root to: "dashboard#index"
+    resources :services do
+      member do
+        get 'sub_services' 
+      end
     end
   end
-end
+
+  
+  namespace :partner do
+    resource :portfolio do
+      collection do
+        get 'get_subservices'
+      end
+    end
+  end
+
 
 	get '/dashboard', to: 'home#dashboard'
 

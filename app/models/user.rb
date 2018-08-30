@@ -5,8 +5,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   attr_accessor :role
+
+  has_one :portfolio
          
-   def admin?
-   	has_role? :admin
-   end
+  def admin?
+  	has_role? :admin
+  end
+
+  def partner?
+    has_role? :partner
+  end
+
+
+
 end

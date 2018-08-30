@@ -11,7 +11,7 @@
       / Navigation
       %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
         .navbar-header
-          %a.navbar-brand{:href => "/"}= current_user.first_name
+          %a.navbar-brand{:href => "/"}= current_user.try(:first_name)
         %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
@@ -22,17 +22,20 @@
             %a{:href => "#"}
               %i.fa.fa-home.fa-fw
               RSI Clap
-        %ul.nav.navbar-right.navbar-top-links
-          %li
-            = link_to "Sign out", destroy_user_session_path, :method => :delete
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              %i.fa.fa-user.fa-fw
-              = current_user_role(current_user)
-            %ul.dropdown-menu.dropdown-user
-              %li
-                %a{:href => "#"}
-                  %i.fa.fa-sign-out.fa-fw
-                  Logout
+        -if current_user.present?
+          %ul.nav.navbar-right.navbar-top-links
+            %li
+              = link_to "Sign out", destroy_user_session_path, :method => :delete
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %i.fa.fa-user.fa-fw
+                = current_user_role(current_user)
+              %ul.dropdown-menu.dropdown-user
+                %li
+                  %a{:href => "#"}
+                    %i.fa.fa-sign-out.fa-fw
+                    Logout
+        -else
+          = link_to "Log In",  new_user_session_path , :method => :get, class: "pull-right"        
         
       = yield 

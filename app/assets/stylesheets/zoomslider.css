@@ -19,7 +19,7 @@
 			position: relative; 
 			width: 100%;
 			min-height:600px;
-			background-color: #999;
+			background-image: url("/assets/3.jpg");
 		}
 		.demo-inner-content {
 			position: relative;
@@ -66,14 +66,14 @@
 		margin-left: 21%;
 	}
 	.tag a{
-		 font-size: 14px;
-		color: #fff;
+		 font-size: 18px;
+		color: #000;
 		
 	}
 .search-box	ul li,.search-box	ul li  a {
        display: inline-block;
-    font-size: 14px;
-    color: #fff;
+    font-size: 18px;
+    color: #000;
 	    outline: none;
 }
 .search-box	ul li i{
@@ -252,7 +252,7 @@
 }
 .section_room select{
 	border-left:1px solid #999!important;
-	background: url(../assets/rupee.png) no-repeat 7% center #ffffff!important;
+	background: url(../assets/sub_service.png) no-repeat 7% center #ffffff!important;
 	    padding: 10px 35px!important;
 }
 /*-- /responsive --*/

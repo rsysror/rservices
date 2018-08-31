@@ -7365,4 +7365,8 @@ p.free {
   float: left;
   width: 100%;
 }
+
+.serach-box {
+    width: 20%;
+}
 /*-- //responsive --*/

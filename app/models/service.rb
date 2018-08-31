@@ -3,4 +3,10 @@ class Service < ApplicationRecord
   has_many :sub_services, class_name: "Service", foreign_key: "parent_id", dependent: :destroy
   belongs_to :service, class_name: "Service",  foreign_key: "parent_id",optional: true
   has_many   :service_requests
+  has_one    :portfolio
+
+
+  #scope methods
+	scope :get_services, -> { where("parent_id IS NULL") }
+	
 end

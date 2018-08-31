@@ -3,6 +3,8 @@ class ServiceRequest < ApplicationRecord
 	belongs_to :address
 	belongs_to :service
 	belongs_to :status
+	belongs_to :portfolio
+
 
 	before_validation :set_request_status
 

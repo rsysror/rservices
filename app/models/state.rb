@@ -1,3 +1,3 @@
 class State < ApplicationRecord
-	scope :details, ->(country_id) { where(:country_id => country_id)}
+	scope :details, proc{ |country_id| self.where(:country_id => country_id).order(name: :asc) if country_id.present? }
 end

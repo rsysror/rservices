@@ -3,6 +3,7 @@ class CreatePortfolios < ActiveRecord::Migration[5.2]
     create_table :portfolios do |t|
       t.integer :service_id
       t.integer :user_id
+      t.integer :city_id
       t.string :gender
       t.string :about
       t.float :experience

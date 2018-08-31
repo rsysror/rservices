@@ -4209,3 +4209,11 @@ City.create(:name=>"Mussoorie",:state_id=>1294)
 #Admin user create 
 user = User.create(:email => "admin@example.com", :password => "password", :first_name => "admin")
 user.add_role :admin
+
+
+#Admin user create 
+user = User.create(:email => "partner@example.com", :password => "password", :first_name => "Partner")
+user.add_role :partner
+
+#normal user
+user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys")

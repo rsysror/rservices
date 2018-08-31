@@ -1,8 +1,8 @@
-/ /.navbar-top-links
-#page-wrapper{:sytyle => "margin-left:0 !important"}
+/ .navbar-top-links
+#page-wrapper
   .row
     .col-lg-12
-      %h1.page-header Dashboard
+      %h1.page-header Admin Dashboard
     / /.col-lg-12
   / /.row
   .row
@@ -29,7 +29,7 @@
               %i.fa.fa-tasks.fa-5x
             .col-xs-9.text-right
               .huge 12
-              %div List Services
+              %div{:style => "margin-top: 8%;"} List Services
         %a{:href => "/admin/services"}
           .panel-footer
             %span.pull-left View Details
@@ -44,7 +44,7 @@
               %i.fa.fa-shopping-cart.fa-5x
             .col-xs-9.text-right
               .huge 124
-              %div Manage Service
+              %div{:style => "margin-top: 8%;"} Manage Service
         %a{:href => "#"}
           .panel-footer
             %span.pull-left View Details
@@ -59,7 +59,7 @@
               %i.fa.fa-support.fa-5x
             .col-xs-9.text-right
               .huge 13
-              %div Support Tickets!
+              %div{:style => "margin-top: 8%;"} Support Tickets!
         %a{:href => "#"}
           .panel-footer
             %span.pull-left View Details

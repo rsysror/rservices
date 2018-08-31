@@ -1,4 +1,5 @@
 class Admin::ServicesController < AdminController
+  load_and_authorize_resource
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   layout 'admin'

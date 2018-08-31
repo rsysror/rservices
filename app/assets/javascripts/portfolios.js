@@ -1,6 +1,8 @@
 $( document ).ready(function() {
   $('#portfolio_service_id').on('change', function(e){
+    console.log("***********");
     e.preventDefault();
+
     var parent_id = $(this).val();
     $.ajax({
       url: "/partner/portfolio/get_subservices",

@@ -26,10 +26,10 @@
           %a{"data-target" => "#myModal1", "data-toggle" => "modal", :href => "#"}
             %span.glyphicon.glyphicon-tag
             Discounts On New Cars »
-        .tag
-          %a{"data-target" => "#myModal2", "data-toggle" => "modal", :href => "#"}
-            %span.glyphicon.glyphicon-log-in
-            Sign Up
+        / .tag
+        /   %a{"data-target" => "#myModal2", "data-toggle" => "modal", :href => "#"}
+        /     %span.glyphicon.glyphicon-log-in
+        /     Sign Up
       / //header-left
       .search-box
         #sb-search.sb-search
@@ -48,61 +48,61 @@
             %a{"data-target" => "#myModal4", "data-toggle" => "modal", :href => "#"}
               %i.glyphicon.glyphicon-map-marker{"aria-hidden" => "true"}>
               Select Your Location
-          %li
-            %button#showRight.navig Login
-            .cbp-spmenu-push
-              %nav#cbp-spmenu-s2.cbp-spmenu.cbp-spmenu-vertical.cbp-spmenu-right
-                %h3 Login
-                .login-inner
-                  .login-top
-                    %form{:action => "#", :method => "post"}
-                      %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
-                      %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
-                      %input#brand{:type => "checkbox", :value => ""}/
-                      %label{:for => "brand"}
-                        %span
-                        Remember me
-                    .login-bottom
-                      %ul
-                        %li
-                          %a{:href => "#"} Forgot password?
-                        %li
-                          %form{:action => "#", :method => "post"}
-                            %input{:type => "submit", :value => "LOGIN"}/
-                      .clearfix
-                    .clearfix
-                  .social-icons
-                    %ul
-                      %li
-                        %a{:href => "#"}
-                          %span.icons
-                          %span.text Facebook
-                      %li.twt
-                        %a{:href => "#"}
-                          %span.icons
-                          %span.text Twitter
-                      %li.ggp
-                        %a{:href => "#"}
-                          %span.icons
-                          %span.text Google+
-            / <script src="js/classie2.js"></script>
-            :javascript
-              var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-                showRight = document.getElementById( 'showRight' ),
-                body = document.body;
+          / %li
+          /   %button#showRight.navig Login
+          /   .cbp-spmenu-push
+          /     %nav#cbp-spmenu-s2.cbp-spmenu.cbp-spmenu-vertical.cbp-spmenu-right
+          /       %h3 Login
+          /       .login-inner
+          /         .login-top
+          /           %form{:action => "#", :method => "post"}
+          /             %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
+          /             %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
+          /             %input#brand{:type => "checkbox", :value => ""}/
+          /             %label{:for => "brand"}
+          /               %span
+          /               Remember me
+          /           .login-bottom
+          /             %ul
+          /               %li
+          /                 %a{:href => "#"} Forgot password?
+          /               %li
+          /                 %form{:action => "#", :method => "post"}
+          /                   %input{:type => "submit", :value => "LOGIN"}/
+          /             .clearfix
+          /           .clearfix
+          /         .social-icons
+          /           %ul
+          /             %li
+          /               %a{:href => "#"}
+          /                 %span.icons
+          /                 %span.text Facebook
+          /             %li.twt
+          /               %a{:href => "#"}
+          /                 %span.icons
+          /                 %span.text Twitter
+          /             %li.ggp
+          /               %a{:href => "#"}
+          /                 %span.icons
+          /                 %span.text Google+
+          /   / <script src="js/classie2.js"></script>
+          /   :javascript
+          /     var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
+          /       showRight = document.getElementById( 'showRight' ),
+          /       body = document.body;
     
-              showRight.onclick = function() {
-                classie.toggle( this, 'active' );
-                classie.toggle( menuRight, 'cbp-spmenu-open' );
-                disableOther( 'showRight' );
-              };
+          /     showRight.onclick = function() {
+          /       classie.toggle( this, 'active' );
+          /       classie.toggle( menuRight, 'cbp-spmenu-open' );
+          /       disableOther( 'showRight' );
+          /     };
     
-              function disableOther( button ) {
-                if( button !== 'showRight' ) {
-                  classie.toggle( showRight, 'disabled' );
-                }
-              }
-            / Navigation from Right To Left
+          /     function disableOther( button ) {
+          /       if( button !== 'showRight' ) {
+          /         classie.toggle( showRight, 'disabled' );
+          /       }
+          /     }
+          /   / Navigation from Right To Left
       .clearfix
     .clearfix
     / banner-info

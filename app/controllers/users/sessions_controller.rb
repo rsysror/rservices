@@ -9,12 +9,31 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
+  # def create
+  #   self.resource = warden.authenticate!(auth_options)
+  #   set_flash_message!(:notice, :signed_in)
+  #   sign_in(resource_name, resource)
+  #   yield resource if block_given?
+  #   redirect_to after_login_path resource
+  # end
+
   def create
-    self.resource = warden.authenticate!(auth_options)
-    set_flash_message!(:notice, :signed_in)
-    sign_in(resource_name, resource)
-    yield resource if block_given?
-    redirect_to after_login_path resource
+    user = User.find_for_authentication(:email => params[:user][:email])
+    respond_to do |format|
+      if user.present?
+        if user.valid_password?(params[:user][:password])
+          self.resource = warden.authenticate!(auth_options)
+          set_flash_message!(:notice, :signed_in)
+          sign_in(resource_name, resource)
+          url = after_login_path resource
+          format.json { render json: {url: url}, status: :ok }
+        else
+          format.json { render json: "Password Mismatch!!", status: :unprocessable_entity }
+        end
+      else
+        format.json { render json: "Email doesn't exist!!", status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /resource/sign_out
@@ -26,9 +45,12 @@ class Users::SessionsController < Devise::SessionsController
 
   def after_login_path resource
     if (resource.has_role? :user)
-      dashboard_path
-    else 
-      admin_root_path
+      root_url
+    elsif resource.has_role? :partner
+      partner_portfolio_url
+      # dashboard_url
+    else
+      admin_root_url
     end
   end
 

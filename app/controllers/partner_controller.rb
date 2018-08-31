@@ -1,4 +1,4 @@
-class PartnerController < ActionController::Base
+class PartnerController < ApplicationController
   before_action :authorized?, except: :index
  
   private

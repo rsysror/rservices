@@ -10,7 +10,7 @@ class Partner::PortfoliosController < PartnerController
   # GET /portfolios/1/edit
   def edit
     @portfolio = Portfolio.find(current_user.portfolio.id)
-    @cities = City.ordered
+    @cities = City.details
     @services = Service.get_services
     @services = Service.where("parent_id IS NULL")
   end

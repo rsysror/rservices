@@ -23,6 +23,7 @@ class Admin::ServicesController < AdminController
 
   # GET /services/1/edit
   def edit
+    @cities = City.details.order(name: :asc)
   end
 
   # POST /services

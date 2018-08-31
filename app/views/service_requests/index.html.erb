@@ -14,7 +14,7 @@
 						<td><%=request.service.name %></td>
 						<td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
 						<td><%=request.status.name %></td>
-						<td><%=request.portfolio.portfolio_with_user_name_and_about %></td>
+						<td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>
 					</tr>
 				<% end %>	
 			</tbody>

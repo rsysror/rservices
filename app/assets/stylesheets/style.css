@@ -7331,8 +7331,8 @@ p.free {
 
 .multiple-select {
   /*float: left;*/
-  width: 600px;
-  height: 250px;  
+  width: 590px;
+  height: 220px;  
   display: block;
   overflow: auto;
 }
@@ -7340,7 +7340,29 @@ p.free {
 .nav_header{
   height: 42px;
 }
+
 .nav_bg_color{
   color: #bfb9b9;
+}
+
+.main-container {
+  float: left;
+  margin: 5% 16%;
+  width: 83%;
+}
+
+.top-title {
+ float: left;
+ width: 20%;
+}
+
+.add-new {
+  float: left;
+  width: 30%;
+}
+
+.header-container {
+  float: left;
+  width: 100%;
 }
 /*-- //responsive --*/

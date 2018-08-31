@@ -18,10 +18,12 @@ class Admin::ServicesController < AdminController
   # GET /services/new
   def new
     @service = Service.new
+    @cities = City.details.order(name: :asc)
   end
 
   # GET /services/1/edit
   def edit
+    @cities = City.details.order(name: :asc)
   end
 
   # POST /services

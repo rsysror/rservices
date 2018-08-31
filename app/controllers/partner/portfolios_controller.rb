@@ -1,6 +1,7 @@
 class Partner::PortfoliosController < PartnerController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
 
+
   # GET /portfolios/1
   # GET /portfolios/1.json
   def show
@@ -8,6 +9,9 @@ class Partner::PortfoliosController < PartnerController
 
   # GET /portfolios/1/edit
   def edit
+    @portfolio = Portfolio.find(current_user.portfolio.id)
+    @cities = City.details
+    @services = Service.get_services
     @services = Service.where("parent_id IS NULL")
   end
 
@@ -48,6 +52,6 @@ class Partner::PortfoliosController < PartnerController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portfolio_params
-      params.require(:portfolio).permit(:service_id, :gender, :about, :experience, :education, :avatar)
+      params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id)
     end
 end

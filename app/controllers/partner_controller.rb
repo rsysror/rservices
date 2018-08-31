@@ -1,5 +1,5 @@
 class PartnerController < ActionController::Base
-  before_action :authorized?, except: :index
+  before_action :authorized?
  
   private
   def authorized?

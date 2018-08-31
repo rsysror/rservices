@@ -1,6 +1,5 @@
 class ServiceRequestsController < ApplicationController
-	
-  
+	  
   def index
   	@service_requests = current_user.service_requests
   end

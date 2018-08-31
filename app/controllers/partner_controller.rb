@@ -1,5 +1,5 @@
-class PartnerController < ApplicationController
-  before_action :authorized?, except: :index
+class PartnerController < ActionController::Base
+  before_action :authorized?
  
   private
   def authorized?

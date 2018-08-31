@@ -11,20 +11,23 @@
       / Navigation
       %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
         .navbar-header
-          %a.navbar-brand{:href => "/"}= current_user.first_name
+          %a.navbar-brand{:href => "/"}=# current_user.first_name.titleize
         %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %ul.nav.navbar-nav.navbar-left.navbar-top-links
+        %ul.nav.navbar-nav.navbar-left
           %li
             %a{:href => "#"}
               %i.fa.fa-home.fa-fw
-              RSI Clap
-        %ul.nav.navbar-right.navbar-top-links
+              R-services
+        %ul.nav.navbar-right{ :style => "margin-right:0px !important;"}
           %li
-            = link_to "Sign out", destroy_user_session_path, :method => :delete
+            %a{:href => "/users/sign_out"}
+              %i.fa.fa-power-off.fa-fw
+              Logout
+        %ul.nav.navbar-right{ :style => "margin-right:0px !important;"}
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %i.fa.fa-user.fa-fw
@@ -34,30 +37,30 @@
                 %a{:href => "#"}
                   %i.fa.fa-sign-out.fa-fw
                   Logout
-        / .navbar-default.sidebar{:role => "navigation"}
-        /   .sidebar-nav.navbar-collapse
-        /     %ul#side-menu.nav.sidebar-color
-        /       %li.sidebar-search
-        /         .input-group.custom-search-form
-        /           %input.form-control{:placeholder => "Search...", :type => "text"}/
-        /           %span.input-group-btn
-        /             %button.btn.btn-primary{:type => "button"}
-        /               %i.fa.fa-search
-        /         / /input-group
-        /       %li
-        /         %a.active{:href => "/admin"}
-        /           %i.fa.fa-dashboard.fa-fw
-        /           Dashboard
-        /       %li
-        /         %a{:href => "#"}
-        /           %i.fa.fa-sitemap.fa-fw
-        /           Multi-Level Dropdown
-        /           %span.fa.arrow
-        /         %ul.nav.nav-second-level
-        /           %li
-        /             %a{:href => "#"} Second Level Item
-        /           %li
-        /             %a{:href => "#"} Second Level Item
-        /             / /.nav-third-level
-        /         / /.nav-second-level
-    = yield            
+        .navbar-default.sidebar{:role => "navigation"}
+          .sidebar-nav.navbar-collapse
+            %ul#side-menu.nav.sidebar-color
+              %li.sidebar-search
+                .input-group.custom-search-form
+                  %input.form-control{:placeholder => "Search...", :type => "text"}/
+                  %span.input-group-btn
+                    %button.btn.btn-primary{:type => "button"}
+                      %i.fa.fa-search
+                / /input-group
+              %li
+                %a.active{:href => "/admin"}
+                  %i.fa.fa-dashboard.fa-fw
+                  Dashboard
+              %li
+                %a{:href => "#"}
+                  %i.fa.fa-sitemap.fa-fw
+                  Multi-Level Dropdown
+                  %span.fa.arrow
+                %ul.nav.nav-second-level
+                  %li
+                    %a{:href => "#"} Second Level Item
+                  %li
+                    %a{:href => "#"} Second Level Item
+                    / /.nav-third-level
+                / /.nav-second-level
+      = yield            

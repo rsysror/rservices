@@ -4214,6 +4214,7 @@ user.add_role :admin
 #Admin user create 
 user = User.create(:email => "partner@example.com", :password => "password", :first_name => "Partner")
 user.add_role :partner
+user.create_portfolio
 
 #normal user
 user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys")

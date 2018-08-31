@@ -1,8 +1,8 @@
-/ /.navbar-top-links
-#page-wrapper{:sytyle => "margin-left:0 !important"}
+/ .navbar-top-links
+#page-wrapper
   .row
-    .col-lg-12
-      %h1.page-header Dashboard
+    .col-lg-12{:style => "margin-top:2%;"}
+      %h1.page-header Admin Dashboard
     / /.col-lg-12
   / /.row
   .row
@@ -11,7 +11,7 @@
         .panel-heading
           .row
             .col-xs-3
-              %i.fa.fa-comments.fa-5x
+              %i.fa.fa-plus.fa-5x
             .col-xs-9.text-right
               .huge
               %div Create Service
@@ -19,7 +19,7 @@
           .panel-footer
             %span.pull-left create
             %span.pull-right
-              %i.fa.fa-arrow-circle-right
+              %i.fa.fa-plus
             .clearfix
     .col-lg-3.col-md-6
       .panel.panel-green
@@ -28,28 +28,30 @@
             .col-xs-3
               %i.fa.fa-tasks.fa-5x
             .col-xs-9.text-right
-              .huge 12
-              %div List Services
+              .huge
+                = @totalServices
+              %div{:style => "margin-top: 8%;"} View Services
         %a{:href => "/admin/services"}
           .panel-footer
             %span.pull-left View Details
             %span.pull-right
-              %i.fa.fa-arrow-circle-right
+              %i.fa.fa-tasks
             .clearfix
     .col-lg-3.col-md-6
       .panel.panel-yellow
         .panel-heading
           .row
             .col-xs-3
-              %i.fa.fa-shopping-cart.fa-5x
+              %i.fa.fa-users.fa-5x
             .col-xs-9.text-right
-              .huge 124
-              %div Manage Service
+              .huge
+                = @allUsers
+              %div{:style => "margin-top: 8%;"} Our Users
         %a{:href => "#"}
           .panel-footer
             %span.pull-left View Details
             %span.pull-right
-              %i.fa.fa-arrow-circle-right
+              %i.fa.fa-users
             .clearfix
     .col-lg-3.col-md-6
       .panel.panel-red
@@ -58,13 +60,14 @@
             .col-xs-3
               %i.fa.fa-support.fa-5x
             .col-xs-9.text-right
-              .huge 13
-              %div Support Tickets!
+              .huge
+                = @cities
+              %div{:style => "margin-top: 8%;"} Service in Cities
         %a{:href => "#"}
           .panel-footer
             %span.pull-left View Details
             %span.pull-right
-              %i.fa.fa-arrow-circle-right
+              %i.fa.fa-support
             .clearfix
   / /.row
 / /.row

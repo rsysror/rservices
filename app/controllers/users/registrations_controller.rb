@@ -13,22 +13,38 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
+  # def create
+  #   build_resource(sign_up_params)
+  #   resource.save
+  #   yield resource if block_given?
+  #   if resource.persisted?
+  #       sign_up(resource_name, resource)
+  #       resource.add_role sign_up_params[:role].to_sym
+  #       set_flash_message! :notice, :signed_up
+  #       redirect_to dashboard_path
+  #   else
+  #     clean_up_passwords resource
+  #     set_minimum_password_length
+  #     render :action => 'new'
+  #   end
+  # end
+
   def create
     build_resource(sign_up_params)
     resource.save
     yield resource if block_given?
-    if resource.persisted?
+    respond_to do |format|
+      if resource.persisted?
         sign_up(resource_name, resource)
         resource.add_role sign_up_params[:role].to_sym
         if(sign_up_params[:role] == "partner")
           resource.create_portfolio
         end
-        set_flash_message! :notice, :signed_up
-        redirect_to dashboard_path
-    else
-      clean_up_passwords resource
-      set_minimum_password_length
-      render :action => 'new'
+        format.json { render json:resource, status: :ok}
+      else
+        format.json { render json: resource.errors.full_messages, status: :unprocessable_entity }
+      end
+
     end
   end
 

@@ -12,13 +12,11 @@ class User < ApplicationRecord
 
          
   def admin?
-  	has_role? :admin
+    has_role? :admin
   end
 
   def partner?
     has_role? :partner
   end
-
-
 
 end

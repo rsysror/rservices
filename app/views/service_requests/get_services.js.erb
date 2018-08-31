@@ -4,6 +4,10 @@
 	$('#load_services').html("<%= escape_javascript render(:partial => 'city_based_services', :locals => { :services => @services }) %>");	
 <% elsif @sub_services %>
 	$('#load_sub_services').html("<%= escape_javascript render(:partial => 'city_based_services', :locals => { :sub_services => @sub_services }) %>");
+    <% else %>
+    $('#load_sub_services').html('');
+    $('#load_services').html('');
+    $('#load_addresses').html("<%= escape_javascript render(:partial => 'listing_address', :locals => { :addresses => @addresses }) %>");
 <% end %>
 
 $('select').change(function () {

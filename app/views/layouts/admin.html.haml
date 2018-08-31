@@ -22,12 +22,7 @@
             %a{:href => "#"}
               %i.fa.fa-home.fa-fw
               R-services
-        %ul.nav.navbar-right{ :style => "margin-right:0px !important;"}
-          %li
-            %a{:href => "/users/sign_out"}
-              %i.fa.fa-power-off.fa-fw
-              Logout
-        %ul.nav.navbar-right{ :style => "margin-right:0px !important;"}
+        %ul.nav.navbar-right.navbar-top-links{ :style => "margin:0px !important;"}
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
               %i.fa.fa-user.fa-fw
@@ -35,8 +30,7 @@
             %ul.dropdown-menu.dropdown-user
               %li
                 %a{:href => "#"}
-                  %i.fa.fa-sign-out.fa-fw
-                  Logout
+                  #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
         .navbar-default.sidebar{:role => "navigation"}
           .sidebar-nav.navbar-collapse
             %ul#side-menu.nav.sidebar-color
@@ -63,4 +57,4 @@
                     %a{:href => "#"} Second Level Item
                     / /.nav-third-level
                 / /.nav-second-level
-      = yield            
+      = yield   

@@ -37,10 +37,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.persisted?
         sign_up(resource_name, resource)
         resource.add_role sign_up_params[:role].to_sym
+        if(sign_up_params[:role] == "partner")
+          resource.create_portfolio
+        end
         format.json { render json:resource, status: :ok}
       else
         format.json { render json: resource.errors.full_messages, status: :unprocessable_entity }
       end
+
     end
   end
 

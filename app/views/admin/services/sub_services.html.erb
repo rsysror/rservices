@@ -1,4 +1,7 @@
-<%= form_for @sub_service, :html => { :class => "form-horizontal sub_service" } do |f| %>
+<hr>
+<hr>
+<hr>
+<%= form_for @sub_service, :url => admin_services_path, :html => { :class => "form-horizontal sub_service" } do |f| %>
 
   <% if @sub_service.errors.any? %>
     <div id="error_expl" class="panel panel-danger">

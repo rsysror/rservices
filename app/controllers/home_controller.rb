@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-  	
+  	@cities = City.ordered
   end
+
 end

@@ -15,7 +15,7 @@
   <tbody>
     <% @services.each do |service| %>
       <tr>
-        <td><%= link_to service.id, service_path(service) %></td>
+        <td><%= link_to service.id, admin_service_path(service) %></td>
         <td><%= service.name %></td>
         <td><%= service.cities.collect(&:name) %></td>
         <td><%=l service.created_at %></td>

@@ -1,0 +1,21 @@
+<hr>
+<div class="container" id="page-wrapper">
+	<div class="row">
+		<table class="table">
+			<thead>
+				<th>Service Request Name</th>
+				<th>Address</th>
+				<th>Status</th>
+			</thead>
+			<tbody>
+				<% @service_requests.each do |request|%>
+					<tr>
+						<td><%=request.service.name %></td>
+						<td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
+						<td><%=request.status.name %></td>
+					</tr>
+				<% end %>	
+			</tbody>
+		</table>
+	</div>
+</div>

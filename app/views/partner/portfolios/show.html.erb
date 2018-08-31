@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @portfolio.service_id %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @portfolio.gender %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @portfolio.about %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @portfolio.experience %>
+</p>
+
+<p>
+  <strong>Education:</strong>
+  <%= @portfolio.education %>
+</p>
+
+<%= link_to 'Edit', edit_partner_portfolio_path(@portfolio) %> |
+<%= link_to 'Back', partner_portfolio_path %>

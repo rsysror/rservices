@@ -34,30 +34,30 @@
                 %a{:href => "#"}
                   %i.fa.fa-sign-out.fa-fw
                   Logout
-        .navbar-default.sidebar{:role => "navigation"}
-          .sidebar-nav.navbar-collapse
-            %ul#side-menu.nav.sidebar-color
-              %li.sidebar-search
-                .input-group.custom-search-form
-                  %input.form-control{:placeholder => "Search...", :type => "text"}/
-                  %span.input-group-btn
-                    %button.btn.btn-primary{:type => "button"}
-                      %i.fa.fa-search
-                / /input-group
-              %li
-                %a.active{:href => "/admin"}
-                  %i.fa.fa-dashboard.fa-fw
-                  Dashboard
-              %li
-                %a{:href => "#"}
-                  %i.fa.fa-sitemap.fa-fw
-                  Multi-Level Dropdown
-                  %span.fa.arrow
-                %ul.nav.nav-second-level
-                  %li
-                    %a{:href => "#"} Second Level Item
-                  %li
-                    %a{:href => "#"} Second Level Item
-                    / /.nav-third-level
-                / /.nav-second-level
+        / .navbar-default.sidebar{:role => "navigation"}
+        /   .sidebar-nav.navbar-collapse
+        /     %ul#side-menu.nav.sidebar-color
+        /       %li.sidebar-search
+        /         .input-group.custom-search-form
+        /           %input.form-control{:placeholder => "Search...", :type => "text"}/
+        /           %span.input-group-btn
+        /             %button.btn.btn-primary{:type => "button"}
+        /               %i.fa.fa-search
+        /         / /input-group
+        /       %li
+        /         %a.active{:href => "/admin"}
+        /           %i.fa.fa-dashboard.fa-fw
+        /           Dashboard
+        /       %li
+        /         %a{:href => "#"}
+        /           %i.fa.fa-sitemap.fa-fw
+        /           Multi-Level Dropdown
+        /           %span.fa.arrow
+        /         %ul.nav.nav-second-level
+        /           %li
+        /             %a{:href => "#"} Second Level Item
+        /           %li
+        /             %a{:href => "#"} Second Level Item
+        /             / /.nav-third-level
+        /         / /.nav-second-level
     = yield            

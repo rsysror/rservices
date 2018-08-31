@@ -34,8 +34,6 @@ $(document).ready(function() {
       data: form.serialize(), // serializes the form's elements.
       success: function(data)
       { 
-        alert('success');
-        debugger
         window.location.href = data.url;
       },
       error: function(err)
@@ -44,6 +42,20 @@ $(document).ready(function() {
         $(".display_errors").html(err.responseText);
       }
     });
+  });
+
+});
+
+  $(function(){  
+    $('select').change(function () {
+      var op = $(this).val();
+      if (op != '') {
+        $('#sub_service_create').prop('disabled', false);
+      } 
+      else 
+      {
+        $('#sub_service_create').prop('disabled', true);
+      }
   });
 
 });

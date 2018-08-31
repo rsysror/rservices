@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_28_094653) do
+ActiveRecord::Schema.define(version: 2018_08_29_104714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "flat_number"
+    t.string "street_name"
+    t.string "landmark"
+    t.string "type"
+    t.string "pin_code"
+    t.integer "city_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -36,6 +48,21 @@ ActiveRecord::Schema.define(version: 2018_08_28_094653) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "service_id"
+    t.integer "user_id"
+    t.string "gender"
+    t.string "about"
+    t.float "experience"
+    t.string "education"
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -44,6 +71,15 @@ ActiveRecord::Schema.define(version: 2018_08_28_094653) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "service_requests", force: :cascade do |t|
+    t.integer "status_id"
+    t.integer "user_id"
+    t.integer "address_id"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "services", force: :cascade do |t|
@@ -56,6 +92,12 @@ ActiveRecord::Schema.define(version: 2018_08_28_094653) do
   create_table "states", force: :cascade do |t|
     t.string "name"
     t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

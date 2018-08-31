@@ -1,5 +1,7 @@
 class Partner::PortfoliosController < PartnerController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+
+
   # GET /portfolios/1
   # GET /portfolios/1.json
   def show
@@ -10,6 +12,7 @@ class Partner::PortfoliosController < PartnerController
     @portfolio = Portfolio.find(current_user.portfolio.id)
     @cities = City.ordered
     @services = Service.get_services
+    @services = Service.where("parent_id IS NULL")
   end
 
   # PATCH/PUT /portfolios/1

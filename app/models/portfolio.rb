@@ -12,5 +12,5 @@ class Portfolio < ApplicationRecord
   def portfolio_with_user_name_and_about
   	"#{user.first_name}" + ",#{about}" + ",#{user.phone}" + ",#{user.email}"
   end
-
+  
 end

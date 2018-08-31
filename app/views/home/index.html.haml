@@ -6,7 +6,7 @@
   License URL: http://creativecommons.org/licenses/by/3.0/
 %html
   %head
-    %title Catchy Carz a classified ads Category Flat Bootstrap Responsive Website Template | Home :: w3layouts
+    %title R-services| Get your services done anytime, anywhere.
     / for-mobile-apps
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
@@ -48,45 +48,8 @@
                 %input{:type => "submit", :value => "Find Offers"}/
     / //discounts
     / //sign-up
-    #myModal2.modal.ab.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog.sign{:role => "document"}
-        .modal-content.about
-          .modal-header.one
-            %button.close.sg{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} ×
-            .discount.one
-              %h3 Sign Up
-          .modal-body.about
-            .login-top.sign-top.one
-              %form{:action => "#", :method => "post"}
-                %input.name.active{:name => "name", :placeholder => "Your Name", :required => "", :type => "text"}/
-                %input.email{:name => "email ", :placeholder => "Email", :required => "", :type => "text"}/
-                %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
-                %input#brand1{:type => "checkbox", :value => ""}/
-                %label{:for => "brand1"}
-                  %span
-                  Remember me?
-                .login-bottom.one
-                  %ul
-                    %li
-                      %a{:href => "#"} Forgot password?
-                    %li
-                      %input{:type => "submit", :value => "SIGN UP"}/
-                    .clearfix
-          .social-icons
-            %ul
-              %li
-                %a{:href => "#"}
-                  %span.icons
-                  %span.text Facebook
-              %li.twt
-                %a{:href => "#"}
-                  %span.icons
-                  %span.text Twitter
-              %li.ggp
-                %a{:href => "#"}
-                  %span.icons
-                  %span.text Google+
+    = render :partial => 'devise/registrations/sign_up_form'
+    = render :partial => 'devise/sessions/login_form'
     / //sign-up
     / /location
     #myModal4.modal.ab.fade{"aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
@@ -102,19 +65,18 @@
               %form{:action => "#", :method => "post"}
                 %select#country12.frm-field.required{:onchange => "change_country(this.value)"}
                   %option{:value => "null"} Select City
-                  %option{:value => "city"} Amsterdam
-                  %option{:value => "city"} Bahrain
-                  %option{:value => "city"} Cannes
-                  %option{:value => "city"} Dublin
-                  %option{:value => "city"} Edinburgh
-                  %option{:value => "city"} Florence
-                  %option{:value => "city"} Georgia
-                  %option{:value => "city"} Hungary
-                  %option{:value => "city"} Hong Kong
-                  %option{:value => "city"} Johannesburg
-                  %option{:value => "city"} Kiev
-                  %option{:value => "city"} London
-                  %option{:value => "city"} Others...
+                  %option{:value => "city"} Delhi
+                  %option{:value => "city"} Banglore
+                  %option{:value => "city"} Noida
+                  %option{:value => "city"} Pune
+                  %option{:value => "city"} Jhansi
+                  %option{:value => "city"} Lucknow
+                  %option{:value => "city"} Goa
+                  %option{:value => "city"} Mumbai
+                  %option{:value => "city"} Gujrat
+                  %option{:value => "city"} Hyderabad
+                  %option{:value => "city"} Gorakhpur
+                  %option{:value => "city"} Patna
     / //location
     / //banner-section
     / /featured_section
@@ -129,83 +91,83 @@
         .grid.cars-main
           .col-md-7.slide-show-w3l
             / //screen-gallery
-            %h3.tittle.top Latest Services
-            %h6.sub Great Prices. Great Timing. Great Service.
-            .car-view-slider
-              %ul#flexiselDemo
-                %li
-                  %a{:href => "upcoming.html"}
-                    %img{:alt => "", :src => "assets/n2.jpg"}/
-                    .caption
-                      %h3
-                        %a{:href => "upcoming.html"} Body Spa
-                      %span Full Spa
-                %li
-                  %a{:href => "upcoming.html"}
-                    %img{:alt => "", :src => "assets/n1.jpeg"}/
-                    .caption
-                      %h3
-                        %a{:href => "upcoming.html"} UniSex Salon
-                      %span Hair Cutting
-                %li
-                  %a{:href => "upcoming.html"}
-                    %img{:alt => "", :src => "assets/n3.jpg"}/
-                    .caption
-                      %h3
-                        %a{:href => "upcoming.html"} Car Service
-                      %span Car Service
-                %li
-                  %a{:href => "upcoming.html"}
-                    %img{:alt => "", :src => "assets/n4.jpg"}/
-                    .caption
-                      %h3
-                        %a{:href => "upcoming.html"} Rrefrigerator Service
-                      %span Rrefrigerator Service
+            / %h3.tittle.top Latest Services
+            / %h6.sub Great Prices. Great Timing. Great Service.
+            / .car-view-slider
+            /   %ul#flexiselDemo
+            /     %li
+            /       %a{:href => "upcoming.html"}
+            /         %img{:alt => "", :src => "assets/n2.jpg"}/
+            /         .caption
+            /           %h3
+            /             %a{:href => "upcoming.html"} Body Spa
+            /           %span Full Spa
+            /     %li
+            /       %a{:href => "upcoming.html"}
+            /         %img{:alt => "", :src => "assets/n1.jpeg"}/
+            /         .caption
+            /           %h3
+            /             %a{:href => "upcoming.html"} UniSex Salon
+            /           %span Hair Cutting
+            /     %li
+            /       %a{:href => "upcoming.html"}
+            /         %img{:alt => "", :src => "assets/n3.jpg"}/
+            /         .caption
+            /           %h3
+            /             %a{:href => "upcoming.html"} Car Service
+            /           %span Car Service
+            /     %li
+            /       %a{:href => "upcoming.html"}
+            /         %img{:alt => "", :src => "assets/n4.jpg"}/
+            /         .caption
+            /           %h3
+            /             %a{:href => "upcoming.html"} Rrefrigerator Service
+            /           %span Rrefrigerator Service
             / //screen-gallery
-          .col-md-5.new-car-used
-            %h3.tittle.top Happy Clients
-            %h6.sub Clients says wow!
-            .used-one
-              %figure.effect-zoe
-                %a{:href => "used.html"}
-                  %img{:alt => "Used Car", :src => "assets/used_car.jpg"}/
-                %figcaption
-                  %h4
-                    Great
-                    %span Service
-                  %p.icon-links
-                    %a{:href => "#"}
-                      %i.glyphicon.glyphicon-heart-empty
-                    %a{:href => "#"}
-                      %i.glyphicon.glyphicon-eye-open
-                    %a{:href => "#"}
-                      %i.glyphicon.glyphicon-paperclip
-                  %p.description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            .clearfix
-            .used-one.second
-              %figure.effect-zoe
-                %a{:href => "used.html"}
-                  %img{:alt => "Used Car", :src => "assets/used_car1.jpg"}/
-                %figcaption
-                  %h4
-                    Always
-                    %span Available
-                  %p.icon-links
-                    %a{:href => "#"}
-                      %i.glyphicon.glyphicon-heart-empty
-                    %a{:href => "#"}
-                      %i.glyphicon.glyphicon-eye-open
-                    %a{:href => "#"}
-                      %i.glyphicon.glyphicon-paperclip
-                  %p.description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          .clearfix
+          / .col-md-5.new-car-used
+          /   %h3.tittle.top Happy Clients
+          /   %h6.sub Clients says wow!
+          /   .used-one
+          /     %figure.effect-zoe
+          /       %a{:href => "used.html"}
+          /         %img{:alt => "Used Car", :src => "assets/used_car.jpg"}/
+          /       %figcaption
+          /         %h4
+          /           Great
+          /           %span Service
+          /         %p.icon-links
+          /           %a{:href => "#"}
+          /             %i.glyphicon.glyphicon-heart-empty
+          /           %a{:href => "#"}
+          /             %i.glyphicon.glyphicon-eye-open
+          /           %a{:href => "#"}
+          /             %i.glyphicon.glyphicon-paperclip
+          /         %p.description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          /   .clearfix
+          /   .used-one.second
+          /     %figure.effect-zoe
+          /       %a{:href => "used.html"}
+          /         %img{:alt => "Used Car", :src => "assets/used_car1.jpg"}/
+          /       %figcaption
+          /         %h4
+          /           Always
+          /           %span Available
+          /         %p.icon-links
+          /           %a{:href => "#"}
+          /             %i.glyphicon.glyphicon-heart-empty
+          /           %a{:href => "#"}
+          /             %i.glyphicon.glyphicon-eye-open
+          /           %a{:href => "#"}
+          /             %i.glyphicon.glyphicon-paperclip
+          /         %p.description Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          / .clearfix
     / /bottom-banner
     .banner-bottom
       .container
         .bottom-form
           .inner-text
             %form{:action => "#", :method => "post"}
-              %h3 Choose Your Best Car
+              %h3 Choose Your Best Service
               .best-hot
                 %h5 Name
                 %input.name.active{:placeholder => "Name", :required => "", :type => "text"}/
@@ -216,19 +178,18 @@
                 %h5 City
                 %select#country6.frm-field.required{:onchange => "change_country(this.value)"}
                   %option{:value => "null"} Select City
-                  %option{:value => "city"} Amsterdam
-                  %option{:value => "city"} Bahrain
-                  %option{:value => "city"} Cannes
-                  %option{:value => "city"} Dublin
-                  %option{:value => "city"} Edinburgh
-                  %option{:value => "city"} Florence
-                  %option{:value => "city"} Georgia
-                  %option{:value => "city"} Hungary
-                  %option{:value => "city"} Hong Kong
-                  %option{:value => "city"} Johannesburg
-                  %option{:value => "city"} Kiev
-                  %option{:value => "city"} London
-                  %option{:value => "city"} Others...
+                  %option{:value => "city"} Delhi
+                  %option{:value => "city"} Banglore
+                  %option{:value => "city"} Noida
+                  %option{:value => "city"} Pune
+                  %option{:value => "city"} Jhansi
+                  %option{:value => "city"} Lucknow
+                  %option{:value => "city"} Goa
+                  %option{:value => "city"} Mumbai
+                  %option{:value => "city"} Gujrat
+                  %option{:value => "city"} Hyderabad
+                  %option{:value => "city"} Gorakhpur
+                  %option{:value => "city"} Patna
               %input{:type => "submit", :value => "Book Now"}/
     / //bottom-banner
     / /slider1

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  survice_id: 1
+  gender: MyString
+  about: MyString
+  experience: 1.5
+  education: MyString
+
+two:
+  survice_id: 1
+  gender: MyString
+  about: MyString
+  experience: 1.5
+  education: MyString

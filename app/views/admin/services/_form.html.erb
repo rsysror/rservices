@@ -1,4 +1,4 @@
-<%= form_for @service, :url=> admin_services_path,   :html => { :class => "form-horizontal service" } do |f| %>
+<%= form_for [:admin, @service], :html => { :class => "form-horizontal service" } do |f| %>
 
   <% if @service.errors.any? %>
     <div id="error_expl" class="panel panel-danger">
@@ -25,9 +25,13 @@
   <div class="form-group">
     <%= f.label :city_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
+      <div class="multiple-select">
       <% City.all.each do |city| %>
-       <label class="li"><%= check_box_tag :city_ids, city.id, @service.cities.include?(city), :name => 'service[city_ids][]' %> <u><%= city.name %></u></label><br />
+        <label class="li"><%= check_box_tag :city_ids, city.id, @service.cities.include?(city), :name => 'service[city_ids][]' %> 
+          <u><%= city.name %></u>
+        </label><br />
       <% end %>
+      </div>
     </div>
     <%=f.error_span(:city_id) %>
   </div>

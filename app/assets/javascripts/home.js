@@ -18,6 +18,7 @@ $(document).ready(function() {
       { 
         $('.display_errors').css('display','block');
         $(".display_errors").html(err.responseText);
+        $('#submit_btn').prop('disabled', false);
       }
     });
   });
@@ -40,6 +41,7 @@ $(document).ready(function() {
       { 
         $('.display_errors').css('display','block');
         $(".display_errors").html(err.responseText);
+        $('#login_submit').prop('disabled', false);
       }
     });
   });

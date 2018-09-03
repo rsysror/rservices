@@ -43,17 +43,6 @@ class Users::SessionsController < Devise::SessionsController
 
   protected
 
-  def after_login_path resource
-    if (resource.has_role? :user)
-      root_url
-    elsif resource.has_role? :partner
-      partner_portfolio_url
-      # dashboard_url
-    else
-      admin_root_url
-    end
-  end
-
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params
     devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])

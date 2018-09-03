@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resource :portfolio do
       collection do
         get 'get_subservices'
+        get 'get_city_service_list'
       end
     end
     resources :dashboard, only: [:index] do

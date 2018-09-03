@@ -12,7 +12,6 @@ class Partner::PortfoliosController < PartnerController
     @portfolio = Portfolio.find(current_user.portfolio.id)
     @cities = City.details
     @services = Service.get_services
-    @services = Service.where("parent_id IS NULL")
   end
 
   # PATCH/PUT /portfolios/1
@@ -42,6 +41,15 @@ class Partner::PortfoliosController < PartnerController
   def get_subservices
     @subservices = Service.where(:parent_id => params[:parent_id])
     render :partial => "subservices", :object => @subservices
+  end
+
+  def get_city_service_list
+    if params[:portfolio][:city_id].present?
+      @city = City.find(params[:portfolio][:city_id])
+      @services = @city.services
+    # else
+    #   @services = Service.where(:parent_id => nil)
+    end
   end
 
   private

@@ -7,7 +7,8 @@ class ServiceRequestsController < ApplicationController
   def create
    service_request =  current_user.service_requests.create(service_request_params)
    if service_request
-   	 redirect_to '/dashboard'
+   	  UserMailer.service_request_generate(current_user).deliver_now
+   	 	redirect_to '/dashboard'
    end
   end
 
@@ -15,7 +16,7 @@ class ServiceRequestsController < ApplicationController
 	def get_services
 		if params[:city_selection].present?
 			@city = City.find(params[:city_selection])
-			@addresses = @city.addresses
+			@addresses = @city.get_curent_user_address(current_user)
 			@services = @city.services
 		elsif params[:service_selection].present?
 			service = 	Service.find(params[:service_selection])

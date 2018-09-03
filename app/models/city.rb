@@ -6,5 +6,11 @@ class City < ApplicationRecord
 	
   #scope methods
 	scope :details, proc{ |state_id| self.where(:state_id => state_id).order(name: :asc) if state_id.present? }
+
+
+
+	def get_curent_user_address user
+		addresses.where(user_id: user.id)
+	end
 		
 end

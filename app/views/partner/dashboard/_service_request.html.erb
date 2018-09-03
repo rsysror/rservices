@@ -1,0 +1,12 @@
+<% @service_requests.each do |request|%>
+<tr>
+  <td><%=request.service.try(:name) %></td>
+  <td><%=request.user.try(:first_name) %></td>
+  <td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
+  <td><%=request.status.try(:name) %></td>
+  <% if ["Pending", "Inprogress"].include?(request.status.name) %> 
+    <td> <%= link_to 'Accept', accept_reject_partner_dashboard_index_path(value: "accept", id: request.id), method: :put, :remote => true  %></td>
+    <td> <%= link_to 'Reject', accept_reject_partner_dashboard_index_path(value: "reject", id:request.id ), method: :put, :remote => true  %></td>
+  <% end %>
+</tr>
+<% end %>

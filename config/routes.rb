@@ -42,6 +42,11 @@ Rails.application.routes.draw do
         get 'get_subservices'
       end
     end
+    resources :dashboard, only: [:index] do
+      collection do
+        put "accept_reject"
+      end
+    end
   end
 
 

@@ -9,7 +9,7 @@
       <p id="notice"><%= notice %></p>
       <p>
         <strong>Service:</strong>
-          <%= @portfolio.service.name %>
+          <%= @portfolio.service.try(:name) %>
       </p>
       <p>
         <strong>Gender:</strong>

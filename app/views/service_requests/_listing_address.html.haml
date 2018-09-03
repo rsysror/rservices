@@ -3,14 +3,10 @@
     .col-xs-3.card.text-center
       .card-body
         = radio_button_tag 'service_request[address_id]', address.id, checked: true
-        %b Flat Number:
-        = address.flat_number
-        %b Street Name:
-        = address.street_name
-        %b Pin Code:
-        = address.pin_code
-        %b City:
-        = address.city.name
+        %br <b>Flat Number:</b> #{address.flat_number}
+        %br <b>Street Name:</b> #{address.street_name}
+        %br <b>City:</b> #{address.city.name}
+        %br <b>Pin Code:</b> #{address.pin_code}
   - if addresses.blank?
     .alert.alert-warning
       No Address added for selected city Please add Address details to avail the services

@@ -6,11 +6,16 @@ class ServiceRequest < ApplicationRecord
 	belongs_to :portfolio
 
 
-	before_validation :set_request_status
+	before_validation :set_request_status, :generate_service_request_number
 
   
 	def set_request_status 
 		self.status_id = 1 if status_id.blank?
 	end
 
+	def generate_service_request_number
+		self.service_request_number = "SR-#{SecureRandom.hex(10)}"
+	end
+
 end
+

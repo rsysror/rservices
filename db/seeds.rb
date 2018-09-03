@@ -4206,6 +4206,8 @@ City.create(:name=>"Nainital",:state_id=>1294)
 City.create(:name=>"Dehradun",:state_id=>1294)
 City.create(:name=>"Mussoorie",:state_id=>1294)
 
+
+User.delete_all
 #Admin user create 
 user = User.create(:email => "admin@example.com", :password => "password", :first_name => "admin")
 user.add_role :admin
@@ -4218,3 +4220,15 @@ user.create_portfolio
 
 #normal user
 user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys")
+
+
+
+Status.delete_all
+
+Status.create(name: "Accepted")
+Status.create(name: "Rejected")
+Status.create(name: "Pnding")
+Status.create(name: "Inprogress")
+
+
+

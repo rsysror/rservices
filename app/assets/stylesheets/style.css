@@ -3102,7 +3102,7 @@ ul.cars-list {
 .year select, input[type="number"] {
     width: 220px;
     height: 40px;
-    float: left;
+    /*float: left;*/
     font-size: 14px;
     margin-right: 15px;
     padding-left: 10px;
@@ -7366,7 +7366,20 @@ p.free {
   width: 100%;
 }
 
-.serach-box {
-    width: 20%;
+.serach-box {width: 20%;}
+
+.radio_input{margin-left: 20px!important;margin-bottom: 10px!important;}
+
+.form_input{
+  width: 285px!important;
+  height: 35px!important;
+  margin-right: 15px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.text_area {
+  width: 285px!important;
+  height: 65px!important;
 }
 /*-- //responsive --*/

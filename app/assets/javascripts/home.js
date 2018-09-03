@@ -12,7 +12,7 @@ $(document).ready(function() {
       data: form.serialize(), // serializes the form's elements.
       success: function(data)
       { 
-        window.location.href = "/";
+        window.location.href = data.url;
       },
       error: function(err)
       { 

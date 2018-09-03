@@ -1,6 +1,7 @@
 - if @services.present?
   = select_services(@services, @city)
 - else
-  = select_tag "service_request[portfolio_id]", options_from_collection_for_select(@portfolio , :id,:portfolio_with_user_name_and_about), class: 'form-control', :prompt => "Select Vendor"
-  = select_sub_services(sub_services)
-  
+  .col-sm-3
+    = select_tag "service_request[portfolio_id]", options_from_collection_for_select(@portfolio , :id,:portfolio_with_user_name_and_about), class: 'form-control', :prompt => "Select Vendor"
+  .col-sm-3
+    = select_sub_services(sub_services)

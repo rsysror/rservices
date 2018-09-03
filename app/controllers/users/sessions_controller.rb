@@ -28,10 +28,10 @@ class Users::SessionsController < Devise::SessionsController
           url = after_login_path resource
           format.json { render json: {url: url}, status: :ok }
         else
-          format.json { render json: "Password Mismatch!!", status: :unprocessable_entity }
+          format.json { render json: "Password Mismatch!!", status: :unauthorized }
         end
       else
-        format.json { render json: "Email doesn't exist!!", status: :unprocessable_entity }
+        format.json { render json: "Email doesn't exist!!", status: :unauthorized }
       end
     end
   end

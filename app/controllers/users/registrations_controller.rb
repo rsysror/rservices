@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         end
         format.json { render json:resource, status: :ok}
       else
-        format.json { render json: resource.errors.full_messages, status: :unprocessable_entity }
+        format.json { render json: resource.errors.full_messages, status: :unauthorized }
       end
 
     end

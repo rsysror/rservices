@@ -118,176 +118,23 @@
       %p Eye it – try it – buy it!
       %form{:action => "#", :method => "post"}
         .search-two
-          %select#country.frm-field.required{:onchange => "change_country(this.value)"}
-            %option{:value => "null"}
-              %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}>/
-              Services
-            %option{:value => "abt"} ABT
-            %option{:value => "ac"} AC
-            %option{:value => "amc"} AMC
-            %option{:value => "amg"} AMG
-            %option{:value => "abarth"} Abarth
-            %option{:value => "acura"} Acura
-            %option{:value => "alfa romeo"} Alfa Romeo
-            %option{:value => "arial"} Ariel
-            %option{:value => "armstrong siddeley"} Armstrong Siddeley
-            %option{:value => "ascari"} Ascari
-            %option{:value => "aston martin"} Aston Martin
-            %option{:value => "audi"} Audi
-            %option{:value => "austin"} Austin
-            %option{:value => "bac"} BAC
-            %option{:value => "bmw"} BMW
-            %option{:value => "byd"} BYD
-            %option{:value => "bentley"} Bentley
-            %option{:value => "bertone"} Bertone
-            %option{:value => "brilliance"} Brilliance
-            %option{:value => "bristol"} Bristol
-            %option{:value => "bufori"} Bufori
-            %option{:value => "bugatti"} Bugatti
-            %option{:value => "buick"} Buick
-            %option{:value => "caddilac"} Caddilac
-            %option{:value => "caparo"} Caparo
-            %option{:value => "carbon motors"} Carbon Motors
-            %option{:value => "caterham"} Caterham
-            %option{:value => "cheri"} Cheri
-            %option{:value => "chevrolet"} Chevrolet
-            %option{:value => "chrysler"} Chrysler
-            %option{:value => "citroen"} Citroën
-            %option{:value => "continental"} Continental
-            %option{:value => "dacia"} Dacia
-            %option{:value => "daewoo"} Daewoo
-            %option{:value => "daihatsu"} Daihatsu
-            %option{:value => "daimler"} Daimler
-            %option{:value => "datsun"} Datsun
-            %option{:value => "de lorean"} De Lorean
-            %option{:value => "de tomaso"} De Tomaso
-            %option{:value => "dodge"} Dodge
-            %option{:value => "eagle"} Eagle
-            %option{:value => "ferrari"} Ferrari
-            %option{:value => "fiat"} Fiat
-            %option{:value => ""} Fisker
-            %option{:value => "force"} Force
-            %option{:value => "ford"} Ford
-            %option{:value => "gmc"} GMC
-            %option{:value => ""} GTA Motors
-            %option{:value => "geely"} Geely
-            %option{:value => "general motors"} General Motors
-            %option{:value => "ghia"} Ghia
-            %option{:value => "ginetta"} Ginetta
-            %option{:value => "gumpert"} Gumpert
-            %option{:value => "hsv"} HSV
-            %option{:value => "healey"} Healey
-            %option{:value => "hennessey motors"} Hennessey Motors
-            %option{:value => "holden"} Holden
-            %option{:value => "honda"} Honda
-            %option{:value => "hummer"} Hummer
-            %option{:value => "hyundai"} Hyundai
-            %option{:value => "infinity"} Infinty
-            %option{:value => "isuzu"} Isuzu
-            %option{:value => "italdesign"} Italdesign
-            %option{:value => "jaguar"} Jaguar
-            %option{:value => "jeep"} Jeep
-            %option{:value => "jensen motors"} Jensen Motors
-            %option{:value => "kia motors"} Kia Motors
-            %option{:value => "koenig"} Koeing
-            %option{:value => "koenigsegg"} Koenigsegg
-            %option{:value => "lada"} Lada
-            %option{:value => "lamborghini"} Lamborghini
-            %option{:value => "lancia"} Lancia
-            %option{:value => "land rover"} Land Rover
-            %option{:value => "lexus"} Lexus
-            %option{:value => "lincoln"} Lincoln
-            %option{:value => "lotus"} Lotus
-            %option{:value => "marussia"} Marussia
-            %option{:value => "mclaren"} McLaren
-            %option{:value => "mgb"} MG Motor
-            %option{:value => "mini"} MINI
-            %option{:value => "mahindra"} Mahindra
-            %option{:value => "maruti suzuki"} Maruti Suzuki
-            %option{:value => "maserati"} Maserati
-            %option{:value => "maybach"} Maybach
-            %option{:value => "mazda"} Mazda
-            %option{:value => "mercedes-benz"} Mercedes-Benz
-            %option{:value => "mercury"} Mercury
-            %option{:value => "mitsubishi"} Mitsubishi
-            %option{:value => "morgan"} Morgan
-            %option{:value => "mosler"} Mosler
-            %option{:value => "nsu"} NSU
-            %option{:value => "noble"} Noble
-            %option{:value => "nissan"} Nissan
-            %option{:value => "oldsmobile"} Oldsmobile
-            %option{:value => "opel"} Opel
-            %option{:value => "packard"} Packard
-            %option{:value => "pagani"} Pagani
-            %option{:value => "panoz"} Panoz
-            %option{:value => "peugeot"} Peugeot
-            %option{:value => "plymouth"} Plymouth
-            %option{:value => "pontiac"} Pontiac
-            %option{:value => "porsche"} Porsche
-            %option{:value => "proton"} Proton
-            %option{:value => "ram"} RAM
-            %option{:value => "ruf automobile"} RUF Automobile
-            %option{:value => "radical"} Radical
-            %option{:value => "reliant"} Reliant
-            %option{:value => "renault"} Renault
-            %option{:value => "rimac"} Rimac
-            %option{:value => "rinspeed"} Rinspeed
-            %option{:value => "rolls royce"} Rolls Royce
-            %option{:value => "rover"} Rover
-            %option{:value => "srt"} SRT
-            %option{:value => "ssc"} SSC
-            %option{:value => "saab"} SAAB
-            %option{:value => "saleen"} Saleen
-            %option{:value => "saturn"} Saturn
-            %option{:value => "scion"} Scion
-            %option{:value => "seat"} SEAT
-            %option{:value => "shelby"} Shelby
-            %option{:value => "skoda"} Škoda
-            %option{:value => "smart"} Smart
-            %option{:value => "spyker"} Spyker
-            %option{:value => "ssangyong"} Ssangyong
-            %option{:value => "studebaker"} Studebaker
-            %option{:value => "subaru"} Subaru
-            %option{:value => "sunbeam"} Sunbeam
-            %option{:value => "suzuki"} Suzuki
-            %option{:value => "tata motors"} TATA Motors
-            %option{:value => "tvr"} TVR
-            %option{:value => "tesla"} Tesla
-            %option{:value => "toyota"} Toyota
-            %option{:value => "triumph"} Triumph
-            %option{:value => "vauxhall"} Vauxhall
-            %option{:value => "Vector"} Vector
-            %option{:value => "venturi"} Venturi
-            %option{:value => "volkswagen"} Volkswagen
-            %option{:value => "volvo"} Volvo
-            %option{:value => "w motors"} W Motors
-            %option{:value => "webasto"} Webasto
-            %option{:value => "zagato"} Zagato
-            %option{:value => "zenos"} Zenos
-            %option{:value => "zenvo"} Zenvo
+          %select#country6{:name => "post[city_id]", :style => 'width: 100%;height:39px'}
+            %option{:value => "null"}= 'Select location'
+            - City.all.each do |city|
+              %option{:value => "#{city.id}"}= city.name
+              %img.img-responsive{:alt => "Select location ", :src => "assets/place.png"}>
+        .search-two
+          %select#country{:name => "post[service_id]"}
+            %option{:value => "null"}= 'Select a service'
+            - Service.all.where(parent_id: nil).each do |serve|
+              %option{:value => "#{serve.id}"}= serve.name
+              %img.img-responsive{:alt => "Select a service", :src => "assets/rupee.png"}>
         .section_room
-          %select#country.frm-field.required{:onchange => "change_country(this.value)"}
-            %option{:value => "null"}
-              %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}/
-              Sub Services
-            %option{:value => "null"} 0
-            %option{:value => "AX"} 10,000
-            %option{:value => "AX"} 12,000
-            %option{:value => "AX"} 13,000
-            %option{:value => "AX"} 15,000
-            %option{:value => "AX"} 17,000
-            %option{:value => "AX"} 21,000
-            %option{:value => "AX"} 22,000
-            %option{:value => "AX"} 25,000
-            %option{:value => "AX"} 32,000
-            %option{:value => "AX"} 34,000
-            %option{:value => "AX"} 36,000
-            %option{:value => "AX"} 38,000
-            %option{:value => "AX"} 40,000
-            %option{:value => "AX"} 42,000
-            %option{:value => "AX"} 44,000
-            %option{:value => "AX"} 36,000
-            %option{:value => "AX"} 50,000
+          %select#country.frm-field.serach-box{:name => "post[service_id]"}
+            %option{:value => "null"}= 'Select a sub service'
+            - Service.all.where(parent_id: !nil).each do |subServe|
+              %option{:value => "#{subServe.id}"}= subServe.name
+              %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}
         %input{:type => "submit", :value => "Search "}/
         .clearfix
     / //banner-info

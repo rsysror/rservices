@@ -5,7 +5,11 @@
 <div class="main-container">
   <div class="header-container">
     <div class="row">
-      
+      <div class="add-new">
+            <%= link_to t('.Back', :default => t("helpers.links.back")),
+                    admin_root_path,
+                    :class => 'btn btn-primary', style: "color:#fff" %>
+        </div>
       <div class="top-title">
         <h2>
           <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
@@ -35,7 +39,7 @@
       <% @services.each do |service| %>
         <tr>
           <td><%= service.name %></td>
-          <td><%= service.cities.collect(&:name) %></td>
+          <td><%= service.cities.collect(&:name).join(', ') %></td>
           <td><%=l service.created_at %></td>
           <td>
             <%= link_to t('.show', :default => t("helpers.links.show")),
@@ -47,7 +51,8 @@
                         :method => :delete,
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                         :class => 'btn btn-xs btn-danger', style: "color:#fff" %>
-            <%= link_to "Create Sub Services", sub_services_admin_service_path(service),  :class => 'btn btn-default btn-xs'  %>
+            <%= link_to "Create Sub Services", create_sub_services_admin_service_path(service),  :class => 'btn btn-default btn-xs'  %>
+            <%= link_to "Sub Services", sub_services_admin_service_path(service),  :class => 'btn btn-default btn-xs'  %>
           </td>
         </tr>
       <% end %>

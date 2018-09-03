@@ -1,6 +1,6 @@
 class Admin::ServicesController < AdminController
   load_and_authorize_resource
-  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:show, :edit, :update, :destroy, :edit_sub_services]
 
   layout 'admin'
   # GET /services
@@ -66,7 +66,34 @@ class Admin::ServicesController < AdminController
   end
 
   def sub_services
+    #@sub_service = Service.new
+    @services = Service.where(:parent_id => params[:id]  )
+  end
+
+  # GET /services/1/create_sub_services
+  def create_sub_services
     @sub_service = Service.new
+    #@services = Service.where(:parent_id => nil  )
+  end
+
+  # GET /services/1/edit_sub_services
+  def edit_sub_services
+
+  end  
+
+  # PATCH/PUT /services/1/edit_sub_services
+  # PATCH/PUT /services/1.json
+  def update_sub_services
+    #byebug
+    respond_to do |format|
+      if @service.update(sub_service_params)
+        format.html { redirect_to sub_services_admin_service_path(:id => @service.parent_id), notice: 'Service was successfully updated.' }
+        format.json { render :show, status: :ok, location: @service }
+      else
+        format.html { render :edit }
+        format.json { render json: @service.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
@@ -78,5 +105,9 @@ class Admin::ServicesController < AdminController
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:name,:parent_id, :city_ids=> [])
+    end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def sub_service_params
+      params.require(:service).permit(:name,:id, :city_ids=> [])
     end
 end

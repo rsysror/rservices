@@ -1,6 +1,11 @@
 <div class="main-container">
   <div class="header-container">
     <div class="row">
+    <div class="add-new">
+            <%= link_to t('.Back', :default => t("helpers.links.back")),
+                    admin_services_path,
+                    :class => 'btn btn-primary', style: "color:#fff" %>
+        </div>
 		<%- model_class = Service -%>
 		<div class="#" >
 		  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>

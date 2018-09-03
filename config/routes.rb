@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :services do
     member do
       get 'sub_services' 
+      get 'create_sub_services'
     end
   end
 
@@ -30,7 +31,10 @@ Rails.application.routes.draw do
     root to: "dashboard#index"
     resources :services do
       member do
-        get 'sub_services' 
+        get 'sub_services'
+        get 'create_sub_services'
+        get 'edit_sub_services'
+        put 'update_sub_services'
       end
     end
   end

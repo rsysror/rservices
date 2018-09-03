@@ -11,8 +11,8 @@
           <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
           <dd><%= @service.name %></dd>
           <dt><strong><%= model_class.human_attribute_name(:city_id) %>:</strong></dt>
+          <dd><%= @service.cities.collect(&:name).join(', ') %></dd>
           <dt><strong>Sub Services:</strong></dt>
-          <dd><%= @service.cities.collect(&:name) %></dd>
           <% @service.sub_services.each do |sub_service| %>
             <dd><%= sub_service.name %></dd>
           <% end %>

@@ -7,6 +7,7 @@
 				<th>Address</th>
 				<th>Status</th>
 				<th>Vendor</th>
+				<th>Service Request Number</th>
 			</thead>
 			<tbody>
 				<% @service_requests.each do |request|%>
@@ -15,6 +16,7 @@
 						<td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
 						<td><%=request.status.name %></td>
 						<td><%=request.portfolio.portfolio_with_user_name_and_about %></td>
+						<td><%=request.service_request_number %></td>
 					</tr>
 				<% end %>	
 			</tbody>

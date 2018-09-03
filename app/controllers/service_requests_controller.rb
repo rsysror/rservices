@@ -7,7 +7,7 @@ class ServiceRequestsController < ApplicationController
   def create
    service_request =  current_user.service_requests.create(service_request_params)
    if service_request
-   	  UserMailer.service_request_generate(current_user).deliver_now
+   	  UserMailer.service_request_generate(current_user,service_request.portfolio).deliver_now
    	 	redirect_to '/dashboard'
    end
   end

@@ -39,6 +39,7 @@ gem 'devise'
 gem "rolify"
 gem "haml"
 gem 'cancancan'
+gem 'will_paginate'
 
 gem 'jquery-rails'
 gem "therubyracer"

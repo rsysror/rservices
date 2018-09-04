@@ -1,6 +1,10 @@
 <hr>
 <hr>
 <div class="container">
+    <%= link_to t('.Back', :default => t("helpers.links.back")),
+                    dashboard_path,
+                    :class => 'btn btn-primary', style: "color:#fff" %>
+  <hr>
   <div class="panel panel-primary">
     <div class="panel-heading"><h3>Fill Your Address Details</h3> </div>
       <div class="panel-body">

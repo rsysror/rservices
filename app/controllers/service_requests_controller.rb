@@ -1,7 +1,7 @@
 class ServiceRequestsController < ApplicationController
       
   def index
-    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot)
+    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).paginate(:page => params[:page], :per_page => 5)
   end
 
   def create

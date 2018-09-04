@@ -19,3 +19,10 @@
 //= require turbolinks
 //= require_tree .
 
+
+$(function(){
+	$('select').change(function () {
+    $('.loading').show();
+	})
+})
+

@@ -20,5 +20,9 @@ class Portfolio < ApplicationRecord
   def user_email 
     user.email
   end
+
+  def available_time_slots
+    service_requests.present? ? TimeSlot.ordered - service_requests.map{|m| m.time_slot}.compact : TimeSlot.ordered
+  end
   
 end

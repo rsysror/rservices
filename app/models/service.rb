@@ -4,6 +4,7 @@ class Service < ApplicationRecord
   belongs_to :service, class_name: "Service",  foreign_key: "parent_id",optional: true
   has_many   :service_requests
   has_one    :portfolio
+  has_many   :time_slots, through: :service_requests, source: :service
 
   validates :name, presence: {message: 'Service name is required!'}
   validates :name, length: { in: 3..110, message: 'There must be 3 to 110 characters only!' }

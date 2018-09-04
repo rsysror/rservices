@@ -1,4 +1,4 @@
-class Partner::DashboardController < ApplicationController
+class Partner::DashboardController < PartnerController
   before_action :get_service_requests, only: [:index, :accept_reject]
 
   def index
@@ -13,6 +13,8 @@ class Partner::DashboardController < ApplicationController
         service_request.update_attributes(:status_id => Status.rejected.first.id)      
       end
     end
+    UserMailer.accepted_rejected(current_user, service_request).deliver_now
+
   end
 
   private

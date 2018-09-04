@@ -6,7 +6,21 @@
       <div class="panel-body">
       	<%= form_tag('/service_requests') do %>
 					<%= render :partial => 'end_user_section' %></br>
-					<div class="row" id="load_addresses"></div>
+
+					<!-- TODO below code will be used to select service request date feature
+			     <div class='col-sm-2'>
+            <div class="form-group">
+              <div class='input-group date' id='datetimepicker3'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-time"></span>
+                </span>
+              </div>
+            </div>  
+          </div>  -->  
+          <div class="loading">Loading&#8230;</div> 
+          <div id="error_message"></div>
+          <div class="row" id="load_addresses"></div>
 					<%=submit_tag "Create Service Request", disabled: true, id: "sub_service_create", class: "btn btn-primary navbar-text" %>
 				<% end %>	
       	<%=link_to "Add Address", new_addresses_path %>

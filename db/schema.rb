@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_03_084311) do
+ActiveRecord::Schema.define(version: 2018_09_04_055750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 2018_09_03_084311) do
     t.datetime "updated_at", null: false
     t.integer "portfolio_id"
     t.string "service_request_number"
+    t.integer "time_slot_id"
+    t.datetime "service_date"
   end
 
   create_table "services", force: :cascade do |t|
@@ -101,6 +103,20 @@ ActiveRecord::Schema.define(version: 2018_09_03_084311) do
 
   create_table "statuses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "time_slots", force: :cascade do |t|
+    t.string "start_time"
+    t.string "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

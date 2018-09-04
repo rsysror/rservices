@@ -7382,4 +7382,12 @@ p.free {
   width: 285px!important;
   height: 65px!important;
 }
+.service-text {
+    color: red; font-size: 13px;
+}
+
+.custome-error {
+    list-style: none;
+    color: red;
+}
 /*-- //responsive --*/

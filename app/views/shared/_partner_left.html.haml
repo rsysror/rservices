@@ -1,0 +1,19 @@
+.navbar-default.sidebar{:role => "navigation"}
+  .sidebar-nav.navbar-collapse
+    %ul#side-menu.nav.sidebar-color
+      %li.sidebar-search
+        .input-group.custom-search-form
+          %input.form-control{:placeholder => "Search...", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-primary{:type => "button"}
+              %i.fa.fa-search
+        / /input-group
+      %li
+        %a.active{:href => "/partner/dashboard"}
+          %i.fa.fa-dashboard.fa-fw
+          Dashboard
+      %li
+        %ul.nav.nav-second-level
+          %li
+            %a{:href => "/partner/portfolio"} Portfolio
+          %li

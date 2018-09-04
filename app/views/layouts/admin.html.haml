@@ -31,26 +31,9 @@
               %li
                 %a{:href => "#"}
                   #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
-        .navbar-default.sidebar{:role => "navigation"}
-          .sidebar-nav.navbar-collapse
-            %ul#side-menu.nav.sidebar-color
-              %li.sidebar-search
-                .input-group.custom-search-form
-                  %input.form-control{:placeholder => "Search...", :type => "text"}/
-                  %span.input-group-btn
-                    %button.btn.btn-primary{:type => "button"}
-                      %i.fa.fa-search
-                / /input-group
-              %li
-                %a.active{:href => "/admin"}
-                  %i.fa.fa-dashboard.fa-fw
-                  Dashboard
-              %li
-                %ul.nav.nav-second-level
-                  %li
-                    %a{:href => "/admin/services"} Services
-                  %li
-                    //%a{:href => "#"} Second Level Item
-                    / /.nav-third-level
-                / /.nav-second-level
+    - if current_user.admin?
+      = render :partial => "shared/admin_left"
+    - else
+      = render :partial => "shared/partner_left"
+
       = yield   

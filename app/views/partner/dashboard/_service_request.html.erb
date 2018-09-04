@@ -1,5 +1,7 @@
+
 <% @service_requests.each do |request|%>
 <tr>
+  <td><%=request.service.try(:created_at) %></td>
   <td><%=request.service.try(:name) %></td>
   <td><%=request.user.try(:first_name) %></td>
   <td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>

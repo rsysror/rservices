@@ -45,6 +45,8 @@ gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
 
+gem 'bootstrap-datepicker-rails'
+
 #file upload
 gem "paperclip", "~> 6.0.0"
 

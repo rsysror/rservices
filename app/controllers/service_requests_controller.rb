@@ -1,7 +1,7 @@
 class ServiceRequestsController < ApplicationController
       
   def index
-    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio)
+    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot)
   end
 
   def create
@@ -22,6 +22,7 @@ class ServiceRequestsController < ApplicationController
     elsif params[:service_selection].present?
       service =   Service.find(params[:service_selection])
       @portfolio = Portfolio.where(service_id: service.id, city_id: params[:city_id])
+      @time_slots = @portfolio.last.available_time_slots if @portfolio.present?
       @sub_services = service.sub_services
     end
   end
@@ -29,7 +30,7 @@ class ServiceRequestsController < ApplicationController
   private
   
   def service_request_params
-    params.require(:service_request).permit(:address_id, :user_id,:status_id, :portfolio_id,:service_request_number).merge(service_id: params[:sub_service_selection])
+    params.require(:service_request).permit(:address_id, :user_id,:status_id, :portfolio_id,:service_request_number,:time_slot_id).merge(service_id: params[:sub_service_selection])
   end
 
 end

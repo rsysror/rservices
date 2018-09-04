@@ -4,6 +4,7 @@ class Service < ApplicationRecord
   belongs_to :service, class_name: "Service",  foreign_key: "parent_id",optional: true
   has_many   :service_requests
   has_one    :portfolio
+  has_many   :time_slots, through: :service_requests, source: :service
 
 
   #scope methods

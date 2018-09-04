@@ -4,6 +4,7 @@ class ServiceRequest < ApplicationRecord
 	belongs_to :service
 	belongs_to :status
 	belongs_to :portfolio
+	belongs_to :time_slot
 
 
 	before_validation :set_request_status, :generate_service_request_number

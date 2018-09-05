@@ -1,7 +1,7 @@
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 
-<%= form_for [:admin, @service], :html => { :class => "form-horizontal service" } do |f| %>
+<%= form_for [:admin, @service], :html => { :class => "form-horizontal service", :id => "service_form" } do |f| %>
   <div class="form-group">
     <div class="col-lg-10 col-lg-offset-2">
       <% if @service.errors.any? %>

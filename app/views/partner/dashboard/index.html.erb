@@ -13,7 +13,7 @@
 
       </thead>
       <tbody id="service_request_list">
-         <%= render partial: 'service_request' %>
+         <%= render partial: 'service_request', locals: { :portfolio => @portfolio }) %>
       </tbody>
     </table>
   </div>

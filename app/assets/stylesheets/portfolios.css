@@ -1,15 +1,25 @@
 
 .col-sm-3 {
   width: 30%;
+  padding: 15px;
 }
 .col-sm-9 {
   width: 70%;
+  padding: 15px;
 }
-.vd_info-parent {
-    position: relative;
+.info_detail_left {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid #2c6fa8;
 }
 
-.border{
-  border-width:5px;  
-  border-style:solid;
+.info_detail_right {
+  border: 1px solid #2c6fa8;
 }
+
+.wd-60{width:60%;}
+.ht_48{height: 48%;}
+.ht_18{height: 18%;}
+
+.margin_10{margin: 10px;}

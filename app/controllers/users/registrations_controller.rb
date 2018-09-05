@@ -40,7 +40,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         if(sign_up_params[:role] == "partner")
           resource.create_portfolio
         end
-        url = after_login_path resource
+        url = after_registration_path resource
         format.json { render json: {url: url}, status: :ok}
       else
         format.json { render json: resource.errors.full_messages, status: :unauthorized }
@@ -51,6 +51,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   protected
+
+    def after_registration_path resource
+      if (resource.has_role? :user)
+        root_url
+      elsif resource.has_role? :partner
+        edit_partner_portfolio_url
+        # partner_portfolio_url
+      else
+        admin_root_url
+      end
+    end
 
 
     def configure_permitted_parameters

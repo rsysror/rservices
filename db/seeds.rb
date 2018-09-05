@@ -4222,7 +4222,6 @@ user.create_portfolio
 user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys")
 user.add_role :user
 
-
 Status.delete_all
 
 Status.create(name: "Accepted")

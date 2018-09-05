@@ -54,11 +54,12 @@ $("#new_user").validate({
 
 
 // Validating service on cient side.
-$("#new_service").validate({
+$("#service_form").validate({
   //error place
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
+  debug: true,
 //adding rule
   rules: {
     // username is required with max of 20 and min of 6
@@ -73,13 +74,39 @@ $("#new_service").validate({
   },
   // error messages
   messages: {
-    name:{
+    "service[name]":{
       required: "Service name is required!",
-      maxlength: "Service name must be less than 110.",
-      minlength: "Service name must be more than 3."
+      maxlength: "Service name must be less than 115 characters.",
+      minlength: "Service name must be more than 3 characters."
     },
-    city_ids:{
+    "service[city_ids][]":{
       required: "At leaset 1 city should be selected!",
+    }
+  }
+});
+
+
+// Validating service on cient side.
+$("#sub_service_form").validate({
+  //error place
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  //adding rule
+  rules: {
+    // username is required with max of 20 and min of 6
+    "service[name]":{
+      required: true,
+      maxlength: 115,
+      minlength: 3
+    }
+  },
+  // error messages
+  messages: {
+    "service[name]":{
+      required: "Sub service name is required!",
+      maxlength: "Sub service name must be less than 115 characters.",
+      minlength: "Sub service name must be more than 3 characters."
     }
   }
 });

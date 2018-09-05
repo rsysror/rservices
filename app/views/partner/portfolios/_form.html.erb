@@ -14,7 +14,7 @@
       <div class="form-group">
         <%= form.label :experience, class: 'control-label col-sm-2' %>
         <div class="col-sm-10">
-          <%= form.number_field :experience, class: 'form-control form_input', required: 'true' %>
+          <%= form.number_field :experience, class: 'form-control form_input', required: 'true', min: 0 %>
         </div>
       </div>
 
@@ -35,22 +35,37 @@
       <div class="form-group">
         <%= form.label :city, class: 'control-label col-sm-2' %>
         <div class="col-sm-10">
-          <%= select_city_services(@cities, form) %>
+          <%= select_city_services(@cities, form, @portfolio) %>
         </div>
       </div>
 
+      <div class="form-group" id="show_services">
+        <% if @portfolio.service_id.present? %>
+          <%= form.label :service, class: 'control-label col-sm-2' %>
+          <div class="col-sm-10">
+            <%= select_tag "portfolio[service_id]", options_from_collection_for_select(@services, "id", "name", @portfolio.service_id ), :prompt => "Select Servicesss", class: 'form-control form_input' %>
+          </div>
+        <% end %>
+      </div>
+
       <div class="form-group" id="show_services"></div>
-
-
-      <div class="field">
-        <%= form.label :avatar, " Profile Image", class: 'control-label col-sm-2' %>
+      
+      <div class="form-group">
+        <%= form.label :avatar, "Profile Image", class: 'control-label col-sm-2' %>
         <div class="col-sm-10"> 
           <%= form.file_field :avatar %>
         </div>
       </div>
 
+      <div class="form-group">
+        <%= form.label :documents, "Id Card", class: 'control-label col-sm-2' %>
+        <div class="col-sm-10"> 
+          <%= form.file_field :documents, multiple: true %>
+        </div>
+      </div>
+
       <div class="actions">
-        <%= form.submit "Update", :class=> 'btn btn-primary w3l_header_right' %>
+        <%= form.submit "Update", :class=> 'btn btn-primary w3l_header_right', id: 'update_portfolio' %>
       </div>
     <% end %>
   </div>

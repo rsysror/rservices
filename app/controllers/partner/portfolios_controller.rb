@@ -1,6 +1,5 @@
 class Partner::PortfoliosController < PartnerController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
-  # layout 'partner'
 
   # GET /portfolios/1
   # GET /portfolios/1.json

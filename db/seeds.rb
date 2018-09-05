@@ -4220,6 +4220,7 @@ user.create_portfolio
 
 #normal user
 user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys")
+user.add_role :user
 
 
 

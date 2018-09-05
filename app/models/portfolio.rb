@@ -1,4 +1,7 @@
 class Portfolio < ApplicationRecord
+  mount_uploaders :images, ImageUploader
+  mount_uploaders :documents, ImageUploader
+
   belongs_to :user
   belongs_to :city, optional: true
   belongs_to :service, optional: true
@@ -7,6 +10,7 @@ class Portfolio < ApplicationRecord
   validates :city, presence: true, on: :update
   validates :service, presence: true, on: :update
   validates :gender, :about, :experience, :education, presence: true
+  
   attr_accessor :avatar_file_name
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"

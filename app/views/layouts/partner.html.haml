@@ -1,0 +1,49 @@
+%head
+  %script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"}
+  / <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+  %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    #wrapper
+      / Navigation
+      %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+        .navbar-header
+          %a.navbar-brand{:href => "/"}=# current_user.first_name.titleize
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        %ul.nav.navbar-nav.navbar-left
+          %li
+            %a{:href => "#"}
+              %i.fa.fa-home.fa-fw
+              R-services
+        %ul.nav.navbar-right.navbar-top-links{ :style => "margin:0px !important;"}
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+              %i.fa.fa-user.fa-fw
+              = current_user_role(current_user)
+            %ul.dropdown-menu.dropdown-user
+              %li
+                %a{:href => "#"}
+                  #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
+        .navbar-default.sidebar{:role => "navigation"}
+          .sidebar-nav.navbar-collapse
+            %ul#side-menu.nav.sidebar-color
+              %li
+                %a.active{:href => "#"}
+                  %i.fa.fa-dashboard.fa-fw
+                  Photos
+              %li
+                %ul.nav.nav-second-level
+                  %li
+                    %a{:href => "#"} Project
+                  %li
+                    //%a{:href => "#"} Second Level Item
+                    / /.nav-third-level
+                / /.nav-second-level
+      = yield   

@@ -39,6 +39,7 @@ gem 'devise'
 gem "rolify"
 gem "haml"
 gem 'cancancan'
+gem 'carrierwave'
 
 gem 'jquery-rails'
 gem "therubyracer"

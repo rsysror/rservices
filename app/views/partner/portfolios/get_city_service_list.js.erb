@@ -1,7 +1,9 @@
 <% if @services.present? %>
   $('#show_services').html('');
   $('#show_services').html("<%= escape_javascript render(:partial => 'choose_services', :locals => { :services => @services }) %>");  
+  $('#update_portfolio').prop('disabled', false);
 <% else %>
   $('#show_services').html('');
-  alert("No service is available. Please select another city!!");
+  alert("No service is available. Please select another city and then proceed further.");
+  $('#update_portfolio').prop('disabled', true);
 <% end %>

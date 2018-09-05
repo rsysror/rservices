@@ -4220,7 +4220,7 @@ user.create_portfolio
 
 #normal user
 user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys")
-
+user.add_role :user
 
 
 Status.delete_all
@@ -4229,6 +4229,18 @@ Status.create(name: "Accepted")
 Status.create(name: "Rejected")
 Status.create(name: "Pending")
 Status.create(name: "Inprogress")
+Status.create(name: "Cancelled")
+
+
+
+TimeSlot.delete_all
+
+TimeSlot.create(start_time: "10:00", end_time: "11:00")
+TimeSlot.create(start_time: "11:00", end_time: "12:00")
+TimeSlot.create(start_time: "12:00", end_time: "13:00")
+TimeSlot.create(start_time: "13:00", end_time: "14:00")
+TimeSlot.create(start_time: "14:00", end_time: "15:00")
+TimeSlot.create(start_time: "15:00", end_time: "16:00")
 
 
 

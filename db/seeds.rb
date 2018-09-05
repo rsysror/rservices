@@ -4227,7 +4227,7 @@ Status.delete_all
 
 Status.create(name: "Accepted")
 Status.create(name: "Rejected")
-Status.create(name: "Pnding")
+Status.create(name: "Pending")
 Status.create(name: "Inprogress")
 
 

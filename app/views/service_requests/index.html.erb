@@ -1,12 +1,17 @@
 <hr>
+
 <div class="container" id="page-wrapper">
 	<div class="row">
+		<%= link_to t('.Back', :default => t("helpers.links.back")),
+                    dashboard_path,
+                    :class => 'btn btn-primary', style: "color:#fff" %>
 		<table class="table">
 			<thead>
 				<th>Service Request Name</th>
 				<th>Address</th>
 				<th>Status</th>
 				<th>Vendor</th>
+				<th>Time Slot</th>
 				<th>Service Request Number</th>
 			</thead>
 			<tbody>
@@ -16,10 +21,15 @@
 						<td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
 						<td><%=request.status.try(:name) %></td>
 						<td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>
+						<td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
 						<td><%=request.service_request_number %></td>
 					</tr>
 				<% end %>	
 			</tbody>
 		</table>
+		
 	</div>
+	<div class="pagination">
+			<%=will_paginate @service_requests %>
+		</div>
 </div>

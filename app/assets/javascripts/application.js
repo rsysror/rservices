@@ -11,9 +11,18 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.validate
+//= require jquery.validate.additional-methods
 //= require twitter/bootstrap
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+$(function(){
+	$('select').change(function () {
+    $('.loading').show();
+	})
+})
 

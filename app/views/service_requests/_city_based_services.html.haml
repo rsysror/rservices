@@ -1,7 +1,13 @@
 - if @services.present?
   = select_services(@services, @city)
 - else
-  .col-sm-3
+  .col-sm-2
     = select_tag "service_request[portfolio_id]", options_from_collection_for_select(@portfolio , :id,:portfolio_with_user_name_and_about), class: 'form-control', :prompt => "Select Vendor"
-  .col-sm-3
+  .col-sm-2
     = select_sub_services(sub_services)
+  - if @time_slots.present?
+    .col-sm-3
+      = select_tag "service_request[time_slot_id]", options_from_collection_for_select(@time_slots , :id,:start_time_with_end_time), class: 'form-control', :prompt => "Select Time Slot"
+  - else
+    .col-sm-3.alert.alert-warning
+      No Vendor in this city 

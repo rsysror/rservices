@@ -1,14 +1,17 @@
 
 <% @service_requests.each do |request|%>
 <tr>
-  <td><%=request.service.try(:created_at) %></td>
+  <td><%=request.service.try(:created_at).strftime('%Y-%m-%d %H:%M:%S') %></td>
   <td><%=request.service.try(:name) %></td>
-  <td><%=request.user.try(:first_name) %></td>
+  <td><%=request.user.full_name %></td>
   <td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
   <td><%=request.status.try(:name) %></td>
   <% if ["Pending", "Inprogress"].include?(request.status.try(:name)) %> 
-    <td> <%= link_to 'Accept', accept_reject_partner_dashboard_index_path(value: "accept", id: request.id), method: :put, :remote => true  %></td>
-    <td> <%= link_to 'Reject', accept_reject_partner_dashboard_index_path(value: "reject", id:request.id ), method: :put, :remote => true  %></td>
+    <td> <%= link_to 'Accept', accept_reject_partner_dashboard_index_path(value: "accept", id: request.id), method: :put, :remote => true, class: " btn btn-success"  %></td>
+    <td> <%= link_to 'Reject', accept_reject_partner_dashboard_index_path(value: "reject", id:request.id ), method: :put, :remote => true, class: " btn btn-danger"  %></td>
+  <% else %>
+    <td> <%= link_to 'Accept', '#', class: " btn btn-success", disabled: true  %></td>
+    <td> <%= link_to 'Reject', '#', class: " btn btn-danger",  disabled: true  %></td>
   <% end %>
 </tr>
 <% end %>

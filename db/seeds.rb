@@ -1522,7 +1522,7 @@ State.create(:id=>1256, :name=>"Haifa",:country_id=>103)
 State.create(:id=>1257, :name=>"Northern District",:country_id=>103)
 State.create(:id=>1258, :name=>"Central District",:country_id=>103)
 State.create(:id=>1259, :name=>"Southern District",:country_id=>103)
-State.create(:id=>1260, :name=>"Bengal",:country_id=>105)
+State.create(:id=>1260, :name=>"West Bengal",:country_id=>105)
 State.create(:id=>1261, :name=>"Uttar Pradesh",:country_id=>105)
 State.create(:id=>1262, :name=>"Tripura",:country_id=>105)
 State.create(:id=>1263, :name=>"Tamil Nādu",:country_id=>105)
@@ -4240,6 +4240,5 @@ TimeSlot.create(start_time: "12:00", end_time: "13:00")
 TimeSlot.create(start_time: "13:00", end_time: "14:00")
 TimeSlot.create(start_time: "14:00", end_time: "15:00")
 TimeSlot.create(start_time: "15:00", end_time: "16:00")
-
 
 

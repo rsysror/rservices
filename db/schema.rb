@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 2018_09_04_085537) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "cities", force: :cascade do |t|

@@ -54,13 +54,12 @@ $("#new_user").validate({
 
 
 // Validating service on cient side.
-$("#service_form").validate({
+$("#new_service").validate({
   //error place
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-  debug: true,
-//adding rule
+  //adding rule
   rules: {
     // username is required with max of 20 and min of 6
     "service[name]":{
@@ -86,7 +85,7 @@ $("#service_form").validate({
 });
 
 
-// Validating service on cient side.
+// Validating 'Sub Service' on cient side.
 $("#sub_service_form").validate({
   //error place
   errorPlacement: function (error, element) {

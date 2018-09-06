@@ -1,4 +1,7 @@
 <hr>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="/assets/jquery.geocomplete.js"></script>
+
 <div class="container">
     <%= link_to t('.Back', :default => t("helpers.links.back")),
                     dashboard_path,
@@ -9,8 +12,10 @@
     <div class="panel-body">
       <%= form_for @address do |f| %>
       <p>
-        <%= f.text_field :address %>
+        <%= f.text_field :address, id: "geocomplete" %>
         <%= f.submit  :value => "Search" %>
+
+        <div class="map_canvas"></div>
       </p>
     <% end %>
   </div>

@@ -15,6 +15,9 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= google.api
+//= jquery.geocomplete
+
 //= require_tree .
 
 

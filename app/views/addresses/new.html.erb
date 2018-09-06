@@ -1,0 +1,62 @@
+<hr>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="/assets/jquery.geocomplete.js"></script>
+
+<div class="container">
+    <%= link_to t('.Back', :default => t("helpers.links.back")),
+                    dashboard_path,
+                    :class => 'btn btn-primary', style: "color:#fff" %>
+  <hr>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><h3>Search your address</h3> </div>
+    <div class="panel-body">
+      <%= form_for @address do |f| %>
+      <p>
+        <%= f.text_field :address, id: "geocomplete" %>
+        <%= f.submit  :value => "Search" %>
+
+        <div class="map_canvas"></div>
+      </p>
+    <% end %>
+  </div>
+      <h2>OR</h2>
+    <hr>
+    <hr>
+    <div class="panel-heading"><h3>Fill Your Address Details</h3> </div>
+      <div class="panel-body">
+        <%= form_for @address do |f| %>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Flat Number/H.No.</label>
+              <%= f.text_field :flat_number, class:"form-control"  %>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Street Name</label>
+              <%= f.text_field :street_name, class:"form-control"  %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label>Pin Code</label>
+              <%= f.text_field :pin_code, class:"form-control"  %>
+            </div>  
+            <div class="form-group col-md-6">
+              <label>Landmark</label>
+              <%= f.text_field :landmark, class:"form-control"  %>
+            </div>
+          </div>
+          <div>
+            <%= render :partial => 'shared/location_details' %></br>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <%=f.submit  class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>    
+
+
+

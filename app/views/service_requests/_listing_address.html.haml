@@ -10,10 +10,10 @@
               %span.glyphicon.glyphicon-remove
       .card-body
         = radio_button_tag 'service_request[address_id]', address.id, checked: true  if !header
-        %br <b>Flat Number:</b> #{address.flat_number}
-        %br <b>Street Name:</b> #{address.street_name}
-        %br <b>City:</b> #{address.city.name}
-        %br <b>Pin Code:</b> #{address.pin_code}
+        %br <b>Flat Number:</b> #{address.try(:flat_number)}
+        %br <b>Street Name:</b> #{address.try(:street_name)}
+        %br <b>City:</b> #{address.city.try(:name)}
+        %br <b>Pin Code:</b> #{address.try(:pin_code)}
         - if address.latitude
           = image_tag google_map([ address.latitude, address.longitude ].join(','))
   - if addresses.blank?

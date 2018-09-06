@@ -1,5 +1,10 @@
 <br/>
 <hr/>
+
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="/assets/jquery.geocomplete.js"></script>
+
+
 <div class="container">
    <%= link_to t('.Back', :default => t("helpers.links.back")),
       dashboard_path,
@@ -10,6 +15,17 @@
          <h3>Fill Your Address Details</h3>
       </div>
       <div class="panel-body">
+        <div class="panel-heading"><h3>Search your address</h3> </div>
+          <div class="panel-body">
+            <%= form_for @address do |f| %>
+            <p>
+              <%= f.text_field :address, id: "geocomplete" %>
+              <%= f.submit  :value => "Search" %>
+
+               <div class="map_canvas"></div>
+            </p>
+          <% end %>
+        </div>
         <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
          <div class="form-group">
           <div class="col-lg-10 col-lg-offset-1">

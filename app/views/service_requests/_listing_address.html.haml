@@ -1,8 +1,15 @@
 .col-xs-12
   - addresses.each do |address|
-    .col-xs-3.card.text-center
+    .col-xs-3.card.text-center.mg-btn
+      - if header
+        %div.col-xs-12
+          %div.pull-right
+            = link_to edit_address_path(address),class: 'btn btn-default btn-xs' do
+              %span.glyphicon.glyphicon-edit
+            = link_to address_path(address),method: "delete",class: 'btn btn-default btn-xs' do
+              %span.glyphicon.glyphicon-remove
       .card-body
-        = radio_button_tag 'service_request[address_id]', address.id, checked: true
+        = radio_button_tag 'service_request[address_id]', address.id, checked: true  if !header
         %br <b>Flat Number:</b> #{address.flat_number}
         %br <b>Street Name:</b> #{address.street_name}
         %br <b>City:</b> #{address.city.name}

@@ -24,7 +24,7 @@
   					<%=form.select :time_slot_id, options_from_collection_for_select(get_available_time_slots(@service_request), :id,:start_time_with_end_time , @service_request.time_slot_id), :prompt => "Select services",class: 'form-control' %>
 					</div>
 					<div class="row">
-						<%= render :partial => 'listing_address', :locals => { :addresses => @addresses } %>
+						<%= render :partial => 'listing_address', :locals => { :addresses => @addresses, header: false } %>
 					</div>
 					<div class="row">
 						<div class="col-sm-2">

@@ -1,0 +1,3 @@
+- if flash.present?
+  - flash.each do |type, msg|
+    = render :partial=> 'shared/display_message_template', :locals => {:type => type, :message => msg }

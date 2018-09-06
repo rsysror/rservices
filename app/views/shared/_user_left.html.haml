@@ -8,8 +8,8 @@
       %li
         %ul.nav.nav-second-level
           %li
-            %a{:href => "/service_requests"} Service requests(#{user_request_count(current_user)})  
+            %a{:href => "/service_requests"} My Service requests(#{user_request_count(current_user,'service_requests')})  
           %li
             %a{:href => "/addresses/new"} Add New Address
           %li
-            %a{:href => "/addresses"} My Addresses  
+            %a{:href => "/addresses"} My Addresses(#{user_request_count(current_user,'addresses')})    

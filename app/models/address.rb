@@ -2,6 +2,7 @@ class Address < ApplicationRecord
 	has_many :service_requests, dependent: :destroy
 	belongs_to :user
 	belongs_to :city, optional: true
+
   # Validate form on server
   validates :flat_number, presence: {message: 'Flat no is required!'}, if: :latitude_exists?
   validates :flat_number, length: { in: 1..50, message: 'Flat no must have 1 to 50 characters!' }, if: :latitude_exists?
@@ -37,7 +38,11 @@ class Address < ApplicationRecord
   end
 
   def has_service_requests?
-  	self.service_requests.present?
+    self.service_requests.present?
+  end
+
+  def complete_address
+    [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
   end
 
   def latitude_exists?

@@ -6,7 +6,7 @@
           %div.pull-right
             = link_to edit_address_path(address),class: 'btn btn-default btn-xs' do
               %span.glyphicon.glyphicon-edit
-            = link_to address_path(address),method: "delete",class: 'btn btn-default btn-xs' do
+            = link_to address_path(address),method: "delete",class: 'btn btn-default btn-xs',:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do
               %span.glyphicon.glyphicon-remove
       .card-body
         = radio_button_tag 'service_request[address_id]', address.id, checked: true  if !header

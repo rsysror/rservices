@@ -1,0 +1,61 @@
+%br/
+%hr/
+.container
+  = link_to t('.Back', :default => t("helpers.links.back")), |
+    dashboard_path,                                          |
+    :class => 'btn btn-primary', style: "color:#fff"         |
+  %hr/
+  .panel.panel-primary
+    .panel-heading
+      %h3 Fill Your Address Details
+    .panel-body
+      = form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f|
+        .form-group
+          .col-lg-10.col-lg-offset-1
+            - if @address.errors.any?
+              #error_expl.panel.panel-danger
+                .panel-heading
+                  %h3.panel-title
+                    = pluralize(@address.errors.count, "error")
+                    Prohibited this address from being saved:
+                .panel-body
+                  %ul
+                    - @address.errors.each do |attr,msg|
+                      %li.custome-error= msg
+        .row.error-container
+          .col-md-4.col-md-offset-1
+            .form-group
+              %label Flat Number/H.No.
+              = f.text_field :flat_number, class:"form-control"
+              %label.error-title.error{:for => "address_flat_number"}
+          .col-md-4.col-md-offset-2
+            .form-group
+              %label Street Name
+              = f.text_field :street_name, class:"form-control"
+              %label.error-title.error{:for => "address_street_name"}
+        .row.error-container
+          .col-md-4.col-md-offset-1
+            .form-group
+              %label Pin Code
+              = f.text_field :pin_code, class:"form-control"
+              %label.error-title.error{:for => "address_pin_code"}
+          .col-md-4.col-md-offset-2
+            .form-group
+              %label Landmark
+              = f.text_field :landmark, class:"form-control"
+              %label.error-title.error{:for => "address_landmark"}
+        - if (params[:action] == 'new')
+          = render :partial => 'shared/location_details'
+          %br/
+        - else
+          .row.error-container
+            .col-md-4.col-md-offset-1
+              .form-group
+                %label City
+                = f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), :prompt => "Select City", class:"form-control"
+        .row
+          .col-md-4.col-md-offset-1
+            .form-group
+              = f.submit  class: "btn btn-primary", style: "width: 100%;"
+:javascript
+  #{render "common/validate.js"}

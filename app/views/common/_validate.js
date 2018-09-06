@@ -143,7 +143,7 @@ $("#address_form").validate({
     "state_selection":{
       required: true
     },
-    "address[city_id]":{
+    "city_id":{
       required: true
     }
   },
@@ -173,7 +173,7 @@ $("#address_form").validate({
     "state_selection":{
       required: "State is required!",
     },
-    "address[city_id]":{
+    "city_id":{
       required: "City is required!",
     },
   }

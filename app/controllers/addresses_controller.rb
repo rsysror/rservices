@@ -3,6 +3,7 @@ class AddressesController < ApplicationController
   before_action :find_address, only: [:edit, :update]
 
 	def new
+    # byebug
 		if params[:search].present?
       @address = Location.near(params[:search], 50, :order => :distance)
     else
@@ -32,13 +33,18 @@ class AddressesController < ApplicationController
 
 	def create
     if params[:address]
-      address = current_user.addresses.create(address_params)
+      @address = current_user.addresses.create(address_params)
     else
-  		address = current_user.addresses.create(address_params)
+  		@address = current_user.addresses.create(address_params)
     end
-    if address
+
+    if @address.save
       redirect_to '/dashboard'
+    else
+      flash.now[:error] = "Address could not save!"
+      render :new 
     end
+
 	end
 
 	def get_states_and_cities

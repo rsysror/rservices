@@ -1,0 +1,5 @@
+<% portfolio.images.last(30).each do |image| %>
+  <div class="gallery">
+    <%= image_tag("#{image.url}", alt: "IMG-PRODUCT") %>
+  </div>
+<% end %>

@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       collection do
         get 'get_subservices'
         get 'get_city_service_list'
+        post 'upload_photos'
       end
     end
     resources :dashboard, only: [:index] do

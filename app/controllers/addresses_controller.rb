@@ -3,7 +3,11 @@ class AddressesController < ApplicationController
   before_action :find_address, only: [:edit, :update]
 
 	def new
-		@address = Address.new
+		if params[:search].present?
+      @address = Location.near(params[:search], 50, :order => :distance)
+    else
+      @address = Address.new
+    end
 	end
 
 	def index
@@ -27,10 +31,14 @@ class AddressesController < ApplicationController
 	end
 
 	def create
-		address = current_user.addresses.create(address_params)
-		if address
-			redirect_to '/dashboard'
-		end
+    if params[:address]
+      address = current_user.addresses.create(address_params)
+    else
+  		address = current_user.addresses.create(address_params)
+    end
+    if address
+      redirect_to '/dashboard'
+    end
 	end
 
 	def get_states_and_cities

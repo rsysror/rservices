@@ -4,4 +4,5 @@
 <% elsif @cities.present? %>
 <label>City</label>
 	<%=select_tag "address[city_id]", options_from_collection_for_select(cities, :id, :name), :prompt => "Select City", class: "form-control" %>
+	<label for="city_id" class="error-title error"></label>
 <% end %>

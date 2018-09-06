@@ -177,4 +177,4 @@ $("#address_form").validate({
       required: "City is required!",
     },
   }
-});
+}); 

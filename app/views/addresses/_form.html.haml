@@ -52,7 +52,7 @@
             .col-md-4.col-md-offset-1
               .form-group
                 %label City
-                = f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), :prompt => "Select City", class:"form-control"
+                = f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), {}, { :prompt => "Select City", class: "form-control"}
         .row
           .col-md-4.col-md-offset-1
             .form-group

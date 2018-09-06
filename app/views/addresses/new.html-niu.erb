@@ -1,0 +1,91 @@
+<br/>
+<hr/>
+<div class="container">
+   <%= link_to t('.Back', :default => t("helpers.links.back")),
+      dashboard_path,
+      :class => 'btn btn-primary', style: "color:#fff" %>
+   <hr>
+   <div class="panel panel-primary">
+      <div class="panel-heading">
+         <h3>Fill Your Address Details</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
+         <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-1">
+            <%# byebug %>
+            <% if @address.errors.any? %>
+              <div id="error_expl" class="panel panel-danger">
+                <div class="panel-heading">
+                  <h3 class="panel-title"><%= pluralize(@address.errors.count, "error") %> Prohibited this address from being saved:</h3>
+                </div>
+                <div class="panel-body">
+                  <ul>
+                  <% @address.errors.each do |attr,msg|  %>
+                  <%#byebug%>
+                    <li class="custome-error"><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+         <div class="row error-container">
+            <div class="col-md-4 col-md-offset-1">
+               <div class="form-group">
+                  <label>Flat Number/H.No.</label>
+                  <%= f.text_field :flat_number, class:"form-control"  %>
+                  <label for="address_flat_number" class="error-title error"></label>
+               </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+               <div class="form-group">
+                  <label>Street Name</label>
+                  <%= f.text_field :street_name, class:"form-control"  %>
+                  <label for="address_street_name" class="error-title error"></label>
+               </div>
+            </div>
+         </div>
+         <div class="row error-container">
+            <div class="col-md-4 col-md-offset-1">
+               <div class="form-group">
+                  <label>Pin Code</label>
+                  <%= f.text_field :pin_code, class:"form-control"  %>
+                  <label for="address_pin_code" class="error-title error"></label>
+               </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2">
+               <div class="form-group">
+                  <label>Landmark</label>
+                  <%= f.text_field :landmark, class:"form-control"  %>
+                  <label for="address_landmark" class="error-title error"></label>
+               </div>
+            </div>
+         </div>
+          <% if (params[:action] == 'new') %>
+            <%= render :partial => 'shared/location_details' %>
+            <br/>
+          <% else %>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>City</label>
+                <%= f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), :prompt => "Select City", class: "form-control" %>
+              </div>
+            </div>
+          <% end %>
+         <div class="row">
+           <div class="col-md-4 col-md-offset-1">
+              <div class="form-group">
+                 <%=f.submit  class: "btn btn-primary", style: "width: 100%;" %>
+              </div>
+           </div>
+         </div>
+      </div>
+    <% end %>
+   </div>
+</div>
+<script type="text/javascript">
+   <%= render "common/validate.js" %>
+</script>
+</div>

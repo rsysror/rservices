@@ -1,7 +1,7 @@
 <%	if @states.present? %>
   <label>State</label>
-	<%=select_tag :state_selection, options_from_collection_for_select(states, :id, :name), :prompt => "Select State",class: "form-control", data: {remote: true,url: get_states_and_cities_addresses_path,method: 'get'} %>
+	<%=select_tag :state_selection, options_from_collection_for_select(states, :id, :name), :prompt => "Select State",class: "form-control", data: {remote: true,url: get_states_and_cities_path,method: 'get'} %>
 <% elsif @cities.present? %>
 <label>City</label>
-	<%=select_tag :city_id, options_from_collection_for_select(cities, :id, :name), :prompt => "Select City", class: "form-control" %>
+	<%=select_tag "address[city_id]", options_from_collection_for_select(cities, :id, :name), :prompt => "Select City", class: "form-control" %>
 <% end %>

@@ -1,0 +1,13 @@
+<div class="main-container">
+	<div class="row">
+		<%= link_to t('.Back', :default => t("helpers.links.back")),dashboard_path,:class => 'btn btn-primary mg-btn' %>
+	</div>
+	<div class="clearfix"></div>
+	<div class="row">
+		<%= render :partial => 'shared/flash_message', :locale => {:flash => flash } %>
+	</div> 
+	<div class="row">
+		<%=render :partial => 'service_requests/listing_address', :locals => { :addresses => @addresses, :header => true } %>
+	</div>
+</div>
+

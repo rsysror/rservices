@@ -11,11 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :addresses do
-    member do
-      get 'get_states_and_cities'
-    end
-  end
+  resources :addresses 
 
   resources :service_requests do
     member do
@@ -63,5 +59,6 @@ Rails.application.routes.draw do
   #Singular routes for few methods
 	get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
+  get 'get_states_and_cities', to: 'addresses#get_states_and_cities'
 
 end

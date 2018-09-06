@@ -1,0 +1,15 @@
+.navbar-default.sidebar{:role => "navigation"}
+  .sidebar-nav.navbar-collapse
+    %ul#side-menu.nav.sidebar-color
+      %li
+        %a.active{:href => "/dashboard"}
+          %i.fa.fa-dashboard.fa-fw
+          Dashboard
+      %li
+        %ul.nav.nav-second-level
+          %li
+            %a{:href => "/service_requests"} Service requests(#{user_request_count(current_user)})  
+          %li
+            %a{:href => "/addresses/new"} Add New Address
+          %li
+            %a{:href => "/addresses"} My Addresses  

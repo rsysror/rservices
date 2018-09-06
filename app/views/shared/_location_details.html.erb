@@ -1,7 +1,7 @@
 <div class="form-row">
   <div class="form-group col-md-4">
     <label>Country</label>
-    <%= select_tag :country_selection, options_from_collection_for_select(Country.all, :id, :name), :prompt => "--- Select Services---" ,class: "form-control", data: {remote: true,url: get_states_and_cities_addresses_path,method: 'get'} %>
+    <%= select_tag :country_selection, options_from_collection_for_select(Country.all, :id, :name), :prompt => "--- Select Services---" ,class: "form-control", data: {remote: true,url: get_states_and_cities_path,method: 'get'} %>
   </div>
       
   <div class="form-group col-md-4">

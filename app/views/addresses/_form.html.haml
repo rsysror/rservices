@@ -1,0 +1,36 @@
+%hr/
+.container
+  = link_to t('.Back', :default => t("helpers.links.back")), |
+    dashboard_path,                                          |
+    :class => 'btn btn-primary', style: "color:#fff"         |
+  %hr/
+  .panel.panel-primary
+    .panel-heading
+      %h3 Fill Your Address Details
+    .panel-body
+      = form_for @address do |f|
+        .form-row
+          .form-group.col-md-6
+            %label Flat Number/H.No.
+            = f.text_field :flat_number, class:"form-control"
+          .form-group.col-md-6
+            %label Street Name
+            = f.text_field :street_name, class:"form-control"
+        .form-row
+          .form-group.col-md-6
+            %label Pin Code
+            = f.text_field :pin_code, class:"form-control"
+          .form-group.col-md-6
+            %label Landmark
+            = f.text_field :landmark, class:"form-control"
+        %div
+          - if (params[:action] == 'new')
+            = render :partial => 'shared/location_details', :locals => { :header => false }
+          - else
+            .form-row
+              .form-group.col-md-4
+                %label City
+                = f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), :prompt => "Select City", class: "form-control"
+          .form-row
+            .form-group.col-md-6
+              = f.submit  class: "btn btn-primary"

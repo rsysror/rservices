@@ -12,15 +12,18 @@ class Address < ApplicationRecord
   reverse_geocoded_by :latitude, :longitude do |address,results|
 
     if geo_address = results.first
-      state_id = State.where(:name => geo_address.state).first.id 
-      if state_id
+      state = State.where(:name => geo_address.state).first
+      if state
         city = City.where(:name => geo_address.city).first 
         unless city
-          city = City.create(:name => geo_address.city, :state_id => state_id)
+          city = City.create(:name => geo_address.city, :state_id => state.id)
         end
         address.city  = city
         address.pin_code = geo_address.postal_code
+      # else
+      #   address.errors.add(:city)
       end
+
     end
   end
 

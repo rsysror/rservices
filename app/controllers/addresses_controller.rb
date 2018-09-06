@@ -10,13 +10,12 @@ class AddressesController < ApplicationController
 
 	def create
     if params[:address]
-      byebug
-      current_user.addresses.create(address_params)
+      address = current_user.addresses.create(address_params)
     else
   		address = current_user.addresses.create(address_params)
-		  if address
-			 redirect_to '/dashboard'
-		  end
+    end
+    if address
+      redirect_to '/dashboard'
     end
 	end
 

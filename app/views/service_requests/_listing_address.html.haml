@@ -7,6 +7,8 @@
         %br <b>Street Name:</b> #{address.street_name}
         %br <b>City:</b> #{address.city.name}
         %br <b>Pin Code:</b> #{address.pin_code}
+        - if address.latitude
+          = image_tag google_map([ address.latitude, address.longitude ].join(','))
   - if addresses.blank?
     .alert.alert-warning
       No Address added for selected city Please add Address details to avail the services

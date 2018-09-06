@@ -10,12 +10,12 @@
         <div class="col-sm-3">
           <div>
             <div>
-              <div class="info_detail_left ht_22"><%= image_tag(@portfolio.avatar.url, class: 'img_style') %></div>
-              <div class="info_detail_left ht_48">
+              <div class="ht_30"><%= image_tag(@portfolio.avatar.url, class: 'img_style') %></div>
+              <div class="info_detail_left ht_40">
                 <table class="table table-striped table-hover margin_top_20">
                   <tbody>
                     <tr>
-                      <td colspan="2"><h3 class="text-center"><%= @portfolio.user.full_name %></h3></td>
+                      <td colspan="2"><h4 class="text-center"><%= @portfolio.user.full_name %></h4></td>
                     </tr>
                     <tr>
                       <td class="wd-50">Gender</td>
@@ -42,13 +42,15 @@
         </div>
         <div class="col-sm-9">
           <div>
-            <div class="info_detail_right ht_22">
+            <div class="about_bg_clr ht_15">
               <h3 class="text-center">About</h3>
               <div class="margin_10"><%= @portfolio.about %></div>
             </div>
-            <div class="info_detail_right ht_48">
-              <h3 class="text-center">Photos</h3>
-              <%= @portfolio.about %>
+            <div class="ht_5">
+              <%= link_to "Add Photo", '#upload_photo', "data-toggle" => "modal", class: 'btn btn-primary', style: "margin: 5px;"  %>
+            </div>
+            <div class='ht_50 scroll'>
+              <%= render partial: 'photo_details', :locals => { :portfolio => @portfolio } %>
             </div>
           </div>
         </div>

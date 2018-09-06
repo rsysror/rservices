@@ -1,21 +1,22 @@
 class Address < ApplicationRecord
 	has_many :service_requests, dependent: :destroy
 	belongs_to :user
-	belongs_to :city , optional: true
+	belongs_to :city, optional: true
+
   # Validate form on server
-  validates :flat_number, presence: {message: 'Flat no is required!'}
-  validates :flat_number, length: { in: 1..50, message: 'Flat no must have 1 to 50 characters!' }
-  validates :street_name, length: { in: 5..150, message: 'Street name must have 5 to 150 characters!' }
-  validates :pin_code, presence: {message: 'Pin code is required!'}
-  validates :pin_code, length: { in: 5..10, message: 'Pin code must have 5 to 10 characters!' }
-  validates :landmark, length: { in: 5..150, message: 'Landmark must have 5 to 150 characters!' }
-  validates :city_id, presence: {message: 'At leaset 1 city should be selected!'}
+  validates :flat_number, presence: {message: 'Flat no is required!'}, if: :latitude_exists?
+  validates :flat_number, length: { in: 1..50, message: 'Flat no must have 1 to 50 characters!' }, if: :latitude_exists?
+  validates :street_name, length: { in: 5..150, message: 'Street name must have 5 to 150 characters!' }, if: :latitude_exists?
+  validates :pin_code, presence: {message: 'Pin code is required!'}, if: :latitude_exists?
+  validates :pin_code, length: { in: 5..10, message: 'Pin code must have 5 to 10 characters!' }, if: :latitude_exists?
+  validates :landmark, length: { in: 5..150, message: 'Landmark must have 5 to 150 characters!' }, if: :latitude_exists?
+  validates :city_id, presence: {message: 'At leaset 1 city should be selected!'}, if: :latitude_exists?
 
 
   geocoded_by :address # address is an attribute of MyModel
   after_validation :geocode, :if => :address_changed?
   
-  after_validation :reverse_geocode
+  before_validation :reverse_geocode
 
 
   reverse_geocoded_by :latitude, :longitude do |address,results|
@@ -37,7 +38,15 @@ class Address < ApplicationRecord
   end
 
   def has_service_requests?
-  	self.service_requests.present?
+    self.service_requests.present?
+  end
+
+  def complete_address
+    [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
+  end
+
+  def latitude_exists?
+    self.latitude.nil?
   end
 
 end

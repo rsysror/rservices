@@ -26,7 +26,11 @@ State.create(:id=>10, :name=>"Nagaland",:country_id=>105)
 State.create(:id=>11, :name=>"Mizoram",:country_id=>105)
 State.create(:id=>12, :name=>"Meghalaya",:country_id=>105)
 State.create(:id=>13, :name=>"Manipur",:country_id=>105)
+<<<<<<< HEAD
 State.create(:id=>14, :name=>"maharashtra",:country_id=>105)
+=======
+State.create(:id=>14, :name=>"Maharashtra",:country_id=>105)
+>>>>>>> dev
 State.create(:id=>15, :name=>"Madhya Pradesh",:country_id=>105)
 State.create(:id=>16, :name=>"Laccadives",:country_id=>105)
 State.create(:id=>17, :name=>"Kerala",:country_id=>105)

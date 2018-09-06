@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
 
 	def new
     # byebug
-		if params[:search].present?
+		if params[:address].present?
       @address = Location.near(params[:search], 50, :order => :distance)
     else
       @address = Address.new
@@ -32,16 +32,17 @@ class AddressesController < ApplicationController
 	end
 
 	def create
+    # byebug
     if params[:address]
       @address = current_user.addresses.create(address_params)
     else
   		@address = current_user.addresses.create(address_params)
     end
-
     if @address.save
       redirect_to '/dashboard'
     else
       flash.now[:error] = "Address could not save!"
+      @cities = City.details
       render :new 
     end
 
@@ -75,7 +76,7 @@ class AddressesController < ApplicationController
 
   #look better possibilities to merge extra params which is not included in form
 	def address_params
-    params.require(:address).permit(:flat_number,:street_name,:landmark, :user_id, :type,:pin_code, :city_id)
+    params.require(:address).permit(:flat_number,:street_name,:landmark, :user_id, :type,:pin_code, :city_id, :address)
   end
 
 end

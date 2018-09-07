@@ -1,6 +1,5 @@
 class Partner::PortfoliosController < PartnerController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
-  # layout 'partner'
 
   # GET /portfolios/1
   # GET /portfolios/1.json
@@ -47,9 +46,17 @@ class Partner::PortfoliosController < PartnerController
     if params[:portfolio][:city_id].present?
       @city = City.find(params[:portfolio][:city_id])
       @services = @city.services
-    # else
-    #   @services = Service.where(:parent_id => nil)
     end
+  end
+ 
+  #UPLOAD photos for portfolio 
+  def upload_photos
+    portfolio = Portfolio.find_by_id(params[:portfolio][:portfolio_id])
+    if params[:portfolio][:images].present?
+      portfolio.images += params[:portfolio][:images]
+      portfolio.save!
+    end
+    redirect_to partner_portfolio_path
   end
 
   private

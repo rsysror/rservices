@@ -22,7 +22,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-gem 'jquery-validation-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -50,6 +49,11 @@ gem "twitter-bootstrap-rails"
 
 #file upload
 gem "paperclip", "~> 6.0.0"
+
+gem 'geocoder'
+gem 'gmaps4rails'
+
+gem 'gmaps-autocomplete-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

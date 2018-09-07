@@ -11,13 +11,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :addresses do
+  resources :addresses 
+
+  resources :service_requests do
     member do
-      get 'get_states_and_cities'
+      patch 'cancel_service_request'
     end
   end
-
-  resources :service_requests
   
 
     #custom routes for user login and logout
@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       collection do
         get 'get_subservices'
         get 'get_city_service_list'
+        post 'upload_photos'
       end
     end
     resources :dashboard, only: [:index] do
@@ -67,5 +68,6 @@ Rails.application.routes.draw do
   #Singular routes for few methods
 	get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
+  get 'get_states_and_cities', to: 'addresses#get_states_and_cities'
 
 end

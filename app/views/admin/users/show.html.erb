@@ -11,7 +11,7 @@
           <dd><%= get_full_name(@user) %></dd>
           <dt><strong>Address:</strong></dt>
           <% @user.addresses.each do |address| %>
-          <dd><%= address.get_address %></dd>   
+          <dd><%= address.complete_address %></dd>   
           <% end %>       
         </dl>
         <div class="row">

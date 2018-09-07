@@ -59,9 +59,9 @@ $("#new_service").validate({
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-//adding rule
+  //adding rule
   rules: {
-    // username is required with max of 20 and min of 6
+    // name is required with max of 20 and min of 6
     "service[name]":{
       required: true,
       maxlength: 115,
@@ -73,13 +73,108 @@ $("#new_service").validate({
   },
   // error messages
   messages: {
-    name:{
+    "service[name]":{
       required: "Service name is required!",
-      maxlength: "Service name must be less than 110.",
-      minlength: "Service name must be more than 3."
+      maxlength: "Service name must be less than 115 characters.",
+      minlength: "Service name must be more than 3 characters."
     },
-    city_ids:{
+    "service[city_ids][]":{
       required: "At leaset 1 city should be selected!",
     }
   }
 });
+
+
+// Validating 'Sub Service' on cient side.
+$("#sub_service_form").validate({
+  //error place
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  //adding rule
+  rules: {
+    // name is required with max of 20 and min of 6
+    "service[name]":{
+      required: true,
+      maxlength: 115,
+      minlength: 3
+    }
+  },
+  // error messages
+  messages: {
+    "service[name]":{
+      required: "Sub service name is required!",
+      maxlength: "Sub service name must be less than 115 characters.",
+      minlength: "Sub service name must be more than 3 characters."
+    }
+  }
+});
+
+// Validating 'address' on cient side.
+$("#address_form").validate({
+  //error place
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  //adding rule
+  rules: {
+    // name is required with max of 20 and min of 6
+    "address[flat_number]":{
+      required: true,
+      maxlength: 50,
+      minlength: 1
+    },
+    "address[street_name]":{
+      maxlength: 150,
+      minlength: 5
+    },
+    "address[pin_code]":{
+      required: true,
+      maxlength: 10,
+      minlength: 5
+    },
+    "address[landmark]":{
+      maxlength: 150,
+      minlength: 5
+    },
+    "country_selection":{
+      required: true
+    },
+    "state_selection":{
+      required: true
+    },
+    "city_id":{
+      required: true
+    }
+  },
+  // error messages
+  messages: {
+    "address[flat_number]":{
+      required: "Flat No. is required!",
+      maxlength: "Flat No. must be less than 50 characters.",
+      minlength: "Flat No. must be at-least 1 character."
+    },
+    "address[street_name]":{
+      maxlength: "Street name must be less than 150 characters.",
+      minlength: "Street name must be at-least 5 characters."
+    },
+    "address[pin_code]":{
+      required: "Pin code is required!",
+      maxlength: "Pin code must be less than 10 characters.",
+      minlength: "Pin code must be at-least 5 characters."
+    },
+    "address[landmark]":{
+      maxlength: "Landmark must be less than 150 characters.",
+      minlength: "Landmark must be at-least 1 character."
+    },
+    "country_selection":{
+      required: "Country is required!",
+    },
+    "state_selection":{
+      required: "State is required!",
+    },
+    "city_id":{
+      required: "City is required!",
+    },
+  }
+}); 

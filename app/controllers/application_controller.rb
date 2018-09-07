@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   
   protect_from_forgery
+  
+  before_action :authenticate_user!
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
@@ -10,14 +12,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_login_path resource
-    if (resource.has_role? :user)
-      root_url
-    elsif resource.has_role? :partner
-      edit_partner_portfolio_url
-      # partner_portfolio_url
-    else
-      admin_root_url
+  def authenticate_user!
+    unless current_user
+      flash[:error] = "You are not authorized to view that page."
+      redirect_to root_path
     end
   end
+
 end

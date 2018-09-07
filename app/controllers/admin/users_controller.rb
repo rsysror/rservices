@@ -38,19 +38,27 @@ class Admin::UsersController < AdminController
 		@service_requests = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).paginate(:page => params[:page], :per_page => 5)
 	end	
 
-	# Method to find the details of all registerd user and partner bassed on ID
+	# Method to find the details of all registerd user 
 	def get_users_details
-		@user = User.includes(:addresses).find(params[:id])
-		
+		@user = User.includes(:addresses).find(params[:id])		
 	end
+
+	# Method to find the details of all registerd partner bassed on ID
+	def get_partners_details
+		@user = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot)	
+	end
+
+
+
+	#update status of users service request
 	def update_service_status
 		if(ServiceRequest.find(params[:resquest_id]))
 			ServiceRequest.find(params[:resquest_id]).update(status_id: 1)
 			flash[:success] = "Service request accepted "
-			redirect_to action: "index"
+			redirect_to admin_users_path
 		else
 			flash[:error] = "Service request not found!"
-			redirect_to action: "index"
+			redirect_to admin_users_path
     end	
   end
 

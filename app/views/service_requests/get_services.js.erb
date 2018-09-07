@@ -1,13 +1,20 @@
+$('.loading').hide();
+
 <% if @services.present? %>
 	$('#load_sub_services').html('');
+  $('#error_message').html('');
 	$('#load_addresses').html("<%= escape_javascript render(:partial => 'listing_address', :locals => { :addresses => @addresses }) %>");
 	$('#load_services').html("<%= escape_javascript render(:partial => 'city_based_services', :locals => { :services => @services }) %>");	
-<% elsif @sub_services %>
-	$('#load_sub_services').html("<%= escape_javascript render(:partial => 'city_based_services', :locals => { :sub_services => @sub_services }) %>");
-    <% else %>
+<% elsif (@portfolio and @sub_services).present? %>
+  $('#load_sub_services').html("<%= escape_javascript render(:partial => 'city_based_services', :locals => { :sub_services => @sub_services }) %>");
+<% elsif @addresses %>
     $('#load_sub_services').html('');
     $('#load_services').html('');
+    $('#error_message').html('');
     $('#load_addresses').html("<%= escape_javascript render(:partial => 'listing_address', :locals => { :addresses => @addresses }) %>");
+<% else %>
+  $('#error_message').addClass('alert alert-warning');
+  $('#error_message').html('No service Provider in selected city');
 <% end %>
 
 $('select').change(function () {

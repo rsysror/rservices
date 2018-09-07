@@ -29,6 +29,7 @@ class Admin::ServicesController < AdminController
   # POST /services
   # POST /services.json
   def create
+    @cities = City.details.order(name: :asc)
     @service = Service.new(service_params)
     respond_to do |format|
       if @service.save

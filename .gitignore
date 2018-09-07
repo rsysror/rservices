@@ -24,10 +24,12 @@
 /node_modules
 /yarn-error.log
 
-/public/assets
+/public/*
 .byebug_history
 /config/database.yml
 .ruby-gemset
+.env
+config/initializers/mail.rb
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

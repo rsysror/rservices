@@ -18,6 +18,10 @@
 
 
  @background_color_1: #dcdee2;
+ @color_1: black;
+@color_2: white;
+@background_color_2: #4CAF50;
+@background_color_3: #ddd;
 
 .card {
 	position: relative;
@@ -41,3 +45,29 @@
 .table > thead > tr > td, .table > tbody > tr > td {
 	color: #000000;	
 }
+
+
+
+
+
+
+
+.pagination {
+  display: inline-block;
+  a {
+    color: @color_1;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    &:hover {
+      &:not(.active) {
+        background-color: @background_color_3;
+      }
+    }
+  }
+  a.active {
+    background-color: @background_color_2;
+    color: @color_2;
+  }
+}
+

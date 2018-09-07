@@ -10,6 +10,6 @@
           %li
             %a{:href => "/service_requests"} My Service requests(#{user_request_count(current_user,'service_requests')})  
           %li
-            %a{:href => "/addresses/new"} Add New Address
+            %a{:href => "/addresses/new", 'data-no-turbolink':  true } Add New Address
           %li
             %a{:href => "/addresses"} My Addresses(#{user_request_count(current_user,'addresses')})    

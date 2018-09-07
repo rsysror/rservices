@@ -1,6 +1,6 @@
 module Admin::UsersHelper
 	def users_city user
-		user.addresses.map{|m| m.city.name}.join(', ')
+		user.addresses.map{|m| m.city.try(:name)}.join(', ')
 	end	
 
 #Method to get full name

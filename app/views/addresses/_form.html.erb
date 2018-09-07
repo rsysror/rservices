@@ -1,146 +1,159 @@
 <br/>
 <hr/>
-
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 <script src="/assets/jquery.geocomplete.js"></script>
+
 <script type="text/javascript">
 $(function($){
  
-  var latlng = new google.maps.LatLng(28.5355161, 77.39102649999995);
-  map = new google.maps.Map(document.getElementById('map_canvas'), {
-    center: latlng,
-    zoom: 12
-  });
-  var geocoder = new google.maps.Geocoder();
+	var latlng = new google.maps.LatLng(28.5355161, 77.39102649999995);
+	map = new google.maps.Map(document.getElementById('map_canvas'), {
+		center: latlng,
+		zoom: 12
+	});
+	var geocoder = new google.maps.Geocoder();
 
-  google.maps.event.addListener(map, 'click', function(event) {
-    geocoder.geocode({
-      'latLng': event.latLng
-    }, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        if (results[0]) {
-          var geocomplete = $('#geocomplete');
-          var address = $('#geocomplete1');
-          console.log(results[0])
-          geocomplete.val(results[0].formatted_address);
-          address.val(results[0].address_components[2].long_name)
-        }
-      }
-    });
-  });
-  
-  var options = {
-    map: "#map_canvas"
-  };
+	google.maps.event.addListener(map, 'click', function(event) {
+		geocoder.geocode({
+			'latLng': event.latLng
+		}, function(results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				if (results[0]) {
+					var geocomplete = $('#geocomplete');
+					var address = $('#geocomplete1');
+					console.log(results[0])
+					geocomplete.val(results[0].formatted_address);
+					address.val(results[0].address_components[2].long_name)
+				}
+			}
+		});
+	});
+	
+	var options = {
+		map: "#map_canvas"
+	};
 
-  $('#geocomplete').on('change',function(){
-    $('#geocomplete1').val($(this).val());
-    $("#geocomplete").geocomplete(options);
+	$('#geocomplete').on('change',function(){
+		$('#geocomplete1').val($(this).val());
+		$("#geocomplete").geocomplete(options);
 
-  });
+	});
 
 });
-
 </script>
 
 
 <div class="container">
-   <%= link_to t('.Back', :default => t("helpers.links.back")),
-      dashboard_path,
-      :class => 'btn btn-primary', style: "color:#fff" %>
-   <hr>
-   <div class="panel panel-primary">
-      <div class="panel-heading">
-         <h3>Fill Your Address Details</h3>
-      </div>
-      <div class="panel-body">
-        <% if (params[:action] == 'new') %>
-            <div class="panel-heading"><h3>Search your address</h3> </div>
-              <div class="panel-body">
-                  <%= form_for @address do |f| %>
-                    <p>
-                      <%= text_field_tag "geocomplete" %>
-                      <%= f.hidden_field :address, id: "geocomplete1" %>
-                      <%= f.submit  :value => "Search" %>
-                      <div id="map_canvas"></div>
-                    </p>
-                  <% end %>
-                <% end %>  
-              </div>
-        <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
-         <div class="form-group">
-          <div class="col-lg-10 col-lg-offset-1">
-            <%# byebug %>
-            <% if @address.errors.any? %>
-              <div id="error_expl" class="panel panel-danger">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><%= pluralize(@address.errors.count, "error") %> Prohibited this address from being saved:</h3>
-                </div>
-                <div class="panel-body">
-                  <ul>
-                  <% @address.errors.each do |attr,msg|  %>
-                    <li class="custome-error"><%= msg %></li>
-                  <% end %>
-                  </ul>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-         <div class="row error-container">
-            <div class="col-md-4 col-md-offset-1">
-               <div class="form-group">
-                  <label>Flat Number/H.No.</label>
-                  <%= f.text_field :flat_number, class:"form-control"  %>
-                  <label for="address_flat_number" class="error-title error"></label>
-               </div>
-            </div>
-            <div class="col-md-4 col-md-offset-2">
-               <div class="form-group">
-                  <label>Street Name</label>
-                  <%= f.text_field :street_name, class:"form-control"  %>
-                  <label for="address_street_name" class="error-title error"></label>
-               </div>
-            </div>
-         </div>
-         <div class="row error-container">
-            <div class="col-md-4 col-md-offset-1">
-               <div class="form-group">
-                  <label>Pin Code</label>
-                  <%= f.text_field :pin_code, class:"form-control"  %>
-                  <label for="address_pin_code" class="error-title error"></label>
-               </div>
-            </div>
-            <div class="col-md-4 col-md-offset-2">
-               <div class="form-group">
-                  <label>Landmark</label>
-                  <%= f.text_field :landmark, class:"form-control"  %>
-                  <label for="address_landmark" class="error-title error"></label>
-               </div>
-            </div>
-         </div>
-          <% if (params[:action] == 'new') %>
-            <%= render :partial => 'shared/location_details' %>
-            <br/>
-          <% else %>
-            <div class="row">
-              <div class="col-md-4 col-md-offset-2">
-                <label>City</label>
-                <%= f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), :prompt => "Select City", class: "form-control" %>
-              </div>
-            </div>
-          <% end %>
-         <div class="row">
-           <div class="col-md-4 col-md-offset-1">
-              <div class="form-group">
-                 <%=f.submit  class: "btn btn-primary", style: "width: 100%;" %>
-              </div>
-           </div>
-         </div>
-      </div>
-    <% end %>
-   </div>
+	 <%= link_to t('.Back', :default => t("helpers.links.back")),
+			dashboard_path,
+			:class => 'btn btn-primary', style: "color:#fff" %>
+	 <hr>
+	 <div class="panel panel-primary">
+			<div class="panel-heading">
+				 <h3>Fill Your Address Details</h3>
+			</div>
+			<div class="panel-body">
+					<% if (params[:action] == 'new') %>
+						<%= form_for @address do |f| %>
+							<div class="row">
+								<div class="col-md-4 col-md-offset-1">
+									<div class="form-group">
+										<label>Search your address</label>
+										<%= text_field_tag "geocomplete" %>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										 <%= f.hidden_field :address, id: "geocomplete" %>
+										<%= f.submit  :value => "Search", class: "btn btn-primary", style: "width: 100%;margin-top:12%;" %>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1">
+									<div id="map_canvas"></div>
+								</div>
+							</div>
+						<% end %>
+					<% end %>
+				
+				 <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
+				 <div class="form-group">
+						<div class="col-lg-10 col-lg-offset-1">
+							 <%# byebug %>
+							 <% if @address.errors.any? %>
+							 <div id="error_expl" class="panel panel-danger">
+									<div class="panel-heading">
+										 <h3 class="panel-title"><%= pluralize(@address.errors.count, "error") %> Prohibited this address from being saved:</h3>
+									</div>
+									<div class="panel-body">
+										 <ul>
+												<% @address.errors.each do |attr,msg|  %>
+												<li class="custome-error"><%= msg %></li>
+												<% end %>
+										 </ul>
+									</div>
+							 </div>
+							 <% end %>
+						</div>
+				 </div>
+				 <div class="row error-container">
+						<div class="col-md-4 col-md-offset-1">
+							 <div class="form-group">
+									<label>Flat Number/H.No.</label>
+									<%= f.text_field :flat_number, class:"form-control"  %>
+									<label for="address_flat_number" class="error-title error"></label>
+							 </div>
+						</div>
+						<div class="col-md-4 col-md-offset-2">
+							 <div class="form-group">
+									<label>Street Name</label>
+									<%= f.text_field :street_name, class:"form-control"  %>
+									<label for="address_street_name" class="error-title error"></label>
+							 </div>
+						</div>
+				 </div>
+				 <div class="row error-container">
+						<div class="col-md-4 col-md-offset-1">
+							 <div class="form-group">
+									<label>Pin Code</label>
+									<%= f.text_field :pin_code, class:"form-control"  %>
+									<label for="address_pin_code" class="error-title error"></label>
+							 </div>
+						</div>
+						<div class="col-md-4 col-md-offset-2">
+							 <div class="form-group">
+									<label>Landmark</label>
+									<%= f.text_field :landmark, class:"form-control"  %>
+									<label for="address_landmark" class="error-title error"></label>
+							 </div>
+						</div>
+				 </div>
+				 <% if (params[:action] == 'new') %>
+				 <%= render :partial => 'shared/location_details' %>
+				 <br/>
+				 <% else %>
+				 <div class="row error-container">
+						<div class="col-md-4 col-md-offset-1">
+							 <div class="form-group">
+									<label>City</label>
+									<%= f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), {}, {:prompt => "Select City", class: "form-control"} %>
+							 </div>
+						</div>
+				 </div>
+				 <% end %>
+				 <div class="row">
+						<div class="col-md-4 col-md-offset-1">
+							 <div class="form-group">
+									<%=f.submit  class: "btn btn-primary", style: "width: 100%;" %>
+							 </div>
+						</div>
+				 </div>
+			</div>
+			<% end %>
+	 </div>
 </div>
 <script type="text/javascript">
-   <%= render "common/validate.js" %>
+	 <%= render "common/validate.js" %>
 </script>
 </div>

@@ -8,7 +8,7 @@ class UserMailer < ApplicationMailer
 	end
 
   def accepted_rejected user, service_request
-    @name = service_request.user.first_name + " " + service_request.user.last_name
+    @name = service_request.user.full_name
     @service_request_number = service_request.service_request_number
     @status = service_request.status.name
     

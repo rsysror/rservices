@@ -18,10 +18,18 @@
               </div>
             </div>  
           </div>  -->  
-          <div class="loading">Loading&#8230;</div> 
-          <div id="error_message"></div>
-          <div class="row" id="load_addresses"></div>
-					<%=submit_tag "Create Service Request", disabled: true, id: "sub_service_create", class: "btn btn-primary navbar-text" %>
+          <div class="loading">Loading&#8230;</div>
+          <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+              <div id="error_message"></div>
+              <div class="row" id="load_addresses"></div>
+            </div> 
+          </div> 
+          <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+					    <%=submit_tag "Create Service Request", disabled: true, id: "sub_service_create", class: "btn btn-primary navbar-text", style: "margin-left: 0%;" %>
+            </div>
+          </div>
 				<% end %>	
       	<%#=link_to "Add Address", new_addresses_path %>
 				<%#=link_to "My Service Requests(#{user_request_count(current_user)})", service_requests_path,class: "pull-right" %>

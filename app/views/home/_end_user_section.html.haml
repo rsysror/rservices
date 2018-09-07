@@ -1,6 +1,7 @@
-= label_tag :city, "City:" 
+= label_tag :city, "City:", :style => "margin: 0% 0% 1% 10%;"
 .row
-  .col-sm-2= select_city @cities
+  .col-sm-2.col-sm-offset-1
+    = select_city @cities
   #load_services.col-sm-2
   #load_sub_services
     

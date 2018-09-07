@@ -20,5 +20,18 @@ module ServiceRequestsHelper
 	def get_parent_id service_id
 		Service.find(service_id).parent_id
 	end
+
+	def user_actions request
+		if request.status.try(:name) == "Completed"
+			 request.feedback.present? ? add_rating_html_block(request) : (link_to 'Give Rating',new_feedback_path(portfolio_id: request.portfolio_id, request_id: request.id),:method => :get,:class => 'btn btn-default')
+    else
+    	(link_to t('.edit', :default => t("helpers.links.edit")), edit_service_request_path(request), :class => 'btn btn-default btn-xs') +
+    	(link_to t('.cancel', :default => t("helpers.links.cancel")),cancel_service_request_service_request_path(request),:method => :patch,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger')
+    end
+	end
+
+	def add_rating_html_block request
+		render partial: "show_rating" , locals: {request: request.feedback } 
+	end
 	
 end

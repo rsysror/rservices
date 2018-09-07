@@ -6,6 +6,7 @@ class Portfolio < ApplicationRecord
   belongs_to :city, optional: true
   belongs_to :service, optional: true
   has_many :service_requests
+  has_many :feedbacks
 
   validates :city, presence: true, on: :update
   validates :service, presence: true, on: :update

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get  'sign_up',  to: 'users/registrations#new'
     post  'create_user',  to: 'users/registrations#create'
 	end
+  #custom routes for admin 
   namespace :admin do
     root to: "dashboard#index"
     resources :services do
@@ -35,6 +36,13 @@ Rails.application.routes.draw do
         get 'create_sub_services'
         get 'edit_sub_services'
         put 'update_sub_services'
+      end
+    end
+    resources :users do
+      member do
+        get 'user_service_request'
+        get 'update_service_status'
+        
       end
     end
   end

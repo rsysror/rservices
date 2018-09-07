@@ -209,6 +209,8 @@ Status.create(name: "Rejected")
 Status.create(name: "Pending")
 Status.create(name: "Inprogress")
 Status.create(name: "Cancelled")
+Status.create(name: "Completed")
+Status.create(name: "InCompleted")
 
 
 

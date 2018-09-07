@@ -1,10 +1,14 @@
 class ServiceRequest < ApplicationRecord
+	
+  has_one :feedback
+
 	belongs_to :user
 	belongs_to :address
 	belongs_to :service
 	belongs_to :status
 	belongs_to :portfolio
 	belongs_to :time_slot
+
 	
 	delegate :flat_number,:street_name,:pin_code,:city, :to => :address
 

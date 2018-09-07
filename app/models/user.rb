@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one :portfolio
   has_many :service_requests
   has_many :addresses
+  has_many :feedbacks
 
   def admin?
     has_role? :admin

@@ -6,15 +6,12 @@ class Portfolio < ApplicationRecord
   belongs_to :city, optional: true
   belongs_to :service, optional: true
   has_many :service_requests
+  has_many :feedbacks
 
-  # validates :city, presence: true, on: :update
-  # validates :service, presence: true, on: :update
-  # validates :gender, :about, :experience, :education, presence: true
+  validates :city, presence: true, on: :update
+  validates :service, presence: true, on: :update
+  validates :gender, :about, :experience, :education, presence: true, on: :update
   
-  # attr_accessor :avatar_file_name
-
-  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
-  # validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/, :if => Proc.new { |profile| profile.avatar.file? }
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 

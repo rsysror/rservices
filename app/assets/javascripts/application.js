@@ -15,7 +15,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= jquery.geocomplete
+//= require maps.googleapis
 //= require_tree .
 
 
@@ -25,10 +25,9 @@ $(function(){
 	})
 })
 
-$(function(){
-  var options = {
-    map: ".map_canvas",
-    location: "Noida"
-  };
-  $("#geocomplete").geocomplete(options);
-});
+
+
+
+		
+
+

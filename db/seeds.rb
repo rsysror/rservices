@@ -265,17 +265,17 @@ City.create(:name=>"Mussoorie",:state_id=>36)
 
 User.delete_all
 #Admin user create 
-user = User.create(:email => "admin@example.com", :password => "password", :first_name => "admin")
+user = User.create(:email => "admin@example.com", :password => "password", :first_name => "admin", :phone => "9123456780")
 user.add_role :admin
 
 
 #Admin user create 
-user = User.create(:email => "partner@example.com", :password => "password", :first_name => "Partner")
+user = User.create(:email => "partner@example.com", :password => "password", :first_name => "Partner", :phone => "9123456780")
 user.add_role :partner
 user.create_portfolio
 
 #normal user
-user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys")
+user = User.create(:email => "user@example.com", :password => "password", :first_name => "rsys", :phone => "9123456780")
 user.add_role :user
 
 Status.delete_all

@@ -28,4 +28,5 @@ class User < ApplicationRecord
     [self.first_name, self.last_name].select(&:present?).join(' ').titleize
   end
 
+  
 end

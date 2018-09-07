@@ -9,6 +9,10 @@
         <dl class="dl-horizontal" style="fl">
           <dt><strong>Name:</strong></dt>
           <dd><%= get_full_name(@user) %></dd>
+          <dt><strong>Email:</strong></dt>
+          <dd><%= @user.email %></dd>
+          <dt><strong>Phone No:</strong></dt>
+          <dd><%= @user.phone %></dd>
           <dt><strong>Address:</strong></dt>
           <% @user.addresses.each do |address| %>
           <dd><%= address.complete_address %></dd>   

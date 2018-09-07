@@ -41,11 +41,12 @@ Rails.application.routes.draw do
     resources :users do
       member do
         get 'user_service_request'
-        get 'update_service_status'
-        
+        get 'update_service_status'        
       end
     end
   end
+   get 'admin/partners', :to => 'admin/users#partners'
+   get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
 
   
   namespace :partner do

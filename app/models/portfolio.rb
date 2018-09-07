@@ -24,11 +24,11 @@ class Portfolio < ApplicationRecord
   end
 
   def available_time_slots
-    service_requests.present? ? TimeSlot.ordered - service_requests.map{|m| m.time_slot}.compact : TimeSlot.ordered
+    service_requests.present? ? TimeSlot.ordered - service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).map{|m| m.time_slot}.compact : TimeSlot.ordered
   end
 
   def available_time_slots_for_update service_request
-    included_service_request = service_requests.reject{|r| r.id == service_request.id}
+    included_service_request = service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).reject{|r| r.id == service_request.id}
     included_service_request.present? ? TimeSlot.ordered - included_service_request.map{|m| m.time_slot}.compact : TimeSlot.ordered
   end
   

@@ -7,9 +7,9 @@ class Portfolio < ApplicationRecord
   belongs_to :service, optional: true
   has_many :service_requests
 
-  validates :city, presence: true, on: :update
-  validates :service, presence: true, on: :update
-  validates :gender, :about, :experience, :education, presence: true
+  # validates :city, presence: true, on: :update
+  # validates :service, presence: true, on: :update
+  # validates :gender, :about, :experience, :education, presence: true
   
   # attr_accessor :avatar_file_name
 

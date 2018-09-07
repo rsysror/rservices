@@ -1,7 +1,8 @@
 class Address < ApplicationRecord
-	has_many :service_requests, dependent: :destroy
-	belongs_to :user
-	belongs_to :city, optional: true
+    has_many :service_requests, dependent: :destroy
+    belongs_to :user
+
+    belongs_to :city, optional: true
 
   # Validate form on server
   validates :flat_number, presence: {message: 'Flat no is required!'}, if: :latitude_exists?
@@ -50,3 +51,4 @@ class Address < ApplicationRecord
   end
 
 end
+

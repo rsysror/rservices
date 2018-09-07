@@ -31,10 +31,9 @@ class Address < ApplicationRecord
         end
         address.city  = city
         address.pin_code = geo_address.postal_code
-      # else
-      #   address.errors.add(:city)
+      else
+        address.errors.add(:base, "We are not providing service on this state & city")
       end
-
     end
   end
 

@@ -1,7 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
+
   # before_action :configure_account_update_params, only: [:update]
   skip_before_action :authenticate_user!, only: [:new, :create]
+
 
   prepend_before_action :require_no_authentication, only: [:new, :create, :cancel]
   prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
@@ -9,7 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    build_resource
+    build_r
+    esource
     yield resource if block_given?
     respond_with resource
   end

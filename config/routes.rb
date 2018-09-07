@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :addresses 
+  resources :feedbacks
 
   resources :service_requests do
     member do

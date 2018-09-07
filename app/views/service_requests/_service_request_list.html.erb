@@ -6,8 +6,7 @@
 	<td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
 	<td><%=request.service_request_number %></td>
 	<td>  
-		<%= link_to t('.show', :default => t("helpers.links.show")),service_request_path(request), :class => 'btn btn-default btn-xs' %>
-    <%= link_to t('.edit', :default => t("helpers.links.edit")),edit_service_request_path(request), :class => 'btn btn-default btn-xs' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),cancel_service_request_service_request_path(request),:method => :patch,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger' %>
+    <%=user_actions(request) %>
+    <%= link_to t('.show', :default => t("helpers.links.show")),service_request_path(request), :class => 'btn btn-default btn-xs' %>
   </td>  
 </tr>

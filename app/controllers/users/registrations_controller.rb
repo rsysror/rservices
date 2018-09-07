@@ -1,6 +1,8 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  skip_before_action :authenticate_user!, only: [:new, :create]
+
   prepend_before_action :require_no_authentication, only: [:new, :create, :cancel]
   prepend_before_action :authenticate_scope!, only: [:edit, :update, :destroy]
   prepend_before_action :set_minimum_password_length, only: [:new, :edit]
@@ -68,7 +70,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password,:password_confirmation,:role, :first_name, :last_name,:phone])
     end
 
-  
     def sign_up_params
       params.require(:user).permit(:email, :password,:password_confirmation,:first_name,:role, :last_name,:phone)
     end

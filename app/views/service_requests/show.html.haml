@@ -19,6 +19,15 @@
         %p
           %b Status:
           = @service_request.status.name
+      - if @service_request.feedback.present?   
+        .col-sm-3
+          %p
+            %b Rating
+            = render :partial => "show_rating", locals: {request: @service_request.feedback}
+        .col-sm-3
+          %p
+            %b Remarks:
+            = @service_request.feedback.description
     .row
       .col-sm-3
         %b Address:

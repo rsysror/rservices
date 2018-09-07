@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   attr_accessor :role
 
-  validates :first_name, :email, presence: true
+  validates :first_name, :email, :phone, presence: true
   validates :password, :presence => true, :confirmation => true, :length => {:within => 6..128}
 
   has_one :portfolio

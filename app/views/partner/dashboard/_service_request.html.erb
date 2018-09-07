@@ -5,12 +5,14 @@
   <td><%=request.service.try(:name) %></td>
   <td><%=request.user.full_name %></td>
   <td><%=request.address.complete_address %></td>
+  <td><%= request.status.try(:name) %> </td>
   <% if ["Pending", "Inprogress"].include?(request.status.try(:name)) %> 
-    <td> <%= link_to 'Accept', accept_reject_partner_dashboard_index_path(value: "accept", id: request.id), method: :put, :remote => true, class: " btn btn-success"  %></td>
-    <td> <%= link_to 'Reject', accept_reject_partner_dashboard_index_path(value: "reject", id:request.id ), method: :put, :remote => true, class: " btn btn-danger"  %></td>
+    <td> <%= link_to 'Accept', accept_reject_partner_dashboard_index_path(value: "accepted", id: request.id), method: :put, :remote => true, class: " btn btn-success"  %></td>
+    <td> <%= link_to 'Reject', accept_reject_partner_dashboard_index_path(value: "rejected", id:request.id ), method: :put, :remote => true, class: " btn btn-danger"  %></td>
+  <% elsif request.status.try(:name) == "Accepted" %>
+    <td><%= link_to 'Complete', accept_reject_partner_dashboard_index_path(value: "completed", id: request.id), method: :put, :remote => true, class: " btn btn-success"  %>
+    <%= link_to 'In Complete', accept_reject_partner_dashboard_index_path(value: "incompleted", id: request.id), method: :put, :remote => true, class: " btn btn-success"  %></td>
   <% else %>
-    <td> <%= link_to 'Accept', '#', class: " btn btn-success", disabled: true  %></td>
-    <td> <%= link_to 'Reject', '#', class: " btn btn-danger",  disabled: true  %></td>
   <% end %>
 </tr>
 <% end %>

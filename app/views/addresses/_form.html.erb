@@ -1,8 +1,16 @@
 <br/>
 <hr/>
 
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 <script src="/assets/jquery.geocomplete.js"></script>
+<script type="text/javascript">
+$(function(){
+  var options = {
+    map: ".map_canvas",
+    location: "Noida"
+  };
+  $("#geocomplete").geocomplete(options);
+});
+</script>
 
 
 <div class="container">

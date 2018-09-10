@@ -1,21 +1,14 @@
-<div class="main-container">
-  <div class="header-container">
-    <div class="row">
-    	<div class="add-new">
-          <%= link_to t('.Back', :default => t("helpers.links.back")),
-                   admin_root_path,
-                   :class => 'btn btn-primary', style: "color:#fff" %>
-        </div>
-		<%- model_class = Service -%>
-		<div class="#">
-		  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
-		</div>
-		<hr>
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<%= render :partial => 'form' %>
-			</div>
-		</div>
-	</div>
+<hr>
+<hr>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.Back', :default => t("helpers.links.back")), admin_root_path, :class => 'btn btn-primary', style: "color:#fff" %>
+    </div>
+    <hr>
+  </div>
+  <div class="panel panel-primary">
+    <%= render 'form' %>
   </div>
 </div>

@@ -1,6 +1,7 @@
 class Admin::UsersController < AdminController
 	load_and_authorize_resource
 	before_action :get_users_details, only: [:show]
+	before_action  :get_status_value, only: [:update_service_status]
 	layout 'admin'
   # GET /users
   def index
@@ -37,6 +38,11 @@ class Admin::UsersController < AdminController
 	def partner_service_request
 		@service_requests = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).paginate(:page => params[:page], :per_page => 5)
 	end	
+	# Method to display the partner's service request list of user
+	def service_requests_list
+		@service_requests = ServiceRequest.all.where.not(portfolio_id: [nil, ""]).paginate(:page => params[:page], :per_page => 5)
+
+	end	
 
 	# Method to find the details of all registerd user 
 	def get_users_details
@@ -44,8 +50,10 @@ class Admin::UsersController < AdminController
 	end
 
 	# Method to find the details of all registerd partner bassed on ID
-	def get_partners_details
-		@user = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot)	
+	def partner_details
+		#@user = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot)	
+		@user = User.find(params[:id])
+		@portfolio = @user.portfolio 
 	end
 
   def manage_portfolio_status
@@ -56,11 +64,10 @@ class Admin::UsersController < AdminController
   end
 
 
-
 	#update status of users service request
 	def update_service_status
-		if(ServiceRequest.find(params[:resquest_id]))
-			ServiceRequest.find(params[:resquest_id]).update(status_id: 1)
+		if(@service_request and @status)
+			 @service_request.update_attributes(status_id: @status.id)
 			flash[:success] = "Service request accepted "
 			redirect_to admin_users_path
 		else
@@ -69,4 +76,11 @@ class Admin::UsersController < AdminController
     end	
   end
 
+	private
+
+	def get_status_value
+		@status = Status.where(name: params[:status]).last
+		@service_request = ServiceRequest.find(params[:request_id])
+	end
+	
 end

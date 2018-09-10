@@ -80,6 +80,11 @@
     
     .featured_section_w3l
       .container
+        - for serve in @services
+          .task
+            %strong
+              = serve.name
+          = link_to 'Edit', edit_service_path(serve)
         %h3.tittle FEATURED CARS
         = render :partial => 'feature'
     = render :partial => 'slider'

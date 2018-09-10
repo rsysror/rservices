@@ -106,6 +106,6 @@ class Admin::ServicesController < AdminController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def sub_service_params
-      params.require(:service).permit(:name,:id, :photo, :city_ids=> [])
+      params.require(:service).permit(:name,:id, :city_ids=> [])
     end
 end

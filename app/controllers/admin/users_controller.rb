@@ -48,6 +48,13 @@ class Admin::UsersController < AdminController
 		@user = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot)	
 	end
 
+  def manage_portfolio_status
+    @users = User.includes(:addresses).with_role(:partner)
+    @user = User.find(params[:id])
+    @portfolio = @user.portfolio
+    @portfolio.update_attribute(:status, params[:value])
+  end
+
 
 
 	#update status of users service request
@@ -61,9 +68,5 @@ class Admin::UsersController < AdminController
 			redirect_to admin_users_path
     end	
   end
-
-
-
-	
 
 end

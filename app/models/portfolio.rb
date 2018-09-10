@@ -23,6 +23,14 @@ class Portfolio < ApplicationRecord
     user.email
   end
 
+  def portfolio_status
+    status ? "Active" : "In Active"
+  end
+
+  def reverse_portfolio_status
+    status ? "Activete" : "De Activete"
+  end
+
   def available_time_slots
     service_requests.present? ? TimeSlot.ordered - service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).map{|m| m.time_slot}.compact : TimeSlot.ordered
   end

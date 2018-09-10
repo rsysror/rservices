@@ -12,11 +12,11 @@ class Portfolio < ApplicationRecord
   validates :service, presence: true, on: :update
   validates :gender, :about, :experience, :education, presence: true, on: :update
   
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def portfolio_with_user_name_and_about
-    "#{user.first_name}" + ",#{about}" + ",#{user.phone}" + ",#{user.email}"
+    "#{user.email}"
   end
 
   def user_email 

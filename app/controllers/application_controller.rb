@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
   
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|

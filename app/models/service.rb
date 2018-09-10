@@ -10,6 +10,7 @@ class Service < ApplicationRecord
 
   validates :name, presence: {message: 'Service name is required!'}
   validates :name, length: { in: 3..110, message: 'There must be 3 to 110 characters only!' }
+  validates :price, presence: {message: 'Price is required!'}
   validates :city_ids, presence: {message: 'At leaset 1 city should be selected!'}, if: :is_parent_id_nil?
   #scope methods
   scope :get_services, -> { where("parent_id IS NULL") }

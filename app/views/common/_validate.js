@@ -67,6 +67,9 @@ $("#new_service").validate({
       maxlength: 115,
       minlength: 3
     },
+    "service[price]":{
+      required: true
+    },
     "service[city_ids][]":{
       required: true
     }
@@ -77,6 +80,9 @@ $("#new_service").validate({
       required: "Service name is required!",
       maxlength: "Service name must be less than 115 characters.",
       minlength: "Service name must be more than 3 characters."
+    },
+    "service[price]":{
+      required: "Price is required!"
     },
     "service[city_ids][]":{
       required: "At leaset 1 city should be selected!",

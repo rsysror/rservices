@@ -1,0 +1,37 @@
+<hr>
+
+<div class="container" id="page-wrapper">
+	<div class="row">
+		<%= link_to t('.Back', :default => t("helpers.links.back")),
+                    admin_root_path,
+                    :class => 'btn btn-primary', style: "color:#fff" %>
+		<table class="table">
+			<thead>
+				<th>Service Request Name</th>
+				<th>Address</th>
+				<th>Vendor</th>
+				<th>Time Slot</th>
+				<th>Service Request Number</th>
+				<th>Status</th>
+				<th>Rating</th>
+			</thead>
+			<tbody>
+				<% @service_requests.each do |request|%>
+					<tr>
+						<td><%=request.service.try(:name) %></td>
+						<td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
+						<td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>
+						<td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
+						<td><%=request.service_request_number %></td>
+						<td><%=request.status.try(:name) %></td>
+						<td><%=get_rating_data(request.portfolio.user)%>  </td>
+					</tr>
+				<% end %>	
+			</tbody>
+		</table>
+		
+	</div>
+	<div class="pagination">
+			<%=will_paginate @service_requests %>
+		</div>
+</div>

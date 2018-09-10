@@ -18,5 +18,14 @@ class Service < ApplicationRecord
   def is_parent_id_nil?
     self.parent_id == nil
   end
-  
+
+  # def self.search(city, service)
+  #   if (city || service)
+  #     where('name LIKE ?', "%#{service}%")
+  #   else
+  #     byebug
+  #     all
+  #   end
+  # end
+	
 end

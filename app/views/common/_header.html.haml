@@ -9,25 +9,22 @@
         %span COME LOOK
         %span AT THE SELECTION!
       %p Eye it – Try it – Buy it!
-      %form{:action => "#", :method => "post"}
+      / %form{:action => "#", :method => "post"}
+      = form_tag(root_path, method: :get) do
         .row
           .search-two
-            %select#country6{:name => "post[city_id]", :style => 'width: 100%;height:39px'}
+            %select#country.frm-field{:name => "post[city_id]", :style => 'width: 100%;height:39px;margin-left: 94%;'}
               %option{:value => "null"}= 'Select location'
               - City.all.each do |city|
                 %option{:value => "#{city.id}"}= city.name
                 %img.img-responsive{:alt => "Select location ", :src => "assets/place.png"}>
-          .search-two
-            %select#country{:name => "post[service_id]"}
-              %option{:value => "null"}= 'Select a service'
-              - Service.all.where(parent_id: nil).each do |serve|
-                %option{:value => "#{serve.id}"}= serve.name
-                %img.img-responsive{:alt => "Select a service", :src => "assets/rupee.png"}>
-          .search-two
-            %select#country.frm-field.serach-box{:name => "post[service_id]"}
-              %option{:value => "null"}= 'Select a sub service'
-              - Service.all.where(parent_id: !nil).each do |subServe|
-                %option{:value => "#{subServe.id}"}= subServe.name
-                %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}
-          %input{:type => "submit", :value => "Search "}
-        .clearfix
+          .search-two1
+            %select1#country1{:name => "post[service_id]"}
+              / %option{:value => "null"}= 'Select a service'
+              -# Service.all.where(parent_id: nil).each do |serve|
+                / %option{:value => "#{serve.id}"}= serve.name
+                / %img.img-responsive{:alt => "Select a service", :src => "assets/rupee.png"}>
+          / %input{:type => "submit", :value => "Search "}
+          = submit_tag 'Search', {name: nil, :style => "float: left; margin-left: 60%; margin-top: -5.2%;"}
+      .clearfix
+

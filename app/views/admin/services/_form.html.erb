@@ -1,57 +1,65 @@
-<%= form_for [:admin, @service], :html => { :class => "form-horizontal service" } do |f| %>
-  <div class="form-group">
-    <div class="col-lg-10 col-lg-offset-2">
-      <% if @service.errors.any? %>
-        <div id="error_expl" class="panel panel-danger">
-          <div class="panel-heading">
-            <h3 class="panel-title"><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h3>
+<div class="panel-heading">
+  <h3><%= params[:action].titleize %> Service</h3>
+</div>
+<div class="panel-body">
+  <%= form_for [:admin, @service], :html => { :class => "form-horizontal service" } do |f| %>
+    <div class="form-group">
+      <!-- col-md-6 col-md-offset-3 -->
+      <div class="col-lg-10 col-lg-offset-2">
+        <% if @service.errors.any? %>
+          <div id="error_expl" class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h3>
+            </div>
+            <div class="panel-body">
+              <ul>
+              <% @service.errors.each do |attr,msg|  %>
+                <li class="custome-error"><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
           </div>
-          <div class="panel-body">
-            <ul>
-            <%# @service.errors.full_messages.each do |msg| %>
-            <% @service.errors.each do |attr,msg|  %>
-            <%#byebug%>
-              <li class="custome-error"><%= msg %></li>
-            <% end %>
-            </ul>
-          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :name, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-8">
+        <%= f.text_field :name, :class => 'form-control', style: "width: 80%;" %>
+        <label for="service_name" class="error-title error"><%#=f.error_span(:name) %></label>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :city_id, :class => 'control-label col-lg-2' %>
+      <div class="col-lg-8">
+        <div class="multiple-select">
+          <% @cities.each do |city| %>
+            <label class="li"><%= check_box_tag :city_ids, city.id, @service.cities.include?(city), :name => 'service[city_ids][]' %> 
+              <u><%= city.name %></u>
+            </label><br />
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :name, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :name, :class => 'form-control' %>
-      <label for="service_name" class="error-title error"><%#=f.error_span(:name) %></label>
-    </div>
-    <%#=f.error_span(:name) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :city_id, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <div class="multiple-select">
-      <% @cities.each do |city| %>
-        <label class="li"><%= check_box_tag :city_ids, city.id, @service.cities.include?(city), :name => 'service[city_ids][]' %> 
-          <u><%= city.name %></u>
-        </label><br />
-      <% end %>
-      </div>
-      <div class="col-lg-10">
-        <label for="service[city_ids][]" class="error-title error"><%#=f.error_span(:city_id) %></label>
+        <div class="col-lg-8">
+          <label for="service[city_ids][]" class="error-title error"></label>
+        </div>
       </div>
     </div>
-    <%#=f.error_span(:city_id) %>
-  </div>
 
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_services_path, :class => 'btn btn-default' %>
+    <div class="form-group">
+      <%= f.label :photo, "Photo", class: 'control-label col-lg-2' %>
+      <div class="col-lg-8"> 
+        <%= f.file_field :photo %>
+      </div>
     </div>
-  </div>
-  <script type="text/javascript">
-    <%= render "common/validate.js" %>
-  </script>
-<% end %>
+
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-8">
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")), admin_services_path, :class => 'btn btn-default' %>
+      </div>
+    </div>
+    <script type="text/javascript">
+      <%= render "common/validate.js" %>
+    </script>
+  <% end %>
+</div>

@@ -48,10 +48,7 @@ Rails.application.routes.draw do
       end
     end
   end
-   get 'admin/partners', :to => 'admin/users#partners'
-   get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
 
-  
   namespace :partner do
     resource :portfolio do
       collection do
@@ -73,5 +70,10 @@ Rails.application.routes.draw do
 	get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
   get 'get_states_and_cities', to: 'addresses#get_states_and_cities'
+  get 'admin/partners', :to => 'admin/users#partners'
+  get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
+  get 'admin/partner/:id', :to => 'admin/users#partner_details', :as => 'partner_details'
+  get 'admin/service-requests', :to => 'admin/users#service_requests_list', :as => 'service_requests_list'
+
 
 end

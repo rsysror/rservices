@@ -20,7 +20,7 @@ class ServiceRequest < ApplicationRecord
 	end
 
 	def generate_service_request_number
-		self.service_request_number = "SR-#{SecureRandom.hex(10)}"
+		self.service_request_number = "SR-#{SecureRandom.hex(10)}" unless  self.service_request_number.present?
 	end
 
 	def full_address

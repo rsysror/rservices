@@ -42,7 +42,9 @@ Rails.application.routes.draw do
     resources :users do
       member do
         get 'user_service_request'
-        get 'update_service_status'        
+        get 'update_service_status'
+        put 'manage_portfolio_status'
+
       end
     end
   end

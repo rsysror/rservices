@@ -56,6 +56,12 @@ class Admin::UsersController < AdminController
 		@portfolio = @user.portfolio 
 	end
 
+  def manage_portfolio_status
+    @users = User.includes(:addresses).with_role(:partner)
+    @user = User.find(params[:id])
+    @portfolio = @user.portfolio
+    @portfolio.update_attribute(:status, params[:value])
+  end
 
 
 	#update status of users service request
@@ -70,7 +76,6 @@ class Admin::UsersController < AdminController
     end	
   end
 
-
 	private
 
 	def get_status_value
@@ -78,5 +83,4 @@ class Admin::UsersController < AdminController
 		@service_request = ServiceRequest.find(params[:request_id])
 	end
 	
-
 end

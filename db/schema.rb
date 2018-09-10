@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_055143) do
     t.datetime "updated_at", null: false
     t.json "images"
     t.json "documents"
+    t.boolean "status", default: false
   end
 
   create_table "roles", force: :cascade do |t|

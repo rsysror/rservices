@@ -1,5 +1,5 @@
 <% if portfolio.images.present? %>
-  <%= render partial: 'display_photos', :locals => { :portfolio => portfolio } %>
+  <%= render partial: '/partner/portfolios/display_photos', :locals => { :portfolio => portfolio } %>
 <% end %>
 
 <div id="upload_photo" class="modal fade" role="dialog">

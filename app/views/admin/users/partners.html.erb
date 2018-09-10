@@ -32,7 +32,7 @@
           <td><%=get_rating_data(user)%></td>
           <td>
             <%= link_to t('.show', :default => t("helpers.links.show")),
-                        admin_user_path(user), :class => 'btn btn-default btn-xs' %>
+                        partner_details_path(user), :class => 'btn btn-default btn-xs' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                         admin_user_path(user),
                         :method => :delete,

@@ -9,6 +9,12 @@ module AdminHelper
   	(portfolio.feedbacks.pluck(:rating).sum/portfolio.feedbacks.count)
   end
 
- 
+ 	def get_stats object
+ 		if object == "Service"
+ 	 		object.constantize.get_services.count
+ 	 	else
+ 	 		object.constantize.count
+ 	 	end
+ 	end
 
 end	

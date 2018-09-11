@@ -31,5 +31,19 @@ class ServiceRequest < ApplicationRecord
 		address.flat_number
 	end
 
+  def google_address?
+    unless address.google_address.blank?
+      true
+    else
+      false
+    end
+  end
+
+  def google_address
+    if google_address?
+      address.google_address
+    end
+  end
+
 end
 

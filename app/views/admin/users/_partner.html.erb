@@ -7,7 +7,7 @@
     <td>
       <%= link_to t('.show', :default => t("helpers.links.show")), partner_details_path(user), :class => 'btn btn-primary btn-xs' %>
       <%= link_to "#{user.portfolio.reverse_portfolio_status}", manage_portfolio_status_admin_user_path(user, :value => !user.portfolio.status),  method: :put, :remote => true, :class => 'btn btn-primary btn-xs'  %>
-      <%= link_to "Service requests", partner_service_request_path(user),  :class => 'btn btn-primary btn-xs'  %>
+      <%= link_to "Service Requests", partner_service_request_path(user),  :class => 'btn btn-primary btn-xs'  %>
     </td>
   </tr>
 <% end %>

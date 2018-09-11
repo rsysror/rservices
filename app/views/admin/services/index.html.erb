@@ -1,19 +1,18 @@
+<hr>
+<hr>
+<hr>
 <%- model_class = Service -%>
 <div class="container">
-  <div>
-    <div class="row">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.Back', :default => t("helpers.links.back")), admin_root_path, :class => 'btn btn-primary', style: "color:#fff" %>
+    </div>
+    <div class="col-md-xl col-md-offset-10">
       <div class="add-new">
-        <%= link_to t('.Back', :default => t("helpers.links.back")), admin_root_path, :class => 'btn btn-primary', style: "color:#fff" %>
-      </div>
-      <div class="col-md-xl col-md-offset-10">
-        <div class="add-new">
-          <%= link_to t('.New', :default => t("helpers.links.new")), new_admin_service_path, :class => 'btn btn-primary', style: "color:#fff" %>
-        </div>
+        <%= link_to t('.New', :default => t("helpers.links.new")), new_admin_service_path, :class => 'btn btn-primary', style: "color:#fff" %>
       </div>
     </div>
-    <hr>
   </div>
-
   <div class="panel panel-primary"> 
     <div class="panel-heading">
       <h3>Service List</h3>

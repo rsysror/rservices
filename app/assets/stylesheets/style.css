@@ -7359,6 +7359,7 @@ p.free {
 .add-new {
   float: left;
   width: 30%;
+  margin-bottom: 15px;
 }
 
 .header-container {

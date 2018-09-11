@@ -3,7 +3,6 @@ class AddressesController < ApplicationController
   before_action :find_address, only: [:edit, :update]
 
 	def new
-    # byebug
 		if params[:address].present?
       @address = Location.near(params[:search], 50, :order => :distance)
     else

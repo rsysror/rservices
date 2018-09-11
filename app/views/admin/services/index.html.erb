@@ -1,19 +1,18 @@
+<hr>
+<hr>
+<hr>
 <%- model_class = Service -%>
 <div class="container">
-  <div>
-    <div class="row">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.Back', :default => t("helpers.links.back")), admin_root_path, :class => 'btn btn-primary', style: "color:#fff" %>
+    </div>
+    <div class="col-md-xl col-md-offset-10">
       <div class="add-new">
-        <%= link_to t('.Back', :default => t("helpers.links.back")), admin_root_path, :class => 'btn btn-primary', style: "color:#fff" %>
-      </div>
-      <div class="col-md-xl col-md-offset-10">
-        <div class="add-new">
-          <%= link_to t('.New', :default => t("helpers.links.new")), new_admin_service_path, :class => 'btn btn-primary', style: "color:#fff" %>
-        </div>
+        <%= link_to t('.New', :default => t("helpers.links.new")), new_admin_service_path, :class => 'btn btn-primary', style: "color:#fff" %>
       </div>
     </div>
-    <hr>
   </div>
-
   <div class="panel panel-primary"> 
     <div class="panel-heading">
       <h3>Service List</h3>
@@ -23,7 +22,6 @@
         <thead>
           <tr>
             <th><%= model_class.human_attribute_name(:name) %></th>
-            <th>Price/Hour</th>
             <th><%= model_class.human_attribute_name(:city) %></th>
             <th><%= model_class.human_attribute_name(:created_at) %></th>
             <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -33,8 +31,7 @@
           <% @services.each do |service| %>
             <tr>
               <td><%= service.name %></td>
-              <td><%= number_to_currency(service.price) %></td>
-              <td style="width: 20%;"><%= service.cities.collect(&:name).join(', ') %></td>
+              <td><%= service.cities.collect(&:name).join(', ') %></td>
               <td><%=l service.created_at %></td>
               <td>
                 <%= link_to t('.show', :default => t("helpers.links.show")), admin_service_path(service), :class => 'btn btn-primary btn-xs' %>

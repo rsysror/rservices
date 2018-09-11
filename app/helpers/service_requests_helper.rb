@@ -29,9 +29,5 @@ module ServiceRequestsHelper
     	(link_to t('.cancel', :default => t("helpers.links.cancel")),cancel_service_request_service_request_path(request),:method => :patch,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger')
     end
 	end
-
-	def add_rating_html_block request
-		render partial: "show_rating" , locals: {request: request.feedback } 
-	end
 	
 end

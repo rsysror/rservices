@@ -2,7 +2,6 @@
   %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     = csrf_meta_tags
     = csp_meta_tag
-    %script{:src => "https://maps.googleapis.com/maps/api/js", :type => "text/javascript"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
@@ -35,5 +34,4 @@
       = render :partial => "shared/admin_left"
     - else
       = render :partial => "shared/partner_left"
-
     = yield   

@@ -9,43 +9,50 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-3">
-          <div class="ht_30"><%= image_tag(@portfolio.avatar.url, class: 'img_style') %></div>
-          <div class="info_detail_left ht_40">
-            <table class="table table-striped table-hover margin_top_20">
-              <tbody>
-                <tr>
-                  <td colspan="2"><h4 class="text-center"><%= @portfolio.user.full_name %></h4></td>
-                </tr>
-                <tr>
-                  <td class="wd-50">Gender</td>
-                  <td><%= @portfolio.gender %></td>
-                </tr>
-                <tr>
-                  <td class="wd-60">Status</td>
-                  <td><span class="label label-success"><%= @portfolio.portfolio_status %></span></td>
-                </tr>
-                <tr>
-                  <td class="wd-50">User Rating</td>
-                  <td> <%=show_average_rating(@portfolio)%></td>
-                </tr>
-                <tr>
-                  <td class="wd-50">Member Since</td>
-                  <td><%= @portfolio.user.created_at.strftime('%v') %></td>
-                </tr>
-              </tbody>
-            </table>
+          <div>
+            <div>
+              <div class="ht_30"><%= image_tag(@portfolio.avatar.url, class: 'img_style') %></div>
+              <div class="info_detail_left ht_40">
+                <table class="table table-striped table-hover margin_top_20">
+                  <tbody>
+                    <tr>
+                      <td colspan="2"><h4 class="text-center"><%= @portfolio.user.full_name %></h4></td>
+                    </tr>
+                    <tr>
+                      <td class="wd-50">Gender</td>
+                      <td><%= @portfolio.gender %></td>
+                    </tr>
+                    <tr>
+                      <td class="wd-60">Status</td>
+                      <td><span class="label label-success">Active</span></td>
+                    </tr>
+                    <tr>
+                      <td class="wd-50">User Rating</td>
+                      <td> <%=show_average_rating(@portfolio)%></td>
+                    </tr>
+                    <tr>
+                      <td class="wd-50">Member Since</td>
+                      <td><%= @portfolio.user.created_at.strftime('%v') %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
+
         </div>
         <div class="col-sm-9">
-          <div class="about_bg_clr ht_15">
-            <h3 class="text-center">About</h3>
-            <div class="margin_10"><%= @portfolio.about %></div>
-          </div>
-          <div class="ht_5">
-            <%= link_to "Add Photo", '#upload_photo', "data-toggle" => "modal", class: 'btn btn-primary', style: "margin: 5px;"  %>
-          </div>
-          <div class='ht_50 scroll'>
-            <%= render partial: 'photo_details', :locals => { :portfolio => @portfolio } %>
+          <div>
+            <div class="about_bg_clr ht_15">
+              <h3 class="text-center">About</h3>
+              <div class="margin_10"><%= @portfolio.about %></div>
+            </div>
+            <div class="ht_5">
+              <%= link_to "Add Photo", '#upload_photo', "data-toggle" => "modal", class: 'btn btn-primary', style: "margin: 5px;"  %>
+            </div>
+            <div class='ht_50 scroll'>
+              <%= render partial: 'photo_details', :locals => { :portfolio => @portfolio } %>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,8 @@
+$('.loading').hide();
+<% if @services.present? %>
+  $('#services_data').html('');
+  $('#services_data').html("<%= escape_javascript render(:partial => 'services_list', :locals => { :services => @services }) %>");
+<% else %>
+  $('#services_data').html('');
+  alert("No service is available. Please select another city and proceed further.");
+<% end %>

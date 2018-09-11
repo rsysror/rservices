@@ -19,14 +19,7 @@
 
 
 $(function(){
-	$('select').change(function () {
-    $('.loading').show();
-	})
+  $('select').change(function () {
+  $('.loading').show();
+  })
 })
-
-
-
-
-		
-
-

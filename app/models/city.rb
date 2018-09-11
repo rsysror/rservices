@@ -5,7 +5,9 @@ class City < ApplicationRecord
   has_many :portfolio
 	
   #scope methods
-	scope :details, proc{ |state_id| self.where(:state_id => state_id).order(name: :asc) if state_id.present? }
+	scope :details, proc{ |state_id| self.where(:state_id => state_id).order(name: :desc) if state_id.present? }
+  
+  scope :ordered, -> {order('name')}
 
 
 

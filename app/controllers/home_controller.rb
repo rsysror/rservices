@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-	before_action :authenticate_user!, except: [:index]
+	before_action :authenticate_user!, except: [:index, :get_services_by_city]
 	
   def index
     # @services = Service.get_services.limit(10)

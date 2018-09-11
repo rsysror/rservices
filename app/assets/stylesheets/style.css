@@ -863,7 +863,7 @@ h6.sub {
 }
 /*-- /tabs --*/
 .featured_section_w3l {
-      padding: 5em 0 22em 0;
+      padding: 5em 0 4em 0;
 }
 .tab-content>.tab-pane {
     padding-top: 50px;
@@ -973,7 +973,7 @@ border:none!important;
     border: 1px solid #E7E7E8;
 }
 .card:nth-child(3) {
-  margin-right:0;
+  /*margin-right:0;*/
 }
 
 /* card fronts and backs */
@@ -5186,7 +5186,7 @@ p.free {
         padding: 5em 0;
     }
     .featured_section_w3l {
-        padding: 3em 0 22em 0;
+        padding: 3em 0 4em 0;
     }
     .tips,.on-road-price,.single,.search-car,.typo,.sell-car,.loacte_dealer,.used-car,.car-loan,#gallery,.privacy,.insurance-agile-its {
         padding: 4em 0;
@@ -5495,7 +5495,7 @@ p.free {
         font-size: 0.87em;
     }
     .featured_section_w3l {
-        padding: 3em 0 19em 0;
+        padding: 3em 0 4em 0;
     }
     .new-car-used {
         margin-top: 2em;

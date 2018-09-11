@@ -1,7 +1,7 @@
 class ServiceRequest < ApplicationRecord
 	
+	#active record Associations
   has_one :feedback
-
 	belongs_to :user
 	belongs_to :address
 	belongs_to :service
@@ -9,9 +9,13 @@ class ServiceRequest < ApplicationRecord
 	belongs_to :portfolio
 	belongs_to :time_slot
 
-	
+  #scope method
+	scope :ordered, -> {order('updated_at DESC')}
+
+	#delegates to access address columns from service_request object
 	delegate :flat_number,:street_name,:pin_code,:city, :to => :address
 
+	#callback
 	before_validation :set_request_status, :generate_service_request_number
 
   

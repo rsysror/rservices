@@ -2,26 +2,22 @@ class Admin::UsersController < AdminController
 	load_and_authorize_resource
 	before_action :get_users_details, only: [:show]
 	before_action  :get_status_value, only: [:update_service_status]
+	before_action :get_user_detail, only: [:user_service_request,:partner_service_request, :destroy, :partner_details]
 	layout 'admin'
-  # GET /users
+  
+
   def index
     @users = User.includes(:addresses).with_role(:user)
   end
-  # GET /users/new
-  def new
-    
-  end
-  # Method to display the details of users
-	def show
+  
+  def new ; end
 
-	end	
+	def show ; end 
 
-	# DELETE /User/1
-  # DELETE /user/1.json
   def destroy
-  	ridirect_url = (@user.has_role? :partner) ? admin_partners_url : admin_users_url
+  	redirect_url = (@user.has_role? :partner) ? admin_partners_path : admin_users_path
  	 	if @user.destroy
-    	redirect_to ridirect_url, notice: 'User is successfully destroyed.' 
+    	redirect_to redirect_url, notice: 'User is successfully destroyed.' 
   	end
   end
 
@@ -32,11 +28,11 @@ class Admin::UsersController < AdminController
 	end	
 	# Method to display the service request list of user
 	def user_service_request
-		@service_requests = User.find(params[:id]).service_requests.includes(:service,:address,:status, :portfolio, :time_slot).paginate(:page => params[:page], :per_page => 5)
+		@service_requests = @user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => params[:page], :per_page => 5)
 	end	
 	# Method to display the partner's service request list of user
 	def partner_service_request
-		@service_requests = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).paginate(:page => params[:page], :per_page => 5)
+		@service_requests = @user.portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => params[:page], :per_page => 5)
 	end	
 	# Method to display the partner's service request list of user
 	def service_requests_list
@@ -44,21 +40,13 @@ class Admin::UsersController < AdminController
 
 	end	
 
-	# Method to find the details of all registerd user 
-	def get_users_details
-		@user = User.includes(:addresses).find(params[:id])		
-	end
-
 	# Method to find the details of all registerd partner bassed on ID
 	def partner_details
-		#@user = User.find(params[:id]).portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot)	
-		@user = User.find(params[:id])
 		@portfolio = @user.portfolio 
 	end
 
   def manage_portfolio_status
     @users = User.includes(:addresses).with_role(:partner)
-    @user = User.find(params[:id])
     @portfolio = @user.portfolio
     @portfolio.update_attribute(:status, params[:value])
   end
@@ -69,10 +57,10 @@ class Admin::UsersController < AdminController
 		if(@service_request and @status)
 			 @service_request.update_attributes(status_id: @status.id)
 			flash[:success] = "Service request accepted "
-			redirect_to admin_users_path
+			redirect_to admin_partners_path
 		else
 			flash[:error] = "Service request not found!"
-			redirect_to admin_users_path
+			redirect_to admin_partners_path
     end	
   end
 
@@ -82,5 +70,14 @@ class Admin::UsersController < AdminController
 		@status = Status.where(name: params[:status]).last
 		@service_request = ServiceRequest.find(params[:request_id])
 	end
+
+	def get_user_detail
+		@user = User.find(params[:id])
+	end
+
+	def get_users_details
+		@user = User.includes(:addresses).find(params[:id])
+	end
+
 	
 end

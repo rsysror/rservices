@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :addresses
   has_many :feedbacks
 
+
   def admin?
     has_role? :admin
   end

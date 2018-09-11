@@ -13,7 +13,6 @@
       </div>
     </div>
   </div>
-  <hr>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3>Sub Services List</h3>
@@ -23,6 +22,7 @@
         <thead>
           <tr>
             <th><%= model_class.human_attribute_name(:name) %></th>
+            <th>Price/Hour</th>
             <th><%= model_class.human_attribute_name(:created_at) %></th>
             <th><%=t '.actions', :default => t("helpers.actions") %></th>
           </tr>
@@ -31,6 +31,7 @@
           <% @services.each do |service| %>
             <tr>
               <td><%= service.try(:name).titleize %></td>
+              <td><%= sub_service_price(service) %></td>
               <td><%=l service.created_at %></td>
               <td>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_sub_services_admin_service_path(service), :class => 'btn btn-primary btn-xs' %>

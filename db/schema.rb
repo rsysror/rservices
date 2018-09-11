@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_10_055143) do
+ActiveRecord::Schema.define(version: 2018_09_10_125230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_055143) do
     t.datetime "updated_at", null: false
     t.json "images"
     t.json "documents"
+    t.boolean "status", default: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -108,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_055143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.decimal "price", precision: 15, scale: 10
   end
 
   create_table "states", force: :cascade do |t|
@@ -119,6 +121,13 @@ ActiveRecord::Schema.define(version: 2018_09_10_055143) do
 
   create_table "statuses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

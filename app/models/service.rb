@@ -26,5 +26,5 @@ class Service < ApplicationRecord
   #     all
   #   end
   # end
-	
+  
 end

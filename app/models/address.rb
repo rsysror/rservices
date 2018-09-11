@@ -1,8 +1,8 @@
 class Address < ApplicationRecord
-    has_many :service_requests, dependent: :destroy
-    belongs_to :user
+  has_many :service_requests, dependent: :destroy
+  belongs_to :user
 
-    belongs_to :city, optional: true
+  belongs_to :city, optional: true
 
   # Validate form on server
   validates :flat_number, presence: {message: 'Flat no is required!'}, if: :latitude_exists?
@@ -15,13 +15,12 @@ class Address < ApplicationRecord
 
 
   geocoded_by :address # address is an attribute of MyModel
-  after_validation :geocode, :if => :address_changed?
+  after_validation :geocode
   
   before_validation :reverse_geocode
 
 
   reverse_geocoded_by :latitude, :longitude do |address,results|
-
     if geo_address = results.first
       state = State.where(:name => geo_address.state).first
       if state

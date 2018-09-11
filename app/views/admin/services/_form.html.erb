@@ -4,7 +4,6 @@
 <div class="panel-body">
   <%= form_for [:admin, @service], :html => { :class => "form-horizontal service" } do |f| %>
     <div class="form-group">
-      <!-- col-md-6 col-md-offset-3 -->
       <div class="col-lg-10 col-lg-offset-2">
         <% if @service.errors.any? %>
           <div id="error_expl" class="panel panel-danger">
@@ -26,7 +25,7 @@
       <%= f.label :name, :class => 'control-label col-lg-2' %>
       <div class="col-lg-8">
         <%= f.text_field :name, :class => 'form-control', style: "width: 80%;" %>
-        <label for="service_name" class="error-title error"><%#=f.error_span(:name) %></label>
+        <label for="service_name" class="error-title error"></label>
       </div>
     </div>
     <div class="form-group">
@@ -44,18 +43,18 @@
         </div>
       </div>
     </div>
-
     <div class="form-group">
       <%= f.label :photo, "Photo", class: 'control-label col-lg-2' %>
       <div class="col-lg-8"> 
         <%= f.file_field :photo %>
+        <label for="service_photo" class="error-title error"></label>
       </div>
     </div>
 
     <div class="form-group">
       <div class="col-lg-offset-2 col-lg-8">
         <%= f.submit nil, :class => 'btn btn-primary' %>
-        <%= link_to t('.cancel', :default => t("helpers.links.cancel")), admin_services_path, :class => 'btn btn-default' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")), admin_services_path, :class => 'btn btn-danger' %>
       </div>
     </div>
     <script type="text/javascript">

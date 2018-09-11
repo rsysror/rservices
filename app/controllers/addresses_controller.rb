@@ -31,11 +31,10 @@ class AddressesController < ApplicationController
 	end
 
 	def create
-    # byebug
-    if params[:address]
+    if params[:address].present?
       @address = current_user.addresses.create(address_params)
     else
-  		@address = current_user.addresses.create(address_params)
+ 		  @address = current_user.addresses.new(address_params)
     end
     if @address.save
       redirect_to '/dashboard'

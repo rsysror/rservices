@@ -9,4 +9,6 @@ class Status < ApplicationRecord
   scope :completed, -> { where(name: 'Completed') }
   scope :incompleted, -> { where(name: 'InCompleted') }
 
+  ACTION =["accepted", "rejected", "pending", "inprogress", "completed", "incompleted" ] 
+
 end

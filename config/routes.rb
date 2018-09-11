@@ -67,6 +67,7 @@ Rails.application.routes.draw do
 
 
   #Singular routes for few methods
+  get 'get_services_by_city', to: 'home#get_services_by_city'
 	get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
   get 'get_states_and_cities', to: 'addresses#get_states_and_cities'

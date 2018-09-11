@@ -16,7 +16,7 @@ class Portfolio < ApplicationRecord
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def portfolio_with_user_name_and_about
-    "#{user.email}"
+    "#{user.try(:email)}"
   end
 
   def user_email 
@@ -28,7 +28,7 @@ class Portfolio < ApplicationRecord
   end
 
   def reverse_portfolio_status
-    status ? "Activete" : "De Activete"
+    status ? "De Activete" : "Activete" 
   end
 
   def available_time_slots

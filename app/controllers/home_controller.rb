@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-  	@cities = City.details
+  	@cities = City.ordered
   end
 
   def get_services_by_city

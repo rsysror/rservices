@@ -28,7 +28,7 @@ $(document).ready(function() {
 		}, function(results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				if (results[0]) {
-					setField(results[0])
+         setSerach(results[0], "click")
 				}
 			}
 		});
@@ -37,18 +37,21 @@ $(document).ready(function() {
   var searchBox = new google.maps.places.SearchBox(document.getElementById('geocomplete'))
   google.maps.event.addListener(searchBox, 'places_changed', function() {
   var results = searchBox.getPlaces()[0];
-    setField(results)
+    setSerach(results, "type")
   });
 
-
-  function setField(results)
-  {
+  function setSerach(results, type={}){
     var geocomplete = $('#geocomplete');
     var address = $('#geocomplete1');
     geocomplete.val(results.formatted_address);
-    a = results
-    var l = results.address_components.length - 1 ;
-    address.val(results.address_components[l].long_name)
+    if(type ==="click")
+    {
+      var l = results.address_components.length - 1 ;
+      address.val(results.address_components[l].long_name)
+    }else{
+      address.val(results.address_components[0].long_name)
+    }
+
   }
 
 });

@@ -10,7 +10,7 @@ class ServiceRequestsController < ApplicationController
    if service_request
       UserMailer.service_request_generate(current_user,service_request, 'user').deliver_now
       UserMailer.service_request_generate(current_user,service_request, 'partner').deliver_now
-      redirect_to '/dashboard'
+      redirect_to '/service_requests'
    end
   end
 

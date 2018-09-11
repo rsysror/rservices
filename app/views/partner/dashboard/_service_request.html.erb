@@ -3,7 +3,12 @@
     <td><%=request.service.try(:created_at).strftime('%Y-%m-%d %H:%M:%S') %></td>
     <td><%=request.service.try(:name) %></td>
     <td><%=request.user.full_name %></td>
+    <td><%=request.user.phone %></td>
+    <% if request.google_address? %>
+    <td><%=request.google_address %></td>
+    <% else %>
     <td><%=request.address.complete_address %></td>
+    <% end %>
     <td><%=request.status.try(:name) %></td>
     <td><%=partner_action(request) %></td>
   </tr>

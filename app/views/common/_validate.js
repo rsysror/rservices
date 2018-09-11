@@ -67,10 +67,10 @@ $("#new_service").validate({
       maxlength: 115,
       minlength: 3
     },
-    "service[price]":{
+    "service[city_ids][]":{
       required: true
     },
-    "service[city_ids][]":{
+    "service[photo]":{
       required: true
     }
   },
@@ -81,18 +81,18 @@ $("#new_service").validate({
       maxlength: "Service name must be less than 115 characters.",
       minlength: "Service name must be more than 3 characters."
     },
-    "service[price]":{
-      required: "Price is required!"
-    },
     "service[city_ids][]":{
       required: "At leaset 1 city should be selected!",
+    },
+    "service[photo]":{
+      required: "Please upload a photo!",
     }
   }
 });
 
 
 // Validating 'Sub Service' on cient side.
-$("#sub_service_form").validate({
+$(".sub_service").validate({
   //error place
   errorPlacement: function (error, element) {
     error.insertBefore(element);
@@ -104,6 +104,9 @@ $("#sub_service_form").validate({
       required: true,
       maxlength: 115,
       minlength: 3
+    },
+    "service[price]":{
+      required: true
     }
   },
   // error messages
@@ -112,6 +115,9 @@ $("#sub_service_form").validate({
       required: "Sub service name is required!",
       maxlength: "Sub service name must be less than 115 characters.",
       minlength: "Sub service name must be more than 3 characters."
+    },
+    "service[price]":{
+      required: "Price is required!"
     }
   }
 });

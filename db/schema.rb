@@ -125,6 +125,13 @@ ActiveRecord::Schema.define(version: 2018_09_10_125230) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sub_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "time_slots", force: :cascade do |t|
     t.string "start_time"
     t.string "end_time"

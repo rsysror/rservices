@@ -13,7 +13,7 @@
 				<th>Time Slot</th>
 				<th>Service Request Number</th>
 				<th>Status</th>
-				<th>Action</th>
+				<th colspan="2">Action</th>
 			</thead>
 			<tbody>
 				<% @service_requests.each do |request|%>
@@ -24,7 +24,7 @@
 						<td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
 						<td><%=request.service_request_number %></td>
 						<td><%=request.status.try(:name) %></td>
-						<td>
+						<td colspan="2"> 
 							<%=admin_status_action(request)%>       
 	          </td>
 					</tr>

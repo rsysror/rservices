@@ -23,7 +23,7 @@
         .col-sm-3
           %p
             %b Rating
-            = render :partial => "show_rating", locals: {request: @service_request, score: @service_request.feedback.rating }
+            = render :partial => "shared/show_rating", locals: {request: @service_request, score: @service_request.feedback.rating }
         .col-sm-3
           %p
             %b Remarks:

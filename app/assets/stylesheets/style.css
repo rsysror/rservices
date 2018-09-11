@@ -7331,7 +7331,7 @@ p.free {
 
 .multiple-select {
   /*float: left;*/
-  width: 590px;
+  width: 675px;
   height: 220px;  
   display: block;
   overflow: auto;
@@ -7393,6 +7393,15 @@ p.free {
     list-style: none;
     color: red;
 }
+
+.container {
+  width: 1600px!important;
+  /*margin-right: auto!important; */
+  /*margin-left: auto!important;*/
+  padding-left: 170px!important; 
+  /*padding-right: 15px!important;*/
+}
+
 /*for google map*/
 a {
   color: #4183C4;

@@ -1,6 +1,7 @@
 <hr>
 <hr>
-<div class="container" id="page-wrapper">
+<hr>
+<div class="container">
   <div class="row">
     <div class="add-new">
       <%= link_to t('.back', :default => t("helpers.links.back")),admin_users_path, :class => 'btn btn-primary'  %>
@@ -25,7 +26,7 @@
           <% @service_requests.each do |request|%>
             <tr>
               <td><%=request.service.try(:name) %></td>
-              <td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
+              <td><%=request.address.complete_address %></td>
               <td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>
               <td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
               <td><%=request.service_request_number %></td>

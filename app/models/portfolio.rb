@@ -28,7 +28,7 @@ class Portfolio < ApplicationRecord
   end
 
   def reverse_portfolio_status
-    status ? "De Activete" : "Activete" 
+    status ? "Deactivate" : "Activate" 
   end
 
   def available_time_slots

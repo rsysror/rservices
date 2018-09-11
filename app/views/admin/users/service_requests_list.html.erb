@@ -31,7 +31,7 @@
               <td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
               <td><%=request.service_request_number %></td>
               <td><%=request.status.try(:name) %></td>
-              <td><%=get_rating_data(request.portfolio.user)%>  </td>
+              <td><%=get_service_request_rating(request)%></td>
             </tr>
           <% end %> 
         </tbody>

@@ -102,7 +102,7 @@ class Admin::ServicesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name,:parent_id, :photo, :price, :city_ids=> [])
+      params.require(:service).permit(:name,:parent_id, :price, :photo, :city_ids=> [])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def sub_service_params

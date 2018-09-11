@@ -5909,14 +5909,16 @@ p.free {
         padding: 15px 0px;
             font-size: 15px;
     }
-    .card {
-        position: relative;
-        float: left;
-        padding-bottom:80%;
-        width: 60%;
-        text-align: center;
-        margin-left: 20%;
+    
+   .card {
+      position: relative;
+      float: left;
+      padding-bottom:80%;
+      width: 60%;
+      text-align: center;
+      margin-left: 20%;
     }
+
     .card:nth-child(3) {
         padding-bottom: 37%;
     }
@@ -7372,7 +7374,7 @@ p.free {
 .radio_input{margin-left: 20px!important;margin-bottom: 10px!important;}
 
 .form_input{
-  width: 285px!important;
+  width: 400px!important;
   height: 35px!important;
   margin-right: 15px;
   padding-left: 10px;
@@ -7380,7 +7382,7 @@ p.free {
 }
 
 .text_area {
-  width: 285px!important;
+  width: 400px!important;
   height: 65px!important;
 }
 .error-title {

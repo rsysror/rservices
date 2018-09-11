@@ -74,7 +74,7 @@ class AddressesController < ApplicationController
 
   #look better possibilities to merge extra params which is not included in form
 	def address_params
-    params.require(:address).permit(:flat_number,:street_name,:landmark, :user_id, :type,:pin_code, :city_id, :address)
+    params.require(:address).permit(:flat_number,:street_name,:landmark, :user_id, :type,:pin_code, :city_id, :address, :google_address)
   end
 
 end

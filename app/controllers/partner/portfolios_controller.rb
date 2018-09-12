@@ -40,7 +40,7 @@ class Partner::PortfoliosController < PartnerController
     portfolio = Portfolio.find_by_id(params[:portfolio][:portfolio_id])
     if params[:portfolio][:images].present?
       portfolio.images += params[:portfolio][:images]
-      portfolio.save!
+      portfolio.save(validate: false)
     end
     redirect_to partner_portfolio_path
   end

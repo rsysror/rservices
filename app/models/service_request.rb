@@ -45,5 +45,9 @@ class ServiceRequest < ApplicationRecord
     end
   end
 
+  def self.get_all_service_requests page
+    where.not(portfolio_id: [nil, ""]).paginate(:page => page, :per_page => 5)
+  end 
+
 end
 

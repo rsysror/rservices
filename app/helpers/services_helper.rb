@@ -14,6 +14,6 @@ module ServicesHelper
   end
 
   def sub_service_price sub_services
-    number_to_currency(sub_services.price).present? ? number_to_currency(sub_services.price) : "$0.00"
+    sub_services.price.present? ? sub_services.price : "0.00"
   end
 end

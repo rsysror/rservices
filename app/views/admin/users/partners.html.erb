@@ -17,8 +17,9 @@
           <tr>
             <th>Name</th>
             <th>City</th>
+            <th>Status</th>
             <th>Created at</th>
-            <th>OverAll Rating</th>
+            <th>Ratings</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -27,5 +28,8 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="pagination">
+    <%=will_paginate @service_requests %>
   </div>
 </div>

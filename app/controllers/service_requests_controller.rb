@@ -2,16 +2,16 @@ class ServiceRequestsController < ApplicationController
    before_action :get_service_request, only: [:edit,:show, :update,:cancel_service_request]
 
   def index
-    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).paginate(:page => params[:page], :per_page => 5)
+    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create
-   service_request =  current_user.service_requests.create(service_request_params)
-   if service_request
+    service_request =  current_user.service_requests.create(service_request_params)
+    if service_request
       UserMailer.service_request_generate(current_user,service_request, 'user').deliver_now
       UserMailer.service_request_generate(current_user,service_request, 'partner').deliver_now
       redirect_to '/service_requests'
-   end
+    end
   end
 
   def edit

@@ -45,7 +45,7 @@
               .huge
                 = get_stats("User")
               %div{:style => "margin-top: 8%;"} Our Users
-        %a{:href => "#"}
+        %a{:href => "/admin/users"}
           .panel-footer
             %span.pull-left View Details
             %span.pull-right
@@ -59,9 +59,9 @@
               %i.fa.fa-support.fa-5x
             .col-xs-9.text-right
               .huge
-                = get_stats('City')
+                = get_stats('ServiceRequest')
               %div{:style => "margin-top: 8%;"} Service in Cities
-        %a{:href => "#"}
+        %a{:href => "/admin/service-requests"}
           .panel-footer
             %span.pull-left View Details
             %span.pull-right

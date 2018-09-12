@@ -24,7 +24,7 @@
             .dropdown
               %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", :style => "height:50px; width:160px;"}
                 %i.fa.fa-user.fa-fw
-                #{get_full_name(current_user)}
+                #{current_user.full_name}
                 %span.caret{ :style => "float: right; margin: 6%;"}
               %ul.dropdown-menu
                 %li

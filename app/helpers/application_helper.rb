@@ -39,4 +39,14 @@ module ApplicationHelper
     end
   end
 
+  def dashboard_link user
+    if current_user.admin?
+      link_to "Admin", admin_services_path
+    elsif current_user.partner?
+      link_to "Partner", partner_portfolio_path
+    elsif current_user.user?
+      link_to "Dashboard", dashboard_path
+    end
+  end
+
 end

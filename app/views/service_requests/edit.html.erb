@@ -1,38 +1,44 @@
-<div class="main-container">
-	<div class="row">
-	<%= link_to t('.Back', :default => t("helpers.links.back")),service_requests_path,:class => 'btn btn-primary' %>
-	</div>
-  <div class="header-container">
-    <div class="panel panel-primary">
-      <div class="panel-heading"><h3>Edit Service Request</h3> </div>
-      <div class="panel-body">
-				<%= form_for (@service_request),  :html => { :class => "form-horizontal service" } do |form| %>
-					<div class="col-sm-2">
-						<%= form.label :service_request_number %>
-						<%= form.text_field :service_request_number , disabled: 'disabled'%>
-					</div>
-					<div class="col-sm-2">
-						<%= form.label :service %>
-  					<%=select_tag "service_selection", options_from_collection_for_select(get_services_list(@service_request), :id, :name,@service_request.service.service.id), :prompt => "Select services",class: 'form-control', data: {remote: true,url: get_services_path,method: 'get'} %>
-					</div>
-					<div class="col-sm-2">
-						<%= form.label :sub_services %>
-  					<%=form.select :service_id, options_from_collection_for_select(get_sub_services_list(@service_request.service_id), :id, :name, @service_request.service_id), :prompt => "Select services",class: 'form-control' %>
-					</div>
-					<div class="col-sm-2">
-						<%= form.label :time_slot %>
-  					<%=form.select :time_slot_id, options_from_collection_for_select(get_available_time_slots(@service_request), :id,:start_time_with_end_time , @service_request.time_slot_id), :prompt => "Select services",class: 'form-control' %>
-					</div>
-					<div class="row">
-						<%= render :partial => 'listing_address', :locals => { :addresses => @addresses, header: false } %>
-					</div>
-					<div class="row">
-						<div class="col-sm-2">
-							<%=form.submit "Update",class: "btn btn-primary navbar-text" %>
-						</div>
-					</div>
-				<% end %>
-			</div>
-		</div>
-	</div>
-</div>	
+<hr>
+<hr>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.Back', :default => t("helpers.links.back")),service_requests_path,:class => 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Edit Service Request</h3>
+    </div>
+    <div class="panel-body">
+      <%= form_for (@service_request),  :html => { :class => "form-horizontal service" } do |form| %>
+        <div class="col-sm-2">
+          <%= form.label :service_request_number %>
+          <%= form.text_field :service_request_number , disabled: 'disabled'%>
+        </div>
+        <div class="col-sm-2">
+          <%= form.label :service %>
+          <%=select_tag "service_selection", options_from_collection_for_select(get_services_list(@service_request), :id, :name,@service_request.service.service.id), :prompt => "Select services",class: 'form-control', data: {remote: true,url: get_services_path,method: 'get'} %>
+        </div>
+        <div class="col-sm-2">
+          <%= form.label :sub_services %>
+          <%=form.select :service_id, options_from_collection_for_select(get_sub_services_list(@service_request.service_id), :id, :name, @service_request.service_id), :prompt => "Select services",class: 'form-control' %>
+        </div>
+        <div class="col-sm-2">
+          <%= form.label :time_slot %>
+          <%=form.select :time_slot_id, options_from_collection_for_select(get_available_time_slots(@service_request), :id,:start_time_with_end_time , @service_request.time_slot_id), :prompt => "Select services",class: 'form-control' %>
+        </div>
+        &nbsp;
+        <div class="row">
+          <%= render :partial => 'listing_address', :locals => { :addresses => @addresses, header: false } %>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <%=form.submit "Update",class: "btn btn-primary navbar-text" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>  

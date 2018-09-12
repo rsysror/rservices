@@ -7398,11 +7398,10 @@ p.free {
 
 .container {
   width: 1600px!important;
-  /*margin-right: auto!important; */
-  /*margin-left: auto!important;*/
   padding-left: 170px!important; 
-  /*padding-right: 15px!important;*/
 }
+
+.btn_margin{margin-right: 5px;}
 
 /*for google map*/
 a {
@@ -7431,3 +7430,10 @@ a {
 /*for google map end*/
 
 /*-- //responsive --*/
+
+
+
+.nav_header a{
+  color: #ffffff;
+  line-height: 35px;
+}

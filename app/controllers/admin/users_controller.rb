@@ -36,7 +36,7 @@ class Admin::UsersController < AdminController
 	end	
 	# Method to display the partner's service request list of user
 	def service_requests_list
-		@service_requests = ServiceRequest.all.where.not(portfolio_id: [nil, ""]).paginate(:page => params[:page], :per_page => 5)
+		@service_requests = ServiceRequest.where.not(portfolio_id: [nil, ""]).paginate(:page => params[:page], :per_page => 5)
 
 	end	
 

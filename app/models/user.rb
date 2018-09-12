@@ -30,8 +30,8 @@ class User < ApplicationRecord
     [self.first_name, self.last_name].select(&:present?).join(' ').titleize
   end
 
-  def self.get_users role
-    includes(:addresses).with_role(role)
+  def self.get_users role, page
+    includes(:addresses).with_role(role).paginate(:page => page, :per_page => 5)
   end
 
   def self.get_user_details id

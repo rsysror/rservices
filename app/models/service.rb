@@ -18,13 +18,11 @@ class Service < ApplicationRecord
     self.parent_id == nil
   end
 
-  # def self.search(city, service)
-  #   if (city || service)
-  #     where('name LIKE ?', "%#{service}%")
-  #   else
-  #     byebug
-  #     all
-  #   end
-  # end
-  
+  def self.get_all_services page
+    where(:parent_id => nil).order(:id).paginate(:page => page, :per_page => 5)
+  end
+
+  def self.get_all_sub_services parent_id, page 
+    where(:parent_id => parent_id).paginate(:page => page, :per_page => 5)
+  end
 end

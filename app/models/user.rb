@@ -22,6 +22,10 @@ class User < ApplicationRecord
     has_role? :partner
   end
 
+  def user?
+    has_role? :user
+  end
+
   def get_all_address_from_service_city service_request
     self.addresses.where(city_id: service_request.address.city_id)
   end

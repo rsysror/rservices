@@ -7430,3 +7430,10 @@ a {
 /*for google map end*/
 
 /*-- //responsive --*/
+
+
+
+.nav_header a{
+  color: #ffffff;
+  line-height: 35px;
+}

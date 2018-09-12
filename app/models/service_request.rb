@@ -20,11 +20,11 @@ class ServiceRequest < ApplicationRecord
 
   
 	def set_request_status 
-		self.status_id = Status.pending.first.id if status_id.blank?
+		status_id = Status.pending.first.id if status_id.blank?
 	end
 
 	def generate_service_request_number
-		self.service_request_number = "SR-#{SecureRandom.hex(10)}" unless  self.service_request_number.present?
+		service_request_number = "SR-#{SecureRandom.hex(10)}" unless  service_request_number.present?
 	end
 
 	def full_address

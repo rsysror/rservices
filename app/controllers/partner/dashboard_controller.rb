@@ -1,8 +1,6 @@
 class Partner::DashboardController < PartnerController
   before_action :get_service_requests, only: [:index, :accept_reject]
 
-  
-
   def index
   end
 

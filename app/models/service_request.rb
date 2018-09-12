@@ -17,14 +17,17 @@ class ServiceRequest < ApplicationRecord
 
   #callback
   before_validation :set_request_status, :generate_service_request_number
+  
+	def set_request_status 
+		status_id = Status.pending.first.id if status_id.blank?
+	end
 
-
-  def set_request_status 
-      self.status_id = Status.pending.first.id if status_id.blank?
-  end
+	def generate_service_request_number
+		service_request_number = "SR-#{SecureRandom.hex(10)}" unless  service_request_number.present?
+	end
 
   def generate_service_request_number
-      self.service_request_number = "SR-#{SecureRandom.hex(10)}" unless  self.service_request_number.present?
+      service_request_number = "SR-#{SecureRandom.hex(10)}" unless  service_request_number.present?
   end
 
   def full_address
@@ -56,6 +59,10 @@ class ServiceRequest < ApplicationRecord
   def user_name
     user.full_name
   end
+
+  def self.get_all_service_requests page
+    where.not(portfolio_id: [nil, ""]).paginate(:page => page, :per_page => 5)
+  end 
 
 end
 

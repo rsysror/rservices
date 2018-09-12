@@ -4,7 +4,7 @@ class AddressesController < ApplicationController
 
 	def new
 		if params[:address].present?
-      @address = Location.near(params[:search], 50, :order => :distance)
+      @address = Address.near(params[:search], 50, :order => :distance)
     else
       @address = Address.new
     end

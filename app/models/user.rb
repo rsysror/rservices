@@ -30,5 +30,21 @@ class User < ApplicationRecord
     [self.first_name, self.last_name].select(&:present?).join(' ').titleize
   end
 
+  def self.get_users role
+    includes(:addresses).with_role(role)
+  end
+
+  def self.get_user_details id
+    includes(:addresses).find(id)
+  end  
+
+  def get_user_service_requests page
+    service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => page, :per_page => 5)
+  end
+
+  def get_partner_service_requests page
+    portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => page, :per_page => 5)
+  end 
+
   
 end

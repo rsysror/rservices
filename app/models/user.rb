@@ -27,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    [self.first_name, self.last_name].select(&:present?).join(' ').titleize
+    [first_name, last_name].select(&:present?).join(' ').titleize
   end
 
   def self.get_users role
@@ -44,7 +44,10 @@ class User < ApplicationRecord
 
   def get_partner_service_requests page
     portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => page, :per_page => 5)
-  end 
+  end
 
+  def portfolio_status
+    portfolio.portfolio_status
+  end
   
 end

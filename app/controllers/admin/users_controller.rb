@@ -16,9 +16,8 @@ class Admin::UsersController < AdminController
 	def show ; end 
 
   def destroy
-  	redirect_url = (@user.has_role? :partner) ? admin_partners_path : admin_users_path
  	 	if @user.destroy
-    	redirect_to redirect_url, notice: 'User is successfully destroyed.' 
+    	redirect_to @user.partner? ? admin_partners_path : admin_users_path, notice: 'User is successfully destroyed.' 
   	end
   end
 

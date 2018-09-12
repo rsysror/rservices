@@ -24,7 +24,7 @@ class Portfolio < ApplicationRecord
   end
 
   def portfolio_status
-    status ? "Active" : "In Active"
+    status ? "Active" : "InActive"
   end
 
   def reverse_portfolio_status

@@ -25,7 +25,7 @@
         <tbody>
           <% @service_requests.each do |request|%>
             <tr>
-              <td><%=request.service.try(:name) %></td>
+              <td><%=request.service.try(:name).titleize %></td>
               <td><%=request.user_address %></td>
               <td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>
               <td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>

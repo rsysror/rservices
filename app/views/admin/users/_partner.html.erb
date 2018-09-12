@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
   <tr>
-    <td><%= get_full_name(user) %></td>
+    <td><%= user.full_name %></td>
     <td><%=users_city(user) %></td>
     <td><%=l user.created_at %></td>
     <td><%=get_rating_data(user)%></td>

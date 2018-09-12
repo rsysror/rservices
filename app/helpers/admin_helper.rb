@@ -22,7 +22,11 @@ module AdminHelper
   end
 
   def get_service_request_rating request
-    (request.status.name == "Completed" and request.feedback.present?) ?  render_rating_partial(request, request.feedback.rating) : "Not Yet Rated"
+    if request.status.name == "Completed"
+      request.feedback.present? ? render_rating_partial(request, request.feedback.rating) : "Not Yet Rated"
+    else
+      "-"
+    end
   end
 
 end 

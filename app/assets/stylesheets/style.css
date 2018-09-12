@@ -7437,3 +7437,10 @@ a {
   color: #ffffff;
   line-height: 35px;
 }
+
+.custom-alert{
+  margin-top: 3%;
+  z-index:9999;
+  width: 78%;
+  margin-left: 15%;
+}

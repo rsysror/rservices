@@ -9,8 +9,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %div#generic_modal_area
-    - flash.each do |key, value|
-      %div{:class => "alert alert-#{key}"}= value
     #wrapper
       %nav.nav_header.navbar-inverse.navbar-fixed-top
         - if user_signed_in?
@@ -34,4 +32,7 @@
                 Sign In
     - unless params[:action] == "index" && params[:controller] == 'home'
       = render :partial => "shared/user_left" if current_user
+    = render :partial => "shared/flash_message", :locale => {:flash => flash }            
+  
     = yield
+

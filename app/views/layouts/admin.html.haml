@@ -29,7 +29,7 @@
               %li
                 %a{:href => "#"}
                   #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
-
+    = render :partial => "shared/flash_message", :locale => {:flash => flash } 
     - if current_user.admin?
       = render :partial => "shared/admin_left"
     - else

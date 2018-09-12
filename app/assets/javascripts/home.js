@@ -39,7 +39,6 @@ $(document).ready(function() {
       },
       error: function(err)
       { 
-        debugger
         $('#display_errors').css('display','block');
         $("#display_errors").html(err.responseText);
         $('#login_submit').prop('disabled', false);

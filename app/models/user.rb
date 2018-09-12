@@ -22,6 +22,10 @@ class User < ApplicationRecord
     has_role? :partner
   end
 
+  def user?
+    has_role? :user
+  end
+
   def get_all_address_from_service_city service_request
     addresses.where(city_id: service_request.address.city_id)
   end
@@ -30,8 +34,8 @@ class User < ApplicationRecord
     [first_name, last_name].select(&:present?).join(' ').titleize
   end
 
-  def self.get_users role
-    includes(:addresses).with_role(role)
+  def self.get_users role, page
+    includes(:addresses).with_role(role).paginate(:page => page, :per_page => 5)
   end
 
   def self.get_user_details id
@@ -44,7 +48,10 @@ class User < ApplicationRecord
 
   def get_partner_service_requests page
     portfolio.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => page, :per_page => 5)
-  end 
+  end
 
+  def portfolio_status
+    portfolio.portfolio_status
+  end
   
 end

@@ -8,7 +8,7 @@ class Admin::UsersController < AdminController
   
 
   def index
-    @users = User.get_users(:user)
+    @users = User.get_users(:user, @page)
   end
   
   def new ; end
@@ -16,15 +16,14 @@ class Admin::UsersController < AdminController
 	def show ; end 
 
   def destroy
-  	redirect_url = (@user.has_role? :partner) ? admin_partners_path : admin_users_path
  	 	if @user.destroy
-    	redirect_to redirect_url, notice: 'User is successfully destroyed.' 
+    	redirect_to @user.partner? ? admin_partners_path : admin_users_path, notice: 'User is successfully destroyed.' 
   	end
   end
 
 	# Method for partner listing
 	def partners
-		@users = User.get_users(:partner)
+		@users = User.get_users(:partner, @page)
 	end	
 	# Method to display the service request list of user
 	def user_service_request
@@ -49,7 +48,6 @@ class Admin::UsersController < AdminController
     @portfolio = @user.portfolio
     @portfolio.update_attribute(:status, params[:value])
   end
-
 
 	#update status of users service request
 	def update_service_status

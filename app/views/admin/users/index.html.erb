@@ -29,7 +29,6 @@
               <td><%=l user.created_at %></td>
               <td>
                 <%= link_to t('.show', :default => t("helpers.links.show")), admin_user_path(user), :class => 'btn btn-primary btn-xs' %>
-                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),admin_user_path(user),:method => :delete,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger', style: "color:#fff" %>
                 <%= link_to "Service requests", user_service_request_admin_user_path(user), :class => 'btn btn-primary btn-xs' %>
               </td>
             </tr>
@@ -37,5 +36,8 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div class="pagination">
+    <%=will_paginate @service_requests %>
   </div>
 </div>

@@ -37,7 +37,7 @@ class Address < ApplicationRecord
   end
 
   def has_service_requests?
-    self.service_requests.present?
+    service_requests.present?
   end
 
   def complete_address
@@ -50,7 +50,7 @@ class Address < ApplicationRecord
   end
 
   def latitude_exists?
-    self.latitude.nil?
+    latitude.nil?
   end
 
 end

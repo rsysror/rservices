@@ -16,14 +16,16 @@
         <div class="main-container">
           <dl class="dl-horizontal" style="fl">
             <dt><strong>Name:</strong></dt>
-            <dd><%= get_full_name(@user) %></dd>
+            <dd><%= @user.full_name %></dd>
             <dt><strong>Email:</strong></dt>
             <dd><%= @user.email %></dd>
             <dt><strong>Phone:</strong></dt>
-            <dd><%= @user.phone %></dd>
+            <dd><%= @user.phone.present? ? @user.phone : "-" %></dd>
             <dt><strong>Address:</strong></dt>
-            <% @user.addresses.each do |address| %>
-              <dd><%= address.complete_address %></dd>   
+            <% if @user.addresses.present? %>
+            <div class="row">
+              <%=render :partial => 'admin/users/user_address_list', :locals => { :addresses => @user.addresses, :header => true } %>
+            </div>
             <% end %>       
           </dl>
         </div>

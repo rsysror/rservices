@@ -280,9 +280,9 @@ user.add_role :user
 
 Status.delete_all
 
+Status.create(name: "Pending")
 Status.create(name: "Accepted")
 Status.create(name: "Rejected")
-Status.create(name: "Pending")
 Status.create(name: "Inprogress")
 Status.create(name: "Cancelled")
 Status.create(name: "Completed")

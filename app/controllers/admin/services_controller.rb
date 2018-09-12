@@ -5,10 +5,11 @@ class Admin::ServicesController < AdminController
   layout 'admin'
  
   def index
-    @services = Service.where(:parent_id => nil).order(:id)
+    @services = Service.get_all_services(params[:page])
   end
 
-  def show 
+  def show
+
   end
 
   def new
@@ -24,27 +25,33 @@ class Admin::ServicesController < AdminController
     @cities = City.details.order(name: :asc)
     @service = Service.new(service_params)
     if @service.save
-      redirect_to admin_services_path(@service), notice: 'Service was successfully created.' 
+      flash[:success] = "Service created successfully "
+      redirect_to admin_services_path
     else
-      render :new 
-    end
+      flash[:error] = "Service request not created!"
+      redirect_to new_admin_service_path
+    end   
+
   end
 
   def update
     if @service.update(service_params)
-      redirect_to admin_services_path(@service), notice: 'Service was successfully updated.'
+      flash[:success] = "Service updated successfully "
+      redirect_to admin_services_path
     else
-      render :edit 
+      flash[:error] = "Service not updated!"
+      redirect_to new_admin_service_path    
     end
   end
 
   def destroy
     @service.destroy
-    redirect_to admin_services_url, notice: 'Service was successfully destroyed.' 
+    flash[:success] = "Service was successfully destroy !"
+    redirect_to admin_services_url
   end
 
   def sub_services
-    @services = Service.where(:parent_id => params[:id]  )
+    @services = Service.get_all_sub_services(params[:id], params[:page])
   end
 
   def create_sub_services
@@ -56,10 +63,13 @@ class Admin::ServicesController < AdminController
 
   def update_sub_services
     if @service.update(sub_service_params)
-      redirect_to sub_services_admin_service_path(:id => @service.parent_id), notice: 'Service was successfully updated.'
+      flash[:success] = "Service is successfully updated"
+      redirect_to sub_services_admin_service_path(@service.service)
     else
-      render :edit 
+      flash[:error] = "Service is successfully updated"
+      redirect_to sub_services_admin_service_path(@service.service)
     end
+    
   end
 
   private

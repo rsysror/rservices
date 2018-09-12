@@ -18,42 +18,34 @@ class ServiceRequest < ApplicationRecord
   #callback
   before_validation :set_request_status, :generate_service_request_number
   
-	def set_request_status 
-		status_id = Status.pending.first.id if status_id.blank?
-	end
-
-	def generate_service_request_number
-		service_request_number = "SR-#{SecureRandom.hex(10)}" unless  service_request_number.present?
-	end
+  def set_request_status 
+    status_id = Status.pending.first.id if status_id.blank?
+  end
 
   def generate_service_request_number
-      service_request_number = "SR-#{SecureRandom.hex(10)}" unless  service_request_number.present?
+    service_request_number = "SR-#{SecureRandom.hex(10)}" unless  service_request_number.present?
   end
 
-  def full_address
-      address.flat_number
-  end
+  # def google_address?
+  #   unless address.google_address.blank?
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
 
-  def google_address?
-    unless address.google_address.blank?
-      true
-    else
-      false
-    end
-  end
-
-  def google_address
-    if google_address?
-      address.google_address
-    end
-  end
+  # def google_address
+  #   if google_address?
+  #     address.google_address
+  #   end
+  # end
 
   def user_phone
     user.phone.present? ? user.phone : "-"
   end
 
   def user_address
-    google_address? ? google_address : address.complete_address
+    address.google_address.present? ? address.google_address : address.complete_address
   end
 
   def user_name
@@ -61,7 +53,7 @@ class ServiceRequest < ApplicationRecord
   end
 
   def self.get_all_service_requests page
-    where.not(portfolio_id: [nil, ""]).paginate(:page => page, :per_page => 5)
+    where.not(portfolio_id: [nil, ""]).order("id DESC").paginate(:page => page, :per_page => 5)
   end 
 
 end

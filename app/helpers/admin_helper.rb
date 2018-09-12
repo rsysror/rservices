@@ -12,6 +12,8 @@ module AdminHelper
   def get_stats object
     if object == "Service"
       object.constantize.get_services.count
+    elsif object == "User"
+       object.constantize.get_users(:user).count
     else
       object.constantize.count
     end
@@ -22,7 +24,11 @@ module AdminHelper
   end
 
   def get_service_request_rating request
-    (request.status.name == "Completed" and request.feedback.present?) ?  render_rating_partial(request, request.feedback.rating) : "Not Yet Rated"
+    if request.status.name == "Completed"
+      request.feedback.present? ? render_rating_partial(request, request.feedback.rating) : "Not Yet Rated"
+    else
+      "-"
+    end
   end
 
 end 

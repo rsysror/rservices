@@ -17,8 +17,7 @@ class Partner::DashboardController < PartnerController
   private
   
   def get_service_requests
-    @service_requests = current_user.portfolio.service_requests.includes(:status).ordered
+    @service_requests = current_user.portfolio.service_requests.includes(:status).order("id DESC")
   end
-
 
 end

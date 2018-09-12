@@ -22,7 +22,7 @@ module ServiceRequestsHelper
   end
 
   def user_actions request
-    if request.status.try(:name) == "Completed" || request.status.try(:name) == "Cancelled"
+    if ["Completed", "Cancelled", "Rejected"].include?(request.status.try(:name))
       (link_to t('.show', :default => t("helpers.links.show")),service_request_path(request),:class => 'btn btn-xs btn-primary')
     else
       (link_to t('.show', :default => t("helpers.links.show")),service_request_path(request),:class => 'btn btn-xs btn-primary btn_margin') +
@@ -33,9 +33,9 @@ module ServiceRequestsHelper
 
   def user_ratings request
     if request.status.try(:name) == "Completed"
-      request.feedback.present? ? add_rating_html_block(request) : (link_to 'Give Rating',new_feedback_path(portfolio_id: request.portfolio_id, request_id: request.id),:method => :get,:class => 'btn btn-primary btn-xs')
+      request.feedback.present? ? add_rating_html_block(request) : (link_to 'Give Rating',new_feedback_path(portfolio_id: request.portfolio_id, request_id: request.id),:method => :get,:class => 'btn btn-success btn-xs')
     else
-      "Not Yet Rated"
+      "-"
     end
   end
   

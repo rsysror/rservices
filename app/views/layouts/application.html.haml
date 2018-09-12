@@ -19,7 +19,7 @@
             #{link_to "Admin", admin_services_path}
           - if current_user.partner?
             #{link_to "Partner", partner_portfolio_path}
-          - else
+          - elsif current_user.user?
             #{link_to "Dashboard", dashboard_path}
           .navbar-right.navbar-top-links.nav_bg_color
             Signed in as #{current_user.email}. Not you?

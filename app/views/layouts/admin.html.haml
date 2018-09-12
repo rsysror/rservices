@@ -21,15 +21,21 @@
               %i.fa.fa-home.fa-fw
               R-services
         %ul.nav.navbar-right.navbar-top-links{ :style => "margin:0px !important;"}
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %dropdown
+            %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", :style => "height:50px; width:160px;"}
               %i.fa.fa-user.fa-fw
-              = current_user_role(current_user)
-            %ul.dropdown-menu.dropdown-user
+              = get_full_name(current_user)
+              %span.caret{ :style => "float: right; margin: 6%;"}
+            %ul.dropdown-menu
               %li
-                %a{:href => "#"}
-                  #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
-
+                - if current_user.partner?
+                  %a{:href => "/partner/portfolio"} Dashboard
+                - elsif current_user.admin?
+                  %a{:href => "/admin"} Dashboard
+                - else
+                  %a{:href => "/dashboard"} Dashboard
+              %li
+                #{link_to "Sign out", destroy_user_session_path, :method => :delete}
     - if current_user.admin?
       = render :partial => "shared/admin_left"
     - else

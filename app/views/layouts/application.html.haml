@@ -10,20 +10,32 @@
   %body
     %div#generic_modal_area
     - flash.each do |key, value|
-      %div{:class => "alert alert-#{key}"}= value
+      / %div{:class => "alert alert-#{key}"}= value
     #wrapper
       %nav.nav_header.navbar-inverse.navbar-fixed-top
         - if user_signed_in?
-          .navbar-left.navbar-top-links.nav_bg_color
-          - if current_user.admin?
-            #{link_to "Admin", admin_services_path}
-          - if current_user.partner?
-            #{link_to "Partner", partner_portfolio_path}
-          - else
-            #{link_to "Dashboard", dashboard_path}
-          .navbar-right.navbar-top-links.nav_bg_color
-            Signed in as #{current_user.email}. Not you?
-            #{link_to "Sign out", destroy_user_session_path, :method => :delete}
+          %ul.nav.navbar-nav.navbar-left
+            %li
+              %a{:href => "#"}
+                %i.fa.fa-home.fa-fw
+                R-services
+            / #{link_to "R-services", dashboard_path}
+          .navbar-right.nav_bg_color{:style => "margin:0% 0%"}
+            .dropdown
+              %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", :style => "height:50px; width:160px;"}
+                %i.fa.fa-user.fa-fw
+                #{get_full_name(current_user)}
+                %span.caret{ :style => "float: right; margin: 6%;"}
+              %ul.dropdown-menu
+                %li
+                  - if current_user.partner?
+                    %a{:href => "/partner/portfolio"} Dashboard
+                  - elsif current_user.admin?
+                    %a{:href => "/admin/services"} Dashboard
+                  - else
+                    %a{:href => "/dashboard"} Dashboard
+                %li
+                  #{link_to "Sign out", destroy_user_session_path, :method => :delete}
         - else
           %ul.navbar-right.navbar-top-links
             %li

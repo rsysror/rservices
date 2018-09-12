@@ -15,7 +15,7 @@ class Service < ApplicationRecord
   scope :get_services, -> { where("parent_id IS NULL") }
 
   def is_parent_id_nil?
-    self.parent_id == nil
+    parent_id == nil
   end
 
   # def self.search(city, service)

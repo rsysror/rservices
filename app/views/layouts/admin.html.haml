@@ -29,9 +29,9 @@
               %li
                 %a{:href => "#"}
                   #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
+
     - if current_user.admin?
       = render :partial => "shared/admin_left"
     - else
       = render :partial => "shared/partner_left"
-
     = yield   

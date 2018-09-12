@@ -1,0 +1,25 @@
+<% if portfolio.images.present? %>
+  <%= render partial: '/partner/portfolios/display_photos', :locals => { :portfolio => portfolio } %>
+<% end %>
+
+<div id="upload_photo" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header pop_head">
+        <button type="button" class="close add_photo" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Upload Photos</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for portfolio , url: upload_photos_partner_portfolio_path, method: :post, multipart: true do |f| %>
+          <%= f.file_field :images, multiple: true %>
+          <%= f.hidden_field :portfolio_id, value: portfolio.id %>
+          <%= f.submit_tag 'Upload', class: 'btn btn-primary add_photo' %>
+          <%= link_to "Close", '#', "data-dismiss" => "modal", class: 'btn btn-primary add_photo'  %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>

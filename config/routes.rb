@@ -11,11 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :addresses do
-    member do
-      get 'get_states_and_cities'
-    end
-  end
+  resources :addresses 
+  resources :feedbacks
 
   resources :service_requests do
     member do
@@ -31,6 +28,7 @@ Rails.application.routes.draw do
     get  'sign_up',  to: 'users/registrations#new'
     post  'create_user',  to: 'users/registrations#create'
 	end
+  #custom routes for admin 
   namespace :admin do
     root to: "dashboard#index"
     resources :services do
@@ -41,14 +39,22 @@ Rails.application.routes.draw do
         put 'update_sub_services'
       end
     end
+    resources :users do
+      member do
+        get 'user_service_request'
+        get 'update_service_status'
+        put 'manage_portfolio_status'
+
+      end
+    end
   end
 
-  
   namespace :partner do
     resource :portfolio do
       collection do
         get 'get_subservices'
         get 'get_city_service_list'
+        post 'upload_photos'
       end
     end
     resources :dashboard, only: [:index] do
@@ -61,7 +67,14 @@ Rails.application.routes.draw do
 
 
   #Singular routes for few methods
+  get 'get_services_by_city', to: 'home#get_services_by_city'
 	get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
+  get 'get_states_and_cities', to: 'addresses#get_states_and_cities'
+  get 'admin/partners', :to => 'admin/users#partners'
+  get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
+  get 'admin/partner/:id', :to => 'admin/users#partner_details', :as => 'partner_details'
+  get 'admin/service-requests', :to => 'admin/users#service_requests_list', :as => 'service_requests_list'
+
 
 end

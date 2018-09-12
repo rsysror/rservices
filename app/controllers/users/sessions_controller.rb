@@ -2,6 +2,7 @@
 
 class Users::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
+  skip_before_action :authenticate_user!, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -46,8 +47,8 @@ class Users::SessionsController < Devise::SessionsController
   def after_login_path resource
     if (resource.has_role? :user)
       root_url
+      # dashboard_url
     elsif resource.has_role? :partner
-      # edit_partner_portfolio_url
       partner_portfolio_url
     else
       admin_root_url

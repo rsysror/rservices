@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require bootstrap_and_overrides
+ *= require gmaps-auto-complete
  *= require_tree .
  *= require_self
  */
@@ -47,11 +48,6 @@
 }
 
 
-
-
-
-
-
 .pagination {
   display: inline-block;
   a {
@@ -69,5 +65,14 @@
     background-color: @background_color_2;
     color: @color_2;
   }
+}
+
+
+.mg-btn{
+	margin-bottom: 5px;
+}
+
+.btn-primary{
+	color: #ffffff !important;
 }
 

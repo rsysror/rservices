@@ -1,0 +1,33 @@
+<hr>
+<hr>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.back', :default => t("helpers.links.back")),admin_users_path, :class => 'btn btn-primary'  %>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>User Details</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="main-container">
+          <dl class="dl-horizontal" style="fl">
+            <dt><strong>Name:</strong></dt>
+            <dd><%= get_full_name(@user) %></dd>
+            <dt><strong>Email:</strong></dt>
+            <dd><%= @user.email %></dd>
+            <dt><strong>Phone:</strong></dt>
+            <dd><%= @user.phone %></dd>
+            <dt><strong>Address:</strong></dt>
+            <% @user.addresses.each do |address| %>
+              <dd><%= address.complete_address %></dd>   
+            <% end %>       
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,141 +1,19 @@
 #demo-1{"data-zs-overlay" => "dots", "data-zs-src" => "['assets/2.jpg', 'assets/1.jpg', 'assets/3.jp']"}
   .demo-inner-content
-    .header-top
-      / /header-left
-      .header-left
-        / /sidebar
-        #sidebar
-          %h4.menu Menu
-          = render :partial => 'common/side_menu'
-          #sidebar-btn
-            %span
-            %span
-            %span
-        :javascript
-          var sidebarbtn = document.getElementById('sidebar-btn');
-                            var sidebar = document.getElementById('sidebar');
-                             sidebarbtn.addEventListener('click', function () {
-                            if(sidebar.classList.contains('visible')){
-                              sidebar.classList.remove('visible'); 
-                             }else {
-                              sidebar.className = 'visible';
-                            }
-                            });
-        / //sidebar
-        .tag
-          %a{"data-target" => "#myModal1", "data-toggle" => "modal", :href => "#"}
-            %span.glyphicon.glyphicon-tag
-            Discounts On New Cars »
-        / .tag
-        /   %a{"data-target" => "#myModal2", "data-toggle" => "modal", :href => "#"}
-        /     %span.glyphicon.glyphicon-log-in
-        /     Sign Up
-      / //header-left
-      .search-box
-        #sb-search.sb-search
-          %form{:action => "#", :method => "post"}
-            %input#search.sb-search-input{:name => "name", :placeholder => "Enter your search term...", :type => "search"}/
-            %input.sb-search-submit{:type => "submit", :value => ""}/
-            %span.sb-icon-search
-        / search-scripts
-        / <script src="js/classie.js"></script>
-        / <script src="js/uisearch.js"></script>
-        :javascript
-          new UISearch( document.getElementById( 'sb-search' ) );
-        / //search-scripts
-        %ul
-          %li
-            / %a{"data-target" => "#myModal4", "data-toggle" => "modal", :href => "#"}
-            %a{:href => "/dashboard"}
-              %i.glyphicon.glyphicon-map-marker{"aria-hidden" => "true"}>
-              Select Your Location
-          / %li
-          /   %button#showRight.navig Login
-          /   .cbp-spmenu-push
-          /     %nav#cbp-spmenu-s2.cbp-spmenu.cbp-spmenu-vertical.cbp-spmenu-right
-          /       %h3 Login
-          /       .login-inner
-          /         .login-top
-          /           %form{:action => "#", :method => "post"}
-          /             %input.email{:name => "email", :placeholder => "Email", :required => "", :type => "text"}/
-          /             %input.password{:name => "password", :placeholder => "Password", :required => "", :type => "password"}/
-          /             %input#brand{:type => "checkbox", :value => ""}/
-          /             %label{:for => "brand"}
-          /               %span
-          /               Remember me
-          /           .login-bottom
-          /             %ul
-          /               %li
-          /                 %a{:href => "#"} Forgot password?
-          /               %li
-          /                 %form{:action => "#", :method => "post"}
-          /                   %input{:type => "submit", :value => "LOGIN"}/
-          /             .clearfix
-          /           .clearfix
-          /         .social-icons
-          /           %ul
-          /             %li
-          /               %a{:href => "#"}
-          /                 %span.icons
-          /                 %span.text Facebook
-          /             %li.twt
-          /               %a{:href => "#"}
-          /                 %span.icons
-          /                 %span.text Twitter
-          /             %li.ggp
-          /               %a{:href => "#"}
-          /                 %span.icons
-          /                 %span.text Google+
-          /   / <script src="js/classie2.js"></script>
-          /   :javascript
-          /     var menuRight = document.getElementById( 'cbp-spmenu-s2' ),
-          /       showRight = document.getElementById( 'showRight' ),
-          /       body = document.body;
-    
-          /     showRight.onclick = function() {
-          /       classie.toggle( this, 'active' );
-          /       classie.toggle( menuRight, 'cbp-spmenu-open' );
-          /       disableOther( 'showRight' );
-          /     };
-    
-          /     function disableOther( button ) {
-          /       if( button !== 'showRight' ) {
-          /         classie.toggle( showRight, 'disabled' );
-          /       }
-          /     }
-          /   / Navigation from Right To Left
-      .clearfix
-    .clearfix
-    / banner-info
     .banner-info
       %h1
-        %a{:href => "index.html"}
+        %a{:href => "#"}
           R
           %span.logo-sub Services
       %h2
         %span COME LOOK
         %span AT THE SELECTION!
-      %p Eye it – try it – buy it!
-      %form{:action => "#", :method => "post"}
-        .search-two
-          %select#country6{:name => "post[city_id]", :style => 'width: 100%;height:39px'}
-            %option{:value => "null"}= 'Select location'
-            - City.all.each do |city|
-              %option{:value => "#{city.id}"}= city.name
-              %img.img-responsive{:alt => "Select location ", :src => "assets/place.png"}>
-        .search-two
-          %select#country{:name => "post[service_id]"}
-            %option{:value => "null"}= 'Select a service'
-            - Service.all.where(parent_id: nil).each do |serve|
-              %option{:value => "#{serve.id}"}= serve.name
-              %img.img-responsive{:alt => "Select a service", :src => "assets/rupee.png"}>
-        .section_room
-          %select#country.frm-field.serach-box{:name => "post[service_id]"}
-            %option{:value => "null"}= 'Select a sub service'
-            - Service.all.where(parent_id: !nil).each do |subServe|
-              %option{:value => "#{subServe.id}"}= subServe.name
-              %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}
-        %input{:type => "submit", :value => "Search "}/
-        .clearfix
-    / //banner-info
-/ discounts
+      %p Eye it – Try it – Buy it!
+      / %form{:action => "#", :method => "post"}
+      .row
+        %br
+        %br
+          .col-md-6.col-md-offset-5
+            .search-two
+              = select_tag :city_id, options_from_collection_for_select(City.ordered, :id, :name), :prompt => "Select City", class: 'form-control', data: {remote: true,URL: get_services_by_city_path, method: 'get' }
+              

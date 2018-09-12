@@ -1,40 +1,26 @@
 class Partner::PortfoliosController < PartnerController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+  
+  def show; end
 
-  # GET /portfolios/1
-  # GET /portfolios/1.json
-  def show
-  end
-
-  # GET /portfolios/1/edit
   def edit
     @portfolio = Portfolio.find(current_user.portfolio.id)
     @cities = City.details.order(:name)
     @services = Service.get_services
   end
 
-  # PATCH/PUT /portfolios/1
-  # PATCH/PUT /portfolios/1.json
   def update
-    respond_to do |format|
-      if @portfolio.update(portfolio_params)
-        format.html { redirect_to partner_portfolio_path(@portfolio), notice: 'Portfolio was successfully updated.' }
-        format.json { render :show, status: :ok, location: @portfolio }
-      else
-        format.html { render :edit }
-        format.json { render json: @portfolio.errors, status: :unprocessable_entity }
-      end
+    if @portfolio.update(portfolio_params)
+      redirect_to partner_portfolio_path(@portfolio), notice: 'Portfolio was successfully updated.'
+    else
+      render :edit 
     end
   end
 
-  # DELETE /portfolios/1
-  # DELETE /portfolios/1.json
+  
   def destroy
     @portfolio.destroy
-    respond_to do |format|
-      format.html { redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.'
   end
 
   def get_subservices
@@ -46,12 +32,24 @@ class Partner::PortfoliosController < PartnerController
     if params[:portfolio][:city_id].present?
       @city = City.find(params[:portfolio][:city_id])
       @services = @city.services
-    # else
-    #   @services = Service.where(:parent_id => nil)
     end
   end
+ 
+  #UPLOAD photos for portfolio 
+  def upload_photos
+    portfolio = Portfolio.find_by_id(params[:portfolio][:portfolio_id])
+    if params[:portfolio][:images].present?
+      portfolio.images += params[:portfolio][:images]
+      portfolio.save!
+    end
+    redirect_to partner_portfolio_path
+  end
+
+
 
   private
+    
+
     # Use callbacks to share common setup or constraints between actions.
     def set_portfolio
       @portfolio = current_user.portfolio
@@ -61,4 +59,5 @@ class Partner::PortfoliosController < PartnerController
     def portfolio_params
       params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []})
     end
+    
 end

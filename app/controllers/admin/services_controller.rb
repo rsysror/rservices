@@ -6,7 +6,7 @@ class Admin::ServicesController < AdminController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.where(:parent_id => nil  )
+    @services = Service.where(:parent_id => nil).order(:id)
   end
 
   # GET /services/1
@@ -67,14 +67,12 @@ class Admin::ServicesController < AdminController
   end
 
   def sub_services
-    #@sub_service = Service.new
     @services = Service.where(:parent_id => params[:id]  )
   end
 
   # GET /services/1/create_sub_services
   def create_sub_services
     @sub_service = Service.new
-    #@services = Service.where(:parent_id => nil  )
   end
 
   # GET /services/1/edit_sub_services
@@ -85,7 +83,6 @@ class Admin::ServicesController < AdminController
   # PATCH/PUT /services/1/edit_sub_services
   # PATCH/PUT /services/1.json
   def update_sub_services
-    #byebug
     respond_to do |format|
       if @service.update(sub_service_params)
         format.html { redirect_to sub_services_admin_service_path(:id => @service.parent_id), notice: 'Service was successfully updated.' }
@@ -105,10 +102,10 @@ class Admin::ServicesController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name,:parent_id, :city_ids=> [])
+      params.require(:service).permit(:name,:parent_id, :price, :photo, :city_ids=> [])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def sub_service_params
-      params.require(:service).permit(:name,:id, :city_ids=> [])
+      params.require(:service).permit(:name,:id, :price, :city_ids=> [])
     end
 end

@@ -21,4 +21,14 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def google_map(center)
+    "https://maps.googleapis.com/maps/api/staticmap?center=#{center}&size=300x300&zoom=17"
+  end
+
+  def add_rating_html_block request
+    render partial: "shared/show_rating" , locals: {request: request, score: request.feedback.rating } 
+  end
+
 end
+
+

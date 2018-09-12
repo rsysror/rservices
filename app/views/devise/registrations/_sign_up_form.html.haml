@@ -9,7 +9,7 @@
       .modal-body.about
         .login-top.sign-top.one
           = form_for(resource, as: resource_name, url: create_user_path) do |f|
-            .div.display_errors{:style => "display:none;color:red;margin-bottom:15px;"}
+            .div#show_errors{:style => "display:none;color:red;margin-bottom:15px;"}
             %strong Sign Up As
             = f.radio_button :role, 'user', :checked => true, :class => 'radio_input'
             User
@@ -21,6 +21,6 @@
             = f.text_field :email, :placeholder => "Email", :required => true, :class => "email"
             = f.password_field :password, :placeholder => "Password", :required => true, :minlength => "6", :class => "password"
             = f.password_field :password_confirmation, :placeholder => "Confirm Password", :required => true, :minlength => "6", :class => "password"
-            = f.text_field :phone, :placeholder => "Phone", :class => "phone"
+            = f.text_field :phone, :placeholder => "Phone", :required => true, :class => "phone"
             .actions
               = f.submit "Sign up", :id => 'submit_btn'

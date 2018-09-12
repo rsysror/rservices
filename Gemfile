@@ -51,6 +51,9 @@ gem "twitter-bootstrap-rails"
 gem "paperclip", "~> 6.0.0"
 
 gem 'geocoder'
+gem 'gmaps4rails'
+
+gem 'gmaps-autocomplete-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

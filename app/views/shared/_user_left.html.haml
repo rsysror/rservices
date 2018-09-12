@@ -1,0 +1,19 @@
+.navbar-default.sidebar{:role => "navigation"}
+  .sidebar-nav.navbar-collapse
+    %ul#side-menu.nav.sidebar-color
+      %li
+        %a.active{:href => "/dashboard"}
+          %i.fa.fa-dashboard.fa-fw
+          Dashboard
+      %li
+        %a{:href => "/service_requests"}
+          %i.fa.fa-sun-o
+          My Service requests(#{user_request_count(current_user,'service_requests')})  
+      %li
+        %a{:href => "/addresses/new", 'data-no-turbolink':  true }
+          %i.fa.fa-pencil-square-o
+          Add New Address
+      %li
+        %a{:href => "/addresses"}
+          %i.fa.fa-dot-circle-o
+          My Addresses(#{user_request_count(current_user,'addresses')})    

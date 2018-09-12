@@ -2,7 +2,7 @@ class ServiceRequestsController < ApplicationController
    before_action :get_service_request, only: [:edit,:show, :update,:cancel_service_request]
 
   def index
-    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).order("id DESC").paginate(:page => params[:page], :per_page => 5)
+    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create

@@ -44,7 +44,7 @@ class Portfolio < ApplicationRecord
 
   def select_time_slots time_slots
     current_time  = Time.now 
-    excluded_time_slot =  current_time.strftime("%I") + ":00"
+    excluded_time_slot =  current_time.strftime("%H") + ":00"
     time_slots.select{|time| excluded_time_slot < time.start_time}
   end
   

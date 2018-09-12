@@ -20,4 +20,12 @@ class User < ApplicationRecord
     has_role? :partner
   end
 
+  def get_all_address_from_service_city service_request
+    self.addresses.where(city_id: service_request.address.city_id)
+  end
+
+  def full_name
+    [self.first_name, self.last_name].select(&:present?).join(' ').titleize
+  end
+
 end

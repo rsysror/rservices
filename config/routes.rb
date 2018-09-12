@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :service_requests
+  resources :service_requests do
+    member do
+      patch 'cancel_service_request'
+    end
+  end
   
 
     #custom routes for user login and logout

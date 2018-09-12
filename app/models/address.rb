@@ -23,6 +23,4 @@ class Address < ApplicationRecord
       end
     end
   end
-  
-
 end

@@ -9,11 +9,17 @@
               %i.fa.fa-search
         / /input-group
       %li
-        %a.active{:href => "/partner/dashboard"}
+        %a.active{:href => "/partner/portfolio"}
+          %i.fa.fa-picture-o
+          Portfolio
+        %a{:href => "/partner/dashboard"}
           %i.fa.fa-dashboard.fa-fw
           Dashboard
-      %li
-        %ul.nav.nav-second-level
-          %li
-            %a{:href => "/partner/portfolio"} Portfolio
-          %li
+        %a{:href => "/partner/portfolio/edit"}
+          %i.fa.fa-pencil-square-o
+          Edit Profile
+      / %li
+      /   %ul.nav.nav-second-level
+      /     %li
+      /       %a{:href => "/partner/portfolio"} Portfolio
+      /     %li

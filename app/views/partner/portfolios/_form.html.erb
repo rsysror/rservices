@@ -1,5 +1,5 @@
 <div class="panel-heading">
-  <h3>Fill Your PortFolio Details</h3>
+  <h3>PortFolio Details</h3>
  </div>
   <div class="panel-body">
     <%= form_for @portfolio, url: partner_portfolio_path, html: { multipart: true, :class => 'form-horizontal' } do |form| %>
@@ -7,7 +7,7 @@
       <div class="form-group">
         <%= form.label :gender, class: 'control-label col-sm-2' %>
         <div class="col-sm-10">
-          <%= form.select(:gender, [["Male", 2], ["Female", 3]], { :prompt => "Select Gender"}, required: 'true', class: 'form-control form_input') %>
+          <%= form.select(:gender, [["Male", "Male"], ["Female", "Female"]], { :prompt => "Select Gender"}, required: 'true', class: 'form-control form_input') %>
         </div>
       </div>
 

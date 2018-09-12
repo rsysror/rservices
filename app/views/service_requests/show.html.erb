@@ -1,0 +1,19 @@
+<div class="main-container">
+	<div class="row">
+	<%= link_to t('.Back', :default => t("helpers.links.back")),service_requests_path,:class => 'btn btn-primary' %>
+	</div>
+	<div class="header-container">
+		<p><b>Service Request Number:</b><%=@service_request.service_request_number%></p>
+		<p><b>Service:</b> <%=@service_request.service.name %></p>
+		<p><b>Time Slot:</b> <%=@service_request.time_slot.try(:start_time_with_end_time) %></p>
+		<p><b>Status:</b> <%=@service_request.status.name %></p>
+		<div class="card">
+			<p><b>Address</b></p><br>
+			<b>Flat Number:</b> <%=@service_request.flat_number %></br>
+			<b>Street Name:</b> <%=@service_request.street_name %></br>
+			<b>City:</b> <%=@service_request.city.name %></br>
+			<b>Pin Code:</b> <%=@service_request.pin_code %></br>
+		</div></br>
+		</p>
+	</div>
+</div>

@@ -29,16 +29,6 @@ module ApplicationHelper
     render partial: "shared/show_rating" , locals: {request: request, score: request.feedback.rating } 
   end
 
-  # path based on user presence
-  def service_or_login_path
-    if current_user
-      dashboard_path
-    else
-      # "<a data-target="#login" data-toggle="modal" href="#"> thasfsa  </a>"
-      (link_to 'New Update', '#', {:remote => true, 'data-toggle' => 'modal', 'data-target' => '#login'} )
-    end
-  end
-
   def dashboard_link user
     if current_user.admin?
       link_to "Admin", admin_services_path

@@ -19,7 +19,7 @@ class ServiceRequest < ApplicationRecord
   before_validation :set_request_status, :generate_service_request_number
   
   def set_request_status 
-    status_id = Status.pending.first.id if status_id.blank?
+    self.status_id = Status.pending.first.id if status_id.blank?
   end
 
   def generate_service_request_number

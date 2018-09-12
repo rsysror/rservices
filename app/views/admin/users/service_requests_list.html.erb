@@ -26,11 +26,7 @@
           <% @service_requests.each do |request|%>
             <tr>
               <td><%=request.service.try(:name) %></td>
-              <% if request.google_address? %>
-                <td><%= request.google_address %></td>
-              <% else %>
-                <td><%=request.address.complete_address %></td>
-              <% end %>
+              <td><%=request.user_address %></td>
               <td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>
               <td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
               <td><%=request.service_request_number %></td>

@@ -30,7 +30,7 @@
           .col-sm-3
             %p
               / %b Rating
-              = render :partial => "shared/show_rating", locals: {request: @service_request, score: @service_request.feedback.rating }
+              = user_ratings(@service_request)
           .col-sm-3
             %p
               %b Remarks:

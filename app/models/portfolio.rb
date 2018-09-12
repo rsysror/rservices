@@ -32,12 +32,20 @@ class Portfolio < ApplicationRecord
   end
 
   def available_time_slots
-    service_requests.present? ? TimeSlot.ordered - service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).map{|m| m.time_slot}.compact : TimeSlot.ordered
+    time_slots = service_requests.present? ? TimeSlot.ordered - service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).map{|m| m.time_slot}.compact : TimeSlot.ordered
+    select_time_slots(time_slots)
   end
 
   def available_time_slots_for_update service_request
     included_service_request = service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).reject{|r| r.id == service_request.id}
-    included_service_request.present? ? TimeSlot.ordered - included_service_request.map{|m| m.time_slot}.compact : TimeSlot.ordered
+    time_slots = included_service_request.present? ? TimeSlot.ordered - included_service_request.map{|m| m.time_slot}.compact : TimeSlot.ordered
+    select_time_slots(time_slots)
+  end
+
+  def select_time_slots time_slots
+    current_time  = Time.now 
+    excluded_time_slot =  current_time.strftime("%I") + ":00"
+    time_slots.select{|time| excluded_time_slot < time.start_time}
   end
   
 end

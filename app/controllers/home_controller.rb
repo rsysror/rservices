@@ -15,7 +15,6 @@ class HomeController < ApplicationController
   	else
       @services = Service.get_all_services(1,12)
   	end
-  	
   end
 
 end

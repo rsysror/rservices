@@ -11,7 +11,6 @@ class HomeController < ApplicationController
 
   def get_services_by_city
   	if params[:city_id].present?
-      byebug
   		@services = City.find(params[:city_id]).services.where(parent_id: nil)
   	else
       @services = Service.get_all_services(1,12)

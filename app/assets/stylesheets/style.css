@@ -7397,8 +7397,9 @@ p.free {
 }
 
 .container {
-  width: 1600px!important;
-  padding-left: 170px!important; 
+  width: 95%!important;
+  padding-left: 14%!important;
+  margin-top: 4%!important;
 }
 
 .btn_margin{margin-right: 5px;}
@@ -7443,3 +7444,7 @@ a {
   color: #ffffff;
   line-height: 35px;
 }
+
+.right_float{float:right!important;}
+
+.header {padding-bottom: 1%;}

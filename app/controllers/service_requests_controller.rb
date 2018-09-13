@@ -1,4 +1,5 @@
 class ServiceRequestsController < ApplicationController
+   before_action :authenticate_user!
    before_action :get_service_request, only: [:edit,:show, :update,:cancel_service_request]
 
   def index

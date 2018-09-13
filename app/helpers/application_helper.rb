@@ -39,4 +39,8 @@ module ApplicationHelper
     end
   end
 
+  def back_button_link url
+    link_to t('.Back', :default => t("helpers.links.back")),url,:class => 'btn btn-primary'
+  end
+
 end

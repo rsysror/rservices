@@ -55,7 +55,7 @@ $(document).ready(function() {
 <div class="container">
   <div class="row">
     <div class="add-new">
-      <%= link_to t('.Back', :default => t("helpers.links.back")), dashboard_path, :class => 'btn btn-primary', style: "color:#fff" %>
+      <%=back_button_link(dashboard_path) %>
     </div>
   </div>
   <div class="panel panel-primary">

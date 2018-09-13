@@ -9,8 +9,6 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %div#generic_modal_area
-    - flash.each do |key, value|
-      / %div{:class => "alert alert-#{key}"}= value
     #wrapper
       %nav.nav_header.navbar-inverse.navbar-fixed-top
         - if user_signed_in?
@@ -19,7 +17,6 @@
               %a{:href => "/"}
                 %i.fa.fa-home.fa-fw
                 R-services
-            / #{link_to "R-services", dashboard_path}
           .navbar-right.nav_bg_color{:style => "margin:0% 0%"}
             .dropdown
               %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
@@ -28,12 +25,7 @@
                 %span.caret{ :style => "float: right; margin: 6%;"}
               %ul.dropdown-menu
                 %li
-                  - if current_user.partner?
-                    %a{:href => "/partner/portfolio"} Dashboard
-                  - elsif current_user.admin?
-                    %a{:href => "/admin/services"} Dashboard
-                  - else
-                    %a{:href => "/dashboard"} Dashboard
+                  #{dashboard_link(current_user)}
                 %li
                   #{link_to "Sign out", destroy_user_session_path, :method => :delete}
         - else
@@ -46,4 +38,7 @@
                 Sign In
     - unless params[:action] == "index" && params[:controller] == 'home'
       = render :partial => "shared/user_left" if current_user
+    = render :partial => "shared/flash_message", :locale => {:flash => flash }            
+  
     = yield
+

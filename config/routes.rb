@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   	delete 'logout', to: 'users/sessions#destroy'
     get  'sign_up',  to: 'users/registrations#new'
     post  'create_user',  to: 'users/registrations#create'
+    post  'send_password_instructions',  to: 'users/passwords#create'
+    put  'change_password',  to: 'users/passwords#update'
 	end
   #custom routes for admin 
   namespace :admin do

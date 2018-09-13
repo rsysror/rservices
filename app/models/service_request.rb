@@ -23,7 +23,7 @@ class ServiceRequest < ApplicationRecord
   end
 
   def generate_service_request_number
-    service_request_number = "SR-#{SecureRandom.hex(10)}" unless  service_request_number.present?
+    self.service_request_number = "SR-#{SecureRandom.hex(10)}" unless  self.service_request_number.present?
   end
 
   # def google_address?
@@ -45,7 +45,7 @@ class ServiceRequest < ApplicationRecord
   end
 
   def user_address
-    address.google_address.present? ? address.google_address : address.complete_address
+    address.complete_address
   end
 
   def user_name

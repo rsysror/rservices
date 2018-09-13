@@ -45,7 +45,7 @@
               <div class="margin_10 "><%= @portfolio.about %></div>
             </div>
             <div class="ht_5">
-              <%= link_to "Add Photo", '#upload_photo', "data-toggle" => "modal", class: 'btn btn-primary', style: "margin: 5px;"  %>
+              <%= link_to "Add Photo", '#upload_photo', "data-toggle" => "modal", class: 'btn btn-primary margin-5' %>
             </div>
             <div class='ht_50 scroll'>
               <%= render partial: 'photo_details', :locals => { :portfolio => @portfolio } %>

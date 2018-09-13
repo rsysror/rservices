@@ -27,7 +27,7 @@
             .form-group
               = f.label :price, :class => 'control-label col-lg-2'
               .col-lg-10
-                = f.number_field :price, :class => 'form-control', required: 'true', min: 0, style: "width: 100%;"
+                = f.number_field :price, :class => 'form-control', required: 'true', min: 0
                 %label.error-title.error{:for => "service_price"}
             .form-group
               = f.hidden_field :parent_id, :value => params[:id]

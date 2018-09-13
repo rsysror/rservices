@@ -7501,3 +7501,7 @@ p.nav-home a {
   float: right; 
   margin: 6%;
 }
+.search-btn-top-margin{
+  width: 100%;
+  margin-top:12%;
+}

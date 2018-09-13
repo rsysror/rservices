@@ -17,7 +17,7 @@
         - if address.latitude
           %div
             %br <b>Google Address</b> #{address.try(:google_address)}
-            = image_tag google_map([ address.latitude, address.longitude ].join(','))
+            =# image_tag google_map([ address.latitude, address.longitude ].join(','))
   - if addresses.blank?
     .alert.alert-warning
       No Address added for selected city Please add Address details to avail the services

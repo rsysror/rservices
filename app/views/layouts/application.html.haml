@@ -22,7 +22,7 @@
             / #{link_to "R-services", dashboard_path}
           .navbar-right.nav_bg_color{:style => "margin:0% 0%"}
             .dropdown
-              %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", :style => "height:50px; width:160px;"}
+              %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
                 %i.fa.fa-user.fa-fw
                 #{current_user.full_name}
                 %span.caret{ :style => "float: right; margin: 6%;"}

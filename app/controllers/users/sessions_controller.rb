@@ -45,13 +45,13 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def after_login_path resource
-    if (resource.has_role? :user)
-      root_url
-      # dashboard_url
-    elsif resource.has_role? :partner
+    if resource.admin?
+      admin_root_url
+    elsif resource.partner?
       partner_portfolio_url
     else
-      admin_root_url
+      # admin_root_url
+      dashboard_url
     end
   end
 

@@ -12,16 +12,22 @@
     #wrapper
       %nav.nav_header.navbar-inverse.navbar-fixed-top
         - if user_signed_in?
-          .navbar-left.navbar-top-links.nav_bg_color
-          - if current_user.admin?
-            #{link_to "Admin", admin_services_path}
-          - if current_user.partner?
-            #{link_to "Partner", partner_portfolio_path}
-          - elsif current_user.user?
-            #{link_to "Dashboard", dashboard_path}
-          .navbar-right.navbar-top-links.nav_bg_color
-            Signed in as #{current_user.email}. Not you?
-            #{link_to "Sign out", destroy_user_session_path, :method => :delete}
+          %ul.nav.navbar-nav.navbar-left
+            %li
+              %a{:href => "/"}
+                %i.fa.fa-home.fa-fw
+                R-services
+          .navbar-right.nav_bg_color{:style => "margin:0% 0%"}
+            .dropdown
+              %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
+                %i.fa.fa-user.fa-fw
+                #{current_user.full_name}
+                %span.caret{ :style => "float: right; margin: 6%;"}
+              %ul.dropdown-menu
+                %li
+                  #{dashboard_link(current_user)}
+                %li
+                  #{link_to "Sign out", destroy_user_session_path, :method => :delete}
         - else
           %ul.navbar-right.navbar-top-links
             %li

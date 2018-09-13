@@ -17,28 +17,28 @@
           %span.icon-bar
         %ul.nav.navbar-nav.navbar-left
           %li
-            %a{:href => "#"}
+            %a{:href => "/"}
               %i.fa.fa-home.fa-fw
               R-services
         %ul.nav.navbar-right.navbar-top-links{ :style => "margin:0px !important;"}
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %dropdown
+            %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
               %i.fa.fa-user.fa-fw
-              = current_user_role(current_user)
-            %ul.dropdown-menu.dropdown-user
+              = current_user.full_name
+              %span.caret{ :style => "float: right; margin: 6%;"}
+            %ul.dropdown-menu
               %li
-                %a{:href => "#"}
-                  #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
-    = render :partial => "shared/flash_message", :locale => {:flash => flash } 
+                - if current_user.partner?
+                  %a{:href => "/partner/portfolio"} Dashboard
+                - elsif current_user.admin?
+                  %a{:href => "/admin"} Dashboard
+                - else
+                  %a{:href => "/dashboard"} Dashboard
+              %li
+                #{link_to "Sign out", destroy_user_session_path, :method => :delete}
     - if current_user.admin?
       = render :partial => "shared/admin_left"
     - else
       = render :partial => "shared/partner_left"
     = yield
 
-:javascript
-  $('.side-menu a').filter(function(){
-    return this.href==location.href}).addClass('active').siblings('a').removeClass('active')
-    $('.side-menu a').click(function(){
-    $(this).addClass('active').siblings().removeClass('active')  
-  }) 

@@ -48,7 +48,7 @@ class Address < ApplicationRecord
     if google_address.present?
       google_address
     else
-      "#{flat_number} #{street_name} #{landmark}, #{city.try(:name).titleize}, #{pin_code}"
+      "#{flat_number} #{street_name} #{landmark}, #{city.try(:name)}, #{pin_code}"
     end
     # [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
   end

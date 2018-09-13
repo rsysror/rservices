@@ -8,10 +8,11 @@ class FeedbacksController < ApplicationController
     @feedback = current_user.feedbacks.create(feedback_params)
     if @feedback.persisted?
    	  flash[:success] = "Successfully Rated!"
+      redirect_to service_requests_path
     else  
       flash[:error] = @feedback.errors.full_messages.join(",")
+      redirect_back fallback_location: request.referrer
    end
-    redirect_to service_requests_path
 	end
 
 

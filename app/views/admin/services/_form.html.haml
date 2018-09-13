@@ -1,0 +1,45 @@
+.panel-heading
+  %h3
+    = params[:action].titleize
+    Service
+.panel-body
+  = form_for [:admin, @service], :html => { :class => "form-horizontal service" } do |f|
+    .form-group
+      .col-lg-10.col-lg-offset-2
+        - if @service.errors.any?
+          #error_expl.panel.panel-danger
+            .panel-heading
+              %h3.panel-title
+                = pluralize(@service.errors.count, "error")
+                prohibited this service from being saved:
+            .panel-body
+              %ul
+                - @service.errors.each do |attr,msg|
+                  %li.custome-error= msg
+    .form-group
+      = f.label :name, :class => 'control-label col-lg-2'
+      .col-lg-6
+        = f.text_field :name, :class => 'form-control'
+        %label.error-title.error{:for => "service_name"}
+    .form-group
+      = f.label :city_id, :class => 'control-label col-lg-2'
+      .col-lg-6
+        .multiple-select
+          - @cities.each do |city|
+            %label.li
+              = check_box_tag :city_ids, city.id, @service.cities.include?(city), :name => 'service[city_ids][]'
+              %u= city.name
+            %br/
+        .col-lg-6
+          %label.error-title.error{:for => "service[city_ids][]"}
+    .form-group
+      = f.label :photo, "Photo", class: 'control-label col-lg-2'
+      .col-lg-6
+        = f.file_field :photo
+        %label.error-title.error{:for => "service_photo"}
+    .form-group
+      .col-lg-offset-2.col-lg-8
+        = f.submit nil, :class => 'btn btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_services_path, :class => 'btn btn-danger'
+    :javascript
+      #{render "common/validate.js"}

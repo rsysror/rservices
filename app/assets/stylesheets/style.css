@@ -7402,6 +7402,11 @@ p.free {
   margin-top: 4%!important;
 }
 
+.second-container {
+  width: 95%!important;
+  padding-left: 7%!important;
+}
+
 .btn_margin{margin-right: 5px;}
 
 /*for google map*/
@@ -7439,7 +7444,6 @@ a {
   color:#fff; border:none;
 }
 
-
 .nav_header a{
   color: #ffffff;
   line-height: 35px;
@@ -7454,4 +7458,74 @@ a {
   z-index:9999;
   width: 78%;
   margin-left: 15%;
+}
+
+.forgot-container {
+  width: 35%!important;
+  margin-top: 4%!important;
+  margin: auto;
+}
+
+.forgot-password{
+  background: #e26b5b;
+  border: none;
+  padding: 15px 10px;
+  margin-top: 1%;
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+}
+
+#forgot_pssd{color: #fffefb!important;}
+
+.home-container {
+  width: 10%
+}
+
+.nav-home {
+  float: left;
+  margin: 4% 0%  0% 5%;
+  font-size: 18px;
+}
+
+p.nav-home a {
+  color: #fff;
+  text-decoration: none; 
+}
+
+.mo-margin {
+  margin:0% 0%
+}
+
+.no-margin-force {
+  margin:0px !important;
+}
+
+.tog-margin {
+  float: right; 
+  margin: 6%;
+}
+
+.search-btn-top-margin{
+  width: 100%;
+  margin-top:12%;
+}
+
+.row_margin {
+  margin-bottom: 1%!important;
+}
+
+.col-edit {
+  width: 20%;
+}
+
+#service_request_service_request_number { 
+  width: 80%;height: 34px;
+}
+
+#service-title {
+  text-align: center;
+  font-size: 22px;
+  font-style: italic;
+  color: #d48a3e
 }

@@ -55,7 +55,7 @@ $(document).ready(function() {
 <div class="container">
   <div class="row">
     <div class="add-new">
-      <%= link_to t('.Back', :default => t("helpers.links.back")), dashboard_path, :class => 'btn btn-primary', style: "color:#fff" %>
+      <%=back_button_link(dashboard_path) %>
     </div>
   </div>
   <div class="panel panel-primary">
@@ -75,7 +75,7 @@ $(document).ready(function() {
             <div class="col-md-2">
               <div class="form-group">
                 <%= f.hidden_field :address, id: "geocomplete1" %>
-                <%= f.submit  :value => "Search", class: "btn btn-primary", style: "width: 100%;margin-top:12%;" %>
+                <%= f.submit  :value => "Search", class: "btn btn-primary search-btn-top-margin"%>
               </div>
             </div>
           </div>

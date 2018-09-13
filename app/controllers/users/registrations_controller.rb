@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         url = after_registration_path resource
         format.json { render json: {url: url}, status: :ok}
       else
-        format.json { render json: resource.errors.full_messages, status: :unauthorized }
+        format.json { render json: resource.errors.full_messages.join(", "), status: :unauthorized }
       end
 
     end

@@ -9,7 +9,7 @@
       .modal-body.about
         .login-top.sign-top.one
           = form_for(resource, as: resource_name, url: login_path, :html => {:id => "login_form"}) do |f|
-            .div#display_errors{:style => "display:none;color:red;margin-bottom:15px;"}
+            .div#display_errors.error-text
             = f.text_field :email, :placeholder => "Email", :required => true, :class => "email"
             = f.password_field :password, :placeholder => "Password", :required => true, :minlength => "6", :class => "password"
             / = f.check_box :remember_me

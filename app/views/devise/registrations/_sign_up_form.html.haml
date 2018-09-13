@@ -9,7 +9,7 @@
       .modal-body.about
         .login-top.sign-top.one
           = form_for(resource, as: resource_name, url: create_user_path) do |f|
-            .div#show_errors{:style => "display:none;color:red;margin-bottom:15px;"}
+            .div#show_errors.error-text
             %strong Sign Up As
             = f.radio_button :role, 'user', :checked => true, :class => 'radio_input'
             User

@@ -5,10 +5,13 @@ class FeedbacksController < ApplicationController
 	end
 
 	def create
-   feedback = current_user.feedbacks.create(feedback_params)
-   if feedback
-   	redirect_to service_requests_path
+    @feedback = current_user.feedbacks.create(feedback_params)
+    if @feedback.persisted?
+   	  flash[:success] = "Successfully Rated!"
+    else  
+      flash[:error] = @feedback.errors.full_messages.join(",")
    end
+    redirect_to service_requests_path
 	end
 
 

@@ -6,34 +6,21 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     #wrapper
-      / Navigation
       %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
-        .navbar-header
-          %a.navbar-brand{:href => "/"}=# current_user.first_name.titleize
-        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
-        %ul.nav.navbar-nav.navbar-left
-          %li
+        %ul.nav.navbar-nav.navbar-left.home-container
+          %p.nav-home
             %a{:href => "/"}
               %i.fa.fa-home.fa-fw
               R-services
-        %ul.nav.navbar-right.navbar-top-links{ :style => "margin:0px !important;"}
+        %ul.nav.navbar-right.navbar-top-links.no-margin-force
           %dropdown
             %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
               %i.fa.fa-user.fa-fw
               = current_user.full_name
-              %span.caret{ :style => "float: right; margin: 6%;"}
+              %span.caret.tog-margin
             %ul.dropdown-menu
               %li
-                - if current_user.partner?
-                  %a{:href => "/partner/portfolio"} Dashboard
-                - elsif current_user.admin?
-                  %a{:href => "/admin"} Dashboard
-                - else
-                  %a{:href => "/dashboard"} Dashboard
+                #{dashboard_link(current_user)}
               %li
                 #{link_to "Sign out", destroy_user_session_path, :method => :delete}
     - if current_user.admin?

@@ -1,7 +1,7 @@
 .container
   .row
     .add-new
-      = link_to t('.Back', :default => t("helpers.links.back")),service_requests_path,:class => 'btn btn-primary'
+      = back_button_link(service_requests_path)
   .panel.panel-primary
     .panel-heading
       %h3 Service Request Detail

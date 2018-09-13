@@ -7402,6 +7402,11 @@ p.free {
   margin-top: 4%!important;
 }
 
+.second-container {
+  width: 95%!important;
+  padding-left: 7%!important;
+}
+
 .btn_margin{margin-right: 5px;}
 
 /*for google map*/
@@ -7438,7 +7443,6 @@ a {
   background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
   color:#fff; border:none;
 }
-
 
 .nav_header a{
   color: #ffffff;
@@ -7500,4 +7504,11 @@ p.nav-home a {
 .tog-margin {
   float: right; 
   margin: 6%;
+}
+
+#service-title {
+  text-align: center;
+  font-size: 22px;
+  font-style: italic;
+  color: #d48a3e
 }

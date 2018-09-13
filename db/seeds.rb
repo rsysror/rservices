@@ -37,7 +37,7 @@ State.create(:id=>21, :name=>"Haryana",:country_id=>1)
 State.create(:id=>22, :name=>"Gujarāt",:country_id=>1)
 State.create(:id=>23, :name=>"Daman and Diu",:country_id=>1)
 State.create(:id=>24, :name=>"Goa",:country_id=>1)
-State.create(:id=>25, :name=>"NCT",:country_id=>1)
+State.create(:id=>25, :name=>"Delhi",:country_id=>1)
 State.create(:id=>26, :name=>"Dadra and Nagar Haveli",:country_id=>1)
 State.create(:id=>27, :name=>"Chandīgarh",:country_id=>1)
 State.create(:id=>28, :name=>"Bihar",:country_id=>1)
@@ -48,6 +48,7 @@ State.create(:id=>32, :name=>"Andaman and Nicobar Islands",:country_id=>1)
 State.create(:id=>33, :name=>"Chhattisgarh",:country_id=>1)
 State.create(:id=>34, :name=>"Jharkhand",:country_id=>1)
 State.create(:id=>36, :name=>"Uttarakhand",:country_id=>1)
+State.create(:id=>37)
 
 
 
@@ -226,6 +227,9 @@ City.create(:name=>"Godhra",:state_id=>22)
 City.create(:name=>"Panaji",:state_id=>1283)
 
 City.create(:name=>"Goa",:state_id=>24)
+
+City.create(:name => "Delhi", :state_id => 25)
+City.create(:name => "Asola", :state_id => 25)
 
 City.create(:name=>"Patna",:state_id=>28)
 City.create(:name=>"Motihari",:state_id=>28)

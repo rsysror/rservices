@@ -21,15 +21,19 @@ class Address < ApplicationRecord
 
 
   reverse_geocoded_by :latitude, :longitude do |address,results|
-    if geo_address = results.first
-      state = State.where(:name => geo_address.state).first
-      if state
-        city = City.where(:name => geo_address.city).first 
-        unless city
-          city = City.create(:name => geo_address.city, :state_id => state.id)
+    if geo = results.first
+      state = State.where(:name => geo.state).first
+      if state && geo.city 
+        city = City.where(:name => geo.city).first 
+        unless city 
+          city = City.create(:name => geo.city, :state_id => state.id)
         end
+        geo_address = geo.data["address"]
+        address.flat_number = geo_address["building"] ||  geo_address["house_number"] ||  geo_address["residential"] || geo_address["hotel"] 
+        address.street_name = geo_address["locality"] ||  geo_address["university"] || geo_address["college"] || geo_address["village"]
+        address.landmark = geo_address["road"] || geo_address["suburb"] 
         address.city  = city
-        address.pin_code = geo_address.postal_code
+        address.pin_code = geo_address["postcode"]
       else
         address.errors.add(:base, "We are not providing service on this state & city")
       end

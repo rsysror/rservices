@@ -16,6 +16,7 @@
           = radio_button_tag 'service_request[address_id]', address.id, checked: true  if !header
           %br <b>Flat Number:</b> #{address.try(:flat_number)}
           %br <b>Street Name:</b> #{address.try(:street_name)}
+          %br <b>Land Mark:</b> #{address.try(:landmark)}
           %br <b>City:</b> #{address.city.try(:name)}
           %br <b>Pin Code:</b> #{address.try(:pin_code)}
           - if address.google_address

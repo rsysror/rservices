@@ -7456,6 +7456,24 @@ a {
   margin-left: 15%;
 }
 
+.forgot-container {
+  width: 35%!important;
+  margin-top: 4%!important;
+  margin: auto;
+}
+
+.forgot-password{
+  background: #e26b5b;
+  border: none;
+  padding: 15px 10px;
+  margin-top: 1%;
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+}
+
+#forgot_pssd{color: #fffefb!important;}
+
 .home-container {
   width: 10%
 }

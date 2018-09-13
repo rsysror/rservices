@@ -51,8 +51,9 @@ class Admin::UsersController < AdminController
 
 	#update status of users service request
 	def update_service_status
-		if(@service_request and @status)
+    if(@service_request and @status)
 			 @service_request.update_attributes(status_id: @status.id)
+       UserMailer.accepted_rejected(@service_request.user, @service_request).deliver_now
 			flash[:success] = "Service request accepted "
 			redirect_to admin_partners_path
 		else

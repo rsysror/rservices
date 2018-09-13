@@ -12,17 +12,17 @@
     #wrapper
       %nav.nav_header.navbar-inverse.navbar-fixed-top
         - if user_signed_in?
-          %ul.nav.navbar-nav.navbar-left
-            %li
+          %ul.nav.navbar-nav.navbar-left.home-container
+            %p.nav-home
               %a{:href => "/"}
                 %i.fa.fa-home.fa-fw
                 R-services
-          .navbar-right.nav_bg_color{:style => "margin:0% 0%"}
+          .navbar-right.nav_bg_color.mo-margin
             .dropdown
               %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
                 %i.fa.fa-user.fa-fw
                 #{current_user.full_name}
-                %span.caret{ :style => "float: right; margin: 6%;"}
+                %span.caret.tog-margin
               %ul.dropdown-menu
                 %li
                   #{dashboard_link(current_user)}

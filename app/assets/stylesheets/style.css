@@ -7455,3 +7455,31 @@ a {
   width: 78%;
   margin-left: 15%;
 }
+
+.home-container {
+  width: 10%
+}
+
+.nav-home {
+  float: left;
+  margin: 4% 0%  0% 5%;
+  font-size: 18px;
+}
+
+p.nav-home a {
+  color: #fff;
+  text-decoration: none; 
+}
+
+.mo-margin {
+  margin:0% 0%
+}
+
+.no-margin-force {
+  margin:0px !important;
+}
+
+.tog-margin {
+  float: right; 
+  margin: 6%;
+}

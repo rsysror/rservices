@@ -7431,6 +7431,12 @@ a {
 
 /*-- //responsive --*/
 
+.header-right-toggle {
+  height:50px;
+  min-width:160px;
+  background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
+  color:#fff; border:none;
+}
 
 
 .nav_header a{

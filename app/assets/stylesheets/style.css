@@ -7501,3 +7501,7 @@ p.nav-home a {
   float: right; 
   margin: 6%;
 }
+
+.row_margin{margin-bottom: 1%!important;}
+.col-edit {width: 20%;}
+#service_request_service_request_number{width: 80%;height: 34px;}

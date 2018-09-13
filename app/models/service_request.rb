@@ -9,6 +9,9 @@ class ServiceRequest < ApplicationRecord
   belongs_to :portfolio
   belongs_to :time_slot
 
+
+  validates :user_id, :address_id, :service_id, :time_slot_id, presence: true
+
   #scope method
   scope :ordered, -> {order('updated_at DESC')}
 

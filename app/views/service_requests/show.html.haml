@@ -1,6 +1,3 @@
-%hr
-%hr
-%hr
 .container
   .row
     .add-new
@@ -29,12 +26,11 @@
         - if @service_request.feedback.present?   
           .col-sm-3
             %p
-              / %b Rating
-              = user_ratings(@service_request)
+              %b Remarks:
+              = @service_request.feedback.description 
           .col-sm-3
             %p
-              %b Remarks:
-              = @service_request.feedback.description
+              = user_ratings(@service_request)
       .row
         .col-sm-3
           %b Address:

@@ -7397,8 +7397,9 @@ p.free {
 }
 
 .container {
-  width: 1600px!important;
-  padding-left: 170px!important; 
+  width: 95%!important;
+  padding-left: 14%!important;
+  margin-top: 4%!important;
 }
 
 .btn_margin{margin-right: 5px;}
@@ -7444,9 +7445,41 @@ a {
   line-height: 35px;
 }
 
+.right_float{float:right!important;}
+
+.header {padding-bottom: 1%;}
+
 .custom-alert{
   margin-top: 3%;
   z-index:9999;
   width: 78%;
   margin-left: 15%;
+}
+
+.home-container {
+  width: 10%
+}
+
+.nav-home {
+  float: left;
+  margin: 4% 0%  0% 5%;
+  font-size: 18px;
+}
+
+p.nav-home a {
+  color: #fff;
+  text-decoration: none; 
+}
+
+.mo-margin {
+  margin:0% 0%
+}
+
+.no-margin-force {
+  margin:0px !important;
+}
+
+.tog-margin {
+  float: right; 
+  margin: 6%;
 }

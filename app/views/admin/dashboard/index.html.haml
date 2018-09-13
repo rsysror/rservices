@@ -1,8 +1,8 @@
 / .navbar-top-links
-#page-wrapper{:style => "margin-left:250px;"}
+.container
   .row
     .col-lg-12
-      %h3.page-header Admin Dashboard
+      %h3.header Admin Dashboard
   .row
     .col-lg-3.col-md-6
       .panel.panel-primary
@@ -28,10 +28,10 @@
             .col-xs-9.text-right
               .huge
                 = get_stats('Service')
-              %div{:style => "margin-top: 8%;"} View Services
+              %div View Services
         %a{:href => "/admin/services"}
           .panel-footer
-            %span.pull-left View Details
+            %span.pull-left Service Details
             %span.pull-right
               %i.fa.fa-tasks
             .clearfix
@@ -44,10 +44,10 @@
             .col-xs-9.text-right
               .huge
                 = get_stats("User")
-              %div{:style => "margin-top: 8%;"} Our Users
+              %div Our Users
         %a{:href => "/admin/users"}
           .panel-footer
-            %span.pull-left View Details
+            %span.pull-left User Details
             %span.pull-right
               %i.fa.fa-users
             .clearfix
@@ -60,10 +60,10 @@
             .col-xs-9.text-right
               .huge
                 = get_stats('ServiceRequest')
-              %div{:style => "margin-top: 8%;"} Service in Cities
+              %div Service Request
         %a{:href => "/admin/service-requests"}
           .panel-footer
-            %span.pull-left View Details
+            %span.pull-left Service Request Details
             %span.pull-right
               %i.fa.fa-support
             .clearfix

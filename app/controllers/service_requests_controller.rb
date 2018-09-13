@@ -9,10 +9,10 @@ class ServiceRequestsController < ApplicationController
   def create
     @service_request =  current_user.service_requests.create(service_request_params)
     if @service_request.persisted?
-      UserMailer.service_request_generate(current_user,service_request, 'user').deliver_now
-      UserMailer.service_request_generate(current_user,service_request, 'partner').deliver_now
+      UserMailer.service_request_generate(current_user,@service_request, 'user').deliver_now
+      UserMailer.service_request_generate(current_user,@service_request, 'partner').deliver_now
       flash[:success] = "Service Request Placed Successfully!"
-      redirect_to 'service_requests'
+      redirect_to '/service_requests'
     else
       flash[:error] = @service_request.errors.full_messages.join(",")
       redirect_to '/dashboard'

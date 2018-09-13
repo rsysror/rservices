@@ -17,11 +17,10 @@ class Users::PasswordsController < Devise::PasswordsController
 
     if successfully_sent?(resource)
       flash[:success] = "A reset link has been sent to your registered email "
-      redirect_to root_path
     else
       flash[:email] = "The email you entered is not registered with us"
-      redirect_to root_path
     end
+    redirect_to after_sending_reset_password_instructions_path_for
   end
 
   
@@ -43,7 +42,7 @@ class Users::PasswordsController < Devise::PasswordsController
       else
         set_flash_message!(:notice, :updated_not_active)
       end
-      redirect_to '/'
+      redirect_to root_path
     else
       set_minimum_password_length
       flash[:error] = "Error"
@@ -54,12 +53,16 @@ class Users::PasswordsController < Devise::PasswordsController
 
    protected
 
+    def after_update_path_for(resource)
+      root_path
+    end
+
   def after_resetting_password_path_for(resource)
     root_path
   end
 
   #  The path used after sending reset password instructions
-  def after_sending_reset_password_instructions_path_for(resource_name)
+  def after_sending_reset_password_instructions_path_for
     root_path
   end
 

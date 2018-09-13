@@ -64,3 +64,7 @@ div.desc {
 .scroll{overflow-y: auto;}
 
 .about_bg_clr{background-color: #f3f2eb;}
+
+.about{
+  overflow: auto;
+}

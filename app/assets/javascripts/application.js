@@ -15,19 +15,19 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require maps.googleapis
 //= require_tree .
 
 
 $(function(){
-	$('select').change(function () {
-    $('.loading').show();
-	})
+  $('select').change(function () {
+  $('.loading').show();
+  })
 })
 
-
-
-
-		
-
-
+$(document).on('ready turbolinks:load', function() {
+  $('.side-menu a').filter(function(){
+    return this.href==location.href}).addClass('active').siblings('a').removeClass('active')
+    $('.side-menu a').click(function(){
+    $(this).addClass('active').siblings().removeClass('active')  
+  })
+})

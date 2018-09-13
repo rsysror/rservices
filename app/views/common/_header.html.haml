@@ -9,25 +9,10 @@
         %span COME LOOK
         %span AT THE SELECTION!
       %p Eye it – Try it – Buy it!
-      %form{:action => "#", :method => "post"}
-        .row
-          .search-two
-            %select#country6{:name => "post[city_id]", :style => 'width: 100%;height:39px'}
-              %option{:value => "null"}= 'Select location'
-              - City.all.each do |city|
-                %option{:value => "#{city.id}"}= city.name
-                %img.img-responsive{:alt => "Select location ", :src => "assets/place.png"}>
-          .search-two
-            %select#country{:name => "post[service_id]"}
-              %option{:value => "null"}= 'Select a service'
-              - Service.all.where(parent_id: nil).each do |serve|
-                %option{:value => "#{serve.id}"}= serve.name
-                %img.img-responsive{:alt => "Select a service", :src => "assets/rupee.png"}>
-          .search-two
-            %select#country.frm-field.serach-box{:name => "post[service_id]"}
-              %option{:value => "null"}= 'Select a sub service'
-              - Service.all.where(parent_id: !nil).each do |subServe|
-                %option{:value => "#{subServe.id}"}= subServe.name
-                %img.img-responsive{:alt => " ", :src => "assets/rupee.png"}
-          %input{:type => "submit", :value => "Search "}
-        .clearfix
+      / %form{:action => "#", :method => "post"}
+      .row
+        %br
+        %br
+        .search-two{ :style => "margin:0% 0% 0% 34.6%"}
+          = select_tag :city_id, options_from_collection_for_select(City.ordered, :id, :name), :prompt => "Select City", class: 'form-control', data: {remote: true,URL: get_services_by_city_path, method: 'get' }
+              

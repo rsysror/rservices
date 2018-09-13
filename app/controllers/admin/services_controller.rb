@@ -3,109 +3,85 @@ class Admin::ServicesController < AdminController
   before_action :set_service, only: [:show, :edit, :update, :destroy, :edit_sub_services]
 
   layout 'admin'
-  # GET /services
-  # GET /services.json
+ 
   def index
-    @services = Service.where(:parent_id => nil).order(:id)
+    @services = Service.get_all_services(params[:page])
   end
 
-  # GET /services/1
-  # GET /services/1.json
   def show
-    
+
   end
 
-  # GET /services/new
   def new
     @service = Service.new
     @cities = City.details.order(name: :asc)
   end
 
-  # GET /services/1/edit
   def edit
     @cities = City.details.order(name: :asc)
   end
 
-  # POST /services
-  # POST /services.json
   def create
     @cities = City.details.order(name: :asc)
     @service = Service.new(service_params)
-    respond_to do |format|
-      if @service.save
-        format.html { redirect_to admin_services_path(@service), notice: 'Service was successfully created.' }
-        format.json { render :show, status: :created, location: @service }
-      else
-        format.html { render :new }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
-    end
+    if @service.save
+      flash[:success] = "Service created successfully "
+      redirect_to admin_services_path
+    else
+      flash[:error] = "Service request not created!"
+      redirect_to new_admin_service_path
+    end   
+
   end
 
-  # PATCH/PUT /services/1
-  # PATCH/PUT /services/1.json
   def update
-    respond_to do |format|
-      if @service.update(service_params)
-        format.html { redirect_to admin_services_path(@service), notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
-      else
-        format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    if @service.update(service_params)
+      flash[:success] = "Service updated successfully "
+      redirect_to admin_services_path
+    else
+      flash[:error] = "Service not updated!"
+      redirect_to new_admin_service_path    
     end
   end
 
-  # DELETE /services/1
-  # DELETE /services/1.json
   def destroy
     @service.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_services_url, notice: 'Service was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Service was successfully destroy !"
+    redirect_to admin_services_url
   end
 
   def sub_services
-    @services = Service.where(:parent_id => params[:id]  )
+    @services = Service.get_all_sub_services(params[:id], params[:page])
   end
 
-  # GET /services/1/create_sub_services
   def create_sub_services
     @sub_service = Service.new
   end
 
-  # GET /services/1/edit_sub_services
   def edit_sub_services
-
   end  
 
-  # PATCH/PUT /services/1/edit_sub_services
-  # PATCH/PUT /services/1.json
   def update_sub_services
-    respond_to do |format|
-      if @service.update(sub_service_params)
-        format.html { redirect_to sub_services_admin_service_path(:id => @service.parent_id), notice: 'Service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @service }
-      else
-        format.html { render :edit }
-        format.json { render json: @service.errors, status: :unprocessable_entity }
-      end
+    if @service.update(sub_service_params)
+      flash[:success] = "Service is successfully updated"
+      redirect_to sub_services_admin_service_path(@service.service)
+    else
+      flash[:error] = "Service is successfully updated"
+      redirect_to sub_services_admin_service_path(@service.service)
     end
+    
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_service
       @service = Service.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name,:parent_id, :photo, :city_ids=> [])
+      params.require(:service).permit(:name,:parent_id, :price, :photo, :city_ids=> [])
     end
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def sub_service_params
-      params.require(:service).permit(:name,:id, :city_ids=> [])
+      params.require(:service).permit(:name,:id, :price, :city_ids=> [])
     end
 end

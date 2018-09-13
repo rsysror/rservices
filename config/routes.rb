@@ -44,7 +44,9 @@ Rails.application.routes.draw do
     resources :users do
       member do
         get 'user_service_request'
-        get 'update_service_status'        
+        get 'update_service_status'
+        put 'manage_portfolio_status'
+
       end
     end
   end
@@ -67,6 +69,7 @@ Rails.application.routes.draw do
 
 
   #Singular routes for few methods
+  get 'get_services_by_city', to: 'home#get_services_by_city'
 	get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
   get 'get_states_and_cities', to: 'addresses#get_states_and_cities'

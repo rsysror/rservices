@@ -25,6 +25,18 @@ module ApplicationHelper
     "https://maps.googleapis.com/maps/api/staticmap?center=#{center}&size=300x300&zoom=17"
   end
 
+  def add_rating_html_block request
+    render partial: "shared/show_rating" , locals: {request: request, score: request.feedback.rating } 
+  end
+
+  def dashboard_link user
+    if current_user.admin?
+      link_to "Admin", admin_services_path
+    elsif current_user.partner?
+      link_to "Partner", partner_portfolio_path
+    elsif current_user.user?
+      link_to "Dashboard", dashboard_path
+    end
+  end
+
 end
-
-

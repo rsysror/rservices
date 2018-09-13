@@ -2,7 +2,6 @@
   %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     = csrf_meta_tags
     = csp_meta_tag
-    %script{:src => "https://maps.googleapis.com/maps/api/js", :type => "text/javascript"}
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
@@ -18,22 +17,28 @@
           %span.icon-bar
         %ul.nav.navbar-nav.navbar-left
           %li
-            %a{:href => "#"}
+            %a{:href => "/"}
               %i.fa.fa-home.fa-fw
               R-services
         %ul.nav.navbar-right.navbar-top-links{ :style => "margin:0px !important;"}
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+          %dropdown
+            %button.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :type => "button", :style => "height:50px; width:160px;"}
               %i.fa.fa-user.fa-fw
-              = current_user_role(current_user)
-            %ul.dropdown-menu.dropdown-user
+              = current_user.full_name
+              %span.caret{ :style => "float: right; margin: 6%;"}
+            %ul.dropdown-menu
               %li
-                %a{:href => "#"}
-                  #{link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "fa fa-sign-out fa-fw"}
-
+                - if current_user.partner?
+                  %a{:href => "/partner/portfolio"} Dashboard
+                - elsif current_user.admin?
+                  %a{:href => "/admin"} Dashboard
+                - else
+                  %a{:href => "/dashboard"} Dashboard
+              %li
+                #{link_to "Sign out", destroy_user_session_path, :method => :delete}
     - if current_user.admin?
       = render :partial => "shared/admin_left"
     - else
       = render :partial => "shared/partner_left"
+    = yield
 
-    = yield   

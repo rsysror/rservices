@@ -1,25 +1,24 @@
-.navbar-default.sidebar{:role => "navigation"}
-  .sidebar-nav.navbar-collapse
-    %ul#side-menu.nav.sidebar-color
-      %li.sidebar-search
-        .input-group.custom-search-form
-          %input.form-control{:placeholder => "Search...", :type => "text"}/
-          %span.input-group-btn
-            %button.btn.btn-primary{:type => "button"}
-              %i.fa.fa-search
-        / /input-group
-      %li
-        %a.active{:href => "/admin"}
-          %i.fa.fa-dashboard.fa-fw
-          Dashboard
-      %li
-        %ul.nav.nav-second-level
-          %li
-            %a{:href => "/admin/services"} Services
-          %li
-          %li
-            %a{:href => "/admin/users"} Users
-          %li
-            %a{:href => "/admin/partners"} Partners
-          %li
-            %a{:href => "/admin/service-requests"} Service requests    
+.navbar-default.sidebar
+  %ul.side-menu.nav.sidebar-color
+    %li
+      %a{:href => "/admin"}
+        %i.fa.fa-picture-o
+        Dashboard
+    %li
+      %a{:href => "/admin/services"}
+        %i.fa.fa-dashboard.fa-fw
+        Services
+    %li
+      %a{:href => "/admin/users"}
+        %i.fa.fa-pencil-square-o
+        Users
+    %li
+      %a{:href => "/admin/partners"}
+        %i.fa.fa-pencil-square-o
+        Partners
+    %li
+      %a{:href => "/admin/service-requests"}
+        %i.fa.fa-dashboard.fa-fw
+        Service Requests
+
+  

@@ -3,9 +3,8 @@ class AddressesController < ApplicationController
   before_action :find_address, only: [:edit, :update]
 
 	def new
-    # byebug
 		if params[:address].present?
-      @address = Location.near(params[:search], 50, :order => :distance)
+      @address = Address.near(params[:search], 50, :order => :distance)
     else
       @address = Address.new
     end
@@ -32,11 +31,10 @@ class AddressesController < ApplicationController
 	end
 
 	def create
-    # byebug
-    if params[:address]
+    if params[:address].present?
       @address = current_user.addresses.create(address_params)
     else
-  		@address = current_user.addresses.create(address_params)
+ 		  @address = current_user.addresses.new(address_params)
     end
     if @address.save
       redirect_to '/dashboard'
@@ -76,7 +74,7 @@ class AddressesController < ApplicationController
 
   #look better possibilities to merge extra params which is not included in form
 	def address_params
-    params.require(:address).permit(:flat_number,:street_name,:landmark, :user_id, :type,:pin_code, :city_id, :address)
+    params.require(:address).permit(:flat_number,:street_name,:landmark, :user_id, :type,:pin_code, :city_id, :address, :google_address)
   end
 
 end

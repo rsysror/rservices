@@ -11,8 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    build_r
-    esource
+    build_resource
     yield resource if block_given?
     respond_with resource
   end

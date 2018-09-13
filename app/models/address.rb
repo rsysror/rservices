@@ -1,8 +1,8 @@
 class Address < ApplicationRecord
-    has_many :service_requests, dependent: :destroy
-    belongs_to :user
+  has_many :service_requests, dependent: :destroy
+  belongs_to :user
 
-    belongs_to :city, optional: true
+  belongs_to :city, optional: true
 
   # Validate form on server
   validates :flat_number, presence: {message: 'Flat no is required!'}, if: :latitude_exists?
@@ -15,13 +15,12 @@ class Address < ApplicationRecord
 
 
   geocoded_by :address # address is an attribute of MyModel
-  after_validation :geocode, :if => :address_changed?
+  after_validation :geocode
   
   before_validation :reverse_geocode
 
 
   reverse_geocoded_by :latitude, :longitude do |address,results|
-
     if geo_address = results.first
       state = State.where(:name => geo_address.state).first
       if state
@@ -38,15 +37,20 @@ class Address < ApplicationRecord
   end
 
   def has_service_requests?
-    self.service_requests.present?
+    service_requests.present?
   end
 
   def complete_address
-    [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
+    if google_address.present?
+      google_address
+    else
+      "#{flat_number} #{street_name} #{landmark}, #{city.try(:name).titleize}, #{pin_code}"
+    end
+    # [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
   end
 
   def latitude_exists?
-    self.latitude.nil?
+    latitude.nil?
   end
 
 end

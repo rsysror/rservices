@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_10_055143) do
+ActiveRecord::Schema.define(version: 2018_09_11_113334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_055143) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.string "google_address"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_055143) do
     t.datetime "updated_at", null: false
     t.json "images"
     t.json "documents"
+    t.boolean "status", default: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -108,6 +110,7 @@ ActiveRecord::Schema.define(version: 2018_09_10_055143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.decimal "price", precision: 15, scale: 10
   end
 
   create_table "states", force: :cascade do |t|

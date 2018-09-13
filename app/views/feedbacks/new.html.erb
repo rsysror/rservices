@@ -1,7 +1,7 @@
 <script src="/assets/jquery.raty.js"></script>
 <link href="/assets/jquery.raty.css" rel="stylesheet" type="text/css">
 <div class="container">
-   <%= link_to t('.Back', :default => t("helpers.links.back")),dashboard_path,:class => 'btn btn-primary', style: "color:#fff" %>
+   <%=back_button_link(dashboard_path) %>
    <div class="panel panel-primary">
       <div class="panel-heading">
          <h3>Give Your Feedback</h3>

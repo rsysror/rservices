@@ -13,7 +13,6 @@
       .row
         %br
         %br
-          .col-md-6.col-md-offset-5
-            .search-two
-              = select_tag :city_id, options_from_collection_for_select(City.ordered, :id, :name), :prompt => "Select City", class: 'form-control', data: {remote: true,URL: get_services_by_city_path, method: 'get' }
+        .search-two.search
+          = select_tag :city_id, options_from_collection_for_select(City.ordered, :id, :name), :prompt => "Select City", class: 'form-control', data: {remote: true,URL: get_services_by_city_path, method: 'get' }
               

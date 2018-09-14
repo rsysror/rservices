@@ -1,22 +1,16 @@
-<hr>
-<hr>
-<hr>
 <div class="container">
   <div class="row">
     <div class="add-new">
-      <%= link_to t('.Back', :default => t("helpers.links.back")),dashboard_path,:class => 'btn btn-primary mg-btn' %>
+      <%=back_button_link(dashboard_path) %>
     </div>
   </div>
   <div class="panel panel-primary">
     <div class="panel-heading"><h3>Address Details</h3> </div>
       <div class="panel-body">
         <div class="row">
-          <%= render :partial => 'shared/flash_message', :locale => {:flash => flash } %>
-        </div> 
-        <div class="row">
           <%=render :partial => 'service_requests/listing_address', :locals => { :addresses => @addresses, :header => true } %>
         </div>
       </div>
     </div>
   </div>
-</div>      
+</div> 

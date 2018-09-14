@@ -1,5 +1,6 @@
 class Status < ApplicationRecord
 
+	ACTION =["accepted", "rejected", "pending", "inprogress", "completed", "incompleted" ] 
 	has_many :service_requests
 
   scope :accepted, -> { where(name: 'Accepted') }
@@ -9,6 +10,9 @@ class Status < ApplicationRecord
   scope :completed, -> { where(name: 'Completed') }
   scope :incompleted, -> { where(name: 'InCompleted') }
 
-  ACTION =["accepted", "rejected", "pending", "inprogress", "completed", "incompleted" ] 
+  
+  def self.get_status_value status
+  	where(name: status).last
+  end	
 
 end

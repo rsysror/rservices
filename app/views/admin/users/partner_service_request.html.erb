@@ -1,10 +1,7 @@
-<hr>
-<hr>
-<hr>
 <div class="container">
   <div class="row">
     <div class="add-new">
-      <%= link_to t('.Back', :default => t("helpers.links.back")), admin_partners_path, :class => 'btn btn-primary', style: "color:#fff" %>
+      <%=back_button_link(admin_partners_path) %>
     </div>
   </div>
   <div class="panel panel-primary">
@@ -14,9 +11,9 @@
     <div class="panel-body">
       <table class="table">
         <thead>
-          <th>Service Request Name</th>
+          <th>Service Name</th>
           <th>Address</th>
-          <th>Vendor</th>
+          <th>User</th>
           <th>Time Slot</th>
           <th>Service Request Number</th>
           <th>Status</th>
@@ -25,7 +22,7 @@
         <tbody>
           <% @service_requests.each do |request|%>
             <tr>
-              <td><%=request.service.try(:name) %></td>
+              <td><%=request.service.try(:name).titleize %></td>
               <td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
               <td><%=request.user.email  %></td>
               <td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>

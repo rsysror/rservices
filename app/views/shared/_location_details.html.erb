@@ -1,6 +1,6 @@
 <div class="row error-container">
   <div class="col-md-10 col-md-offset-1">
-    <div class="col-md-3" style="margin-left: 35px;">
+    <div class="col-md-3 align-country">
       <div class="form-group">
         <label>Country</label>
         <%= select_tag :country_selection, options_from_collection_for_select(Country.all, :id, :name), :prompt => "--- Select Services---" ,class: "form-control", data: {remote: true,url: get_states_and_cities_path,method: 'get'} %>

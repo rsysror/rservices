@@ -76,14 +76,12 @@
                   %option{:value => "city"} Gujrat
                   %option{:value => "city"} Hyderabad
                   %option{:value => "city"} Gorakhpur
-                  %option{:value => "city"} Patna
-    
+                  %option{:value => "city"} Patna    
     .featured_section_w3l
-      .container
-        %h3.tittle Our Services
+      .second-container
+        #service-title
         %div#services_data
           = render  'services_list',:locals => { :services => @services }
-        
     = render :partial => 'common/footer'
     
    

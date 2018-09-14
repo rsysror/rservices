@@ -37,7 +37,7 @@ State.create(:id=>21, :name=>"Haryana",:country_id=>1)
 State.create(:id=>22, :name=>"Gujarāt",:country_id=>1)
 State.create(:id=>23, :name=>"Daman and Diu",:country_id=>1)
 State.create(:id=>24, :name=>"Goa",:country_id=>1)
-State.create(:id=>25, :name=>"NCT",:country_id=>1)
+State.create(:id=>25, :name=>"Delhi",:country_id=>1)
 State.create(:id=>26, :name=>"Dadra and Nagar Haveli",:country_id=>1)
 State.create(:id=>27, :name=>"Chandīgarh",:country_id=>1)
 State.create(:id=>28, :name=>"Bihar",:country_id=>1)
@@ -48,6 +48,7 @@ State.create(:id=>32, :name=>"Andaman and Nicobar Islands",:country_id=>1)
 State.create(:id=>33, :name=>"Chhattisgarh",:country_id=>1)
 State.create(:id=>34, :name=>"Jharkhand",:country_id=>1)
 State.create(:id=>36, :name=>"Uttarakhand",:country_id=>1)
+State.create(:id=>37)
 
 
 
@@ -227,6 +228,9 @@ City.create(:name=>"Panaji",:state_id=>1283)
 
 City.create(:name=>"Goa",:state_id=>24)
 
+City.create(:name => "Delhi", :state_id => 25)
+City.create(:name => "Asola", :state_id => 25)
+
 City.create(:name=>"Patna",:state_id=>28)
 City.create(:name=>"Motihari",:state_id=>28)
 City.create(:name=>"Bettiah",:state_id=>28)
@@ -280,23 +284,40 @@ user.add_role :user
 
 Status.delete_all
 
-Status.create(name: "Accepted")
-Status.create(name: "Rejected")
-Status.create(name: "Pending")
-Status.create(name: "Inprogress")
-Status.create(name: "Cancelled")
-Status.create(name: "Completed")
-Status.create(name: "InCompleted")
+Status.create(id:1, name: "Pending")
+Status.create(id:2, name: "Accepted")
+Status.create(id:3, name: "Rejected")
+Status.create(id:4, name: "Inprogress")
+Status.create(id:5, name: "Cancelled")
+Status.create(id:6, name: "Completed")
+Status.create(id:7, name: "InCompleted")
 
 
 
 TimeSlot.delete_all
-
-TimeSlot.create(start_time: "10:00", end_time: "11:00")
-TimeSlot.create(start_time: "11:00", end_time: "12:00")
-TimeSlot.create(start_time: "12:00", end_time: "13:00")
-TimeSlot.create(start_time: "13:00", end_time: "14:00")
-TimeSlot.create(start_time: "14:00", end_time: "15:00")
-TimeSlot.create(start_time: "15:00", end_time: "16:00")
+TimeSlot.create(id:1, start_time: "00:00", end_time: "01:00")
+TimeSlot.create(id:2, start_time: "01:00", end_time: "02:00")
+TimeSlot.create(id:3, start_time: "02:00", end_time: "03:00")
+TimeSlot.create(id:4, start_time: "03:00", end_time: "04:00")
+TimeSlot.create(id:5, start_time: "04:00", end_time: "05:00")
+TimeSlot.create(id:6, start_time: "05:00", end_time: "06:00")
+TimeSlot.create(id:7, start_time: "06:00", end_time: "07:00")
+TimeSlot.create(id:8, start_time: "07:00", end_time: "08:00")
+TimeSlot.create(id:9, start_time: "08:00", end_time: "09:00")
+TimeSlot.create(id:10, start_time: "09:00", end_time: "10:00")
+TimeSlot.create(id:11, start_time: "10:00", end_time: "11:00")
+TimeSlot.create(id:12, start_time: "11:00", end_time: "12:00")
+TimeSlot.create(id:13, start_time: "12:00", end_time: "13:00")
+TimeSlot.create(id:14, start_time: "13:00", end_time: "14:00")
+TimeSlot.create(id:15, start_time: "14:00", end_time: "15:00")
+TimeSlot.create(id:16, start_time: "15:00", end_time: "16:00")
+TimeSlot.create(id:17, start_time: "16:00", end_time: "17:00")
+TimeSlot.create(id:18, start_time: "17:00", end_time: "18:00")
+TimeSlot.create(id:19, start_time: "18:00", end_time: "19:00")
+TimeSlot.create(id:20, start_time: "19:00", end_time: "20:00")
+TimeSlot.create(id:21, start_time: "20:00", end_time: "21:00")
+TimeSlot.create(id:22, start_time: "21:00", end_time: "22:00")
+TimeSlot.create(id:23, start_time: "22:00", end_time: "23:00")
+TimeSlot.create(id:24, start_time: "23:00", end_time: "24:00")
 
 

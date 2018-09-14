@@ -1,16 +1,30 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="forgot-container">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.Back', :default => t("helpers.links.back")),'/',:class => 'btn btn-primary' %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><h3>Forgot your password?</h3></div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: send_password_instructions_path(resource_name), html: { method: :post, id: "forgot-password" }) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group">
+             <%= f.label :email %><br />
+             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+            </div>
+          </div>
+        </div>    
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group">
+             <%= f.submit "Send",class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

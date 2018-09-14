@@ -1,0 +1,38 @@
+.container
+  .row
+    .add-new
+      = back_button_link(admin_services_path)
+  .panel.panel-primary
+    .panel-heading
+      %h3 Create Sub Service
+    .panel-body
+      = form_for @sub_service, :url => admin_services_path, :html => { :class => "form-horizontal sub_service", :id => "sub_service_form" } do |f|
+        - if @sub_service.errors.any?
+          #error_expl.panel.panel-danger
+            .panel-heading
+              %h3.panel-title
+                = pluralize(@sub_service.errors.count, "error")
+                prohibited this sub_service from being saved:
+            .panel-body
+              %ul
+                - @sub_service.errors.full_messages.each do |msg|
+                  %li= msg
+        .row
+          .col-md-6.col-md-offset-3
+            .form-group
+              = f.label :name, :class => 'control-label col-lg-2'
+              .col-lg-10
+                = f.text_field :name, :class => 'form-control'
+                %label.error-title.error{:for => "service_name"}
+            .form-group
+              = f.label :price, :class => 'control-label col-lg-2'
+              .col-lg-10
+                = f.number_field :price, :class => 'form-control', required: 'true', min: 0
+                %label.error-title.error{:for => "service_price"}
+            .form-group
+              = f.hidden_field :parent_id, :value => params[:id]
+            .form-group
+              .col-lg-offset-2.col-lg-10
+                = f.submit 'Create Sub Service', :class => 'btn btn-primary'
+  :javascript
+    #{render "common/validate.js"}

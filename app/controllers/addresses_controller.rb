@@ -1,10 +1,10 @@
 class AddressesController < ApplicationController
-
+	before_action :authenticate_user!
   before_action :find_address, only: [:edit, :update]
 
 	def new
 		if params[:address].present?
-      @address = Location.near(params[:search], 50, :order => :distance)
+      @address = Address.near(params[:search], 50, :order => :distance)
     else
       @address = Address.new
     end

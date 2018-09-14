@@ -1,10 +1,7 @@
-<hr>
-<hr>
-<hr>
 <div class="container">
   <div class="row">
     <div class="add-new">
-      <%= link_to t('.Back', :default => t("helpers.links.back")),dashboard_path,:class => 'btn btn-primary' %>
+      <%=back_button_link(dashboard_path) %>
     </div>
   </div>
   <div class="panel panel-primary">
@@ -12,17 +9,8 @@
       <h3>Service Request List</h3>
     </div>
     <div class="panel-body">
-      <table class="table">
-        <thead>
-          <th>Service Request Name</th>
-          <th>Address</th>
-          <th>Status</th>
-          <th>Vendor</th>
-          <th>Time Slot</th>
-          <th>Service Request Number</th>
-          <th>Rating</th>
-          <th>Actions</th>
-        </thead>
+      <table class="table service_rq_list">
+        <%=service_request_header_html_block %>
         <tbody>
           <% @service_requests.each do |request|%>
             <%= render :partial => 'service_request_list', :locals => { :request => request } %>

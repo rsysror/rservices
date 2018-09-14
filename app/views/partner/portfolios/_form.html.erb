@@ -51,14 +51,14 @@
     <div class="form-group">
       <%= form.label :avatar, "Profile Image", class: 'control-label col-sm-2' %>
       <div class="col-sm-10"> 
-        <%= form.file_field :avatar, style: "width: 400px!important;" %>
+        <%= form.file_field :avatar, class: "partner-avatar" %>
       </div>
     </div>
 
     <div class="form-group">
       <%= form.label :documents, "Id Card", class: 'control-label col-sm-2' %>
       <div class="col-sm-10"> 
-        <%= form.file_field :documents, multiple: true, style: "width: 400px!important;" %>
+        <%= form.file_field :documents, multiple: true, class: "partner-avatar" %>
       </div>
     </div>
 

@@ -1,22 +1,11 @@
-# frozen_string_literal: true
-
 class Users::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
-  skip_before_action :authenticate_user!, only: [:create]
+  skip_before_action :authenticate_user!, only: [:create], raise: false
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
-  # POST /resource/sign_in
-  # def create
-  #   self.resource = warden.authenticate!(auth_options)
-  #   set_flash_message!(:notice, :signed_in)
-  #   sign_in(resource_name, resource)
-  #   yield resource if block_given?
-  #   redirect_to after_login_path resource
-  # end
+  def new
+    super
+  end
 
   def create
     user = User.find_for_authentication(:email => params[:user][:email])
@@ -45,13 +34,12 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def after_login_path resource
-    if (resource.has_role? :user)
-      root_url
-      # dashboard_url
-    elsif resource.has_role? :partner
+    if resource.admin?
+      admin_root_url
+    elsif resource.partner?
       partner_portfolio_url
     else
-      admin_root_url
+      dashboard_url
     end
   end
 

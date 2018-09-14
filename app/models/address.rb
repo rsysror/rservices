@@ -22,15 +22,19 @@ class Address < ApplicationRecord
 
 
   reverse_geocoded_by :latitude, :longitude do |address,results|
-    if geo_address = results.first
-      state = State.where(:name => geo_address.state).first
-      if state
-        city = City.where(:name => geo_address.city).first 
-        unless city
-          city = City.create(:name => geo_address.city, :state_id => state.id)
+    if geo = results.first
+      state = State.where(:name => geo.state).first
+      if state && geo.city 
+        city = City.where(:name => geo.city).first 
+        unless city 
+          city = City.create(:name => geo.city, :state_id => state.id)
         end
+        geo_address = geo.data["address"]
+        address.flat_number = geo_address["building"] ||  geo_address["house_number"] ||  geo_address["residential"] || geo_address["hotel"] 
+        address.street_name = geo_address["locality"] ||  geo_address["university"] || geo_address["college"] || geo_address["village"]
+        address.landmark = geo_address["road"] || geo_address["suburb"] 
         address.city  = city
-        address.pin_code = geo_address.postal_code
+        address.pin_code = geo_address["postcode"]
       else
         address.errors.add(:base, "We are not providing service on this state & city")
       end
@@ -38,15 +42,20 @@ class Address < ApplicationRecord
   end
 
   def has_service_requests?
-    self.service_requests.present?
+    service_requests.present?
   end
 
   def complete_address
-    [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
+    if google_address.present?
+      google_address
+    else
+      "#{flat_number} #{street_name} #{landmark}, #{city.try(:name)}, #{pin_code}"
+    end
+    # [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
   end
 
   def latitude_exists?
-    self.latitude.nil?
+    latitude.nil?
   end
 
 end

@@ -1,17 +1,23 @@
 class ServiceRequestsController < ApplicationController
+   before_action :authenticate_user!
    before_action :get_service_request, only: [:edit,:show, :update,:cancel_service_request]
 
   def index
-    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).paginate(:page => params[:page], :per_page => 5)
+    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => params[:page], :per_page => 5)
   end
 
   def create
-   service_request =  current_user.service_requests.create(service_request_params)
-   if service_request
-      UserMailer.service_request_generate(current_user,service_request, 'user').deliver_now
-      UserMailer.service_request_generate(current_user,service_request, 'partner').deliver_now
+    @service_request =  current_user.service_requests.create(service_request_params)
+    if @service_request.persisted?
+      UserMailer.service_request_generate(current_user,@service_request, 'user').deliver_now
+      UserMailer.service_request_generate(current_user,@service_request, 'partner').deliver_now
+      flash[:success] = "Service Request Placed Successfully!"
       redirect_to '/service_requests'
-   end
+    else
+      flash[:error] = @service_request.errors.full_messages.join(",")
+      redirect_to '/dashboard'
+    end
+      
   end
 
   def edit
@@ -41,7 +47,7 @@ class ServiceRequestsController < ApplicationController
       @services = @city.services
     elsif params[:service_selection].present?
       service =   Service.find(params[:service_selection])
-      @portfolio = Portfolio.where(service_id: service.id, city_id: params[:city_id])
+      @portfolio = Portfolio.where(service_id: service.id, city_id: params[:city_id], status: true)
       @time_slots = @portfolio.last.available_time_slots if @portfolio.present?
       @sub_services = service.sub_services
     end

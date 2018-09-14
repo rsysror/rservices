@@ -961,7 +961,7 @@ border:none!important;
     position: relative;
     float: left;
     padding-bottom: 18%;
-    width:32%;
+    width: 30%;
     text-align:center;
     margin-right:2%;
 }
@@ -7340,7 +7340,7 @@ p.free {
 }
 
 .nav_header{
-  height: 42px;
+  height: 50px;
 }
 
 .nav_bg_color{
@@ -7397,12 +7397,17 @@ p.free {
 }
 
 .container {
-  width: 1600px!important;
-  /*margin-right: auto!important; */
-  /*margin-left: auto!important;*/
-  padding-left: 170px!important; 
-  /*padding-right: 15px!important;*/
+  width: 95%!important;
+  padding-left: 14%!important;
+  margin-top: 4%!important;
 }
+
+.second-container {
+  width: 95%!important;
+  padding-left: 7%!important;
+}
+
+.btn_margin{margin-right: 5px;}
 
 /*for google map*/
 a {
@@ -7431,3 +7436,141 @@ a {
 /*for google map end*/
 
 /*-- //responsive --*/
+
+.header-right-toggle {
+  height:50px;
+  min-width:160px;
+  background-image: linear-gradient(to bottom,#3c3c3c 0,#222 100%);
+  color:#fff; border:none;
+}
+
+.nav_header a{
+  color: #ffffff;
+  line-height: 35px;
+}
+
+.right_float{float:right!important;}
+
+.header {padding-bottom: 1%;}
+
+.custom-alert{
+  margin-top: 3%;
+  z-index:9999;
+  width: 78%;
+  margin-left: 15%;
+}
+
+.forgot-container {
+  width: 35%!important;
+  margin-top: 4%!important;
+  margin: auto;
+}
+
+.forgot-password{
+  background: #e26b5b;
+  border: none;
+  padding: 15px 10px;
+  margin-top: 1%;
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+}
+
+#forgot_pssd{color: #fffefb!important;}
+
+.home-container {
+  width: 10%
+}
+
+.nav-home {
+  float: left;
+  margin: 4% 0%  0% 5%;
+  font-size: 18px;
+}
+
+p.nav-home a {
+  color: #fff;
+  text-decoration: none; 
+}
+
+.mo-margin {
+  margin:0% 0%
+}
+
+.no-margin-force {
+  margin:0px !important;
+}
+
+.tog-margin {
+  float: right; 
+  margin: 6%;
+}
+
+.search-btn-top-margin{
+  width: 100%;
+  margin-top:12%;
+}
+.row_margin {
+  margin-bottom: 1%!important;
+}
+
+.col-edit {
+  width: 20%;
+}
+
+#service_request_service_request_number { 
+  width: 80%;height: 34px;
+}
+
+#service-title {
+  text-align: center;
+  font-size: 22px;
+  font-style: italic;
+  color: #d48a3e
+}
+.row_margin{margin-bottom: 1%!important;}
+.col-edit {width: 20%;}
+#service_request_service_request_number{width: 80%;height: 34px;}
+#service_price{width:100%;}
+.search{
+  margin:0% 0% 0% 34.6%
+}
+.error-text{
+  display:none;
+  color:red;
+  margin-bottom:15px;
+}
+
+.select-city-container {
+  margin: 0% 0% 1% 10%;
+}
+
+.service-list-card {
+  height: 386px; 
+  width: 23%; 
+  margin-bottom: 25px;
+}
+
+.service-image {
+  width:100%; height: 260px;
+}
+
+.serve-no-margin {
+  margin-left: 0%;
+}
+
+.partner-avatar {
+  width: 400px !important;
+}
+
+.margin-5 {
+  margin: 5px;
+}
+
+.align-country {
+  margin-left: 35px;
+}
+
+.td_width {
+    width: 250px;
+}

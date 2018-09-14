@@ -10,10 +10,10 @@ module ServicesHelper
   end
 
   def select_sub_services sub_services
-    select_tag :sub_service_selection, options_from_collection_for_select(sub_services, :id, :name), class: 'form-control', :prompt => "Select Services"
+    select_tag :sub_service_selection, options_from_collection_for_select(sub_services, :id, :name), class: 'form-control', :prompt => "Select Sub Services"
   end
 
   def sub_service_price sub_services
-    number_to_currency(sub_services.price).present? ? number_to_currency(sub_services.price) : "$0.00"
+    sub_services.price.present? ? sub_services.price : "0.00"
   end
 end

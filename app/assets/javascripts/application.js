@@ -23,3 +23,11 @@ $(function(){
   $('.loading').show();
   })
 })
+
+$(document).on('ready turbolinks:load', function() {
+  $('.side-menu a').filter(function(){
+    return this.href==location.href}).addClass('active').siblings('a').removeClass('active')
+    $('.side-menu a').click(function(){
+    $(this).addClass('active').siblings().removeClass('active')  
+  })
+})

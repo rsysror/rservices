@@ -5,25 +5,31 @@
     %title Rservices
     = csrf_meta_tags
     = csp_meta_tag
+    %script{:src => "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"}
+
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %div#generic_modal_area
-    - flash.each do |key, value|
-      %div{:class => "alert alert-#{key}"}= value
     #wrapper
       %nav.nav_header.navbar-inverse.navbar-fixed-top
         - if user_signed_in?
-          .navbar-left.navbar-top-links.nav_bg_color
-          - if current_user.admin?
-            #{link_to "Admin", admin_services_path}
-          - if current_user.partner?
-            #{link_to "Partner", partner_portfolio_path}
-          - else
-            #{link_to "Dashboard", dashboard_path}
-          .navbar-right.navbar-top-links.nav_bg_color
-            Signed in as #{current_user.email}. Not you?
-            #{link_to "Sign out", destroy_user_session_path, :method => :delete}
+          %ul.nav.navbar-nav.navbar-left.home-container
+            %p.nav-home
+              %a{:href => "/"}
+                %i.fa.fa-home.fa-fw
+                R-services
+          .navbar-right.nav_bg_color.mo-margin
+            .dropdown
+              %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
+                %i.fa.fa-user.fa-fw
+                #{current_user.full_name}
+                %span.caret.tog-margin
+              %ul.dropdown-menu
+                %li
+                  #{dashboard_link(current_user)}
+                %li
+                  #{link_to "Sign out", destroy_user_session_path, :method => :delete}
         - else
           %ul.navbar-right.navbar-top-links
             %li
@@ -34,4 +40,7 @@
                 Sign In
     - unless params[:action] == "index" && params[:controller] == 'home'
       = render :partial => "shared/user_left" if current_user
+    = render :partial => "shared/flash_message", :locale => {:flash => flash }            
+  
     = yield
+

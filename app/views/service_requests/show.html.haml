@@ -1,10 +1,7 @@
-%hr
-%hr
-%hr
 .container
   .row
     .add-new
-      = link_to t('.Back', :default => t("helpers.links.back")),service_requests_path,:class => 'btn btn-primary'
+      = back_button_link(service_requests_path)
   .panel.panel-primary
     .panel-heading
       %h3 Service Request Detail
@@ -29,12 +26,11 @@
         - if @service_request.feedback.present?   
           .col-sm-3
             %p
-              / %b Rating
-              = render :partial => "shared/show_rating", locals: {request: @service_request, score: @service_request.feedback.rating }
+              %b Remarks:
+              = @service_request.feedback.description 
           .col-sm-3
             %p
-              %b Remarks:
-              = @service_request.feedback.description
+              = user_ratings(@service_request)
       .row
         .col-sm-3
           %b Address:

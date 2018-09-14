@@ -10,16 +10,7 @@
     </div>
     <div class="panel-body">
       <table class="table">
-        <thead>
-          <th>Service Name</th>
-          <th>Address</th>
-          <th>Vendor</th>
-          <th>Time Slot</th>
-          <th>Service Request Number</th>
-          <th>Status</th>
-          <th>Rating</th>
-          <th>Actions</th>
-        </thead>
+        <%=service_request_header_html_block %>
         <tbody>
           <% @service_requests.each do |request|%>
             <%= render :partial => 'service_request_list', :locals => { :request => request } %>

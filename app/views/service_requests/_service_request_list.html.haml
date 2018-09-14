@@ -1,6 +1,6 @@
 %tr
   %td= request.service.try(:name).titleize
-  %td= request.user_address
+  %td.td_width= request.user_address
   %td= request.portfolio.try(:portfolio_with_user_name_and_about)
   %td= request.try(:time_slot).try(:start_time_with_end_time)
   %td= request.service_request_number

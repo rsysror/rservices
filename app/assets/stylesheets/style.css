@@ -7571,6 +7571,6 @@ p.nav-home a {
   margin-left: 35px;
 }
 
-.service_rq_list th, td {
+.td_width {
     width: 250px;
 }

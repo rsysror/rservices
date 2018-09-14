@@ -47,7 +47,7 @@ class ServiceRequestsController < ApplicationController
       @services = @city.services
     elsif params[:service_selection].present?
       service =   Service.find(params[:service_selection])
-      @portfolio = Portfolio.where(service_id: service.id, city_id: params[:city_id])
+      @portfolio = Portfolio.where(service_id: service.id, city_id: params[:city_id], status: true)
       @time_slots = @portfolio.last.available_time_slots if @portfolio.present?
       @sub_services = service.sub_services
     end

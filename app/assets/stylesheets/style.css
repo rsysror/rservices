@@ -7570,3 +7570,7 @@ p.nav-home a {
 .align-country {
   margin-left: 35px;
 }
+
+.service_rq_list th, td {
+    width: 250px;
+}

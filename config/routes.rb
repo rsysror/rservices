@@ -29,6 +29,10 @@ Rails.application.routes.draw do
     post  'create_user',  to: 'users/registrations#create'
     post  'send_password_instructions',  to: 'users/passwords#create'
     put  'change_password',  to: 'users/passwords#update'
+    get  'partner/invite_employee',  to: 'users/invitations#new'
+    post  'send_invitation',  to: 'users/invitations#create'
+    put  'update_employee_detail',  to: 'users/invitations#update'
+    get  'accept_invitation',  to: 'users/invitations#edit'
 	end
   #custom routes for admin 
   namespace :admin do
@@ -62,6 +66,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index] do
       collection do
         put "accept_reject"
+        get "manage_employees"
       end
     end
   end

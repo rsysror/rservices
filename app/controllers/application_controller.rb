@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
   
-  # before_action :authenticate_user!
 
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
@@ -12,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate_user!
+  def authenticate_user!(*args)
     unless current_user
       flash[:error] = "You are not authorized to view that page."
       redirect_to root_path

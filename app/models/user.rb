@@ -2,7 +2,7 @@ class User < ApplicationRecord
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :invitable
   attr_accessor :role
 
   # validates :first_name, :email, :phone, presence: true
@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :service_requests
   has_many :addresses
   has_many :feedbacks
+  has_many :employees,class_name: "User", foreign_key: "invited_by_id"
 
 
   def admin?

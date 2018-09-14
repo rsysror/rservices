@@ -14,6 +14,10 @@ class Partner::DashboardController < PartnerController
     UserMailer.accepted_rejected(current_user, service_request).deliver_now
   end
 
+  def manage_employees
+    @employees =  current_user.employees
+  end
+
   private
   
   def get_service_requests

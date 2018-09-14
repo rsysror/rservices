@@ -1,0 +1,36 @@
+
+<div class="forgot-container">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.Back', :default => t("helpers.links.back")),'/',:class => 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><h3><%= t "devise.invitations.new.header" %></h3></div>
+    <div class="panel-body">
+      <%= form_for resource, :as => resource_name, :url => send_invitation_path(resource_name), :html => {:method => :post,id: "forgot-password"} do |f| %>
+        <%= devise_error_messages! %>
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group">
+              <% resource.class.invite_key_fields.each do |field| -%>
+                <p><%= f.label field %><br />
+                <%= f.text_field field, class:"form-control" %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group">      
+              <%= f.submit "Send An Invite",class: "btn btn-primary" %>
+            </div>
+          </div>  
+      <% end %>
+    </div>  
+  </div>
+</div>  
+
+
+
+

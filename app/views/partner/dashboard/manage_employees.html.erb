@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Employee List</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <table class="table">
+          <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Accepted On</th>
+          </thead>
+          <tbody>
+            <% @employees.each do |employee| %>
+              <tr>
+                <td><%=employee.full_name %></td>
+                <td><%=employee.email %></td>
+                <td><%=employee.invitation_accepted_at %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>        

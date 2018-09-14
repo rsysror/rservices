@@ -1,10 +1,9 @@
 class Users::InvitationsController < Devise::InvitationsController
 
-  skip_before_action :has_invitations_left?, :only => [:create]
-  skip_before_action :resource_from_invitation_token, :only => [:edit, :destroy]
-
-  before_action :scoped_has_invitations_left?, :only => [:create]
-  before_action :scoped_resource_from_invitation_token, :only => [:edit, :destroy]
+  prepend_before_action :authenticate_inviter!, :only => [:new, :create]
+  prepend_before_action :has_invitations_left?, :only => [:create]
+  prepend_before_action :require_no_authentication, :only => [:edit, :update, :destroy]
+  prepend_before_action :resource_from_invitation_token, :only => [:edit, :destroy]
 
   if respond_to? :helper_method
     helper_method :after_sign_in_path_for
@@ -68,30 +67,11 @@ class Users::InvitationsController < Devise::InvitationsController
   protected
 
   def invite_resource(&block)
-    User.invite!(invite_params, current_inviter, &block)
+    User.invite!(invite_params, current_user, &block)
   end
 
   def accept_resource
     User.accept_invitation!(update_resource_params)
-  end
-
-  def current_inviter
-    authenticate_inviter!
-  end
-
-  def scoped_has_invitations_left?
-    unless current_inviter.nil? || current_inviter.has_invitations_left?
-      self.resource = User.new
-      set_flash_message :alert, :no_invitations_remaining if is_flashing_format?
-      respond_with_navigational(resource) { render :new }
-    end
-  end
-
-  def scoped_resource_from_invitation_token
-    unless params[:invitation_token] && self.resource = User.find_by_invitation_token(params[:invitation_token], true)
-      set_flash_message(:alert, :invitation_token_invalid) if is_flashing_format?
-      redirect_to after_sign_out_path_for(resource_name)
-    end
   end
 
   def invite_params

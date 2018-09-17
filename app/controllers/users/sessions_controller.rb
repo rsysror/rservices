@@ -9,20 +9,18 @@ class Users::SessionsController < Devise::SessionsController
 
   def create
     user = User.find_for_authentication(:email => params[:user][:email])
-    respond_to do |format|
-      if user.present?
-        if user.valid_password?(params[:user][:password])
-          self.resource = warden.authenticate!(auth_options)
-          set_flash_message!(:notice, :signed_in)
-          sign_in(resource_name, resource)
-          url = after_login_path resource
-          format.json { render json: {url: url}, status: :ok }
-        else
-          format.json { render json: "Password Mismatch!!", status: :unauthorized }
-        end
+    if user.present?
+      if user.valid_password?(params[:user][:password])
+        self.resource = warden.authenticate!(auth_options)
+        set_flash_message!(:notice, :signed_in)
+        sign_in(resource_name, resource)
+        url = after_login_path resource
+         @success_url = url
       else
-        format.json { render json: "Email doesn't exist!!", status: :unauthorized }
+        @error = "Password Mismatch!!"
       end
+    else
+      @error =  "Email doesn't exist!!"
     end
   end
 

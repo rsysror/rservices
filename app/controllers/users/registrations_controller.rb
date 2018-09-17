@@ -15,19 +15,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     resource.save
     yield resource if block_given?
-    respond_to do |format|
-      if resource.persisted?
-        sign_up(resource_name, resource)
-        resource.add_role sign_up_params[:role].to_sym
-        if(sign_up_params[:role] == "partner")
-          resource.create_portfolio
-        end
-        url = after_registration_path resource
-        format.json { render json: {url: url}, status: :ok}
-      else
-        format.json { render json: resource.errors.full_messages.join(", "), status: :unauthorized }
+    if resource.persisted?
+      sign_up(resource_name, resource)
+      resource.add_role sign_up_params[:role].to_sym
+      if(sign_up_params[:role] == "partner")
+        resource.create_portfolio
       end
-
+      render json: {url: after_registration_path(resource)}, status: :ok
+    else
+      render json: resource.errors.full_messages.join(", "), status: :unauthorized 
     end
   end
 

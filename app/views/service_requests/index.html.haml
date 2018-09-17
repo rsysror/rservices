@@ -1,0 +1,15 @@
+.container
+  .row
+    .add-new
+      = back_button_link(dashboard_path)
+  .panel.panel-primary
+    .panel-heading
+      %h3 Service Request List
+    .panel-body
+      %table.table.service_rq_list
+        = service_request_header_html_block
+        %tbody
+          - @service_requests.each do |request|
+            = render :partial => 'service_request_list', :locals => { :request => request }
+  .pagination
+    = will_paginate @service_requests

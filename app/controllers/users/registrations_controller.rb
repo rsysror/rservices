@@ -21,9 +21,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if(sign_up_params[:role] == "partner")
         resource.create_portfolio
       end
-      render json: {url: after_registration_path(resource)}, status: :ok
+      @url = after_registration_path(resource)
     else
-      render json: resource.errors.full_messages.join(", "), status: :unauthorized 
+      @errors = resource.errors.full_messages.join(", ")
     end
   end
 

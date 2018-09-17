@@ -1,0 +1,5 @@
+<% if @url.present? %>
+    window.location.href = '<%=@url %>' ;
+<% else %>
+  $('#show_errors').show().html('<%=@errors%>')
+<% end %>

@@ -1,7 +1,7 @@
 module FormElement
-  def rservice_text_field field_value, label_value, form
+  def rservice_text_field field_value, label_value, form, *args
     (label_tag label_value)+
-    (form.text_field field_value.to_sym, class:"form-control" )
+    (form.text_field field_value.to_sym, class:"form-control #{args.join(' ')}" )
   end
 
   def rservice_text_area field_value, label_value, form

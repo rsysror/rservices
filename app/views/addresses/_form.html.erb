@@ -108,15 +108,13 @@ $(document).ready(function() {
         <div class="row error-container">
           <div class="col-md-3 col-md-offset-1">
             <div class="form-group">
-              <label>Flat Number/H.No.</label>
-              <%= f.text_field :flat_number, class:"form-control"  %>
+              <%=rservice_text_field("flat_number","Flat Number/H.No.",f) %>
               <label for="address_flat_number" class="error-title error"></label>
             </div>
           </div>
           <div class="col-md-3 col-md-offset-2">
             <div class="form-group">
-              <label>Street Name</label>
-              <%= f.text_field :street_name, class:"form-control"  %>
+              <%=rservice_text_field("street_name","Street Name",f) %>
               <label for="address_street_name" class="error-title error"></label>
             </div>
           </div>
@@ -124,15 +122,13 @@ $(document).ready(function() {
         <div class="row error-container">
           <div class="col-md-3 col-md-offset-1">
             <div class="form-group">
-              <label>Pin Code</label>
-              <%= f.text_field :pin_code, class:"form-control"  %>
+              <%=rservice_text_field("pin_code","Pin Code",f) %>
               <label for="address_pin_code" class="error-title error"></label>
             </div>
           </div>
           <div class="col-md-3 col-md-offset-2">
             <div class="form-group">
-              <label>Landmark</label>
-              <%= f.text_field :landmark, class:"form-control"  %>
+              <%=rservice_text_field("landmark","Landmark",f) %>
               <label for="address_landmark" class="error-title error"></label>
             </div>
           </div>

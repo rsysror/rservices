@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_115307) do
+ActiveRecord::Schema.define(version: 2018_09_18_111742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2018_09_14_115307) do
 
   create_table "portfolios", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "city_id"
     t.string "gender"
     t.string "about"
     t.float "experience"
@@ -87,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_115307) do
     t.json "images"
     t.json "documents"
     t.boolean "status", default: false
+    t.string "address"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_115307) do
     t.string "service_request_number"
     t.integer "time_slot_id"
     t.datetime "service_date"
+    t.integer "assignee_id"
   end
 
   create_table "services", force: :cascade do |t|

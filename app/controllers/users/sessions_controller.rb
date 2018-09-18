@@ -11,11 +11,7 @@ class Users::SessionsController < Devise::SessionsController
     user = User.find_for_authentication(:email => params[:user][:email])
     if user.present?
       if user.valid_password?(params[:user][:password])
-        self.resource = warden.authenticate!(auth_options)
-        set_flash_message!(:notice, :signed_in)
-        sign_in(resource_name, resource)
-        url = after_login_path resource
-         @success_url = url
+        get_login_details
       else
         @error = "Password Mismatch!!"
       end
@@ -39,6 +35,13 @@ class Users::SessionsController < Devise::SessionsController
     else
       dashboard_url
     end
+  end
+
+  def get_login_details
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    @success_url = after_login_path resource
   end
 
   # If you have extra params to permit, append them to the sanitizer.

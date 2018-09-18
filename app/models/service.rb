@@ -5,7 +5,11 @@ class Service < ApplicationRecord
   has_many :sub_services, class_name: "Service", foreign_key: "parent_id", dependent: :destroy
   belongs_to :service, class_name: "Service",  foreign_key: "parent_id",optional: true
   has_many   :service_requests
-  has_one    :portfolio
+
+  
+  has_many   :portfolio_services
+  has_many   :portfolios, through: :portfolio_services
+  
   has_many   :time_slots, through: :service_requests, source: :service
 
   validates :name, presence: {message: 'Service name is required!'}

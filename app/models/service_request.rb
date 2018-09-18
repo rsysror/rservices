@@ -8,6 +8,8 @@ class ServiceRequest < ApplicationRecord
   belongs_to :status
   belongs_to :portfolio
   belongs_to :time_slot
+  belongs_to :assigned_to, class_name: 'User',foreign_key: "assignee_id"
+
 
 
   validates :user_id, :address_id, :service_id, :time_slot_id, presence: true

@@ -27,6 +27,10 @@ class User < ApplicationRecord
     has_role? :user
   end
 
+  def employee?
+    has_role? :employee
+  end
+
   def get_all_address_from_service_city service_request
     addresses.where(city_id: service_request.address.city_id)
   end

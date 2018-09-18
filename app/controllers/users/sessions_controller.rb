@@ -36,6 +36,8 @@ class Users::SessionsController < Devise::SessionsController
       admin_root_url
     elsif resource.partner?
       partner_portfolio_url
+    elsif resource.employee?
+      employee_root_url  
     else
       dashboard_url
     end

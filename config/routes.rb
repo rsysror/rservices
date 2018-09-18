@@ -71,6 +71,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :employee do
+    root to: "employee#index"
+  end
+
 
 
   #Singular routes for few methods

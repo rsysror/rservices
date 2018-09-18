@@ -39,8 +39,14 @@
             %li
               %a{"data-target" => "#login", "data-toggle" => "modal", :href => "#"}
                 Sign In
-    - unless params[:action] == "index" && params[:controller] == 'home'
-      = render :partial => "shared/user_left" if current_user
+      - if current_user.admin?
+        = render :partial => "shared/admin_left"
+      - elsif current_user.employee?
+        = render :partial => "shared/employee_left" 
+      - else
+        = render :partial => "shared/partner_left"
+    / - unless params[:action] == "index" && params[:controller] == 'home'
+    /   = render :partial => "shared/user_left" if current_user
     = render :partial => "shared/flash_message", :locale => {:flash => flash }            
   
     = yield

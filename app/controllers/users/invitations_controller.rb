@@ -67,6 +67,7 @@ class Users::InvitationsController < Devise::InvitationsController
   protected
 
   def invite_resource(&block)
+    byebug
     User.invite!(invite_params, current_user, &block)
   end
 

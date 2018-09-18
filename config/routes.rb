@@ -73,7 +73,7 @@ Rails.application.routes.draw do
   end
 
   namespace :employee do
-    root to: "employee#index"
+    root to: "service_requests#index"
   end
 
 

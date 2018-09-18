@@ -9,9 +9,10 @@
       <%=back_button_link(dashboard_path) %>
     </div>
   </div>
-  <label><input type="radio" class="form-switch" name="colorCheckbox" value="red" data-id="a" checked >Pick up Address from Google</label>
-  <label><input type="radio" class="form-switch" name="colorCheckbox" value="green" data-id="b" >Put your Address</label>
-  
+  <% if (params[:action] == 'new') %>
+    <label><input type="radio" class="form-switch" name="colorCheckbox" value="red" data-id="a" checked >Pick up Address from Google</label>
+    <label><input type="radio" class="form-switch" name="colorCheckbox" value="green" data-id="b" >Put your Address</label>
+  <% end %>
   
 
   <div class="panel panel-primary">
@@ -61,7 +62,7 @@
           <% end %>
         </div>
       <% end %>
-      <div class="form form-b">  
+      <div class="form form-b <%= params[:action] == 'edit' ? 'active' : '' %> ">  
         <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
           
           <div class="row error-container">
@@ -108,7 +109,7 @@
           <div class="row">
             <div class="col-md-4 col-md-offset-1">
               <div class="form-group">
-                <%=f.submit  class: "btn btn-primary" %>
+                <%=rservice_submit_button("Update", f ,'btn-primary') %>
               </div>
             </div>
           </div>
@@ -120,5 +121,57 @@
 
 <script type="text/javascript">
   <%= render "common/validate.js" %>
+  $(document).ready(function() {
+
+  $('.form-switch').on('change', function() {
+    $('.form').removeClass('active');
+    var formToShow = '.form-' + $(this).data('id');
+      $(formToShow).addClass('active');
+  });
+
+
+  var latlng = new google.maps.LatLng(39.305, -76.617); 
+  map = new google.maps.Map(document.getElementById('map_canvas'), {
+    center: latlng,
+    zoom: 12
+  });
+
+  $("#geocomplete").geocomplete();
+
+  var geocoder = new google.maps.Geocoder();
+
+  google.maps.event.addListener(map, 'click', function(event) {
+    geocoder.geocode({
+      'latLng': event.latLng
+    }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+         setSerach(results[0], "click")
+        }
+      }
+    });
+  });
+
+  var searchBox = new google.maps.places.SearchBox(document.getElementById('geocomplete'))
+  google.maps.event.addListener(searchBox, 'places_changed', function() {
+  var results = searchBox.getPlaces()[0];
+    setSerach(results, "type")
+  });
+
+  function setSerach(results, type={}){
+    var geocomplete = $('#geocomplete');
+    var address = $('#geocomplete1');
+    geocomplete.val(results.formatted_address);
+    if(type ==="click")
+    {
+      var l = results.address_components.length - 1 ;
+      address.val(results.address_components[l].long_name)
+    }else{
+      address.val(results.address_components[0].long_name)
+    }
+
+  }
+
+});
 
 </script>

@@ -9,8 +9,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 2018_09_18_100705) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2018_09_18_100705) do
 
   create_table "portfolios", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "city_id"
     t.string "gender"
     t.string "about"
     t.float "experience"
@@ -87,6 +86,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_100705) do
     t.json "images"
     t.json "documents"
     t.boolean "status", default: false
+    t.string "address"
   end
 
   create_table "roles", force: :cascade do |t|

@@ -7574,3 +7574,10 @@ p.nav-home a {
 .td_width {
     width: 250px;
 }
+
+.form {
+  display: none;
+}
+.form.active {
+  display: block
+}

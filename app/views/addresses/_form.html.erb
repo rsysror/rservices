@@ -1,55 +1,6 @@
 <script src="/assets/jquery.geocomplete.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
- 
-  var latlng = new google.maps.LatLng(28.5355161, 77.39102649999995);
-  map = new google.maps.Map(document.getElementById('map_canvas'), {
-    center: latlng,
-    zoom: 12
-  });
 
-  var options = {
-    map: "#map_canvas",
-    location: "Noida"
-  };
-
-  $("#geocomplete").geocomplete();
-
-  var geocoder = new google.maps.Geocoder();
-
-  google.maps.event.addListener(map, 'click', function(event) {
-    geocoder.geocode({
-      'latLng': event.latLng
-    }, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        if (results[0]) {
-         setSerach(results[0], "click")
-        }
-      }
-    });
-  });
-
-  var searchBox = new google.maps.places.SearchBox(document.getElementById('geocomplete'))
-  google.maps.event.addListener(searchBox, 'places_changed', function() {
-  var results = searchBox.getPlaces()[0];
-    setSerach(results, "type")
-  });
-
-  function setSerach(results, type={}){
-    var geocomplete = $('#geocomplete');
-    var address = $('#geocomplete1');
-    geocomplete.val(results.formatted_address);
-    if(type ==="click")
-    {
-      var l = results.address_components.length - 1 ;
-      address.val(results.address_components[l].long_name)
-    }else{
-      address.val(results.address_components[0].long_name)
-    }
-
-  }
-
-});
 </script>
 
 <div class="container">
@@ -58,13 +9,36 @@ $(document).ready(function() {
       <%=back_button_link(dashboard_path) %>
     </div>
   </div>
+  <label><input type="radio" class="form-switch" name="colorCheckbox" value="red" data-id="a" checked >Pick up Address from Google</label>
+  <label><input type="radio" class="form-switch" name="colorCheckbox" value="green" data-id="b" >Put your Address</label>
+  
+  
+
   <div class="panel panel-primary">
     <div class="panel-heading">
        <h3>Fill Your Address Details</h3>
     </div>
+    <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-1">
+      <% if @address.errors.any? %>
+        <div id="error_expl" class="panel panel-danger">
+          <div class="panel-heading">
+             <h3 class="panel-title"><%= pluralize(@address.errors.count, "error") %> Prohibited this address from being saved:</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <% @address.errors.each do |attr,msg|  %>
+                <li class="custome-error"><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
     <div class="panel-body">
       <% if (params[:action] == 'new') %>
-        <%= form_for @address do |f| %>
+        <div class="form form-a active"> 
+          <%= form_for @address do |f| %>
           <div class="row">
             <div class="col-md-4 col-md-offset-1">
               <div class="form-group">
@@ -75,7 +49,7 @@ $(document).ready(function() {
             <div class="col-md-2">
               <div class="form-group">
                 <%= f.hidden_field :address, id: "geocomplete1" %>
-                <%= f.submit  :value => "Search", class: "btn btn-primary search-btn-top-margin"%>
+                <%= f.submit  :value => "Submit", class: "btn btn-primary search-btn-top-margin"%>
               </div>
             </div>
           </div>
@@ -84,80 +58,67 @@ $(document).ready(function() {
               <div id="map_canvas"></div>
             </div>
           </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
-      <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
-        <div class="form-group">
-          <div class="col-lg-10 col-lg-offset-1">
-            <% if @address.errors.any? %>
-              <div id="error_expl" class="panel panel-danger">
-                <div class="panel-heading">
-                   <h3 class="panel-title"><%= pluralize(@address.errors.count, "error") %> Prohibited this address from being saved:</h3>
-                </div>
-                <div class="panel-body">
-                  <ul>
-                    <% @address.errors.each do |attr,msg|  %>
-                      <li class="custome-error"><%= msg %></li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div class="row error-container">
-          <div class="col-md-3 col-md-offset-1">
-            <div class="form-group">
-              <%=rservice_text_field("flat_number","Flat Number/H.No.",f) %>
-              <label for="address_flat_number" class="error-title error"></label>
-            </div>
-          </div>
-          <div class="col-md-3 col-md-offset-2">
-            <div class="form-group">
-              <%=rservice_text_field("street_name","Street Name",f) %>
-              <label for="address_street_name" class="error-title error"></label>
-            </div>
-          </div>
-        </div>
-        <div class="row error-container">
-          <div class="col-md-3 col-md-offset-1">
-            <div class="form-group">
-              <%=rservice_text_field("pin_code","Pin Code",f) %>
-              <label for="address_pin_code" class="error-title error"></label>
-            </div>
-          </div>
-          <div class="col-md-3 col-md-offset-2">
-            <div class="form-group">
-              <%=rservice_text_field("landmark","Landmark",f) %>
-              <label for="address_landmark" class="error-title error"></label>
-            </div>
-          </div>
-        </div>
-        <% if (params[:action] == 'new') %>
-          <%= render :partial => 'shared/location_details' %>
-          <br/>
-        <% else %>
+      <div class="form form-b">  
+        <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
+          
           <div class="row error-container">
             <div class="col-md-3 col-md-offset-1">
               <div class="form-group">
-                <label>City</label>
-                <%= f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), {}, {:prompt => "Select City", class: "form-control"} %>
+                <%=rservice_text_field("flat_number","Flat Number/H.No.",f) %>
+                <label for="address_flat_number" class="error-title error"></label>
+              </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+              <div class="form-group">
+                <%=rservice_text_field("street_name","Street Name",f) %>
+                <label for="address_street_name" class="error-title error"></label>
+              </div>
+            </div>
+          </div>
+          <div class="row error-container">
+            <div class="col-md-3 col-md-offset-1">
+              <div class="form-group">
+                <%=rservice_text_field("pin_code","Pin Code",f) %>
+                <label for="address_pin_code" class="error-title error"></label>
+              </div>
+            </div>
+            <div class="col-md-3 col-md-offset-2">
+              <div class="form-group">
+                <%=rservice_text_field("landmark","Landmark",f) %>
+                <label for="address_landmark" class="error-title error"></label>
+              </div>
+            </div>
+          </div>
+          <% if (params[:action] == 'new') %>
+            <%= render :partial => 'shared/location_details' %>
+            <br/>
+          <% else %>
+            <div class="row error-container">
+              <div class="col-md-3 col-md-offset-1">
+                <div class="form-group">
+                  <label>City</label>
+                  <%= f.select :city_id, options_from_collection_for_select(@cities, :id, :name, @address.city_id), {}, {:prompt => "Select City", class: "form-control"} %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="col-md-4 col-md-offset-1">
+              <div class="form-group">
+                <%=f.submit  class: "btn btn-primary" %>
               </div>
             </div>
           </div>
         <% end %>
-        <div class="row">
-          <div class="col-md-4 col-md-offset-1">
-            <div class="form-group">
-              <%=f.submit  class: "btn btn-primary" %>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
 
 <script type="text/javascript">
   <%= render "common/validate.js" %>
+
 </script>

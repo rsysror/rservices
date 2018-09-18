@@ -9,9 +9,10 @@
       <%=back_button_link(dashboard_path) %>
     </div>
   </div>
-  <label><input type="radio" class="form-switch" name="colorCheckbox" value="red" data-id="a" checked >Pick up Address from Google</label>
-  <label><input type="radio" class="form-switch" name="colorCheckbox" value="green" data-id="b" >Put your Address</label>
-  
+  <% if (params[:action] == 'new') %>
+    <label><input type="radio" class="form-switch" name="colorCheckbox" value="red" data-id="a" checked >Pick up Address from Google</label>
+    <label><input type="radio" class="form-switch" name="colorCheckbox" value="green" data-id="b" >Put your Address</label>
+  <% end %>
   
 
   <div class="panel panel-primary">
@@ -61,7 +62,7 @@
           <% end %>
         </div>
       <% end %>
-      <div class="form form-b">  
+      <div class="form form-b <%= params[:action] == 'edit' ? 'active' : '' %> ">  
         <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
           
           <div class="row error-container">

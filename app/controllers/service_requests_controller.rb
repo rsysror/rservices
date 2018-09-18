@@ -20,6 +20,11 @@ class ServiceRequestsController < ApplicationController
       
   end
 
+  def open_comment_pop_up
+    @request_id = params[:id]
+    @comments = ['Task completed successfully.','Task is still in pending.', 'No one available at given address & timing.', 'Work depends on others', 'Other Reason']    
+  end
+
   def edit
     @cities = City.details
     @addresses = current_user.get_all_address_from_service_city(@service_request)
@@ -28,6 +33,11 @@ class ServiceRequestsController < ApplicationController
   def show; end
 
   def update
+
+    if ( (params[:comment_popup] == "true") && ( params[:service_request][:comment] == '') )
+      params[:service_request][:comment] = params[:service_request][:select_comment]
+    end
+
     service_request = @service_request.update_attributes(service_request_update_params)
     if service_request
       redirect_to '/service_requests'
@@ -65,7 +75,7 @@ class ServiceRequestsController < ApplicationController
   end
 
   def service_request_update_params
-    params.require(:service_request).permit(:address_id,:status_id, :portfolio_id,:time_slot_id, :service_id)
+    params.require(:service_request).permit(:address_id,:status_id, :portfolio_id,:time_slot_id, :service_id, :comment)
   end
 
 end

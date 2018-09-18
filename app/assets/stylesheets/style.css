@@ -7581,3 +7581,7 @@ p.nav-home a {
 .form.active {
   display: block
 }
+
+.row{
+    margin:10px !important;
+}

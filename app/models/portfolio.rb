@@ -4,12 +4,16 @@ class Portfolio < ApplicationRecord
 
   belongs_to :user
   belongs_to :city, optional: true
-  belongs_to :service, optional: true
+
+  
+  has_many :portfolio_services
+  has_many :services, through: :portfolio_services
+
   has_many :service_requests
   has_many :feedbacks
 
   validates :city, presence: true, on: :update
-  validates :service, presence: true, on: :update
+  # validates :service, presence: true, on: :update
   validates :gender, :about, :experience, :education, presence: true, on: :update
   
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.jpeg"

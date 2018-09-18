@@ -10,6 +10,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Accepted On</th>
+            <th>Action</th>
           </thead>
           <tbody>
             <% @employees.each do |employee| %>
@@ -17,6 +18,7 @@
                 <td><%=employee.full_name %></td>
                 <td><%=employee.email %></td>
                 <td><%=employee.invitation_accepted_at %></td>
+                <td><%=employee_actions(employee)%></td>
               </tr>
             <% end %>
           </tbody>

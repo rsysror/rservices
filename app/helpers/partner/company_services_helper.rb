@@ -11,4 +11,9 @@ module Partner::CompanyServicesHelper
     end
   end
 
+  # need to refactor
+  def get_city_name(service_id)
+    current_user.portfolio.portfolio_services.where(service_id: service_id).map{|m| m.city.name}.join(", ")
+  end
+
 end

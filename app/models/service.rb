@@ -7,10 +7,10 @@ class Service < ApplicationRecord
   has_many   :service_requests
 
   
-  has_many   :portfolio_services
   has_many   :portfolios, through: :portfolio_services
   has_many   :time_slots, through: :service_requests, source: :service
-  has_many   :cities ,     through: :portfolio_services
+  has_many   :portfolio_services
+  has_many   :cities ,through: :portfolio_services
 
   validates :name, presence: {message: 'Service name is required!'}
   validates :name, length: { in: 3..110, message: 'There must be 3 to 110 characters only!' }

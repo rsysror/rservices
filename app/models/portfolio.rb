@@ -3,12 +3,9 @@ class Portfolio < ApplicationRecord
   mount_uploaders :documents, ImageUploader
 
   belongs_to :user
-  has_many :cities, through: :portfolio_services
-
-  
   has_many :portfolio_services
   has_many :services, through: :portfolio_services
-
+  has_many :cities, through: :portfolio_services
   has_many :service_requests
   has_many :feedbacks
 

@@ -1,7 +1,7 @@
 class Partner::CompanyServicesController < PartnerController
   
   def index
-    @services = current_user.portfolio.get_all_services(params[:page])
+    @services = current_user.portfolio.services.uniq
   end
 
   def new
@@ -14,18 +14,18 @@ class Partner::CompanyServicesController < PartnerController
       @cities = Service.find(params[:portfolio_service][:service_id]).cities
     end
   end
-
+  # need to refactor
   def create
     city_ids = params[:portfolio_service][:city_ids]
     if city_ids.present?
       city_ids.each do |city_id|
-        service = PortfolioService.new(portfolio_service_params(city_id, current_user.portfolio.id))e
+        service = PortfolioService.create(portfolio_service_params(city_id, current_user.portfolio.id))
       end
-      flash.now[:error] = "Please select a city and then proceed!"
-      render :new 
-    else
       flash[:success] = "Service created successfully!"
       redirect_to partner_company_services_path
+    else
+      flash.now[:error] = "Please select a city and then proceed!"
+      render :new 
     end
   end
 

@@ -47,5 +47,14 @@ module ServiceRequestsHelper
       end
     end
   end
-  
+
+  def address_action_links address
+    (link_to edit_address_path(address),class: 'btn btn-default btn-xs' do
+       content_tag(:span, '',class: 'glyphicon glyphicon-edit')
+    end) +   
+
+     (link_to address_path(address),method: "delete",class: 'btn btn-default btn-xs',:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do
+      content_tag(:span, '',class: 'glyphicon glyphicon-remove')
+    end)
+  end
 end

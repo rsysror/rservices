@@ -8,19 +8,21 @@
         - if header
           %div.col-xs-12
             %div.pull-right
-              = link_to edit_address_path(address),class: 'btn btn-default btn-xs' do
-                %span.glyphicon.glyphicon-edit
-              = link_to address_path(address),method: "delete",class: 'btn btn-default btn-xs',:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do
-                %span.glyphicon.glyphicon-remove
+              = address_action_links(address)
         .card-body
           = radio_button_tag 'service_request[address_id]', address.id, checked: true  if !header
-          %br <b>Flat Number:</b> #{address.try(:flat_number)}
-          %br <b>Street Name:</b> #{address.try(:street_name)}
-          %br <b>Land Mark:</b> #{address.try(:landmark)}
-          %br <b>City:</b> #{address.city.try(:name)}
-          %br <b>Pin Code:</b> #{address.try(:pin_code)}
+          %br
+          = reservice_value_printer("Flat Number: ", address.try(:flat_number)) 
+          %br 
+          = reservice_value_printer("Street Name: ", address.try(:street_name))
+          %br 
+          = reservice_value_printer("Land Mark: ", address.try(:landmark))
+          %br 
+          = reservice_value_printer("City: ", address.city.try(:name))
+          %br 
+          = reservice_value_printer("Pin Code: ", address.try(:pin_code))
           - if address.google_address
             %div
-              %br <b>Google Address</b> #{address.try(:google_address)}
-              =# image_tag google_map([ address.latitude, address.longitude ].join(','))
+              %br 
+              = reservice_value_printer("Google Address: ", address.try(:google_address))
   

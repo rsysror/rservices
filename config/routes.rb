@@ -76,6 +76,10 @@ Rails.application.routes.draw do
     resources :company_services
   end
 
+  namespace :employee do
+    root to: "service_requests#index"
+  end
+
 
 
 

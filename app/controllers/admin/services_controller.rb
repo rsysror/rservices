@@ -23,8 +23,8 @@ class Admin::ServicesController < AdminController
 
   def create
     @cities = City.details.order(name: :asc)
-    @service = Service.new(service_params)
-    if @service.save
+    @service = Service.create(service_params)
+    if @service
       flash[:success] = "Service created successfully "
       redirect_to admin_services_path
     else

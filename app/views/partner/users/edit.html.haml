@@ -13,10 +13,10 @@
             = rservice_text_field("last_name", "Last Name", form)
         .row
           .col-sm-6
-            = rservice_text_field("email", "Email", form)
+            = form.text_field :email, class: 'form-control form_input', :readonly => true
         .row
           .col-sm-6
             = rservice_text_field("phone", "Phone", form)
         .row
           .col-sm-6
-            = form.submit "Update",  class: "btn btn-primary"
+            = rservice_submit_button("Update", form, 'btn-primary')

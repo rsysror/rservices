@@ -7576,3 +7576,13 @@ p.nav-home a {
 }
 
 #portfolio_service_city_ids{height: auto!important;}
+.form {
+  display: none;
+}
+.form.active {
+  display: block
+}
+
+.row{
+    margin:10px !important;
+}

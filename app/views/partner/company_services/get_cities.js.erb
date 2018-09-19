@@ -1,0 +1,19 @@
+$('.loading').hide();
+  <% if @cities.present? %>
+  $('#show_city').html('');
+  $('#show_city').html('<%=escape_javascript render(:partial => 'select_city', :locals => { :cities => @cities }) %>');
+<% else %>
+  $('#error_message').addClass('alert alert-warning');
+  $('#error_message').html('No City is set');
+<% end %>
+
+$('select').change(function () {
+  var op = $(this).val();
+  if (op != '') {
+    $('#company_service_create').prop('disabled', false);
+  } 
+  else 
+  {
+    $('#company_service_create').prop('disabled', true);
+  }
+});

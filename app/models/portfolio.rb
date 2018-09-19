@@ -32,9 +32,8 @@ class Portfolio < ApplicationRecord
     status ? "Deactivate" : "Activate" 
   end
 
-  def available_time_slots
-    time_slots = service_requests.present? ? TimeSlot.ordered - service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).map{|m| m.time_slot}.compact : TimeSlot.ordered
-    select_time_slots(time_slots)
+  def available_time_slots date
+    service_requests.present? ? TimeSlot.ordered - service_requests.where(service_date: date).map{|m| m.time_slot}.compact : TimeSlot.ordered 
   end
 
   def available_time_slots_for_update service_request

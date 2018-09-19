@@ -8,7 +8,7 @@ class ServiceRequest < ApplicationRecord
   belongs_to :status
   belongs_to :portfolio
   belongs_to :time_slot
-  belongs_to :assigned_to, class_name: 'User',foreign_key: "assignee_id"
+  belongs_to :assigned_to, class_name: 'User',foreign_key: "assignee_id", optional: true
 
 
 

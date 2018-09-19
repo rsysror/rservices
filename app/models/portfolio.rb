@@ -3,12 +3,9 @@ class Portfolio < ApplicationRecord
   mount_uploaders :documents, ImageUploader
 
   belongs_to :user
-  has_many :cities, through: :portfolio_services
-
-  
   has_many :portfolio_services
   has_many :services, through: :portfolio_services
-
+  has_many :cities, through: :portfolio_services
   has_many :service_requests
   has_many :feedbacks
 
@@ -35,9 +32,8 @@ class Portfolio < ApplicationRecord
     status ? "Deactivate" : "Activate" 
   end
 
-  def available_time_slots
-    time_slots = service_requests.present? ? TimeSlot.ordered - service_requests.where(created_at: Date.current.beginning_of_day..Date.current.end_of_day).map{|m| m.time_slot}.compact : TimeSlot.ordered
-    select_time_slots(time_slots)
+  def available_time_slots date
+    service_requests.present? ? TimeSlot.ordered - service_requests.where(service_date: date).map{|m| m.time_slot}.compact : TimeSlot.ordered 
   end
 
   def available_time_slots_for_update service_request
@@ -50,6 +46,10 @@ class Portfolio < ApplicationRecord
     current_time  = Time.now 
     excluded_time_slot =  current_time.strftime("%H") + ":00"
     time_slots.select{|time| excluded_time_slot < time.start_time}
+  end
+
+  def get_all_services page, per_page=5
+    portfolio_services.order(:id).paginate(:page => page, :per_page => per_page)
   end
   
 end

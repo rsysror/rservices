@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :partner do
+    get 'company_services/index'
+  end
   devise_for :users
   # get 'home/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -70,6 +73,7 @@ Rails.application.routes.draw do
       end
     end
     resources :users
+    resources :company_services
   end
 
   namespace :employee do
@@ -90,6 +94,6 @@ Rails.application.routes.draw do
   get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
   get 'admin/partner/:id', :to => 'admin/users#partner_details', :as => 'partner_details'
   get 'admin/service-requests', :to => 'admin/users#service_requests_list', :as => 'service_requests_list'
-
+  get 'get_cities', to: 'partner/company_services#get_cities'
 
 end

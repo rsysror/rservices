@@ -7595,6 +7595,8 @@ p.nav-home a {
   border: none;
 }
 
+#portfolio_service_city_ids{height: auto!important;}
+
 .form {
   display: none;
 }

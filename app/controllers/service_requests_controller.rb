@@ -54,12 +54,17 @@ class ServiceRequestsController < ApplicationController
     if params[:city_selection].present?
       @city = City.find(params[:city_selection])
       @addresses = @city.get_curent_user_address(current_user)
-      @services = @city.services
+      @services = @city.get_services
     elsif params[:service_selection].present?
       service =   Service.find(params[:service_selection])
-      @portfolio = Portfolio.where(service_id: service.id, city_id: params[:city_id], status: true)
-      @time_slots = @portfolio.last.available_time_slots if @portfolio.present?
+      @city = City.find(params[:city_id])
       @sub_services = service.sub_services
+    elsif params[:service_id]
+      @portfolio = PortfolioService.where(service_id: params[:service_id], city_id: params[:city_id]).map{|m| m.portfolio}    
+      @city = City.find(params[:city_id])
+    elsif params[:date].present?
+      portfolio = Portfolio.find(params[:portfolio_id])
+      @time_slots = portfolio.available_time_slots(params[:date])
     end
   end
 
@@ -71,7 +76,7 @@ class ServiceRequestsController < ApplicationController
   end
 
   def service_request_params
-    params.require(:service_request).permit(:address_id, :user_id,:status_id, :portfolio_id,:service_request_number,:time_slot_id).merge(service_id: params[:sub_service_selection])
+    params.require(:service_request).permit(:address_id, :user_id,:status_id, :portfolio_id,:service_request_number,:time_slot_id,:service_date).merge(service_id: params[:service_id])
   end
 
   def service_request_update_params

@@ -2,7 +2,7 @@ class City < ApplicationRecord
   #associations
 	# has_and_belongs_to_many :services
   has_many :addresses
-  has_many :portfolio
+  has_many :portfolios, through: :portfolio_services
   has_many :services, through: :portfolio_services
   has_many :portfolio_services
 	

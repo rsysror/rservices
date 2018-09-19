@@ -9,8 +9,8 @@
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 2018_09_18_100705) do
 
+ActiveRecord::Schema.define(version: 2018_09_18_111742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_100705) do
     t.json "images"
     t.json "documents"
     t.boolean "status", default: false
+    t.string "company_name"
+    t.string "company_ph_no"
     t.string "address"
   end
 

@@ -3,7 +3,7 @@ class Portfolio < ApplicationRecord
   mount_uploaders :documents, ImageUploader
 
   belongs_to :user
-  belongs_to :city, optional: true
+  has_many :cities, through: :portfolio_services
 
   
   has_many :portfolio_services

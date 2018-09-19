@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_11_113334) do
+ActiveRecord::Schema.define(version: 2018_09_18_111742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,10 +62,17 @@ ActiveRecord::Schema.define(version: 2018_09_11_113334) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "portfolios", force: :cascade do |t|
+  create_table "portfolio_services", force: :cascade do |t|
+    t.integer "portfolio_id"
     t.integer "service_id"
-    t.integer "user_id"
+    t.float "price"
     t.integer "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "user_id"
     t.string "gender"
     t.string "about"
     t.float "experience"
@@ -79,6 +86,9 @@ ActiveRecord::Schema.define(version: 2018_09_11_113334) do
     t.json "images"
     t.json "documents"
     t.boolean "status", default: false
+    t.string "company_name"
+    t.string "company_ph_no"
+    t.string "address"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -102,6 +112,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_113334) do
     t.string "service_request_number"
     t.integer "time_slot_id"
     t.datetime "service_date"
+    t.integer "assignee_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -146,7 +157,7 @@ ActiveRecord::Schema.define(version: 2018_09_11_113334) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+    t.string "encrypted_password", default: ""
     t.string "first_name"
     t.string "last_name"
     t.string "phone"
@@ -155,7 +166,15 @@ ActiveRecord::Schema.define(version: 2018_09_11_113334) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.integer "invited_by_id"
+    t.string "invited_by_type"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

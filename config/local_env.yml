@@ -1,6 +1,6 @@
 development:
-  sendgrid_username: test
-  sendgrid_password: test
+  sendgrid_username: amrendra510
+  sendgrid_password: amrendra@singh510
 production:  
   sendgrid_username : ENV['sendgrid_username']
   sendgrid_username : ENV['sendgrid_password']

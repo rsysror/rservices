@@ -7575,7 +7575,6 @@ p.nav-home a {
     width: 250px;
 }
 
-
 /*for service request comment .*/
 .select-container {
   text-align: center;
@@ -7594,4 +7593,15 @@ p.nav-home a {
 
 .footer-border {
   border: none;
+}
+
+.form {
+  display: none;
+}
+.form.active {
+  display: block
+}
+
+.row{
+    margin:10px !important;
 }

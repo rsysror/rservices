@@ -46,6 +46,7 @@ gem 'jquery-rails'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem "twitter-bootstrap-rails"
+gem "awesome_print"
 
 #file upload
 gem "paperclip", "~> 6.0.0"
@@ -55,6 +56,8 @@ gem 'gmaps4rails'
 
 gem 'gmaps-autocomplete-rails'
 gem 'devise_invitable'
+
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

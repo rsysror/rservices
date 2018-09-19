@@ -1,6 +1,7 @@
+
 module ApplicationHelper
+  include FormElement
     
-  #fix this code with switch case
   def current_user_role user
     (user.has_role? :admin) ? "Admin" : ((user.has_role? :user) ? "User" : "Partner")
   end
@@ -43,5 +44,6 @@ module ApplicationHelper
   def back_button_link url
     link_to t('.Back', :default => t("helpers.links.back")),url,:class => 'btn btn-primary'
   end
+
 
 end

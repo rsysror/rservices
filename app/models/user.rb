@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :addresses
   has_many :feedbacks
   has_many :employees,class_name: "User", foreign_key: "invited_by_id"
-
+  has_many :assigned_service_requests, class_name: "ServiceRequest", foreign_key: "assignee_id"
 
   def admin?
     has_role? :admin
@@ -25,6 +25,10 @@ class User < ApplicationRecord
 
   def user?
     has_role? :user
+  end
+
+  def employee?
+    has_role? :employee
   end
 
   def get_all_address_from_service_city service_request

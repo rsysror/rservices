@@ -26,6 +26,8 @@
                 #{link_to "Sign out", destroy_user_session_path, :method => :delete}
     - if current_user.admin?
       = render :partial => "shared/admin_left"
+    - elsif current_user.employee?
+      = render :partial => "shared/employee_left"  
     - else
       = render :partial => "shared/partner_left"
     = render :partial => "shared/flash_message", :locale => {:flash => flash }              

@@ -69,7 +69,13 @@ Rails.application.routes.draw do
         get "manage_employees"
       end
     end
+    resources :users
   end
+
+  namespace :employee do
+    root to: "service_requests#index"
+  end
+
 
 
 

@@ -51,10 +51,10 @@ class Users::InvitationsController < Devise::InvitationsController
       if Devise.allow_insecure_sign_in_after_accept
         resource.add_role :employee
         sign_in(resource_name, resource)
-        redirect_to dashboard_path
+        redirect_to employee_root_path
       else
         set_flash_message :notice, :updated_not_active if is_flashing_format?
-        redirect_to root_path
+        redirect_to employee_root_path
       end
     else
       resource.invitation_token = raw_invitation_token

@@ -1,5 +1,6 @@
 class Partner::DashboardController < PartnerController
   before_action :get_service_requests, only: [:index, :accept_reject]
+  
 
   def index
   end
@@ -17,6 +18,8 @@ class Partner::DashboardController < PartnerController
   def manage_employees
     @employees =  current_user.employees
   end
+
+
 
   private
   

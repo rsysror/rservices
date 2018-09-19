@@ -16,4 +16,10 @@ module Partner::DashboardHelper
       "-"
     end
   end
+
+  def employee_actions employee
+    link_to edit_partner_user_path(employee),class: 'btn btn-default btn-xs' do 
+      content_tag(:span, '',class: 'glyphicon glyphicon-edit')
+    end 
+  end                
 end

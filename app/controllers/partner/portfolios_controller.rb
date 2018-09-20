@@ -28,12 +28,12 @@ class Partner::PortfoliosController < PartnerController
     render :partial => "subservices", :object => @subservices
   end
 
-  def get_city_service_list
-    if params[:portfolio][:city_id].present?
-      @city = City.find(params[:portfolio][:city_id])
-      @services = @city.services
-    end
-  end
+  # def get_city_service_list
+  #   if params[:portfolio][:city_id].present?
+  #     @city = City.find(params[:portfolio][:city_id])
+  #     @services = @city.services
+  #   end
+  # end
  
   #UPLOAD photos for portfolio 
   def upload_photos

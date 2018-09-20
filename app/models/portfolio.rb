@@ -9,7 +9,6 @@ class Portfolio < ApplicationRecord
   has_many :service_requests
   has_many :feedbacks
 
-  validates :city, presence: true, on: :update
   # validates :service, presence: true, on: :update
   validates :gender, :about, :experience, :education, presence: true, on: :update
   

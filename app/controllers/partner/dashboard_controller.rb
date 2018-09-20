@@ -28,9 +28,9 @@ class Partner::DashboardController < PartnerController
 
   def assign_service_request_to_user
     if params[:service_request][:request_id].present?
-      ServiceRequest.find(params[:service_request][:request_id]).update(status_id: 4, assignee_id: params[:service_request][:assignee_id] )
+      ServiceRequest.find(params[:service_request][:request_id]).update(status: Status.inprogress.last, assignee_id: params[:service_request][:assignee_id] )
       @service_requests = current_user.portfolio.service_requests.includes(:status).accepted_request.order("id DESC")
-      flash[:success] = "User Assign Successfully"
+      # flash[:success] = "User Assign Successfully"
     else
       @errors = "Assign request failed !" 
     end  

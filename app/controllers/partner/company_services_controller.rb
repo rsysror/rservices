@@ -1,17 +1,17 @@
 class Partner::CompanyServicesController < PartnerController
   
   def index
-    @services = current_user.portfolio.services.uniq
+    @portfolio_services = current_user.portfolio.portfolio_services.group_by(&:city_id)
   end
 
   def new
-    @services = Service.get_services
+    @sub_services = Service.get_sub_services
     @portfolio_services = PortfolioService.new
   end
 
   def get_cities
     if params[:portfolio_service][:service_id].present?
-      @cities = Service.find(params[:portfolio_service][:service_id]).cities
+      @cities = Service.find(params[:portfolio_service][:service_id]).service.cities.uniq
     end
   end
   # need to refactor
@@ -32,6 +32,6 @@ class Partner::CompanyServicesController < PartnerController
   private
 
   def portfolio_service_params city_id, portfolio_id
-    params.require(:portfolio_service).permit(:service_id).merge(city_id: city_id, portfolio_id: portfolio_id)
+    params.require(:portfolio_service).permit(:service_id, :price).merge(city_id: city_id, portfolio_id: portfolio_id)
   end
 end

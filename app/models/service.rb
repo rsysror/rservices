@@ -17,6 +17,7 @@ class Service < ApplicationRecord
   validates :city_ids, presence: {message: 'At leaset 1 city should be selected!'}, if: :is_parent_id_nil?
   #scope methods
   scope :get_services, -> { where("parent_id IS NULL") }
+  scope :get_sub_services, -> { where("parent_id IS NOT NULL") }
 
   def is_parent_id_nil?
     parent_id == nil
@@ -27,5 +28,9 @@ class Service < ApplicationRecord
 
   def self.get_all_sub_services parent_id, page , per_page=5
     where(:parent_id => parent_id).paginate(:page => page, :per_page => per_page)
+  end
+
+  def portfolio_service_price
+    portfolio_services.last.price
   end
 end

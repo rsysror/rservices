@@ -1,7 +1,7 @@
 module Partner::CompanyServicesHelper
   
-  def select_available_services services, form
-    form.select(:service_id, options_from_collection_for_select(services, :id, :name), { :prompt => "Select Service"}, required: 'true', class: 'form-control form_input', data: {remote: true, url: get_cities_path, method: 'get'})
+  def select_available_services sub_services, form
+    form.select(:service_id, options_from_collection_for_select(sub_services, :id, :name), { :prompt => "Select Sub Service"}, required: 'true', class: 'form-control form_input', data: {remote: true, url: get_cities_path, method: 'get'})
   end
 
   def select_service_city cities
@@ -14,6 +14,10 @@ module Partner::CompanyServicesHelper
   # need to refactor
   def get_city_name(service_id)
     current_user.portfolio.portfolio_services.where(service_id: service_id).map{|m| m.city.name}.join(", ")
+  end
+
+  def company_service_price service
+    service.portfolio_service_price.present? ? service.portfolio_service_price : "0.00"
   end
 
 end

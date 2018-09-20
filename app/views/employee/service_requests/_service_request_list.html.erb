@@ -10,6 +10,9 @@
       <%= request.portfolio.try(:portfolio_with_user_name_and_about) %>
     </td>
     <td>
+      <%= request.service_date.present? ? request.service_date.strftime("%d/%m/%Y") : "-" %>
+    </td>
+    <td>
       <%= request.try(:time_slot).try(:start_time_with_end_time) %>
     </td>
     <td>

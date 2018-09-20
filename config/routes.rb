@@ -78,6 +78,13 @@ Rails.application.routes.draw do
 
   namespace :employee do
     root to: "service_requests#index"
+
+    resources :service_requests, only: [:index] do
+      collection do
+        put "accept_reject"
+      end
+    end
+
   end
 
 

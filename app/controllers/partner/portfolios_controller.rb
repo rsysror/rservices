@@ -28,12 +28,12 @@ class Partner::PortfoliosController < PartnerController
     render :partial => "subservices", :object => @subservices
   end
 
-  def get_city_service_list
-    if params[:portfolio][:city_id].present?
-      @city = City.find(params[:portfolio][:city_id])
-      @services = @city.services
-    end
-  end
+  # def get_city_service_list
+  #   if params[:portfolio][:city_id].present?
+  #     @city = City.find(params[:portfolio][:city_id])
+  #     @services = @city.services
+  #   end
+  # end
  
   #UPLOAD photos for portfolio 
   def upload_photos
@@ -57,7 +57,7 @@ class Partner::PortfoliosController < PartnerController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portfolio_params
-      params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []})
+      params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []}, :company_name, :address,:company_ph_no)
     end
     
 end

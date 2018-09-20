@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_111742) do
     t.datetime "service_date"
     t.text "comment"
     t.integer "assignee_id"
+    t.text "comment"
   end
 
   create_table "services", force: :cascade do |t|

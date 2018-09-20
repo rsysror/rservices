@@ -1,4 +1,5 @@
 class Partner::CompanyServicesController < PartnerController
+  before_action :find_portfolio_service, only: [:edit, :update, :destroy]
   
   def index
     @portfolio_services = current_user.portfolio.portfolio_services.group_by(&:city_id)
@@ -14,6 +15,7 @@ class Partner::CompanyServicesController < PartnerController
       @cities = Service.find(params[:portfolio_service][:service_id]).service.cities.uniq
     end
   end
+
   # need to refactor
   def create
     city_ids = params[:portfolio_service][:city_ids]
@@ -29,9 +31,20 @@ class Partner::CompanyServicesController < PartnerController
     end
   end
 
+  def edit
+  end
+
+  def update
+    byebug
+  end
+
   private
 
   def portfolio_service_params city_id, portfolio_id
     params.require(:portfolio_service).permit(:service_id, :price).merge(city_id: city_id, portfolio_id: portfolio_id)
+  end
+
+  def find_portfolio_service
+    @portfolio_service = PortfolioService.find(params[:id])
   end
 end

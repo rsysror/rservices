@@ -61,5 +61,9 @@ class ServiceRequest < ApplicationRecord
     where.not(portfolio_id: [nil, ""]).order("id DESC").paginate(:page => page, :per_page => 5)
   end 
 
+  def assignee_details
+    assigned_to.present? ? "#{assigned_to.email + assigned_to.phone}" : "No Assignee Yet"
+  end
+
 end
 

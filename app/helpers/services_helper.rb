@@ -14,7 +14,7 @@ module ServicesHelper
   end
 
    def select_portfolio portfolios, city
-    select_tag 'service_request[portfolio_id]', options_from_collection_for_select(portfolios, :id, :about), :prompt => "Select portfolio", class: 'form-control', data: {remote: true,URL: get_services_path+ "?city_id=#{city.id}", method: 'get' }
+    select_tag 'service_request[portfolio_id]', options_from_collection_for_select(portfolios, :id, :company_name), :prompt => "Select portfolio", class: 'form-control', data: {remote: true,URL: get_services_path+ "?city_id=#{city.id}", method: 'get' }
   end
 
   def select_time_slot time_slots

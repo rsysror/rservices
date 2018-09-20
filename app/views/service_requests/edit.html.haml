@@ -12,6 +12,9 @@
             = form.label :service_request_number, "Service Request Number"
             = form.text_field :service_request_number , disabled: 'disabled'
           .col-sm-2.col-edit
+            = form.label :service_date, "Service Request Date"
+            = form.text_field :service_date , disabled: 'disabled'
+          .col-sm-2.col-edit
             = form.label :service, "Service Name"
             = select_tag "service_selection", options_from_collection_for_select(get_services_list(@service_request), :id, :name,@service_request.service.service.id),class: 'form-control', data: {remote: true,url: get_services_path,method: 'get'}
           .col-sm-2.col-edit
@@ -19,7 +22,7 @@
             = select_tag :service_id, options_from_collection_for_select(get_sub_services_list(@service_request.service_id), :id, :name, @service_request.service_id),class: 'form-control'
           .col-sm-2.col-edit
             = form.label :time_slot, "Time Slot"
-            = select_tag :time_slot_id, options_from_collection_for_select(get_available_time_slots(@service_request), :id,:start_time_with_end_time , @service_request.time_slot_id),class: 'form-control'
+            = select_tag "service_request[time_slot_id]", options_from_collection_for_select(get_available_time_slots(@service_request), :id,:start_time_with_end_time , @service_request.time_slot_id),class: 'form-control'
         .row
           = render :partial => 'listing_address', :locals => { :addresses => @addresses, header: false }
         .row

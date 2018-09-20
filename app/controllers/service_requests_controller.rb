@@ -33,14 +33,17 @@ class ServiceRequestsController < ApplicationController
   def show; end
 
   def update
-
     if ( (params[:comment_popup] == "true") && ( params[:service_request][:comment] == '') )
       params[:service_request][:comment] = params[:service_request][:select_comment]
     end
 
     service_request = @service_request.update_attributes(service_request_update_params)
     if service_request
-      redirect_to '/service_requests'
+      if current_user.partner?
+        redirect_to '/partner/dashboard'
+      else
+        redirect_to '/service_requests'
+      end
     end
   end
 

@@ -22,7 +22,7 @@ class ServiceRequestsController < ApplicationController
 
   def open_comment_pop_up
     @request_id = params[:id]
-    @comments = ['Task completed successfully.','Task is still in pending.', 'No one available at given address & timing.', 'Work depends on others', 'Other Reason']    
+    @comments =  ServiceRequest.comments_list
   end
 
   def edit
@@ -33,6 +33,7 @@ class ServiceRequestsController < ApplicationController
   def show; end
 
   def update
+    # need to look better solution
     if ( (params[:comment_popup] == "true") && ( params[:service_request][:comment] == '') )
       params[:service_request][:comment] = params[:service_request][:select_comment]
     end

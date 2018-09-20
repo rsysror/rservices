@@ -30,7 +30,7 @@ class Service < ApplicationRecord
     where(:parent_id => parent_id).paginate(:page => page, :per_page => per_page)
   end
 
-  def portfolio_service_price
-    portfolio_services.last.price
-  end
+  # def portfolio_service_price
+  #   portfolio_services.last.price
+  # end
 end

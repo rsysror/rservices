@@ -11,9 +11,9 @@ class Partner::DashboardController < PartnerController
     if service_request
       if Status::ACTION.include?(params[:value])
         service_request.update_attributes(:status_id => Status.send(params[:value]).first.id)
+        UserMailer.accepted_rejected(current_user, service_request).deliver_now
       end
     end
-    UserMailer.accepted_rejected(current_user, service_request).deliver_now
   end
 
   def manage_employees

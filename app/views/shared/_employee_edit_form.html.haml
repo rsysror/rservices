@@ -1,5 +1,7 @@
 .container
-  = back_button_link(back_url)
+  .row
+    .add-new
+      = back_button_link(back_url)  
   .panel.panel-primary
     .panel-heading
       %h3 #{lebel_value}
@@ -15,7 +17,7 @@
           .col-sm-6
             = form.label :email
             %br
-            = form.text_field :email, class: 'form-control form_input', :readonly => true
+            = form.text_field :email, class: 'form-control', :readonly => true
         .row
           .col-sm-6
             = rservice_text_field("phone", "Phone", form)

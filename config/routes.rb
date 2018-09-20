@@ -76,7 +76,9 @@ Rails.application.routes.draw do
     resources :company_services
   end
 
+  
   namespace :employee do
+    resource :employees
     root to: "service_requests#index"
 
     resources :service_requests, only: [:index] do

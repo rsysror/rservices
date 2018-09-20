@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 2018_09_20_101951) do
     t.json "images"
     t.json "documents"
     t.boolean "status", default: false
+    t.string "address"
     t.string "company_name"
     t.string "company_ph_no"
-    t.string "address"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -133,6 +133,13 @@ ActiveRecord::Schema.define(version: 2018_09_20_101951) do
 
   create_table "statuses", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sub_services", force: :cascade do |t|
+    t.string "name"
+    t.integer "service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

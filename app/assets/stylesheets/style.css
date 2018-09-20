@@ -7607,6 +7607,11 @@ p.nav-home a {
 .row{
     margin:10px !important;
 }
+.user-modal-select-box{
+  width: 54% !important;
+  float: left;
+  margin-right: 10%;
+}
 
 /*css for accordian collapse*/
 .accordion {

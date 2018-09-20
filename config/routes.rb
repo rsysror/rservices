@@ -70,13 +70,16 @@ Rails.application.routes.draw do
       collection do
         put "accept_reject"
         get "manage_employees"
+        get "manage_service_requests"
       end
     end
     resources :users
     resources :company_services
   end
 
+  
   namespace :employee do
+    resource :employees
     root to: "service_requests#index"
 
     resources :service_requests, only: [:index] do
@@ -100,7 +103,7 @@ Rails.application.routes.draw do
   get 'admin/partners', :to => 'admin/users#partners'
   get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
   get 'admin/partner/:id', :to => 'admin/users#partner_details', :as => 'partner_details'
+  put 'partner/assign_service_request', :to => 'partner/dashboard#assign_service_request_to_user', :as => 'assign_service_requests_to_employee' 
   get 'admin/service-requests', :to => 'admin/users#service_requests_list', :as => 'service_requests_list'
   get 'get_cities', to: 'partner/company_services#get_cities'
-
 end

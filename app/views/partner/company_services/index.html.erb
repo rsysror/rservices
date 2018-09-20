@@ -28,7 +28,10 @@
                 <tr>
                   <td><%= port_service.service.try(:name).titleize %></td>
                   <td><i class="fa fa-inr"><%= company_service_price(port_service) %></td>
-                  <td><%= link_to "Edit", edit_partner_company_service_path(port_service), :class => 'btn btn-primary btn-xs' %></td>
+                  <td>
+                    <%= link_to "Edit", edit_partner_company_service_path(port_service), :class => 'btn btn-primary btn-xs' %>
+                    <%= link_to "Delete", partner_company_service_path(port_service), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-xs btn-danger' %>
+                    </td>
                 </tr>
               <% end %>
             </tbody>

@@ -2,12 +2,12 @@ class Partner::CompanyServicesController < PartnerController
   before_action :find_portfolio_service, only: [:edit, :update, :destroy]
   
   def index
-    @portfolio_services = current_user.portfolio.portfolio_services.group_by(&:city_id)
+    @portfolio_services = current_user.portfolio.portfolio_services.order(:city_id).group_by(&:city_id)
   end
 
   def new
     @sub_services = Service.get_sub_services
-    @portfolio_services = PortfolioService.new
+    @portfolio_service = PortfolioService.new
   end
 
   def get_cities
@@ -35,13 +35,30 @@ class Partner::CompanyServicesController < PartnerController
   end
 
   def update
-    byebug
+    @portfolio_service.update_attributes(portfolio_service_update_params)
+    if @portfolio_service
+      flash[:success] = "Price Updated Successfully!"
+      redirect_to partner_company_services_path
+    else
+      flash[:error] =  "Error"
+      render :edit
+    end
+  end
+
+  def destroy
+    @portfolio_service.destroy
+    flash[:success] = "Service deleted successfully!"
+    redirect_to partner_company_services_path
   end
 
   private
 
   def portfolio_service_params city_id, portfolio_id
     params.require(:portfolio_service).permit(:service_id, :price).merge(city_id: city_id, portfolio_id: portfolio_id)
+  end
+
+  def portfolio_service_update_params
+    params.require(:portfolio_service).permit(:price)
   end
 
   def find_portfolio_service

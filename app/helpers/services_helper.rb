@@ -21,7 +21,7 @@ module ServicesHelper
     select_tag 'service_request[time_slot_id]', options_from_collection_for_select(time_slots, :id, :start_time_with_end_time), :prompt => "Select Timeslot", class: 'form-control'
   end
 
-  def sub_service_price sub_services
-    sub_services.price.present? ? sub_services.price : "0.00"
-  end
+  # def sub_service_price sub_services
+  #   sub_services.price.present? ? sub_services.price : "0.00"
+  # end
 end

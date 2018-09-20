@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2018_09_18_111742) do
     t.string "service_request_number"
     t.integer "time_slot_id"
     t.datetime "service_date"
+    t.text "comment"
     t.integer "assignee_id"
     t.text "comment"
   end

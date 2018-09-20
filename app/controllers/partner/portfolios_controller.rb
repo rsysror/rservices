@@ -57,7 +57,7 @@ class Partner::PortfoliosController < PartnerController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portfolio_params
-      params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []})
+      params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []}, :company_name, :address,:company_ph_no)
     end
     
 end

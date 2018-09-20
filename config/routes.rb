@@ -67,6 +67,7 @@ Rails.application.routes.draw do
       collection do
         put "accept_reject"
         get "manage_employees"
+        get "manage_service_requests"
       end
     end
     resources :users
@@ -87,7 +88,6 @@ Rails.application.routes.draw do
   get 'admin/partners', :to => 'admin/users#partners'
   get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
   get 'admin/partner/:id', :to => 'admin/users#partner_details', :as => 'partner_details'
-  get 'admin/service-requests', :to => 'admin/users#service_requests_list', :as => 'service_requests_list'
-
+  put 'partner/assign_service_request', :to => 'partner/dashboard#assign_service_request_to_user', :as => 'assign_service_requests_to_employee' 
 
 end

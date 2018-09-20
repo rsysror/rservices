@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Assign Service Requests to user's</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <table class="table">
+          <thead>
+            <th>Date</th>
+            <th>Requested Service</th>
+            <th>Requester</th>
+            <th>Status</th>
+            <th>Assign to employee</th>
+          </thead>
+          <tbody id="service_request_list">
+            <%= render partial: 'manage_service_request' %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

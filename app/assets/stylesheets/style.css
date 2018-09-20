@@ -7607,3 +7607,29 @@ p.nav-home a {
 .row{
     margin:10px !important;
 }
+
+/*css for accordian collapse*/
+.accordion {
+  background-color: #eee!important;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  margin-bottom: 5px;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel1 {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}

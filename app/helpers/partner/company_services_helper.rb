@@ -12,12 +12,12 @@ module Partner::CompanyServicesHelper
   end
 
   # need to refactor
-  def get_city_name(service_id)
-    current_user.portfolio.portfolio_services.where(service_id: service_id).map{|m| m.city.name}.join(", ")
-  end
+  # def get_city_name(service_id)
+  #   current_user.portfolio.portfolio_services.where(service_id: service_id).map{|m| m.city.name}.join(", ")
+  # end
 
   def company_service_price service
-    service.portfolio_service_price.present? ? service.portfolio_service_price : "0.00"
+    service.price.present? ? service.price : "0.00"
   end
 
 end

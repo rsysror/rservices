@@ -84,8 +84,10 @@ Rails.application.routes.draw do
 
 
   #Singular routes for few methods
+  post 'create_comment', to: 'service_requests#update'
+	get 'open_comment_pop_up', to: 'service_requests#open_comment_pop_up'
   get 'get_services_by_city', to: 'home#get_services_by_city'
-	get 'dashboard', to: 'home#dashboard'
+  get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
   get 'get_states_and_cities', to: 'addresses#get_states_and_cities'
   get 'admin/partners', :to => 'admin/users#partners'

@@ -16,5 +16,9 @@ class City < ApplicationRecord
 	def get_curent_user_address user
 		addresses.where(user_id: user.id)
 	end
+
+  def get_services
+    portfolio_services.where(portfolio_id: nil).map{|m| m.service}
+  end
 		
 end

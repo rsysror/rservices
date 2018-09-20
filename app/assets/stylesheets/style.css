@@ -7407,7 +7407,7 @@ p.free {
   padding-left: 7%!important;
 }
 
-.btn_margin{margin-right: 5px;}
+.btn_margin{margin: 0px 5px;}
 
 /*for google map*/
 a {
@@ -7575,7 +7575,28 @@ p.nav-home a {
     width: 250px;
 }
 
+/*for service request comment .*/
+.select-container {
+  text-align: center;
+}
+
+.comment-container {
+  float: left;
+  width: 89%;
+  margin-left: 5.5%;
+}
+
+.save-comment {
+  float: left;
+  margin: 2% 0% 3% 85%;
+}
+
+.footer-border {
+  border: none;
+}
+
 #portfolio_service_city_ids{height: auto!important;}
+
 .form {
   display: none;
 }

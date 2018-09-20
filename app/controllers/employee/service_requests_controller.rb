@@ -19,7 +19,6 @@ class Employee::ServiceRequestsController < EmployeesController
   private
   
   def get_service_requests
-    # byebug
     @service_requests = current_user.assigned_service_requests.ordered.paginate(:page => params[:page], :per_page => 5).order("id DESC")
   end
 

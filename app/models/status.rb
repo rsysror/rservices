@@ -1,6 +1,6 @@
 class Status < ApplicationRecord
 
-	ACTION =["accepted", "rejected", "pending", "inprogress", "completed", "incompleted" ] 
+	ACTION =["accepted", "rejected", "pending", "inprogress", "completed", "incompleted",'onhold' ] 
 	has_many :service_requests
 
   scope :accepted, -> { where(name: 'Accepted') }
@@ -9,6 +9,7 @@ class Status < ApplicationRecord
   scope :inprogress, -> { where(name: 'Inprogress') }
   scope :completed, -> { where(name: 'Completed') }
   scope :incompleted, -> { where(name: 'InCompleted') }
+  scope :onhold, -> { where(name: 'Onhold') }
 
   
   def self.get_status_value status

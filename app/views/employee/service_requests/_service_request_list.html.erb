@@ -1,0 +1,30 @@
+<% service_requests.each do |request|%>
+  <tr>
+    <td>
+      <%= request.service.try(:name).titleize %>
+    </td>
+    <td class="td_width">
+      <%= request.user_address %>
+    </td>
+    <td>
+      <%= request.portfolio.try(:portfolio_with_user_name_and_about) %>
+    </td>
+    <td>
+      <%= request.try(:time_slot).try(:start_time_with_end_time) %>
+    </td>
+    <td>
+      <%= request.service_request_number %>
+    </td>
+    <td>
+      <b>
+        <%= request.status.try(:name) %>
+      </b>
+    </td>
+    <td>
+      <%= user_ratings(request) %>
+    </td>
+    <td>
+      <%= employ_action(request) %>
+    </td>
+  </tr>
+<% end %>

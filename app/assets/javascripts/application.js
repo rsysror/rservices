@@ -32,3 +32,11 @@ $(document).on('ready turbolinks:load', function() {
     $(this).addClass('active').siblings().removeClass('active')  
   })
 })
+
+
+// function add_date_picker_function(){
+// $('#datetimepicker1').datetimepicker({format: 'YYYY/MM/DD',minDate: '0'}).on('dp.change',function(e){
+// 	$.get( '#{get_services_path}', { city_id: $('#city_selection').val(), 
+// 		portfolio_id: $('#service_request_portfolio_id').val(),date: $('#date_value').val()})
+// });
+// }

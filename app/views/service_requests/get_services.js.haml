@@ -4,21 +4,11 @@ $('.loading').hide();
   $('#error_message').html('');
   $('#load_addresses').html("#{escape_javascript render(:partial => 'listing_address', :locals => { :addresses => @addresses , :header => false})}");
   $('#load_services').html("#{escape_javascript render(:partial => 'city_based_services', :locals => { :services => @services })}");
-- elsif (@portfolio and @sub_services).present?
+- elsif @sub_services.present?
   $('#load_sub_services').html("#{escape_javascript render(:partial => 'city_based_services', :locals => { :sub_services => @sub_services })}");
-- elsif @addresses
-  $('#load_sub_services').html('');
-  $('#load_services').html('');
-  $('#error_message').html('');
-  $('#load_addresses').html("#{escape_javascript render(:partial => 'listing_address', :locals => { :addresses => @addresses , :header => false})}");
-- else
-  $('#error_message').addClass('alert alert-warning');
-  $('#error_message').html('No service Provider in selected city');
-$('select').change(function () {
-var op = $(this).val();
-if (op != '') {
-$('#sub_service_create').prop('disabled', false);
-} else {
-$('#sub_service_create').prop('disabled', true);
-}
-});
+- elsif @portfolio.present?
+  $('#load_portfolio').html("#{escape_javascript render(:partial => 'portfolio', :locals => { :portfolio => @portfolio })}");
+  $('#datetimepicker1').datetimepicker({format: 'YYYY/MM/DD',minDate: '0'}).on('dp.change',function(e){$.get( '#{get_services_path}', { city_id: $('#city_selection').val(), portfolio_id: $('#service_request_portfolio_id').val(),date: $('#date_value').val()})});
+- elsif @time_slots.present?
+  $('#time_slot').html("#{escape_javascript render(:partial => 'time_slot', :locals => { :timeslots => @time_slots })}");
+

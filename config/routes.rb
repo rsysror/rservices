@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :partner do
+    get 'company_services/index'
+  end
   devise_for :users
   # get 'home/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -71,23 +74,36 @@ Rails.application.routes.draw do
       end
     end
     resources :users
+    resources :company_services
   end
 
+  
   namespace :employee do
+    resource :employees
     root to: "service_requests#index"
+
+    resources :service_requests, only: [:index] do
+      collection do
+        put "accept_reject"
+      end
+    end
+
   end
 
 
 
 
   #Singular routes for few methods
+  post 'create_comment', to: 'service_requests#update'
+	get 'open_comment_pop_up', to: 'service_requests#open_comment_pop_up'
   get 'get_services_by_city', to: 'home#get_services_by_city'
-	get 'dashboard', to: 'home#dashboard'
+  get 'dashboard', to: 'home#dashboard'
   get 'get_services', to: 'service_requests#get_services'
   get 'get_states_and_cities', to: 'addresses#get_states_and_cities'
   get 'admin/partners', :to => 'admin/users#partners'
   get 'admin/partners/:id/partner_service_request', :to => 'admin/users#partner_service_request', :as => 'partner_service_request'
   get 'admin/partner/:id', :to => 'admin/users#partner_details', :as => 'partner_details'
   put 'partner/assign_service_request', :to => 'partner/dashboard#assign_service_request_to_user', :as => 'assign_service_requests_to_employee' 
-
+  get 'admin/service-requests', :to => 'admin/users#service_requests_list', :as => 'service_requests_list'
+  get 'get_cities', to: 'partner/company_services#get_cities'
 end

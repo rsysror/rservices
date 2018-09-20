@@ -8,7 +8,7 @@ class ServiceRequest < ApplicationRecord
   belongs_to :status
   belongs_to :portfolio
   belongs_to :time_slot
-  belongs_to :assigned_to, class_name: 'User',foreign_key: "assignee_id"
+  belongs_to :assigned_to, class_name: 'User',foreign_key: "assignee_id", optional: true
 
 
 
@@ -64,6 +64,10 @@ class ServiceRequest < ApplicationRecord
   def self.get_all_service_requests page
     where.not(portfolio_id: [nil, ""]).order("id DESC").paginate(:page => page, :per_page => 5)
   end 
+
+  def assignee_details
+    assigned_to.present? ? "#{assigned_to.email + assigned_to.phone}" : "No Assignee Yet"
+  end
 
 end
 

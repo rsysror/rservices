@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 2018_09_18_111742) do
     t.json "images"
     t.json "documents"
     t.boolean "status", default: false
+    t.string "company_name"
+    t.string "company_ph_no"
     t.string "address"
   end
 
@@ -110,7 +112,9 @@ ActiveRecord::Schema.define(version: 2018_09_18_111742) do
     t.string "service_request_number"
     t.integer "time_slot_id"
     t.datetime "service_date"
+    t.text "comment"
     t.integer "assignee_id"
+    t.text "comment"
   end
 
   create_table "services", force: :cascade do |t|

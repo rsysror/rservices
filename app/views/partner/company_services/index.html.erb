@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="add-new">
+      <%= back_button_link(partner_dashboard_index_path) %>
+    </div>
+    <div class="col-md-xl col-md-offset-10">
+      <div class="add-new right_float">
+        <%= link_to t('.New', :default => t("helpers.links.new")), new_partner_company_service_path, :class => 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Company Services List</h3>
+    </div>
+    <div class="panel-body">
+      <% @portfolio_services.each do |city_id, port_services| %>
+        <button class="accordion"><h5><%=  port_services.last.city.try(:name).titleize %></h5></button>
+        <div class="panel1">
+          <table class="table table-striped">
+            <thead>
+              <th>Service Name</th>
+              <th>Price</th>
+              <th>Action</th>
+            </thead>
+            <tbody>
+              <% port_services.each do |port_service| %>
+                <tr>
+                  <td><%= port_service.service.try(:name).titleize %></td>
+                  <td><i class="fa fa-inr"><%= company_service_price(port_service) %></td>
+                  <td>
+                    <%= link_to "Edit", edit_partner_company_service_path(port_service), :class => 'btn btn-primary btn-xs' %>
+                    <%= link_to "Delete", partner_company_service_path(port_service), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-xs btn-danger' %>
+                    </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+    });
+}
+</script>

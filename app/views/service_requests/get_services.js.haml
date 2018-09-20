@@ -8,7 +8,7 @@ $('.loading').hide();
   $('#load_sub_services').html("#{escape_javascript render(:partial => 'city_based_services', :locals => { :sub_services => @sub_services })}");
 - elsif @portfolio.present?
   $('#load_portfolio').html("#{escape_javascript render(:partial => 'portfolio', :locals => { :portfolio => @portfolio })}");
-  $('#datetimepicker1').datetimepicker({format: 'YYYY/MM/DD',minDate: new Date()}).on('dp.change',function(e){$.get( '#{get_services_path}', { city_id: $('#city_selection').val(), portfolio_id: $('#service_request_portfolio_id').val(),date: $('#date_value').val()})});
+  $('#datetimepicker1').datetimepicker({format: 'YYYY/MM/DD',minDate: new Date().setHours(0,0,0,0) }).on('dp.change',function(e){$.get( '#{get_services_path}', { city_id: $('#city_selection').val(), portfolio_id: $('#service_request_portfolio_id').val(),date: $('#date_value').val()})});
 - elsif @time_slots.present?
   $('#time_slot').html("#{escape_javascript render(:partial => 'time_slot', :locals => { :timeslots => @time_slots })}");
 

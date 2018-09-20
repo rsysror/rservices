@@ -37,12 +37,13 @@ class Portfolio < ApplicationRecord
 
   def available_time_slots date
     time_slots = service_requests.present? ? TimeSlot.ordered - service_requests.where(service_date: date).map{|m| m.time_slot}.compact : TimeSlot.ordered 
-    select_time_slots(time_slots)
+    (date.to_date.strftime("%d/%m/%Y") == Time.now.strftime("%d/%m/%Y")) ? select_time_slots(time_slots) : time_slots
   end
 
   def available_time_slots_for_update service_request
     time_slots = service_requests.present? ? TimeSlot.ordered - service_requests.where(service_date: service_request.service_date).map{|m| m.time_slot}.compact : TimeSlot.ordered 
-    return select_time_slots(time_slots) << service_request.time_slot
+    all_slots = (service_request.service_date.strftime("%d/%m/%Y") == Time.now.strftime("%d/%m/%Y")) ? select_time_slots(time_slots) : time_slots
+    return all_slots << service_request.time_slot
   end
 
   def select_time_slots time_slots

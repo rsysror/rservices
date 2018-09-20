@@ -10,4 +10,6 @@ class EmployeesController < ApplicationController
       redirect_to employee_root_path
     end
   end
+
+ 
 end

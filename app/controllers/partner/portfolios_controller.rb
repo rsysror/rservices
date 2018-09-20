@@ -4,14 +4,15 @@ class Partner::PortfoliosController < PartnerController
   def show; end
 
   def edit
-    @portfolio = Portfolio.find(current_user.portfolio.id)
-    @cities = City.details.order(:name)
-    @services = Service.get_services
+    # @portfolio = Portfolio.find(current_user.portfolio.id)
+    # @cities = City.details.order(:name)
+    # @services = Service.get_services
   end
 
   def update
     if @portfolio.update(portfolio_params)
-      redirect_to partner_portfolio_path(@portfolio), notice: 'Portfolio was successfully updated.'
+      flash[:success] = 'Portfolio updated successfully!.'
+      redirect_to partner_portfolio_path(@portfolio) 
     else
       render :edit 
     end
@@ -20,7 +21,8 @@ class Partner::PortfoliosController < PartnerController
   
   def destroy
     @portfolio.destroy
-    redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.'
+    flash[:success] = 'Portfolio deleted successfully!.'
+    redirect_to portfolios_url
   end
 
   def get_subservices
@@ -45,19 +47,16 @@ class Partner::PortfoliosController < PartnerController
     redirect_to partner_portfolio_path
   end
 
-
-
   private
-    
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_portfolio
-      @portfolio = current_user.portfolio
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_portfolio
+    @portfolio = current_user.portfolio
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def portfolio_params
-      params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []}, :company_name, :address,:company_ph_no)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def portfolio_params
+    params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []}, :company_name, :address,:company_ph_no)
+  end
     
 end

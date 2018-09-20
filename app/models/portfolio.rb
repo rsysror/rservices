@@ -23,6 +23,10 @@ class Portfolio < ApplicationRecord
     user.email
   end
 
+  def active?
+    status == true
+  end
+
   def portfolio_status
     status ? "Active" : "In Active"
   end

@@ -63,7 +63,7 @@ class ServiceRequestsController < ApplicationController
       @city = City.find(params[:city_id])
       @sub_services = service.sub_services
     elsif params[:service_id]
-      @portfolio = PortfolioService.where(service_id: params[:service_id], city_id: params[:city_id]).map{|m| m.portfolio}    
+      @portfolio = PortfolioService.city_services(params[:service_id], params[:city_id]).map{|m| m.portfolio if m.portfolio.active?}.compact    
       @city = City.find(params[:city_id])
     elsif params[:date].present?
       portfolio = Portfolio.find(params[:portfolio_id])

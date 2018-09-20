@@ -24,7 +24,6 @@
           <% @service_requests.each do |request|%>
             <tr>
               <td><%=request.service.try(:name).titleize %></td>
-              <% byebug %>
               <td><%=request.user.try(:full_name) %></td>
               <td><%=request.user_address %></td>
               <td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>

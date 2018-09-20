@@ -16,8 +16,8 @@ class ServiceRequest < ApplicationRecord
 
   #scope method
   scope :ordered, -> {order('updated_at DESC')}
-  scope :accepted_request, -> { where(status_id: 1) }
-  scope :available_employees, -> { where('status_id IN (?)', [4]).map{|m| m.assigned_to}.compact
+  scope :accepted_request, -> { where(status_id: Status.accepted.first.id) }
+  scope :available_employees, -> { where('status_id IN (?)', [Status.pending.first.id]).map{|m| m.assigned_to}.compact
  }
 
 

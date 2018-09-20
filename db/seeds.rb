@@ -291,6 +291,7 @@ Status.create(id:4, name: "Inprogress")
 Status.create(id:5, name: "Cancelled")
 Status.create(id:6, name: "Completed")
 Status.create(id:7, name: "InCompleted")
+Status.create(id:8, name: "Onhold")
 
 
 

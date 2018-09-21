@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="row">
+    <div class="add-new">
+      <%= back_button_link(partner_dashboard_index_path) %>
+    </div>
+  </div>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3>Assign Service Requests</h3>
@@ -7,11 +12,13 @@
       <div class="row">
         <table class="table">
           <thead>
-            <th>Date</th>
-            <th>Requested Service</th>
-            <th>Requester</th>
+            <th>Service Date</th>
+            <th>Time</th>
+            <th>Service Name</th>
+            <th>Contact Person</th>
+            <th>Phone</th>
             <th>Status</th>
-            <th>Assign to employee</th>
+            <th>Assign To</th>
           </thead>
           <tbody id="service_request_list">
             <%= render partial: 'manage_service_request' %>

@@ -65,6 +65,18 @@ class ServiceRequest < ApplicationRecord
     user.full_name
   end
 
+  def service_name
+    service.try(:name).titleize
+  end
+
+  def service_status
+    status.try(:name)
+  end
+
+  def service_time
+    try(:time_slot).try(:start_time_with_end_time)
+  end
+
   def self.get_all_service_requests page
     where.not(portfolio_id: [nil, ""]).order("id DESC").paginate(:page => page, :per_page => 5)
   end 

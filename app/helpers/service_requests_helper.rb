@@ -30,9 +30,6 @@ module ServiceRequestsHelper
       (link_to t('.cancel', :default => t("helpers.links.cancel")),cancel_service_request_service_request_path(request),:method => :patch,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger')
     else
       (link_to t('.show', :default => t("helpers.links.show")),service_request_path(request),:class => 'btn btn-xs btn-primary btn_margin')
-      # (link_to t('.edit', :default => t("helpers.links.edit")), edit_service_request_path(request), :class => 'btn btn-primary btn-xs btn_margin') +
-      #(link_to t('.cancel', :default => t("helpers.links.cancel")),cancel_service_request_service_request_path(request),:method => :patch,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger')
-
     end
   end
 

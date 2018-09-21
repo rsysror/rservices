@@ -1,9 +1,1 @@
-.col-sm-2.col-sm-offset-1
-  = select_portfolio(portfolio, @city)
-#datetimepicker1.input-group.date.col-sm-2
-  %input#date_value.form-control{:type => "text", name: "service_request[service_date]"}/
-  %span.input-group-addon
-    %span.glyphicon.glyphicon-calendar
-#time_slot.col-sm-2
-
-
+= render :partial => 'listing_company', locals: {portfolios: portfolios, service_id: service_id}

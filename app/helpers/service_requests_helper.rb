@@ -1,5 +1,5 @@
 module ServiceRequestsHelper
-
+  
   def city_selection_from_address service_request
      service_request.address.city.id
   end
@@ -30,9 +30,6 @@ module ServiceRequestsHelper
       (link_to t('.cancel', :default => t("helpers.links.cancel")),cancel_service_request_service_request_path(request),:method => :patch,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger')
     else
       (link_to t('.show', :default => t("helpers.links.show")),service_request_path(request),:class => 'btn btn-xs btn-primary btn_margin')
-      # (link_to t('.edit', :default => t("helpers.links.edit")), edit_service_request_path(request), :class => 'btn btn-primary btn-xs btn_margin') +
-      #(link_to t('.cancel', :default => t("helpers.links.cancel")),cancel_service_request_service_request_path(request),:method => :patch,:data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },:class => 'btn btn-xs btn-danger')
-
     end
   end
 
@@ -69,15 +66,6 @@ module ServiceRequestsHelper
 
   def assigned_user(user_id=nil)
     user_id.present? ? User.find(user_id).try(:email) : "-"
-  end
-  
-  def show_average_rating portfolio
-    score = portfolio.feedbacks.present? ? actual_rating_count(portfolio) : 0
-    render partial: "shared/show_rating" , locals: {request: portfolio, score: score } 
-  end
-
-  def actual_rating_count portfolio
-    (portfolio.feedbacks.pluck(:rating).sum/portfolio.feedbacks.count)
   end
   
 end

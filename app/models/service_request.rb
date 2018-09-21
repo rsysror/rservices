@@ -49,6 +49,10 @@ class ServiceRequest < ApplicationRecord
   #   end
   # end
 
+  def self.comments_list
+    ['Task completed successfully.','Task is still in pending.', 'No one available at given address & timing.', 'Work depends on others', 'Other Reason']    
+  end
+
   def user_phone
     user.phone.present? ? user.phone : "-"
   end

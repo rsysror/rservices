@@ -13,6 +13,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Phone</th>
             <th>City</th>
             <th>Created at</th>
             <th>Actions</th>
@@ -22,11 +23,12 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= user.full_name %></td>
-              <td><%=users_city(user) %></td>
+              <td><%= user.phone_no %></td>
+              <td><%= users_city(user) %></td>
               <td><%=l user.created_at %></td>
               <td>
                 <%= link_to t('.show', :default => t("helpers.links.show")), admin_user_path(user), :class => 'btn btn-primary btn-xs' %>
-                <%= link_to "Service requests", user_service_request_admin_user_path(user), :class => 'btn btn-primary btn-xs' %>
+                <%= link_to "Service Requests", user_service_request_admin_user_path(user), :class => 'btn btn-primary btn-xs' %>
               </td>
             </tr>
           <% end %>

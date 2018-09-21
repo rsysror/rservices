@@ -21,7 +21,7 @@
           - @services.each do |service|
             %tr
               %td= service.name
-              %td= service.cities.collect(&:name).join(', ')
+              %td.td_width= service.cities.collect(&:name).join(', ')
               %td= l service.created_at
               %td
                 = link_to t('.show', :default => t("helpers.links.show")), admin_service_path(service), :class => 'btn btn-primary btn-xs'

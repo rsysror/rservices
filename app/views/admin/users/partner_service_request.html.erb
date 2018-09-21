@@ -6,14 +6,16 @@
   </div>
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3>Service Request</h3>
+      <h3>Service Request Details</h3>
     </div>
     <div class="panel-body">
       <table class="table">
         <thead>
           <th>Service Name</th>
-          <th>Address</th>
           <th>User</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Service Date</th>
           <th>Time Slot</th>
           <th>Service Request Number</th>
           <th>Status</th>
@@ -22,12 +24,14 @@
         <tbody>
           <% @service_requests.each do |request|%>
             <tr>
-              <td><%=request.service.try(:name).titleize %></td>
-              <td><%=request.address.flat_number %>,<%=request.address.street_name %>,<%=request.address.pin_code %></td>
-              <td><%=request.user.email  %></td>
-              <td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
+              <td><%=request.service_name %></td>
+              <td><%=request.user_name %></td>
+              <td><%=request.user_phone %></td>
+              <td class="td_width"><%=request.user_address %></td>
+              <td><%=request.try(:service_date).strftime('%Y-%m-%d') %></td>
+              <td><%=request.service_time %></td>
               <td><%=request.service_request_number %></td>
-              <td><%=request.status.try(:name) %></td>
+              <td><b><%=request.status.try(:name) %></b></td>
               <td>
                 <%=admin_status_action(request)%>       
               </td>

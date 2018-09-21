@@ -59,5 +59,9 @@ class Portfolio < ApplicationRecord
   def fetch_service_price service_id
     portfolio_services.where(service_id: service_id).last.try(:price).to_s
   end
+
+  def remove_existing_service_city(service_id)
+    portfolio_services.where(service_id: service_id).map{|ps| ps.city}
+  end
   
 end

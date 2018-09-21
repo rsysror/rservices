@@ -6,15 +6,14 @@ class Partner::CompanyServicesController < PartnerController
   end
 
   def new
-    # byebug
     @sub_services = Service.get_sub_services
     @portfolio_service = PortfolioService.new
   end
 
   def get_cities
-    # byebug
-    if params[:portfolio_service][:service_id].present?
-      @cities = Service.find(params[:portfolio_service][:service_id]).service.cities.order('name ASC').uniq - current_user.portfolio.portfolio_services.where(service_id: params[:portfolio_service][:service_id]).map{|ps| ps.city}
+    sub_service_id = params[:portfolio_service][:service_id]
+    if sub_service_id.present?
+      @cities = Service.find(params[:portfolio_service][:service_id]).service.service_city - current_user.portfolio.remove_existing_service_city(sub_service_id)
     end
   end
 

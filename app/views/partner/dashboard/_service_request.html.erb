@@ -1,11 +1,11 @@
 <% @service_requests.each do |request|%>
   <tr>
-    <td><%=request.service.try(:created_at).strftime('%Y-%m-%d %H:%M:%S') %></td>
+    <td><%=request.try(:service_date).strftime('%Y-%m-%d %H:%M:%S') %></td>
     <td><%=request.service.try(:name).titleize %></td>
     <td><%=request.user_name %></td>
     <td><%=request.user_phone %></td>
     <td class="td_width"><%=request.user_address %></td>
-    <td><%= assigned_user(request.assignee_id) %></td>
+    <td><%= request.assigned_to.try(:email) %></td>
     <td><b><%=request.status.try(:name) %></b></td>
     <td><%=partner_action(request) %></td>
   </tr>

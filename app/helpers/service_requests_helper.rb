@@ -49,7 +49,7 @@ module ServiceRequestsHelper
   end
 
   def service_request_header_html_block
-    columns = ['Service Name', 'Address','Vendor','Service Date','Time Slot','Service Request Number','Status','Rating','Actions']
+    columns = ['Service Name', 'Address','User','Service Date','Time','Service Request Number','Status','Rating','Actions']
     thead = content_tag :thead do
       content_tag :tr do
         columns.collect {|column|  concat content_tag(:th,column)}.join().html_safe

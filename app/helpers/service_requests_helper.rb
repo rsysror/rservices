@@ -38,7 +38,11 @@ module ServiceRequestsHelper
 
   def user_ratings request
     if request.status.try(:name) == "Completed"
-      request.feedback.present? ? add_rating_html_block(request) : (link_to 'Give Rating',new_feedback_path(portfolio_id: request.portfolio_id, request_id: request.id),:method => :get,:class => 'btn btn-success btn-xs')
+      if current_user.user?
+        request.feedback.present? ? add_rating_html_block(request) : (link_to 'Give Rating',new_feedback_path(portfolio_id: request.portfolio_id, request_id: request.id),:method => :get,:class => 'btn btn-success btn-xs')
+      else
+        request.feedback.present? ? add_rating_html_block(request) : '-'
+      end
     else
       "Not Yet Rated"
     end

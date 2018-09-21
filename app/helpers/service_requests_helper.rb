@@ -38,7 +38,11 @@ module ServiceRequestsHelper
 
   def user_ratings request
     if request.status.try(:name) == "Completed"
-      request.feedback.present? ? add_rating_html_block(request) : (link_to 'Give Rating',new_feedback_path(portfolio_id: request.portfolio_id, request_id: request.id),:method => :get,:class => 'btn btn-success btn-xs')
+      if current_user.user?
+        request.feedback.present? ? add_rating_html_block(request) : (link_to 'Give Rating',new_feedback_path(portfolio_id: request.portfolio_id, request_id: request.id),:method => :get,:class => 'btn btn-success btn-xs')
+      else
+        request.feedback.present? ? add_rating_html_block(request) : '-'
+      end
     else
       "Not Yet Rated"
     end
@@ -66,4 +70,14 @@ module ServiceRequestsHelper
   def assigned_user(user_id=nil)
     user_id.present? ? User.find(user_id).try(:email) : "-"
   end
+  
+  def show_average_rating portfolio
+    score = portfolio.feedbacks.present? ? actual_rating_count(portfolio) : 0
+    render partial: "shared/show_rating" , locals: {request: portfolio, score: score } 
+  end
+
+  def actual_rating_count portfolio
+    (portfolio.feedbacks.pluck(:rating).sum/portfolio.feedbacks.count)
+  end
+  
 end

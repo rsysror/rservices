@@ -55,5 +55,9 @@ class Portfolio < ApplicationRecord
   def get_all_services page, per_page=5
     portfolio_services.order(:id).paginate(:page => page, :per_page => per_page)
   end
+
+  def fetch_service_price service_id
+    portfolio_services.where(service_id: service_id).last.try(:price).to_s
+  end
   
 end

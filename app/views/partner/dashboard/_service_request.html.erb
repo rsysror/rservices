@@ -5,6 +5,7 @@
     <td><%=request.user_name %></td>
     <td><%=request.user_phone %></td>
     <td class="td_width"><%=request.user_address %></td>
+    <td><%= assigned_user(request.assignee_id) %></td>
     <td><b><%=request.status.try(:name) %></b></td>
     <td><%=partner_action(request) %></td>
   </tr>

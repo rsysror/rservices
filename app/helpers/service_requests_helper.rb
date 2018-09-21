@@ -62,4 +62,8 @@ module ServiceRequestsHelper
       content_tag(:span, '',class: 'glyphicon glyphicon-remove')
     end)
   end
+
+  def assigned_user(user_id=nil)
+    user_id.present? ? User.find(user_id).try(:email) : "-"
+  end
 end

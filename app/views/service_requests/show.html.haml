@@ -12,16 +12,16 @@
             = reservice_value_printer("Service Request Number: ", @service_request.service_request_number)
         .col-sm-3
           %p
-            = reservice_value_printer("Service: ", @service_request.service.name.titleize)          
+            = reservice_value_printer("Service: ", @service_request.service_name)          
         .col-sm-3
           %p
             = reservice_value_printer("Service Due Date: ", @service_request.service_date.present? ? @service_request.service_date.strftime("%d/%m/%Y") : "-")              
         .col-sm-3
           %p
-            = reservice_value_printer("Time Slot:: ", @service_request.time_slot.try(:start_time_with_end_time))
+            = reservice_value_printer("Time Slot:: ", @service_request.service_time)
         .col-sm-3
           %p
-            = reservice_value_printer("Status: ", @service_request.status.name)
+            = reservice_value_printer("Status: ", @service_request.service_status)
         .col-sm-3
           %p
             = reservice_value_printer("Assignee: ", @service_request.assignee_details)    

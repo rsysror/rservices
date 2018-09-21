@@ -42,6 +42,8 @@ class ServiceRequestsController < ApplicationController
     if service_request
       if current_user.partner?
         redirect_to '/partner/dashboard'
+      elsif current_user.employee?
+        redirect_to '/employee'
       else
         redirect_to '/service_requests'
       end

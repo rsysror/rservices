@@ -6,13 +6,15 @@
     .panel-heading
       %h3 #{lebel_value}
     .panel-body
-      = form_for user, :as => :user, class: 'form-horizontal',:url => url, method: 'patch' do |form|
+      = form_for user, :as => :user, :url => url, method: 'patch',  :html => { :class => "form-horizontal", :id => "edit_employee" } do |form|
         .row
           .col-sm-6
             = rservice_text_field("first_name", "First Name", form)
+            %label.error-title.error{:for => "user_first_name"}
         .row
           .col-sm-6
             = rservice_text_field("last_name", "Last Name", form)
+            %label.error-title.error{:for => "user_last_name"}
         .row
           .col-sm-6
             = form.label :email
@@ -21,6 +23,9 @@
         .row
           .col-sm-6
             = rservice_text_field("phone", "Phone", form)
+            %label.error-title.error{:for => "user_phone"}
         .row
           .col-sm-6
             = rservice_submit_button("Update", form, 'btn-primary')
+  :javascript
+    #{render "common/validate.js"}

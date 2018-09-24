@@ -22,6 +22,7 @@ class ServiceRequestsController < ApplicationController
 
   def open_comment_pop_up
     @request_id = params[:id]
+    @value = params[:value]
     @comments =  ServiceRequest.comments_list
   end
 
@@ -36,6 +37,12 @@ class ServiceRequestsController < ApplicationController
     # need to look better solution
     if ( (params[:comment_popup] == "true") && ( params[:service_request][:comment] == '') )
       params[:service_request][:comment] = params[:service_request][:select_comment]
+    end
+
+    # if ServiceRequest is 'on hold', update status and sent mail to user.
+    if Status::ACTION.include?(params[:value]) && params[:value] == 'onhold'
+      @service_request.update_attributes(:status_id => Status.send(params[:value]).first.id)
+      UserMailer.accepted_rejected(current_user, @service_request).deliver_now
     end
 
     service_request = @service_request.update_attributes(service_request_update_params)

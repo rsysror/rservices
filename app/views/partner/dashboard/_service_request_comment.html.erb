@@ -2,14 +2,15 @@
    <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
-         <div class="modal-header">
+         <div class="modal-header pop_head">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="modal-title">Your Comment</h4>
          </div>
          <form action="/create_comment" method="post">
-         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-         <input type="hidden" name="id" value="<%= @request_id %>" />
-         <input type="hidden" name="comment_popup" value="true" />
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <%= hidden_field_tag :id, @request_id %>
+            <%= hidden_field_tag :comment_popup, 'true' %>
+            <%= hidden_field_tag :value, @value %>
             <div class="section_drop2">
                <div class="modal-body select-container">
                   <%= select_tag "service_request[select_comment]", options_for_select(@comments, "Select Comment"), class: "form-control" %>

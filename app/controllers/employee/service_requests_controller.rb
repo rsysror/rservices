@@ -10,8 +10,8 @@ class Employee::ServiceRequestsController < EmployeesController
     if service_request
       if Status::ACTION.include?(params[:value])
         service_request.update_attributes(:status_id => Status.send(params[:value]).first.id)
+        UserMailer.accepted_rejected(current_user, service_request).deliver_now
       end
-      UserMailer.accepted_rejected(current_user, service_request).deliver_now
     end
   end
 

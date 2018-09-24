@@ -31,13 +31,18 @@ RSpec.describe AddressesController, type: :controller do
 
   describe "DELETE destroy" do 
     let(:address) { FactoryGirl.create(:address) }
-    it "should delete an address with if it does not have service request" do
-      if address.has_service_requests?
-        expect(flash[:error]).to match(/Address which availed services can't be deleted*/)
-      else
-        address.destroy
-      end  
+    it "should delete an address with no service request" do
+      address.destroy
     end
-  end
 
+    let(:service_request) { FactoryGirl.create(:service_request, address: address) }
+
+    # it "should not delete an address if it has some service request associated" do
+    #    address.has_service_requests?
+    #     expect(flash[:error]).to eq("Address which availed services can't be deleted")
+    # end
+
+    
+
+  end
 end

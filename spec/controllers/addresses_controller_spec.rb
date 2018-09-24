@@ -5,7 +5,6 @@ RSpec.describe AddressesController, type: :controller do
 
   before (:each) do
     @user = FactoryGirl.create(:user)
-    @city = FactoryGirl.create(:city)
     sign_in @user
   end
 
@@ -22,9 +21,23 @@ RSpec.describe AddressesController, type: :controller do
     end
   end
 
+  
+  describe "PUT update" do 
+    let(:address) { FactoryGirl.create(:address) }
+    it "should update an address with valid attributes" do
+      expect(address.update_column('street_name', "testing")).to  eq(true)
+    end
+  end
 
-  def valid_attributes
-    {user: @user, pin_code: '123456',street_name: "test", landmark: "city road", city: @city}
+  describe "DELETE destroy" do 
+    let(:address) { FactoryGirl.create(:address) }
+    it "should delete an address with if it does not have service request" do
+      if address.has_service_requests?
+        expect(flash[:error]).to match(/Address which availed services can't be deleted*/)
+      else
+        address.destroy
+      end  
+    end
   end
 
 end

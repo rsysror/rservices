@@ -227,7 +227,7 @@ $("#comment_form").validate({
   rules: {
     "service_request[comment]":{
       required: true,
-      maxlength: 20,
+      maxlength: 150,
       minlength: 15
     }
   },

@@ -55,13 +55,10 @@ $("#new_user").validate({
 
 // Validating service on cient side.
 $("#new_service").validate({
-  //error place
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-  //adding rule
   rules: {
-    // name is required with max of 20 and min of 6
     "service[name]":{
       required: true,
       maxlength: 115,
@@ -74,7 +71,6 @@ $("#new_service").validate({
       required: true
     }
   },
-  // error messages
   messages: {
     "service[name]":{
       required: "Service name is required!",
@@ -91,15 +87,12 @@ $("#new_service").validate({
 });
 
 
-// Validating 'Sub Service' on cient side.
+// Validating 'Sub Service' on cient-side.
 $(".sub_service").validate({
-  //error place
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-  //adding rule
   rules: {
-    // name is required with max of 20 and min of 6
     "service[name]":{
       required: true,
       maxlength: 115,
@@ -109,7 +102,6 @@ $(".sub_service").validate({
       required: true
     }
   },
-  // error messages
   messages: {
     "service[name]":{
       required: "Sub service name is required!",
@@ -124,13 +116,10 @@ $(".sub_service").validate({
 
 // Validating 'address' on cient side.
 $("#address_form").validate({
-  //error place
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-  //adding rule
   rules: {
-    // name is required with max of 20 and min of 6
     "address[flat_number]":{
       required: true,
       maxlength: 50,
@@ -159,7 +148,6 @@ $("#address_form").validate({
       required: true
     }
   },
-  // error messages
   messages: {
     "address[flat_number]":{
       required: "Flat No. is required!",
@@ -188,5 +176,66 @@ $("#address_form").validate({
     "city_id":{
       required: "City is required!",
     },
+  }
+});
+
+
+// Client-side validation for edit employee.
+$("#edit_employee").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "user[first_name]":{
+      required: true,
+      maxlength: 50,
+      minlength: 3
+    },
+    "user[last_name]":{
+      maxlength: 50,
+      minlength: 3
+    },
+    "user[phone]":{
+      maxlength: 10,
+      minlength: 10,
+      number: true
+    }
+  },
+  messages: {
+    "user[first_name]":{
+      required: "First name is required!",
+      maxlength: "Maximum 50 characters are allowed!",
+      minlength: "Minimum 3 characters required!"
+    },
+    "user[last_name]":{
+      maxlength: "Maximum 50 characters are allowed!",
+      minlength: "Minimum 3 characters required!"
+    },
+    "user[phone]":{
+      maxlength: "Maximum 10 characters are allowed!",
+      minlength: "Minimum 10 characters required!",
+      number: "Only digits are allowed!"
+    }
+  }
+}); 
+
+// Client-side validation for comment.
+$("#comment_form").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "service_request[comment]":{
+      required: true,
+      maxlength: 20,
+      minlength: 15
+    }
+  },
+  messages: {
+    "service_request[comment]":{
+      required: "Description is required!",
+      maxlength: "Maximum 150 characters are allowed!",
+      minlength: "Minimum 15 characters required!"
+    }
   }
 }); 

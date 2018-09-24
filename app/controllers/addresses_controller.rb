@@ -1,5 +1,6 @@
 class AddressesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
+  before_action :authorized_user?
   before_action :find_address, only: [:edit, :update, :destroy]
 
   def new

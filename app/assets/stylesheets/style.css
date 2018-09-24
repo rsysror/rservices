@@ -7360,7 +7360,7 @@ p.free {
 
 .add-new {
   float: left;
-  width: 30%;
+  width: 23%;
   margin-bottom: 15px;
 }
 
@@ -7604,9 +7604,6 @@ p.nav-home a {
   display: block
 }
 
-.row{
-    margin:10px !important;
-}
 .user-modal-select-box{
   width: 54% !important;
   float: left;
@@ -7638,3 +7635,5 @@ p.nav-home a {
   background-color: white;
   overflow: hidden;
 }
+
+.portfolio_delete_image{text-align: center; background-color: white;}

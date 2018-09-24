@@ -2,25 +2,29 @@
   %ul.side-menu.nav.sidebar-color
     %li
       %a{:href => "/partner/dashboard"}
-        %i.fa.fa-dashboard.fa-fw
+        %i.fa.fa-sticky-note
         Dashboard
-    %li
-      %a{:href => "/partner/portfolio"}
-        %i.fa.fa-picture-o
-        Portfolio
     %li#lastli
       %a{:href => "/partner/portfolio/edit"}
         %i.fa.fa-pencil-square-o
         Edit Profile
     %li
-      %a{:href => manage_employees_partner_dashboard_index_path}
-        %i.fa.fa-pencil-square-o
-        Manage Employee
-    %li#lastli
-      %a{:href => manage_service_requests_partner_dashboard_index_path}
-        %i.fa.fa-pencil-square-o
-        Assign Service Requests     
+      %a{:href => "/partner/portfolio"}
+        %i.fa.fa-picture-o
+        Portfolio
+    %li
+      %a{:href => partner_invite_employee_path}
+        %i.fa.fa-user-plus
+        Invite Employee
     %li
       %a{:href => partner_company_services_path}
         %i.fa.fa-dashboard.fa-fw
         Company Services
+    %li
+      %a{:href => manage_employees_partner_dashboard_index_path}
+        %i.fa.fa-user
+        Manage Employee
+    %li#lastli
+      %a{:href => manage_service_requests_partner_dashboard_index_path}
+        %i.fa.fa-pencil-square-o
+        Assign Service Requests

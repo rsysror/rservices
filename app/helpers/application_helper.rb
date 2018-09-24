@@ -34,8 +34,7 @@ module ApplicationHelper
     if current_user.admin?
       link_to "Admin dashboard", admin_services_path
     elsif current_user.partner?
-      (link_to "Partner dashboard", partner_dashboard_index_path) +
-      (link_to "Invite Employee",partner_invite_employee_path)
+      (link_to "Company dashboard", partner_dashboard_index_path)
     elsif current_user.user?
       link_to "Dashboard", dashboard_path
     end

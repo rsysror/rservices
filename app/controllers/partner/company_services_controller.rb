@@ -11,8 +11,9 @@ class Partner::CompanyServicesController < PartnerController
   end
 
   def get_cities
-    if params[:portfolio_service][:service_id].present?
-      @cities = Service.find(params[:portfolio_service][:service_id]).service.cities.uniq
+    sub_service_id = params[:portfolio_service][:service_id]
+    if sub_service_id.present?
+      @cities = Service.find(params[:portfolio_service][:service_id]).service.service_city - current_user.portfolio.remove_existing_service_city(sub_service_id)
     end
   end
 

@@ -22,7 +22,8 @@ class ServiceRequestsController < ApplicationController
 
   def open_comment_pop_up
     @request_id = params[:id]
-    @comments = ['Task completed successfully.','Task is still in pending.', 'No one available at given address & timing.', 'Work depends on others', 'Other Reason']    
+    @value = params[:value]
+    @comments =  ServiceRequest.comments_list
   end
 
   def edit
@@ -33,14 +34,23 @@ class ServiceRequestsController < ApplicationController
   def show; end
 
   def update
+    # need to look better solution
     if ( (params[:comment_popup] == "true") && ( params[:service_request][:comment] == '') )
       params[:service_request][:comment] = params[:service_request][:select_comment]
+    end
+
+    # if ServiceRequest is 'on hold', update status and sent mail to user.
+    if Status::ACTION.include?(params[:value]) && params[:value] == 'onhold'
+      @service_request.update_attributes(:status_id => Status.send(params[:value]).first.id)
+      UserMailer.accepted_rejected(current_user, @service_request).deliver_now
     end
 
     service_request = @service_request.update_attributes(service_request_update_params)
     if service_request
       if current_user.partner?
         redirect_to '/partner/dashboard'
+      elsif current_user.employee?
+        redirect_to '/employee'
       else
         redirect_to '/service_requests'
       end
@@ -63,8 +73,9 @@ class ServiceRequestsController < ApplicationController
       @city = City.find(params[:city_id])
       @sub_services = service.sub_services
     elsif params[:service_id]
-      @portfolio = PortfolioService.city_services(params[:service_id], params[:city_id]).map{|m| m.portfolio if m.portfolio.active?}.compact    
+      @portfolios = PortfolioService.city_services(params[:service_id], params[:city_id]).map{|m| m.portfolio if m.portfolio.active?}.compact    
       @city = City.find(params[:city_id])
+      @service_id  = params[:service_id]
     elsif params[:date].present?
       portfolio = Portfolio.find(params[:portfolio_id])
       @time_slots = portfolio.available_time_slots(params[:date])

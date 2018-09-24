@@ -1,0 +1,20 @@
+- if portfolios.blank?
+  .alert.alert-warning
+    No Vendor is available !!
+-else
+  .col-xs-10.col-sm-offset-1
+    - portfolios.each do |portfolio|
+      .col-xs-3.card.text-center.mg-btn
+        .card-body
+          = radio_button_tag 'service_request[portfolio_id]', portfolio.id, checked: true
+          %br
+          = reservice_value_printer("Company Name: ", portfolio.try(:company_name)) 
+          %br 
+          = reservice_value_printer("Company Number: ", portfolio.try(:company_ph_no))
+          %br 
+          = reservice_value_printer("Address: ", portfolio.try(:address))
+          %br 
+          = reservice_value_printer("Price Offered for Service: ", portfolio.fetch_service_price(service_id))
+          %br 
+          = show_average_rating(portfolio)
+          

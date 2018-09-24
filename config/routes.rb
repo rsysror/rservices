@@ -65,6 +65,9 @@ Rails.application.routes.draw do
         get 'get_city_service_list'
         post 'upload_photos'
       end
+      member do
+        delete 'delete_photo'
+      end
     end
     resources :dashboard, only: [:index] do
       collection do

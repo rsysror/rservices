@@ -43,7 +43,20 @@ class Partner::PortfoliosController < PartnerController
     if params[:portfolio][:images].present?
       portfolio.images += params[:portfolio][:images]
       portfolio.save(validate: false)
+      flash[:success] = 'Photo added successfully!.'
     end
+    redirect_to partner_portfolio_path
+  end
+
+  # Delete Portfolio Photo
+  def delete_photo
+    portfolio = Portfolio.find(params[:id])
+    remain_images = portfolio.images # copy the array
+    deleted_image = remain_images.delete_at(params[:index].to_i) # delete the target image
+    deleted_image.try(:remove!) # delete image from S3
+    portfolio.images = remain_images # re-assign back
+    portfolio.save(validate: false)
+    flash[:success] = 'Photo deleted successfully!.'
     redirect_to partner_portfolio_path
   end
 

@@ -11,10 +11,10 @@
     <div class="panel-body">
       <table class="table">
         <thead>
-          <th>Service Request Name</th>
-          <th>Requester</th>
+          <th>Service Name</th>
+          <th>User</th>
           <th>Address</th>
-          <th>Vendor</th>
+          <th>Company</th>
           <th>Time Slot</th>
           <th>Service Request Number</th>
           <th>Status</th>
@@ -23,13 +23,13 @@
         <tbody>
           <% @service_requests.each do |request|%>
             <tr>
-              <td><%=request.service.try(:name).titleize %></td>
-              <td><%=request.user.try(:full_name) %></td>
-              <td><%=request.user_address %></td>
-              <td><%=request.portfolio.try(:portfolio_with_user_name_and_about) %></td>
-              <td><%=request.try(:time_slot).try(:start_time_with_end_time) %></td>
+              <td><%=request.service_name %></td>
+              <td><%=request.user_name %></td>
+              <td class="td_width"><%=request.user_address %></td>
+              <td><%=request.portfolio.company_name %></td>
+              <td><%=request.service_time %></td>
               <td><%=request.service_request_number %></td>
-              <td><%=request.status.try(:name) %></td>
+              <td><b><%=request.service_status %></b></td>
               <td><%=get_service_request_rating(request)%></td>
             </tr>
           <% end %> 

@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="row">
+    <div class="add-new">
+      <%= back_button_link(partner_dashboard_index_path) %>
+    </div>
+  </div>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3>Employee List</h3>
@@ -9,7 +14,7 @@
           <thead>
             <th>Name</th>
             <th>Email</th>
-            <th>Accepted On</th>
+            <th>Date Of Joining</th>
             <th>Action</th>
           </thead>
           <tbody>
@@ -17,7 +22,7 @@
               <tr>
                 <td><%=employee.full_name %></td>
                 <td><%=employee.email %></td>
-                <td><%=employee.invitation_accepted_at %></td>
+                <td><%=l employee.invitation_accepted_at %></td>
                 <td><%=employee_actions(employee)%></td>
               </tr>
             <% end %>

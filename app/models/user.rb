@@ -39,6 +39,10 @@ class User < ApplicationRecord
     [first_name, last_name].select(&:present?).join(' ').titleize
   end
 
+  def phone_no
+    phone.present? ? phone : "-"
+  end
+
   def self.get_users role, page=1
     includes(:addresses).with_role(role).paginate(:page => page, :per_page => 5)
   end

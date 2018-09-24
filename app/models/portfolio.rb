@@ -10,7 +10,7 @@ class Portfolio < ApplicationRecord
   has_many :feedbacks
 
   # validates :service, presence: true, on: :update
-  validates :gender, :about, :experience, :education, presence: true, on: :update
+  validates :about, :experience, :company_ph_no, :address, :company_name, presence: true, on: :update
   
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
@@ -54,6 +54,14 @@ class Portfolio < ApplicationRecord
 
   def get_all_services page, per_page=5
     portfolio_services.order(:id).paginate(:page => page, :per_page => per_page)
+  end
+
+  def fetch_service_price service_id
+    portfolio_services.where(service_id: service_id).last.try(:price).to_s
+  end
+
+  def remove_existing_service_city(service_id)
+    portfolio_services.where(service_id: service_id).map{|ps| ps.city}
   end
   
 end

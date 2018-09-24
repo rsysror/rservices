@@ -1,10 +1,10 @@
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.full_name %></td>
-    <td><%=users_city(user) %></td>
-    <td><%=user.portfolio_status %></td>
-    <td><%=l user.created_at %></td>
-    <td><%=get_rating_data(user)%></td>
+    <td><%= company_name(user) %></td>
+    <td class="td_width"><%= company_address(user) %></td>
+    <td><b><%= user.portfolio_status %></b></td>
+    <td><%= user.created_at.strftime('%Y-%m-%d') %></td>
+    <td><%= get_rating_data(user)%></td>
     <td>
       <%= link_to t('.show', :default => t("helpers.links.show")), partner_details_path(user), :class => 'btn btn-primary btn-xs' %>
       <%= link_to "#{user.portfolio.reverse_portfolio_status}", manage_portfolio_status_admin_user_path(user, :value => !user.portfolio.status),  method: :put, :remote => true, :class => 'btn btn-primary btn-xs'  %>

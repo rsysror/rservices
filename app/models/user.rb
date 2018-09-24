@@ -2,7 +2,7 @@ class User < ApplicationRecord
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :invitable
   attr_accessor :role
 
   # validates :first_name, :email, :phone, presence: true
@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :service_requests
   has_many :addresses
   has_many :feedbacks
-
+  has_many :employees,class_name: "User", foreign_key: "invited_by_id"
+  has_many :assigned_service_requests, class_name: "ServiceRequest", foreign_key: "assignee_id"
 
   def admin?
     has_role? :admin
@@ -26,12 +27,20 @@ class User < ApplicationRecord
     has_role? :user
   end
 
+  def employee?
+    has_role? :employee
+  end
+
   def get_all_address_from_service_city service_request
     addresses.where(city_id: service_request.address.city_id)
   end
 
   def full_name
     [first_name, last_name].select(&:present?).join(' ').titleize
+  end
+
+  def phone_no
+    phone.present? ? phone : "-"
   end
 
   def self.get_users role, page=1

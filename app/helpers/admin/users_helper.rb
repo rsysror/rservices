@@ -2,7 +2,15 @@ module Admin::UsersHelper
 
   def users_city user
     user.addresses.map{|m| m.city.try(:name)}.join(', ')
-  end 
+  end
+
+  def company_address user
+    user.portfolio.address
+  end
+
+  def company_name user
+    user.portfolio.company_name
+  end
 
   def admin_status_action request
     if (request.status.try(:name) == "Pending")

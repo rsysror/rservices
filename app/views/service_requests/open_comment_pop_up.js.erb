@@ -1,0 +1,2 @@
+$('#service_request_model').html("<%= escape_javascript render(:partial => 'partner/dashboard/service_request_comment', :locals => { :service_request_id => @request_id, :comments => @comments }) %>");
+$("#comment").modal('show');

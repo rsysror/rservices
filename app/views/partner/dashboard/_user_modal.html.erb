@@ -1,0 +1,5 @@
+<%= form_for request, url: assign_service_requests_to_employee_path, method: "put", html: {class: "nifty_form", "data-remote": true} do |f| %>
+  <%= f.hidden_field :request_id, :value => request.id%>
+  <%= f.select(:assignee_id, options_from_collection_for_select(@employees, :id, :email, request.assignee_id), { :prompt => "Select Employee"}, required: 'true', class: 'form-control form_input user-modal-select-box') %>
+  <%= f.submit "Assign", class: 'btn btn-success', data: { confirm: 'Are you sure?' }  %>
+<%end%>

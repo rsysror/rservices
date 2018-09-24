@@ -7360,7 +7360,7 @@ p.free {
 
 .add-new {
   float: left;
-  width: 30%;
+  width: 23%;
   margin-bottom: 15px;
 }
 
@@ -7407,7 +7407,7 @@ p.free {
   padding-left: 7%!important;
 }
 
-.btn_margin{margin-right: 5px;}
+.btn_margin{margin: 0px 5px;}
 
 /*for google map*/
 a {
@@ -7574,3 +7574,66 @@ p.nav-home a {
 .td_width {
     width: 250px;
 }
+
+/*for service request comment .*/
+.select-container {
+  text-align: center;
+}
+
+.comment-container {
+  float: left;
+  width: 89%;
+  margin-left: 5.5%;
+}
+
+.save-comment {
+  float: left;
+  margin: 2% 0% 3% 85%;
+}
+
+.footer-border {
+  border: none;
+}
+
+#portfolio_service_city_ids{height: auto!important;}
+
+.form {
+  display: none;
+}
+.form.active {
+  display: block
+}
+
+.user-modal-select-box{
+  width: 54% !important;
+  float: left;
+  margin-right: 10%;
+}
+
+/*css for accordian collapse*/
+.accordion {
+  background-color: #eee!important;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  margin-bottom: 5px;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel1 {
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+.portfolio_delete_image{text-align: center; background-color: white;}

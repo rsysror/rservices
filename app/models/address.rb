@@ -18,7 +18,7 @@ class Address < ApplicationRecord
   geocoded_by :address # address is an attribute of MyModel
   after_validation :geocode
   
-  before_validation :reverse_geocode
+  before_validation :reverse_geocode, on: :create
 
 
   reverse_geocoded_by :latitude, :longitude do |address,results|
@@ -51,7 +51,6 @@ class Address < ApplicationRecord
     else
       "#{flat_number} #{street_name} #{landmark}, #{city.try(:name)}, #{pin_code}"
     end
-    # [self.flat_number, self.street_name, self.landmark].select(&:present?).join(' ') + ', ' + self.city.try(:name).titleize + ', ' + self.pin_code
   end
 
   def latitude_exists?

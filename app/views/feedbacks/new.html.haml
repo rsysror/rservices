@@ -12,15 +12,14 @@
             .form-group
               %label Rating
               #default
-              = f.hidden_field :rating, value: ''
-              = f.hidden_field :portfolio_id, value: params[:portfolio_id]
-              = f.hidden_field :service_request_id, value: params[:request_id]
+              = rservice_hidden_field('rating', '',f)
+              = rservice_hidden_field('portfolio_id',params[:portfolio_id],f)
+              = rservice_hidden_field('service_request_id',params[:request_id],f)
         .row
           .col-md-4.col-md-offset-1
             .form-group
-              %label Remarks
-              = f.text_area :description, class:"form-control"
+              = rservice_text_area('description','Remarks',f)
         .row
           .col-md-4.col-md-offset-1
             .form-group
-              = f.submit "Post",  class: "btn btn-primary"
+              = rservice_submit_button('Post',f,'btn-primary')

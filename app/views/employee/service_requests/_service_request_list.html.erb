@@ -1,0 +1,13 @@
+<% service_requests.each do |request|%>
+  <tr>
+    <td><%= request.service.try(:name).titleize %></td>
+    <td class="td_width"><%= request.user_address %></td>
+    <td><%= request.user_name %></td>
+    <td><%= request.try(:service_date).strftime('%Y-%m-%d') %></td>
+    <td><%= request.service_time %></td>
+    <td><%= request.service_request_number %></td>
+    <td><b><%= request.status.try(:name) %></b></td>
+    <td><%= user_ratings(request) %></td>
+    <td class="td_width"><%= employee_action(request) %></td>
+<% end %>
+<div id="service_request_model"></div> <!-- to open comment popup -->

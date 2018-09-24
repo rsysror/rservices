@@ -14,16 +14,12 @@
         %thead
           %tr
             %th= model_class.human_attribute_name(:name)
-            %th Price/Hour
             %th= model_class.human_attribute_name(:created_at)
             %th= t '.actions', :default => t("helpers.actions")
         %tbody
           - @services.each do |service|
             %tr
               %td= service.try(:name).titleize
-              %td
-                %i.fa.fa-inr
-                = sub_service_price(service)
               %td= l service.created_at
               %td
                 = link_to t('.edit', :default => t("helpers.links.edit")), edit_sub_services_admin_service_path(service), :class => 'btn btn-primary btn-xs'

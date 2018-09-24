@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+    <h3>Edit Service</h3>
+  </div>
+  <div class="panel-body">
+    <%= form_for @portfolio_service, url: partner_company_service_path, html: { multipart: true, :class => 'form-horizontal' } do |form| %>
+
+      <div class="form-group">
+        <%= form.label :service, "Sub Service", class: 'control-label col-sm-2' %>
+        <div class="col-sm-10">
+          <%= form.text_field :service, value: @portfolio_service.service.name, class: 'form-control form_input', disabled: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :price, class: 'control-label col-sm-2' %>
+        <div class="col-sm-10">
+          <%= form.number_field :price, class: 'form-control form_input', required: 'true', min: 0 %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Update", :class=> 'btn btn-primary w3l_header_right', id: "company_service_update" %>
+      </div>
+    <% end %>
+  </div>
+
+  </div>
+</div>

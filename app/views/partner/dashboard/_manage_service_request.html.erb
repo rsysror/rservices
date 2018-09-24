@@ -1,0 +1,11 @@
+<% @service_requests.each do |request|%>
+  <tr>
+    <td><%=request.try(:service_date).strftime('%Y-%m-%d') %></td>
+    <td><%=request.service_time %></td>
+    <td><%=request.service_name %></td>
+    <td><%=request.user_name %></td>
+    <td><%=request.user_phone %></td>
+    <td><b><%=request.service_status %></b></td>
+    <td><%= render partial: 'user_modal', locals: {request: request } %></td>
+  </tr>
+<% end %>

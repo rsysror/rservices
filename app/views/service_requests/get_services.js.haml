@@ -1,0 +1,16 @@
+$('.loading').hide();
+- if @services.present?
+  $('#load_sub_services').html('');
+  $('#error_message').html('');
+  $('#load_portfolio').html(' ');
+  $('#load_addresses').html("#{escape_javascript render(:partial => 'listing_address', :locals => { :addresses => @addresses , :header => false})}");
+  $('#load_services').html("#{escape_javascript render(:partial => 'city_based_services', :locals => { :services => @services })}");
+- elsif @sub_services.present?
+  $('#load_sub_services').html("#{escape_javascript render(:partial => 'city_based_services', :locals => { :sub_services => @sub_services })}");
+  $('#datetimepicker1').datetimepicker({format: 'YYYY/MM/DD',minDate: new Date().setHours(0,0,0,0) });
+- elsif @portfolios.present?
+  $('#load_portfolio').html("#{escape_javascript render(:partial => 'portfolio', :locals => { :portfolios => @portfolios, service_id: @service_id })}");
+  $('#datetimepicker1').datetimepicker({format: 'YYYY/MM/DD',minDate: new Date().setHours(0,0,0,0) }).on('dp.change',function(e){$.get( '#{get_services_path}', { city_id: $('#city_selection').val(), portfolio_id: $("input[name='service_request[portfolio_id]']:checked").val(),date: $('#date_value').val()})});
+- elsif @time_slots.present?
+  $('#time_slot').html("#{escape_javascript render(:partial => 'time_slot', :locals => { :timeslots => @time_slots })}");
+

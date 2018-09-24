@@ -1,0 +1,20 @@
+<script src="/assets/twitter/bootstrap/modal"></script>
+<div class="container">
+  <div class="row"></div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3>Service Request List</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table service_rq_list">
+        <%= service_request_header_html_block %>
+        <tbody id="emp_service_request_list">
+          <%= render :partial => 'service_request_list', :locals => { :service_requests => @service_requests } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="pagination">
+    <%= will_paginate @service_requests %>
+  </div>
+</div>

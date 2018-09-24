@@ -1,0 +1,50 @@
+<div class="forgot-container">
+  <div class="row">
+    <div class="add-new">
+      <%= link_to t('.Back', :default => t("helpers.links.back")),'/',:class => 'btn btn-primary' %>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading"><h3><%= t 'devise.invitations.edit.header' %></h3></div>
+    <div class="panel-body">
+      <%= form_for resource, :as => resource_name, :url => update_employee_detail_path(resource_name), :html => { :method => :put, id: 'update_invitation'  } do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :invitation_token, readonly: true %>
+         <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group">
+              <p><%= f.label :email %><br />
+              <%= f.text_field :email, disabled: true,class:"form-control" %></p>
+            </div>
+          </div>
+        </div>   
+
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group">
+              <% if f.object.class.require_password_on_accepting %>
+              <p><%= f.label :password %><br />
+              <%= f.password_field :password,class:"form-control" %></p>
+            </div>
+          </div>
+        </div>      
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation,class:"form-control" %>
+            </div>
+          </div>
+        </div>      
+        <% end %>
+        <div class="row">
+          <div class="col-md-9 col-md-offset-1">
+            <div class="form-group"> 
+              <%= f.submit t("devise.invitations.edit.submit_button"), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>      
+      <% end %>
+    </div>
+  </div>
+</div>      

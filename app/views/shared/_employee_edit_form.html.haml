@@ -1,0 +1,26 @@
+.container
+  .row
+    .add-new
+      = back_button_link(back_url)  
+  .panel.panel-primary
+    .panel-heading
+      %h3 #{lebel_value}
+    .panel-body
+      = form_for user, :as => :user, class: 'form-horizontal',:url => url, method: 'patch' do |form|
+        .row
+          .col-sm-6
+            = rservice_text_field("first_name", "First Name", form)
+        .row
+          .col-sm-6
+            = rservice_text_field("last_name", "Last Name", form)
+        .row
+          .col-sm-6
+            = form.label :email
+            %br
+            = form.text_field :email, class: 'form-control', :readonly => true
+        .row
+          .col-sm-6
+            = rservice_text_field("phone", "Phone", form)
+        .row
+          .col-sm-6
+            = rservice_submit_button("Update", form, 'btn-primary')

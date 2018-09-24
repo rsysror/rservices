@@ -1,8 +1,8 @@
 $(function(){
-	$('#default').raty(
-		{click: function(score, evt) 
-			{
-	  		$('#feedback_rating').val(score);
-  		}
-  });	
+  $('#default').raty(
+    {click: function(score, evt) 
+      {
+        $('#feedback_rating').val(score);
+      }
+  }); 
 });

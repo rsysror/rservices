@@ -24,7 +24,7 @@ module AdminHelper
   end
 
   def get_service_request_rating request
-    if request.status.name == "Completed"
+    if request.status == Status.completed.last
       request.feedback.present? ? render_rating_partial(request, request.feedback.rating) : "Not Yet Rated"
     else
       "-"

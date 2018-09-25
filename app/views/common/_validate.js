@@ -196,7 +196,7 @@ $("#edit_employee").validate({
       minlength: 3
     },
     "user[phone]":{
-      maxlength: 10,
+      maxlength: 13,
       minlength: 10,
       number: true
     }
@@ -212,7 +212,7 @@ $("#edit_employee").validate({
       minlength: "Minimum 3 characters required!"
     },
     "user[phone]":{
-      maxlength: "Maximum 10 characters are allowed!",
+      maxlength: "Maximum 13 characters are allowed!",
       minlength: "Minimum 10 characters required!",
       number: "Only digits are allowed!"
     }
@@ -238,4 +238,142 @@ $("#comment_form").validate({
       minlength: "Minimum 15 characters required!"
     }
   }
-}); 
+});
+
+// validating company edit form.
+$("#company_portfolio_edit").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "portfolio[company_name]":{
+      required: true,
+      maxlength: 150,
+      minlength: 3
+    },
+    "portfolio[experience]":{
+      required: true,
+      maxlength: 3,
+      minlength: 1,
+      number: true
+    },
+    "portfolio[company_ph_no]":{
+      required: true,
+      maxlength: 13,
+      minlength: 10,
+      number: true
+    },
+    "portfolio[about]":{
+      maxlength: 190,
+      required: true,
+      minlength: 25
+    },
+    "portfolio[address]":{
+      required: true,
+      maxlength: 190,
+      minlength: 25
+    }
+  },
+  messages: {
+    "portfolio[company_name]":{
+      required: "Company name is required!",
+      maxlength: "Maximum 150 characters are allowed!",
+      minlength: "Minimum 5 characters required!"
+    },
+    "portfolio[experience]":{
+      required: "Phone is required!",
+      maxlength: "Maximum 3 characters are allowed!",
+      minlength: "Minimum 1 characters required!",
+      number: "Only digits are allowed!"
+    },
+    "portfolio[company_ph_no]":{
+      required: "Phone is required!",
+      maxlength: "Maximum 13 characters are allowed!",
+      minlength: "Minimum 10 characters required!",
+      number: "Only digits are allowed!"
+    },
+    "portfolio[about]":{
+      required: "About is required!",
+      maxlength: "Maximum 190 characters are allowed!",
+      minlength: "Minimum 25 characters required!"
+    },
+    "portfolio[address]":{
+      required: "Address is required!",
+      maxlength: "Maximum 190 characters are allowed!",
+      minlength: "Minimum 25 characters required!"
+    }
+  }
+});
+
+// Validating employee invation form.
+$("#forgot-password").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "user[email]":{
+      required: true,
+      maxlength: 150,
+      email: true
+    }
+  },
+  messages: {
+    "user[email]":{
+      required: "Description is required!",
+      maxlength: "Maximum 150 characters are allowed!",
+      email: "Wrong email formate!"
+    }
+  }
+});
+
+// Validating Company form.
+$("#company_form").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "portfolio_service[price]":{
+      required: true,
+      maxlength: 7,
+      minlength: 1,
+      number: true
+    },
+    "portfolio_service[service_id]":{
+      required: true
+    }
+  },
+  messages: {
+    "portfolio_service[price]":{
+      required: "Price is required!",
+      minlength: "Minimum 1 characters required!",
+      maxlength: "Maximum 7 characters are allowed!",
+      number: "Only digits are allowed!"
+    },
+    "portfolio_service[service_id]":{
+      required: "Sub service is required!"
+    }
+  }
+});
+
+// Validating Company eedit form.
+$("#company_edit_form").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "portfolio_service[price]":{
+      required: true,
+      maxlength: 7,
+      minlength: 1,
+      number: true
+    }
+  },
+  messages: {
+    "portfolio_service[price]":{
+      required: "Price is required!",
+      minlength: "Minimum 1 characters required!",
+      maxlength: "Maximum 7 characters are allowed!",
+      number: "Only digits are allowed!"
+    }
+  }
+});

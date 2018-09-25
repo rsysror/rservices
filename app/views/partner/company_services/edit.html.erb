@@ -4,20 +4,24 @@
     <h3>Edit Service</h3>
   </div>
   <div class="panel-body">
-    <%= form_for @portfolio_service, url: partner_company_service_path, html: { multipart: true, :class => 'form-horizontal' } do |form| %>
-
+    <%= form_for @portfolio_service, url: partner_company_service_path, html: { multipart: true, :class => 'form-horizontal', id: 'company_edit_form' } do |form| %>
+    <div class="col-sm-10 col-sm-offset-2">
       <div class="form-group">
         <%= form.label :service, "Sub Service", class: 'control-label col-sm-2' %>
         <div class="col-sm-10">
           <%= form.text_field :service, value: @portfolio_service.service.name, class: 'form-control form_input', disabled: true %>
         </div>
       </div>
+      </div>
 
+      <div class="col-sm-10 col-sm-offset-2">
       <div class="form-group">
         <%= form.label :price, class: 'control-label col-sm-2' %>
         <div class="col-sm-10">
-          <%= form.number_field :price, class: 'form-control form_input', required: 'true', min: 0 %>
+          <%= form.number_field :price, class: 'form-control form_input' %>
+        <label for="portfolio_service_price" class="error error-title"></label>
         </div>
+      </div>
       </div>
 
       <div class="actions">
@@ -28,3 +32,5 @@
 
   </div>
 </div>
+<script type="text/javascript"> <%= render "common/validate.js" %> </script>
+

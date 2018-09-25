@@ -8,24 +8,27 @@
     .panel-body
       = form_for user, :as => :user, :url => url, method: 'patch',  :html => { :class => "form-horizontal", :id => "edit_employee" } do |form|
         .row
-          .col-sm-6
+          .col-sm-6.col-sm-offset-3
+            = form.label :email
+            = form.text_field :email, class: 'form-control', :readonly => true
+        %br
+        .row
+          .col-sm-6.col-sm-offset-3
             = rservice_text_field("first_name", "First Name", form)
             %label.error-title.error{:for => "user_first_name"}
+        %br
         .row
-          .col-sm-6
+          .col-sm-6.col-sm-offset-3
             = rservice_text_field("last_name", "Last Name", form)
             %label.error-title.error{:for => "user_last_name"}
+        %br
         .row
-          .col-sm-6
-            = form.label :email
-            %br
-            = form.text_field :email, class: 'form-control', :readonly => true
-        .row
-          .col-sm-6
+          .col-sm-6.col-sm-offset-3
             = rservice_text_field("phone", "Phone", form)
             %label.error-title.error{:for => "user_phone"}
+        %br
         .row
-          .col-sm-6
+          .col-sm-6.col-sm-offset-3
             = rservice_submit_button("Update", form, 'btn-primary')
   :javascript
     #{render "common/validate.js"}

@@ -6,7 +6,7 @@
     .panel-heading
       %h3 Edit Sub Service
     .panel-body
-      = form_for [:admin, @service], :url => update_sub_services_admin_service_path, :method => "put", :html => { :class => "form-horizontal sub_service" } do |f|
+      = form_for [:admin, @service], :url => update_sub_services_admin_service_path, :method => "put", :html => { :class => "form-horizontal", id: 'sub_service_form' } do |f|
         - if @service.errors.any?
           #error_expl.panel.panel-danger
             .panel-heading
@@ -30,3 +30,5 @@
             .form-group
               .col-lg-offset-2.col-lg-10
                 = f.submit nil, :class => 'btn btn-primary'
+  :javascript
+    #{render "common/validate.js"}

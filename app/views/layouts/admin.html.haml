@@ -10,12 +10,12 @@
         %ul.nav.navbar-nav.navbar-left.home-container
           %p.nav-home
             %a{:href => "/"}
-              %i.fa.fa-home.fa-fw
+              %i.fa.fa-home
               R-services
         %ul.nav.navbar-right.navbar-top-links.no-margin-force
           %dropdown
             %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
-              %i.fa.fa-user.fa-fw
+              %i.fa.fa-user
                 - if current_user.partner?
                   #{current_user.company_name}
                 - else

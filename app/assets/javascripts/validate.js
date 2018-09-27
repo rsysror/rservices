@@ -223,27 +223,6 @@ $(document).on("turbolinks:load", function(){
     }
   }); 
 
-  // Client-side validation for comment.
-  $("#comment_form").validate({
-    errorPlacement: function (error, element) {
-      error.insertBefore(element);
-    },
-    rules: {
-      "service_request[comment]":{
-        required: true,
-        maxlength: 150,
-        minlength: 15
-      }
-    },
-    messages: {
-      "service_request[comment]":{
-        required: "Description is required!",
-        maxlength: "Maximum 150 characters are allowed!",
-        minlength: "Minimum 15 characters required!"
-      }
-    }
-  });
-
   // validating company edit form.
   $("#company_portfolio_edit").validate({
     errorPlacement: function (error, element) {

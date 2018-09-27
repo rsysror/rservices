@@ -82,7 +82,7 @@ class ServiceRequest < ApplicationRecord
   end 
 
   def assignee_details
-    assigned_to.present? ? "#{assigned_to.email + assigned_to.phone}" : "No Assignee Yet"
+    assigned_to.present? ? "#{assigned_to.try(:email)}" : "No Assignee Yet"
   end
 
 end

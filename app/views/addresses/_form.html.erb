@@ -66,13 +66,13 @@
         <%= form_for @address, :html => { :class => "form-horizontal address", :id => "address_form" } do |f| %>
           
           <div class="row error-container">
-            <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-4 col-md-offset-1">
               <div class="form-group">
                 <%=rservice_text_field("flat_number","Flat Number/H.No.",f) %>
                 <label for="address_flat_number" class="error-title error"></label>
               </div>
             </div>
-            <div class="col-md-3 col-md-offset-2">
+            <div class="col-md-4 col-md-offset-2">
               <div class="form-group">
                 <%=rservice_text_field("street_name","Street Name",f) %>
                 <label for="address_street_name" class="error-title error"></label>
@@ -80,13 +80,13 @@
             </div>
           </div>
           <div class="row error-container">
-            <div class="col-md-3 col-md-offset-1">
+            <div class="col-md-4 col-md-offset-1">
               <div class="form-group">
                 <%=rservice_text_field("pin_code","Pin Code",f) %>
                 <label for="address_pin_code" class="error-title error"></label>
               </div>
             </div>
-            <div class="col-md-3 col-md-offset-2">
+            <div class="col-md-4 col-md-offset-2">
               <div class="form-group">
                 <%=rservice_text_field("landmark","Landmark",f) %>
                 <label for="address_landmark" class="error-title error"></label>

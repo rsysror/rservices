@@ -54,14 +54,11 @@ $("#new_user").validate({
 
 
 // Validating service on cient side.
-$("#new_service").validate({
-  //error place
+$("#service_request_form").validate({
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-  //adding rule
   rules: {
-    // name is required with max of 20 and min of 6
     "service[name]":{
       required: true,
       maxlength: 115,
@@ -74,7 +71,6 @@ $("#new_service").validate({
       required: true
     }
   },
-  // error messages
   messages: {
     "service[name]":{
       required: "Service name is required!",
@@ -91,15 +87,12 @@ $("#new_service").validate({
 });
 
 
-// Validating 'Sub Service' on cient side.
-$(".sub_service").validate({
-  //error place
+// Validating 'Sub Service' on cient-side.
+$("#sub_service_form").validate({
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-  //adding rule
   rules: {
-    // name is required with max of 20 and min of 6
     "service[name]":{
       required: true,
       maxlength: 115,
@@ -109,7 +102,6 @@ $(".sub_service").validate({
       required: true
     }
   },
-  // error messages
   messages: {
     "service[name]":{
       required: "Sub service name is required!",
@@ -124,13 +116,10 @@ $(".sub_service").validate({
 
 // Validating 'address' on cient side.
 $("#address_form").validate({
-  //error place
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
-  //adding rule
   rules: {
-    // name is required with max of 20 and min of 6
     "address[flat_number]":{
       required: true,
       maxlength: 50,
@@ -143,7 +132,8 @@ $("#address_form").validate({
     "address[pin_code]":{
       required: true,
       maxlength: 10,
-      minlength: 5
+      minlength: 5,
+      number: true
     },
     "address[landmark]":{
       maxlength: 150,
@@ -159,7 +149,6 @@ $("#address_form").validate({
       required: true
     }
   },
-  // error messages
   messages: {
     "address[flat_number]":{
       required: "Flat No. is required!",
@@ -173,11 +162,12 @@ $("#address_form").validate({
     "address[pin_code]":{
       required: "Pin code is required!",
       maxlength: "Pin code must be less than 10 characters.",
-      minlength: "Pin code must be at-least 5 characters."
+      minlength: "Pin code must be at-least 5 characters.",
+      number: "Only digits are allowed!"
     },
     "address[landmark]":{
       maxlength: "Landmark must be less than 150 characters.",
-      minlength: "Landmark must be at-least 1 character."
+      minlength: "Landmark must be at-least 5 character."
     },
     "country_selection":{
       required: "Country is required!",
@@ -189,4 +179,203 @@ $("#address_form").validate({
       required: "City is required!",
     },
   }
+});
+
+
+// Client-side validation for edit employee.
+$("#edit_employee").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "user[first_name]":{
+      required: true,
+      maxlength: 50,
+      minlength: 3
+    },
+    "user[last_name]":{
+      maxlength: 50,
+      minlength: 3
+    },
+    "user[phone]":{
+      maxlength: 13,
+      minlength: 10,
+      number: true
+    }
+  },
+  messages: {
+    "user[first_name]":{
+      required: "First name is required!",
+      maxlength: "Maximum 50 characters are allowed!",
+      minlength: "Minimum 3 characters required!"
+    },
+    "user[last_name]":{
+      maxlength: "Maximum 50 characters are allowed!",
+      minlength: "Minimum 3 characters required!"
+    },
+    "user[phone]":{
+      maxlength: "Maximum 13 characters are allowed!",
+      minlength: "Minimum 10 characters required!",
+      number: "Only digits are allowed!"
+    }
+  }
 }); 
+
+// Client-side validation for comment.
+$("#comment_form").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "service_request[comment]":{
+      required: true,
+      maxlength: 150,
+      minlength: 15
+    }
+  },
+  messages: {
+    "service_request[comment]":{
+      required: "Description is required!",
+      maxlength: "Maximum 150 characters are allowed!",
+      minlength: "Minimum 15 characters required!"
+    }
+  }
+});
+
+// validating company edit form.
+$("#company_portfolio_edit").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "portfolio[company_name]":{
+      required: true,
+      maxlength: 150,
+      minlength: 3
+    },
+    "portfolio[experience]":{
+      required: true,
+      maxlength: 3,
+      minlength: 1,
+      number: true
+    },
+    "portfolio[company_ph_no]":{
+      required: true,
+      maxlength: 13,
+      minlength: 10,
+      number: true
+    },
+    "portfolio[about]":{
+      maxlength: 190,
+      required: true,
+      minlength: 25
+    },
+    "portfolio[address]":{
+      required: true,
+      maxlength: 190,
+      minlength: 25
+    }
+  },
+  messages: {
+    "portfolio[company_name]":{
+      required: "Company name is required!",
+      maxlength: "Maximum 150 characters are allowed!",
+      minlength: "Minimum 5 characters required!"
+    },
+    "portfolio[experience]":{
+      required: "Phone is required!",
+      maxlength: "Maximum 3 characters are allowed!",
+      minlength: "Minimum 1 characters required!",
+      number: "Only digits are allowed!"
+    },
+    "portfolio[company_ph_no]":{
+      required: "Phone is required!",
+      maxlength: "Maximum 13 characters are allowed!",
+      minlength: "Minimum 10 characters required!",
+      number: "Only digits are allowed!"
+    },
+    "portfolio[about]":{
+      required: "About is required!",
+      maxlength: "Maximum 190 characters are allowed!",
+      minlength: "Minimum 25 characters required!"
+    },
+    "portfolio[address]":{
+      required: "Address is required!",
+      maxlength: "Maximum 190 characters are allowed!",
+      minlength: "Minimum 25 characters required!"
+    }
+  }
+});
+
+// Validating employee invation form.
+$("#forgot-password").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "user[email]":{
+      required: true,
+      maxlength: 150,
+      email: true
+    }
+  },
+  messages: {
+    "user[email]":{
+      required: "Description is required!",
+      maxlength: "Maximum 150 characters are allowed!",
+      email: "Wrong email formate!"
+    }
+  }
+});
+
+// Validating Company form.
+$("#company_form").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "portfolio_service[price]":{
+      required: true,
+      maxlength: 7,
+      minlength: 1,
+      number: true
+    },
+    "portfolio_service[service_id]":{
+      required: true
+    }
+  },
+  messages: {
+    "portfolio_service[price]":{
+      required: "Price is required!",
+      minlength: "Minimum 1 characters required!",
+      maxlength: "Maximum 7 characters are allowed!",
+      number: "Only digits are allowed!"
+    },
+    "portfolio_service[service_id]":{
+      required: "Sub service is required!"
+    }
+  }
+});
+
+// Validating Company eedit form.
+$("#company_edit_form").validate({
+  errorPlacement: function (error, element) {
+    error.insertBefore(element);
+  },
+  rules: {
+    "portfolio_service[price]":{
+      required: true,
+      maxlength: 7,
+      minlength: 1,
+      number: true
+    }
+  },
+  messages: {
+    "portfolio_service[price]":{
+      required: "Price is required!",
+      minlength: "Minimum 1 characters required!",
+      maxlength: "Maximum 7 characters are allowed!",
+      number: "Only digits are allowed!"
+    }
+  }
+});

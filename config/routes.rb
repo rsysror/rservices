@@ -109,4 +109,5 @@ Rails.application.routes.draw do
   put 'partner/assign_service_request', :to => 'partner/dashboard#assign_service_request_to_user', :as => 'assign_service_requests_to_employee' 
   get 'admin/service-requests', :to => 'admin/users#service_requests_list', :as => 'service_requests_list'
   get 'get_cities', to: 'partner/company_services#get_cities'
+  put 'partner/manage_employee_status', :to => 'partner/dashboard#manage_employee_status', :as => 'manage_status_of_employee' 
 end

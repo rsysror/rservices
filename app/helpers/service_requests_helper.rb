@@ -46,7 +46,7 @@ module ServiceRequestsHelper
   end
 
   def service_request_header_html_block
-    columns = ['Service Name', 'Address','User','Service Date','Time','Service Request Number','Status','Rating','Actions']
+    columns = [t('.service'),t('.address'),t('.user'),t('.service_due_date'),t('.time_slot'),t('.service_request_number'),t('.status'),t('.rating'),t('.actions')]
     thead = content_tag :thead do
       content_tag :tr do
         columns.collect {|column|  concat content_tag(:th,column)}.join().html_safe

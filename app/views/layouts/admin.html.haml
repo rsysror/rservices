@@ -16,7 +16,10 @@
           %dropdown
             %button.dropdown-toggle{"data-toggle" => "dropdown", :class => "header-right-toggle"}
               %i.fa.fa-user.fa-fw
-              = current_user.full_name
+                - if current_user.partner?
+                  #{current_user.company_name}
+                - else
+                  #{current_user.full_name}
               %span.caret.tog-margin
             %ul.dropdown-menu
               %li

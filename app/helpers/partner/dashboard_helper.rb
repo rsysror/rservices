@@ -17,9 +17,15 @@ module Partner::DashboardHelper
     end
   end
 
-  def employee_actions employee
-    link_to edit_partner_user_path(employee),class: 'btn btn-default btn-xs' do 
-      content_tag(:span, '',class: 'glyphicon glyphicon-edit')
+    def employee_actions employee
+      #byebug
+      link_to edit_partner_user_path(employee),class: 'btn btn-default btn-xs' do 
+        content_tag(:span, '',class: 'glyphicon glyphicon-edit')+
+      if(employee.status == false)  
+        (link_to 'Activate', manage_status_of_employee_path(id: employee.id), method: :put, :remote => true, class: " btn btn-success btn-xs btn_margin", data: { confirm: 'Are you sure?' })
+      else
+        (link_to 'Deactivate', manage_status_of_employee_path(id: employee.id), method: :put, :remote => true, class: " btn btn-success btn-xs btn_margin", data: { confirm: 'Are you sure?' })  
+      end
     end 
   end                
 end

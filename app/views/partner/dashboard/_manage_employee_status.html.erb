@@ -1,0 +1,22 @@
+<div class="panel-body">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Date Of Joining</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <% employees.each do |employee| %>
+          <tr>
+            <td><%=employee.full_name %></td>
+            <td><%=employee.email %></td>
+            <td><%=l employee.invitation_accepted_at %></td>
+            <td><%=employee_actions(employee)%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

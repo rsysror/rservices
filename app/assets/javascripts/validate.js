@@ -285,7 +285,7 @@ $(document).on("turbolinks:load", function(){
         minlength: "Minimum 5 characters required!"
       },
       "portfolio[experience]":{
-        required: "Phone is required!",
+        required: "Experience is required!",
         maxlength: "Maximum 3 characters are allowed!",
         minlength: "Minimum 1 characters required!",
         number: "Only digits are allowed!"
@@ -323,7 +323,7 @@ $(document).on("turbolinks:load", function(){
     },
     messages: {
       "user[email]":{
-        required: "Description is required!",
+        required: "Email is required!",
         maxlength: "Maximum 150 characters are allowed!",
         email: "Wrong email formate!"
       }

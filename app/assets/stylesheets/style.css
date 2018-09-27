@@ -7389,7 +7389,7 @@ p.free {
     color: red; font-size: 13px;
 }
 .error-container {
-    height: 90px;
+    height: 93px;
 }
 .custome-error {
     list-style: none;
@@ -7637,3 +7637,8 @@ p.nav-home a {
 }
 
 .portfolio_delete_image{text-align: center; background-color: white;}
+
+#portfolio_service_city_ids {
+    width: 100%;
+    margin-left: 19%;
+}

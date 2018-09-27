@@ -62,5 +62,9 @@ class User < ApplicationRecord
   def portfolio_status
     portfolio.portfolio_status
   end
+
+  def company_name
+    portfolio.company_name
+  end
   
 end

@@ -54,7 +54,7 @@ $("#new_user").validate({
 
 
 // Validating service on cient side.
-$("#new_service").validate({
+$("#service_request_form").validate({
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
@@ -88,7 +88,7 @@ $("#new_service").validate({
 
 
 // Validating 'Sub Service' on cient-side.
-$(".sub_service").validate({
+$("#sub_service_form").validate({
   errorPlacement: function (error, element) {
     error.insertBefore(element);
   },
@@ -132,7 +132,8 @@ $("#address_form").validate({
     "address[pin_code]":{
       required: true,
       maxlength: 10,
-      minlength: 5
+      minlength: 5,
+      number: true
     },
     "address[landmark]":{
       maxlength: 150,
@@ -161,11 +162,12 @@ $("#address_form").validate({
     "address[pin_code]":{
       required: "Pin code is required!",
       maxlength: "Pin code must be less than 10 characters.",
-      minlength: "Pin code must be at-least 5 characters."
+      minlength: "Pin code must be at-least 5 characters.",
+      number: "Only digits are allowed!"
     },
     "address[landmark]":{
       maxlength: "Landmark must be less than 150 characters.",
-      minlength: "Landmark must be at-least 1 character."
+      minlength: "Landmark must be at-least 5 character."
     },
     "country_selection":{
       required: "Country is required!",

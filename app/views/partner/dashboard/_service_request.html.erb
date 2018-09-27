@@ -1,6 +1,7 @@
 <% @service_requests.each do |request|%>
   <tr>
-    <td><%=request.try(:service_date).strftime('%Y-%m-%d %H:%M:%S') %></td>
+    <td><%=request.try(:service_date).strftime('%Y-%m-%d') %></td>
+    <td><%=request.try(:service_time) %></td>
     <td><%=request.service.try(:name).titleize %></td>
     <td><%=request.user_name %></td>
     <td><%=request.user_phone %></td>

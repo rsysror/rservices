@@ -1,0 +1,2 @@
+  $('#employee_status').html('')
+  $('#employee_status').html("<%= escape_javascript render(:partial => 'partner/dashboard/manage_employee_status', :locals => { :employees => @employees }) %>");  

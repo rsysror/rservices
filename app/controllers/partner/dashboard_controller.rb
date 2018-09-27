@@ -22,8 +22,8 @@ class Partner::DashboardController < PartnerController
 
   def manage_service_requests
     @service_requests = current_user.portfolio.service_requests.includes(:status).accepted_request.order("id DESC")
-    @employees =  current_user.employees-current_user.portfolio.service_requests.available_employees
-
+    @employees =  current_user.employees.where(status: true)-current_user.portfolio.service_requests.available_employees
+   
   end  
 
   def assign_service_request_to_user
@@ -34,6 +34,17 @@ class Partner::DashboardController < PartnerController
     else
       @errors = "Assign request failed !" 
     end  
+  end 
+
+  def manage_employee_status
+    #byebug
+    if params[:id].present?
+      employee = User.find(params[:id])
+      employee.status ? employee.update(status: false) : employee.update(status: true)
+     else
+      @errors = "Status changed fail" 
+    end
+    @employees =  current_user.employees.order("id DESC")  
   end  
 
   private
@@ -43,7 +54,7 @@ class Partner::DashboardController < PartnerController
   end
 
   def get_employees
-    @employees =  current_user.employees
+    @employees =  current_user.employees.order("id DESC")
   end  
 
 end

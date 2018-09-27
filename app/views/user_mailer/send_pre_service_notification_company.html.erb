@@ -1,0 +1,15 @@
+Dear<br>
+<%=@comp_name%>,
+<br>
+<br>
+Your upcoming pending service request details are below:
+<br>
+<br>
+<b>Contact Person: </b><%= @user_name%><br>
+<b>Contact Number: </b><%= @phone%><br>
+<b>Service Number: </b><%= @req_no%><br>
+<b>Service Name: </b><%= @service_name%><br>
+<b>Service Date: </b><%= @service_date%><br>
+<b>Service Time: </b><%= @time%>
+<br>
+<%=render partial: 'shared/signature'%>

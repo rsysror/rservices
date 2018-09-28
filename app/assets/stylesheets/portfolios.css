@@ -68,5 +68,22 @@ div.desc {
 .about{
   overflow: auto;
 }
-.portfolio_comments{height:41%;border: 5px solid #b3acac;margin: 5px;}
-.ht_59{height: 59%;}
+.portfolio_comments{height:40%;margin: 5px;background-color: #fff;}
+
+.img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+  display: block;
+  height: 50%;
+}
+
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+  width: 45%;
+  margin-left: 35%;
+}
+
+.item {
+  margin-bottom: 1em;
+  /*float: left;*/
+  width: 65%!important;
+}

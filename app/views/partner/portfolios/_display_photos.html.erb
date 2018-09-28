@@ -1,12 +1,12 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <% portfolio.images.each_with_index do |image, index| %>
-    <div class="item<%= ' active' if index==0 %>">
-      <%= image_tag("#{image.url}", class: "img-responsive", alt: "#{index} iam") %>
-    </div>
+      <div class="item<%= ' active' if index==0 %>">
+        <%= image_tag("#{image.url}", class: "img-responsive", alt: "#{index} iam") %>
+      </div>
     <% end %>
   </div>
-   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>

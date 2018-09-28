@@ -247,13 +247,13 @@ $(document).on("turbolinks:load", function(){
         number: true
       },
       "portfolio[about]":{
-        maxlength: 190,
+        maxlength: 2500,
         required: true,
         minlength: 25
       },
       "portfolio[address]":{
         required: true,
-        maxlength: 190,
+        maxlength: 230,
         minlength: 25
       }
     },
@@ -277,12 +277,12 @@ $(document).on("turbolinks:load", function(){
       },
       "portfolio[about]":{
         required: "About is required!",
-        maxlength: "Maximum 190 characters are allowed!",
+        maxlength: "Maximum 2500 characters are allowed!",
         minlength: "Minimum 25 characters required!"
       },
       "portfolio[address]":{
         required: "Address is required!",
-        maxlength: "Maximum 190 characters are allowed!",
+        maxlength: "Maximum 230 characters are allowed!",
         minlength: "Minimum 25 characters required!"
       }
     }

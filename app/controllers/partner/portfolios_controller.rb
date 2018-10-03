@@ -1,12 +1,9 @@
 class Partner::PortfoliosController < PartnerController
   before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
-  
+
   def show; end
 
   def edit
-    # @portfolio = Portfolio.find(current_user.portfolio.id)
-    # @cities = City.details.order(:name)
-    # @services = Service.get_services
   end
 
   def update
@@ -18,7 +15,6 @@ class Partner::PortfoliosController < PartnerController
     end
   end
 
-  
   def destroy
     @portfolio.destroy
     flash[:success] = 'Portfolio deleted successfully!.'
@@ -30,13 +26,6 @@ class Partner::PortfoliosController < PartnerController
     render :partial => "subservices", :object => @subservices
   end
 
-  # def get_city_service_list
-  #   if params[:portfolio][:city_id].present?
-  #     @city = City.find(params[:portfolio][:city_id])
-  #     @services = @city.services
-  #   end
-  # end
- 
   #UPLOAD photos for portfolio 
   def upload_photos
     portfolio = Portfolio.find_by_id(params[:portfolio][:portfolio_id])
@@ -71,5 +60,5 @@ class Partner::PortfoliosController < PartnerController
   def portfolio_params
     params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []}, :company_name, :address,:company_ph_no)
   end
-    
+
 end

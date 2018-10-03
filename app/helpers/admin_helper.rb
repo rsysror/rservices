@@ -23,12 +23,18 @@ module AdminHelper
     render partial: "shared/show_rating" , locals: {request: user, score: score}
   end
 
+
   def get_service_request_rating request
     if request.status == Status.completed.last
       request.feedback.present? ? render_rating_partial(request, request.feedback.rating) : "Not Yet Rated"
     else
       "-"
     end
+  end
+
+  def get_users_rating(feedback)
+    score = feedback.rating.present? ? feedback.rating : 0
+    render_rating_partial(feedback.service_request, score)
   end
 
 end 

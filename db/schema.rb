@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_20_101951) do
+ActiveRecord::Schema.define(version: 2018_09_27_065132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 2018_09_20_101951) do
     t.json "images"
     t.json "documents"
     t.boolean "status", default: false
-    t.string "address"
     t.string "company_name"
     t.string "company_ph_no"
+    t.string "address"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -137,13 +137,6 @@ ActiveRecord::Schema.define(version: 2018_09_20_101951) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sub_services", force: :cascade do |t|
-    t.string "name"
-    t.integer "service_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "time_slots", force: :cascade do |t|
     t.string "start_time"
     t.string "end_time"
@@ -180,6 +173,7 @@ ActiveRecord::Schema.define(version: 2018_09_20_101951) do
     t.integer "invitation_limit"
     t.integer "invited_by_id"
     t.string "invited_by_type"
+    t.boolean "status", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -1,0 +1,9 @@
+<% if portfolio.feedbacks.present? %>
+  <ol>
+    <% portfolio.feedbacks.each do |feedback| %>
+      <li><h4><%= feedback.user.full_name %></h4></li>
+      <%= get_users_rating(feedback) %>
+      <%= feedback.description %>
+    <% end %>
+  </ol>
+<% end %>

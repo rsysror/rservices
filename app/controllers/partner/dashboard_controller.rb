@@ -3,7 +3,6 @@ class Partner::DashboardController < PartnerController
   # frozen_string_literal: true
   before_action :get_service_requests, only: %I[index accept_reject]
   before_action :get_employees, only: %I[manage_employees]
-
   def index; end
 
   def accept_reject
@@ -43,7 +42,7 @@ class Partner::DashboardController < PartnerController
   end
 
   private
-  
+
   def get_service_requests
     @service_requests = current_user.portfolio.service_requests.includes(:status)
                                     .order('id DESC')

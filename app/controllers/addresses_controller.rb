@@ -1,10 +1,10 @@
 class AddressesController < ApplicationController
-  # before_action :authenticate_user!
+  # frozen_string_literal: true
   before_action :authorized_user?
-  before_action :find_address, only: [:edit, :update, :destroy]
+  before_action :find_address, only: %I[edit update destroy]
 
   def new
-    @address = params[:address].present? ? Address.near(params[:search], 50, :order => :distance) : Address.new
+    @address = params[:address].present? ? Address.near(params[:search], 50, order: :distance) : Address.new
   end
 
   def index
@@ -18,23 +18,22 @@ class AddressesController < ApplicationController
   def update
     @address.update_attributes(address_params)
     if @address
-      flash[:success] = "Updated address Successfully!"
-      redirect_to addresses_path
+      flash[:success] = 'Updated address Successfully!'
     else
-      flash[:error] =  "Error"
-      redirect_to addresses_path
+      flash[:error] = 'Error'
     end
+    redirect_to addresses_path
   end
 
   def create
     @address = params[:address].present? ? current_user.addresses.create(address_params) : current_user.addresses.new(address_params)
     if @address.save
-      flash.now[:error] = "Address created successfully!"
+      flash.now[:error] = 'Address created successfully!'
       redirect_to '/dashboard'
     else
-      flash.now[:error] = "Address could not save!"
+      flash.now[:error] = 'Address could not save!'
       @cities = City.details
-      render :new 
+      render :new
     end
   end
 
@@ -42,20 +41,19 @@ class AddressesController < ApplicationController
     if params[:country_selection].present?
       @states = State.details(params[:country_selection])
     elsif params[:state_selection].present?
-      @cities = City.details(params[:state_selection])        
+      @cities = City.details(params[:state_selection])
     end
   end
 
   def destroy
-    if @address.has_service_requests?
+    if @address.service_requests?
       flash[:error] = "Address which availed services can't be deleted"
     else
       @address.destroy
-      flash[:success] = "Address deleted successfully!"
+      flash[:success] = 'Address deleted successfully!'
     end
     redirect_to addresses_path
   end
-
 
   private
 
@@ -63,9 +61,9 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
   end
 
- # Look better possibilities to merge extra params which is not included in form
   def address_params
-    params.require(:address).permit(:flat_number,:street_name,:landmark, :user_id, :type,:pin_code, :city_id, :address, :google_address)
+    params.require(:address).permit(:flat_number, :street_name, :landmark,
+                                    :user_id, :type, :pin_code,
+                                    :city_id, :address, :google_address)
   end
-
 end

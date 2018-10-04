@@ -1,17 +1,18 @@
+# Portfolio Controller
 class Partner::PortfoliosController < PartnerController
-  before_action :set_portfolio, only: [:show, :edit, :update, :destroy]
+  # frozen_string_literal: true
+  before_action :set_portfolio, only: %I[show edit update destroy]
 
   def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @portfolio.update(portfolio_params)
       flash[:success] = 'Portfolio updated successfully!.'
-      redirect_to partner_portfolio_path(@portfolio) 
+      redirect_to partner_portfolio_path(@portfolio)
     else
-      render :edit 
+      render :edit
     end
   end
 
@@ -22,11 +23,11 @@ class Partner::PortfoliosController < PartnerController
   end
 
   def get_subservices
-    @subservices = Service.where(:parent_id => params[:parent_id])
-    render :partial => "subservices", :object => @subservices
+    @subservices = Service.where(parent_id: params[:parent_id])
+    render partial: 'subservices', object: @subservices
   end
 
-  #UPLOAD photos for portfolio 
+  # UPLOAD photos for portfolio
   def upload_photos
     portfolio = Portfolio.find_by_id(params[:portfolio][:portfolio_id])
     if params[:portfolio][:images].present?
@@ -40,10 +41,10 @@ class Partner::PortfoliosController < PartnerController
   # Delete Portfolio Photo
   def delete_photo
     portfolio = Portfolio.find(params[:id])
-    remain_images = portfolio.images # copy the array
-    deleted_image = remain_images.delete_at(params[:index].to_i) # delete the target image
-    deleted_image.try(:remove!) # delete image from S3
-    portfolio.images = remain_images # re-assign back
+    remain_images = portfolio.images
+    deleted_image = remain_images.delete_at(params[:index].to_i)
+    deleted_image.try(:remove!)
+    portfolio.images = remain_images
     portfolio.save(validate: false)
     flash[:success] = 'Photo deleted successfully!.'
     redirect_to partner_portfolio_path
@@ -56,9 +57,12 @@ class Partner::PortfoliosController < PartnerController
     @portfolio = current_user.portfolio
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # WhiteList the Parameters
   def portfolio_params
-    params.require(:portfolio).permit(:gender, :about, :experience, :education, :avatar, :city_id, :service_id, {documents: []}, {images: []}, :company_name, :address,:company_ph_no)
+    params.require(:portfolio).permit(:gender, :about, :experience,
+                                      :education, :avatar, :city_id,
+                                      :service_id, { documents: [] },
+                                      { images: [] }, :company_name,
+                                      :address, :company_ph_no)
   end
-
 end

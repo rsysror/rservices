@@ -1,8 +1,11 @@
+# Company Service Class
 class Partner::CompanyServicesController < PartnerController
-  before_action :find_portfolio_service, only: [:edit, :update, :destroy]
-  
+  # frozen_string_literal: true
+  before_action :find_portfolio_service, only: %I[edit update destroy]
+
   def index
-    @portfolio_services = current_user.portfolio.portfolio_services.order(:city_id).group_by(&:city_id)
+    @portfolio_services = current_user.portfolio.portfolio_services
+                                      .order(:city_id).group_by(&:city_id)
   end
 
   def new
@@ -12,9 +15,11 @@ class Partner::CompanyServicesController < PartnerController
 
   def get_cities
     sub_service_id = params[:portfolio_service][:service_id]
-    if sub_service_id.present?
-      @cities = Service.find(params[:portfolio_service][:service_id]).service.service_city - current_user.portfolio.remove_existing_service_city(sub_service_id)
-    end
+    return unless sub_service_id.present?
+
+    service_city = Service.find(params[:portfolio_service][:service_id]).service.service_city
+    existing_city = current_user.portfolio.remove_existing_service_city(sub_service_id)
+    @cities = service_city - existing_city
   end
 
   # need to refactor
@@ -22,39 +27,38 @@ class Partner::CompanyServicesController < PartnerController
     city_ids = params[:portfolio_service][:city_ids]
     if city_ids.present?
       city_ids.each do |city_id|
-        service = PortfolioService.create(portfolio_service_params(city_id, current_user.portfolio.id))
+        PortfolioService.create(portfolio_service_params(city_id, current_user.portfolio.id))
       end
-      flash[:success] = "Service created successfully!"
+      flash[:success] = 'Service created successfully!'
       redirect_to partner_company_services_path
     else
-      flash.now[:error] = "Please select a city and then proceed!"
-      render :new 
+      flash.now[:error] = 'Please select a city and then proceed!'
+      render :new
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @portfolio_service.update_attributes(portfolio_service_update_params)
     if @portfolio_service
-      flash[:success] = "Price Updated Successfully!"
+      flash[:success] = 'Price Updated Successfully!'
       redirect_to partner_company_services_path
     else
-      flash[:error] =  "Error"
+      flash[:error] = 'Error'
       render :edit
     end
   end
 
   def destroy
     @portfolio_service.destroy
-    flash[:success] = "Service deleted successfully!"
+    flash[:success] = 'Service deleted successfully!'
     redirect_to partner_company_services_path
   end
 
   private
 
-  def portfolio_service_params city_id, portfolio_id
+  def portfolio_service_params(city_id, portfolio_id)
     params.require(:portfolio_service).permit(:service_id, :price).merge(city_id: city_id, portfolio_id: portfolio_id)
   end
 

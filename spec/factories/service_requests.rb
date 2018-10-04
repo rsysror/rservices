@@ -2,14 +2,24 @@
 
 FactoryGirl.define do
   factory :service_request do
-    status_id 1
-    user     User.first
-    service_id  1
-    portfolio_id 1
     service_date DateTime.now
-    time_slot_id 1
-     trait :address do
+    trait :user do
+      user user
+    end
+    trait :portfolio do
+      portfolio portfolio
+    end
+    trait :address do
       address address
-     end
+    end
+    trait :status do
+      status status
+    end
+    trait :service do
+      service service
+    end
+    trait :time_slot do
+      time_slot time_slot
+    end
   end
 end

@@ -7,8 +7,11 @@ FactoryGirl.define do
     landmark "Kishan Chowk"
     pin_code '1212121'
     city_id    1
-      trait :user do
-        user user
-      end
+    trait :user do
+      user user
+    end
+    trait :city do
+      city city
+    end
   end
 end

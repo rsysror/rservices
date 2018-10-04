@@ -1,29 +1,29 @@
 class ServiceRequestsController < ApplicationController
-   before_action :authenticate_user!
-   before_action :get_service_request, only: %I[edit show update cancel_service_request]
+  before_action :authenticate_user!
+  before_action :get_service_request, only: %I[edit show update cancel_service_request]
 
   def index
-    @service_requests = current_user.service_requests.includes(:service,:address,:status, :portfolio, :time_slot).ordered.paginate(:page => params[:page], :per_page => 5)
+    @service_requests = current_user.service_requests.includes(:service, :address, :status, :portfolio, :time_slot)
+                                    .ordered.paginate(page: params[:page], per_page: 5)
   end
 
   def create
-    @service_request =  current_user.service_requests.create(service_request_params)
+    @service_request = current_user.service_requests.create(service_request_params)
     if @service_request.persisted?
       UserMailer.service_request_generate(current_user, @service_request, 'user').deliver_now
       UserMailer.service_request_generate(current_user, @service_request, 'partner').deliver_now
-      flash[:success] = "Service Request Placed Successfully!"
+      flash[:success] = 'Service Request Placed Successfully!'
       redirect_to '/service_requests'
     else
-      flash[:error] = @service_request.errors.full_messages.join(",")
+      flash[:error] = @service_request.errors.full_messages.join(',')
       redirect_to '/dashboard'
     end
-      
   end
 
   def open_comment_pop_up
     @request_id = params[:id]
     @value = params[:value]
-    @comments =  ServiceRequest.comments_list
+    @comments = ServiceRequest.comments_list
   end
 
   def edit
@@ -35,10 +35,9 @@ class ServiceRequestsController < ApplicationController
 
   def update
     # need to look better solution
-    if ( (params[:comment_popup] == 'true') && ( params[:service_request][:comment] == '') )
+    if (params[:comment_popup] == 'true') && (params[:service_request][:comment] == '')
       params[:service_request][:comment] = params[:service_request][:select_comment]
     end
-
     # if ServiceRequest is 'on hold', update status and sent mail to user.
     if Status::ACTION.include?(params[:value]) && params[:value] == 'onhold'
       @service_request.update_attributes(status_id: Status.send(params[:value]).first.id)
@@ -72,7 +71,7 @@ class ServiceRequestsController < ApplicationController
       @city = City.find(params[:city_id])
       @sub_services = service.sub_services
     elsif params[:service_id]
-      @portfolios = PortfolioService.city_services(params[:service_id], params[:city_id]).map{ |m| m.portfolio if m.portfolio.active? }.compact    
+      @portfolios = PortfolioService.city_services(params[:service_id], params[:city_id]).map{ |m| m.portfolio if m.portfolio.active? }.compact
       @city = City.find(params[:city_id])
       @service_id = params[:service_id]
     elsif params[:date].present?
@@ -82,19 +81,16 @@ class ServiceRequestsController < ApplicationController
   end
 
   private
-  
+
   def get_service_request
     @service_request = ServiceRequest.find(params[:id])
   end
 
   def service_request_params
-    params.require(:service_request).permit(:address_id, :user_id, :status_id, :portfolio_id,
-                                            :service_request_number, :time_slot_id, :service_date)
-                                            .merge(service_id: params[:service_id])
+    params.require(:service_request).permit(:address_id, :user_id, :status_id, :portfolio_id, :service_request_number, :time_slot_id, :service_date).merge(service_id: params[:service_id])
   end
 
   def service_request_update_params
-    params.require(:service_request).permit(:address_id, :status_id, :portfolio_id,
-                                            :time_slot_id, :service_id, :comment)
+    params.require(:service_request).permit(:address_id, :status_id, :portfolio_id, :time_slot_id, :service_id, :comment)
   end
 end

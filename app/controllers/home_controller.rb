@@ -17,5 +17,4 @@ class HomeController < ApplicationController
       @services = Service.get_all_services(1,12)
   	end
   end
-
 end

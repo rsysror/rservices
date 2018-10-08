@@ -5,7 +5,7 @@ class Admin::ServicesController < AdminController
   layout 'admin'
  
   def index
-    @services = Service.get_all_services(params[:page])
+    @services = Service.get_all_services(params[:page], 10)
   end
 
   def show
@@ -51,7 +51,7 @@ class Admin::ServicesController < AdminController
   end
 
   def sub_services
-    @services = Service.get_all_sub_services(params[:id], params[:page])
+    @services = Service.get_all_sub_services(params[:id], params[:page], 10)
   end
 
   def create_sub_services

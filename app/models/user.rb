@@ -48,6 +48,10 @@ class User < ApplicationRecord
     includes(:addresses).with_role(role).paginate(page: page || 1, per_page: 5)
   end
 
+  def self.get_all_users(role)
+    with_role(role)
+  end
+
   def self.get_user_details(id)
     includes(:addresses).find(id)
   end

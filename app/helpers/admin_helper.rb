@@ -13,7 +13,7 @@ module AdminHelper
     if object == "Service"
       object.constantize.get_services.count
     elsif object == "User"
-       object.constantize.get_users(:user).count
+       object.constantize.get_all_users(:user).count
     else
       object.constantize.count
     end

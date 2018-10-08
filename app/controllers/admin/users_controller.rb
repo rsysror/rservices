@@ -46,7 +46,7 @@ module Admin
     end
 
     def manage_portfolio_status
-      @users = User.get_users(:partner)
+      @users = User.get_all_users(:partner)
       @portfolio = @user.portfolio
       @portfolio.update_attribute(:status, params[:value])
     end

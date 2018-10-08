@@ -545,7 +545,7 @@ label.checkbox {
 .login-top input.password {
     background: url(../assets/l3.png) no-repeat 0% 51%;
 }
-.login-top input[type="text"]:hover, ..login-top input[type="password"]:hover{
+.login-top input[type="text"]:hover, .login-top input[type="password"]:hover{
     border-bottom-color:rgba(132, 141, 215, 0.52);
 }
 /*--checkbox--*/
@@ -3110,7 +3110,7 @@ ul.cars-list {
 
 .year input[type="number"], .kms input[type="number"], .pincode input[type="number"], .price input[type="number"] {
         height: 39px;
-    width: 220px
+    width: 220px;
     outline:none;
 }
 

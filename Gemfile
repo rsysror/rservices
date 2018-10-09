@@ -59,6 +59,7 @@ gem 'devise_invitable'
 
 gem 'whenever', require: false
 gem 'rubocop', require: false
+gem "font-awesome-rails"
 
 
 group :development, :test do
